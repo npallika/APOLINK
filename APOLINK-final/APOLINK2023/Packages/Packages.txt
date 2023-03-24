@@ -1,0 +1,6 @@
+crispy forms
+django-formset
+django-smart-selects
+# requirements.txt
+pyngrok==5.2.1. # your version may be later
+django-autocomplete-light

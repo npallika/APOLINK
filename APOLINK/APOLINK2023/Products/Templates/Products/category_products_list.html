@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% block title %}{{products_category.name}}{% endblock %}
+{% block body_block %}
+    
+    <H3>Category: {{products_category.name}}</H3>
+    
+    {% for product, photo in product_photos.items %}
+    
+   
+    {% if photo %}
+        <img src="{{photo.photo.url}}" style="height:100px" alt="{{ product.name }}">
+    {% endif %}
+   
+    <p> <a href="{% url 'Products:product_details' pk=product.pk %}">  {{ product.product_name }} </a> </p>
+    
+    
+    <p>Manufactured date: {{ product.manufactured_date }}</p>
+    <hr class="dotted">
+
+{% endfor %}
+
+{% endblock %}

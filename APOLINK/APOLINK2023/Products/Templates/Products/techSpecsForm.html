@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block title %}Insert Technical Specs{% endblock %} 
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<div class="container">
+    <h1>Technical Specs</h1>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {{ form.media.js }}
+        {{ ProductsTechSpecs|crispy }}
+        
+    <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+</div> 
+
+{% endblock %} 

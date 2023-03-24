@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+{% block title %}{{category.name}}{% endblock %}
+{% block body_block %}
+
+<h2>{{category.name}}</h2>
+
+{% for cat in subcategories %}
+<ul>
+    <li>{{ cat.name }}</li>
+        <ol>
+    {% for third_cat in thirdlevelcategories %}
+        {% if third_cat.parent == cat %}
+            <li>{{ third_cat.name }}</li>
+        {% endif %}
+        </ol>
+    {% endfor %}
+</ul>        
+{% endfor %}
+{% endblock %}
