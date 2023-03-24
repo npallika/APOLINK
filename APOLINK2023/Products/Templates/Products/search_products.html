@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% block title %}Results for: {{ searched }}{% endblock %}
+{% block body_block %}
+{% if searched %}
+    <h2>You searched for {{ searched }}</h2>
+    <br/>
+    {% if products %}
+    {% for product in products %}
+    <a href="{% url 'Products:product_details' pk=product.pk %}"> 
+        {{product}}</a> in category <a href="{% url 'Products:category_products_list' slug=product.product_category.slug %}">
+            {{product.product_category.name}}<br/>
+
+    {% endfor %}
+    {% else %}
+    Nothing found...
+    {% endif %}        
+{% else %}
+    <h2>You forgot to search for a product</h2>
+{% endif %}
+
+
+{% endblock %}

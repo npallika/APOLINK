@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% block body_block %}
+
+<h1>Product Details</h1>
+
+<h2>Name: {{product_detail.product_name}}</h2>
+
+<h3>Manufactured Date: {{product_detail.manufactured_date}}</h2>
+
+<h3>Registered Date: {{product_detail.date_registered}}</h3>
+
+{% for photo in Photos %}
+
+{% if photo.product == product_detail  %}
+<img src="{{photo.photo.url}}" alt="no photo" >
+{% endif %}
+
+{% endfor %}
+
+
+
+{% endblock %}

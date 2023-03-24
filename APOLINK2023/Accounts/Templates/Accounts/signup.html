@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Signup</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+   
+    
+    <div class="container">
+      <h1>Sign Up</h1>
+      <form method="POST" class="form">
+        {{ userForm|crispy }}
+        {{ addressForm|crispy }}
+        {{ userInfoForm|crispy }} 
+        {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        
+      </form>
+    </div> 
+</body>
+{% endblock %}
+
+
+

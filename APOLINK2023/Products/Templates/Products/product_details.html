@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+{% block title %}{{product_selected.product_name}} | Display{% endblock %}
+
+{% block body_block %}
+
+<h2>Product Details</h2>
+
+<h3>Name: {{product_selected.product_name}}</h3>
+
+<h3>Manufactured Date: {{product_selected.manufactured_date}}</h2>
+
+<h3>Registered Date: {{product_selected.date_registered}}</h3>
+
+{% if product_selected.date_updated %} 
+<h3>Last Updated: {{product_selected.date_updated}}</h3>
+{% endif %}
+
+<p>Status: {{product_selected.for_sell_rent}}</p>
+
+{% for photo in Photos %}
+    <img src="{{photo.photo.url}}" alt="no photo" >
+{% endfor %}
+
+<!--Check if there are attributes registered-->
+{% if attributes %}
+<h3>Technical Specifications</h3>
+{% for attribute in attributes %}
+    <p>{{ attribute.verbose_name }}: {{ attribute.value }}</p>
+{% endfor %}
+{% endif %}
+
+<!--Check if the product is registered to the user logged in to let them update or delete it -->
+{% if product_selected.user == request.user %}
+<a href="{% url 'Products:update_product' product_id=product_selected.id %}" class="btn btn-info">Edit</a>
+<a href="{% url 'Products:delete_product' product_id=product_selected.id %}" class="btn btn-danger">Delete</a>
+{% endif %}
+{% endblock %}

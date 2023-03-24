@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block title %}{{product_subcategories.name}}{% endblock %}
+{% block body_block %}
+
+
+<h3> <strong>{{product_subcategories.parent_cat.name}}</strong>/{{product_subcategories.name}} </h3>
+{% for subcat in Subcategories %}
+    
+         <p> <img src="{{subcat.icon.url}}" alt="no photo" > <a href="{% url 'Products:category_products_list' slug=subcat.slug  %}"> {{subcat.name}} </a> </p>
+   
+{% endfor %}
+
+
+{% endblock %}

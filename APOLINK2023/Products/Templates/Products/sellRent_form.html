@@ -1,0 +1,42 @@
+{% extends "core/base.html" %} 
+{% block title %}Sell or Rent{% endblock %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<body>
+   
+    
+    <div class="container">
+      <h1>Register New Product</h1>
+      <form method = "POST" enctype="multipart/form-data">
+        {{ sellRentForm | crispy }}  
+        {{ ProductPhotosForm.media }}
+        {{ formset.management_form }}
+        <table>
+          {% for form in formset %}
+          <tr><td>{{ form | crispy }}</td></tr>
+          {% endfor %}
+      </table>
+      <!--<input type="hidden" value="false" name="additems" id="additems">
+      <button class="btn btn-primary" id="additemsbutton">Add more photos</button>
+              
+        
+        {{ formset.as_p }} -->
+        <!--{{ProductPhotosForm.as_p}} -->
+        <!-- {{form.as_p}} --> 
+        {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Register</button>
+        
+      </form>
+    </div> 
+
+    <script>
+      $(document).ready(function() {
+              $("#additemsbutton").on('click',function(event) {
+               $("#additems").val("true");
+             });
+      });
+      </script>
+</body>
+
+{% endblock %} 
