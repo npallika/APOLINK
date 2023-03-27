@@ -28,12 +28,13 @@ def Signup(request):
         userInfoForm = PlatformUsersForm(request.POST)
         addressForm = AddressForm(request.POST)
         if userForm.is_valid() and addressForm.is_valid() and userInfoForm.is_valid() :
-            user = userForm.save(commit=False) #don't save immediatley in DB (first email verification)
+            user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
             user.is_active = False #not yet activated, email verification first
             user.set_password(user.password)
-            user.save()
+            user.save() #save as unactive bfore email verification
             
-            address = addressForm.save(commit=False)
+            #Address and user_info must be saved, in any case if i delete user, delete everything else
+            address = addressForm.save()
             user_info = userInfoForm.save(commit=False)
             user_info.user=user
             user_info.main_address = address            
