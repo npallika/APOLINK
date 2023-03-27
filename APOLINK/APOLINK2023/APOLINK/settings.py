@@ -23,11 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-9ld_=q(&(_=4d1nhzs(x1s@_2%y(!onrasselkza=2hh+v&6b&'
+#SECRET_KEY = '$corm0o3bu2f++q(yi3)s9r)+67o@x+jp3y*l0z$$at1byex18'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost', '127.0.0.1', '.ngrok.io',
+]
 
 
 # Application definition
@@ -118,6 +121,10 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+USE_TZ = True
+
+USE_L10N = True
 
 USE_TZ = True
 
