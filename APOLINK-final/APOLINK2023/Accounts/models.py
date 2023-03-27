@@ -35,6 +35,11 @@ class Industry_Type(models.Model):
 
 class PlatformUsers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #added informations:
+    #Ale-code
+    #is_email_verified = models.BooleanField(default=False)
+    
+    #base-code
     company_name = models.CharField(max_length=50, null=True)
     industry = models.ForeignKey(Industry_Type, null=True, on_delete=models.CASCADE)
     company_position = models.CharField(max_length=20, null=True)
