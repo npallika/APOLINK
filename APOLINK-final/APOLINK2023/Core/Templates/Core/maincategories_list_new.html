@@ -1,0 +1,122 @@
+  {% extends "core/base.html" %}
+  {% block title %}Apolink{% endblock %}
+{% block body_block %}
+{% load static %}
+  <style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 45%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.collapsible:hover {
+  background-color: #555;
+}
+.content {
+  font-family:Arial, Helvetica, sans-serif;
+  padding: 0 18px;
+  width: 40%;
+  font-size: 15px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+
+  </style>    
+  <body>
+    
+    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" style="width: 100vw;" src="{% static 'Photos/Initial.jpg' %}" alt="..." /></div>      
+    
+  
+    
+    <h2>Product Categories</h2>
+    <div class="container">
+      <div class="wrapper">
+        <input type="text" name="search" id="search" placeholder="Search Category" autocomplete="chrome-off">
+        <button class="button"><i class="fa fa-search"></i></button>
+        <div class="results">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ul>
+        
+        {% for category in FirstLevelCategories %}
+        
+           <div> <button onclick="myFunction({{ forloop.counter }})" class="collapsible"> {{category.name}}  </button>
+           </div>
+            <div id="{{ forloop.counter }}" style="display:none" class="content">  
+            {% for subcat in SecondLevelCategories %}
+                {% if subcat.parent_cat == category %} 
+                    <div><a href="{% url 'Core:subcategories' slug=subcat.slug %}">{{subcat.name}}</a></div>
+                {% endif %}
+              
+            {% endfor %}
+            </div>  
+        {% endfor %}
+
+    </ul>
+    
+        
+  </body>
+
+  <script>
+    function myFunction(k) {
+      var x = document.getElementById(k);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    var categories = [
+    {% for cat in searchable %}
+    {name:"{{cat.name}}", slug:"{{cat.slug}}", icon:"{{cat.icon.url}}"}  ,
+    {% endfor %}
+    ]
+    
+    let searchable = categories;
+
+const searchInput = document.getElementById('search');
+const searchWrapper = document.querySelector('.wrapper');
+const resultsWrapper = document.querySelector('.results');
+
+searchInput.addEventListener('keyup', () => {
+  let results = [];
+  let input = searchInput.value;
+  if (input.length) {
+    results = searchable.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase());
+    });
+  }
+  renderResults(results);
+});
+
+function renderResults(results) {
+  if (!results.length) {
+    return searchWrapper.classList.remove('show');
+  }
+
+  const content = results
+    .map((item) => {
+      let slag = item.slug
+      return `<li><img src="${item.icon}" style="height:50px" alt="no photo" ><a href="/Products/${item.slug}">${item.name}</a></li>`;
+    })
+    .join('');
+
+  searchWrapper.classList.add('show');
+  resultsWrapper.innerHTML = `<ul>${content}</ul>`;
+}
+
+    </script>
+
+{% endblock %}
+
+<!--
+{% url 'Products:category_products_list' slug=subcat.slug  %} -->
