@@ -61,7 +61,7 @@ def Signup(request):
         addressForm = AddressForm(request.POST)
         if userForm.is_valid() and addressForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
-            user.is_active = False #not yet activated, email verification first
+            user.is_active = False #not yet activated, email verification first: activation through ACTIVATE VIEW
             user.set_password(user.password)
             user.save() #save as unactive before email verification
             
