@@ -22,7 +22,7 @@ from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
 
 #EMAIL VERIFICATION
-def activate(request, uidb64, token):
+def Activate(request, uidb64, token):
     User = get_user_model()
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
