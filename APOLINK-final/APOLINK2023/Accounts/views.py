@@ -6,7 +6,7 @@ from django.forms.formsets import formset_factory
 from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib import messages
 from django.views import generic
-from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth import authenticate,login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -22,13 +22,23 @@ from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
 
 #EMAIL VERIFICATION
+def activate(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (KeyError):
+        return
+    return HttpResponseRedirect(reverse('Accounts:login')) 
+
 def activateEmail(request, user, to_email):
     mail_subject = 'Activate your user account'
+    #send a message contained in a template, pass context
     message = render_to_string(
-        'template_activate_account.html',
+        'Accounts/template_activate_account.html',
         {'user': user.username,
          'domain': get_current_site(request).domain,
-         'uid': urlsafe_base64_decode(force_bytes(user.pk)),
+         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
          'token': account_activation_token.make_token(user),
          'protocol': 'https' if request.is_secure() else 'http'
          }

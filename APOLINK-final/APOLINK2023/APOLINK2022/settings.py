@@ -157,9 +157,9 @@ EMAIL_HOST = 'smtp.gmail.com' # server email provider: default : localhost; host
 EMAIL_PORT = 587 #smtp port
 EMAIL_FROM = 'ale2.brex99@gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'ale2.brex99@gmail.com' #email we send from (APOLINK_email)
-EMAIL_HOST_PASSWORD= 'bnezbphmiktqyblc' #password of the superuser
+EMAIL_HOST_PASSWORD= 'qrldvykrmikkieyx' #password of the superuser
 PASSWORD_RESET_TIMEOUT = 14400
 
 

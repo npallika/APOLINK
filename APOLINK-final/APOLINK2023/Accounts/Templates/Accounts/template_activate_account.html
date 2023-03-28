@@ -1,5 +1,14 @@
 {% autoescape off %}
+<!--CONTENNS OF THE EMAIL SENT:
+context passed:
+{'user': user.username,
+         'domain': get_current_site(request).domain,
+         'uid': urlsafe_base64_decode(force_bytes(user.pk)),
+         'token': account_activation_token.make_token(user),
+         'protocol': 'https' if request.is_secure() else 'http'
+}-->
+
     Hi {{ user.username }},
     Please click on the link below to confirm your registration:
-    http://{{ domain }} {%url 'activate' uidb64=uid token=token %}
+    http://{{ domain }} {%url 'Accounts:activate' uidb64=uid token=token %}
 {% endautoescape %}
