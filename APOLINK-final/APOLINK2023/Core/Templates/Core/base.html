@@ -124,8 +124,7 @@
         
         </form>
       
-        <!--User Information in dropdown menu-->
-           
+        <!--User Information in dropdown menu-->           
           {% if user.is_authenticated %}
           <span class="px-3">  
             <div class="dropdown">
@@ -166,6 +165,11 @@
         </nav>
 
         <div class="container" style="margin-top:90px;">
+          <div class="row">
+            <div class="col-lg-12 col-md-12-p-0 col-sm-12">
+              {% include  'Accounts/messages.html' %}
+            </div>
+        </div>
         {% block body_block %}
         {% endblock %}
         </div>

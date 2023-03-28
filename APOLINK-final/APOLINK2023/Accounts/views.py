@@ -14,13 +14,35 @@ from django.urls import reverse_lazy
 from .forms import UserCreationForm, PlatformUsersForm, AddressForm
 from Core import models
 from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
 
-# pip install django-braces
+#EMAIL VERIFICATION
 def activateEmail(request, user, to_email):
-    messages.success(request, f'Dear<b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to ocnfirm and complete the registration.<b> Note: </b>. Check your spam folder.')
+    mail_subject = 'Activate your user account'
+    message = render_to_string(
+        'template_activate_account.html',
+        {'user': user.username,
+         'domain': get_current_site(request).domain,
+         'uid': urlsafe_base64_decode(force_bytes(user.pk)),
+         'token': account_activation_token.make_token(user),
+         'protocol': 'https' if request.is_secure() else 'http'
+         }
+    )
+    email = EmailMessage(mail_subject, 
+                         message, 
+                         to=[to_email]) #user email
+    if email.send(): #return 1 if the email is sent correctly
+        messages.success(request, f'Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
+    else :
+        messages.error(request, f'Problem sending email to {to_email}', 'check if you typed it correctly')
+
     
+# pip install django-braces
 def Signup(request):
     if request.method == "POST":
         userForm = UserCreationForm(request.POST)
@@ -31,15 +53,17 @@ def Signup(request):
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
             user.is_active = False #not yet activated, email verification first
             user.set_password(user.password)
-            user.save() #save as unactive bfore email verification
+            user.save() #save as unactive before email verification
             
             #Address and user_info must be saved, in any case if i delete user, delete everything else
             address = addressForm.save()
-            user_info = userInfoForm.save(commit=False)
+            user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
             user_info.user=user
-            user_info.main_address = address            
-            user_info.save()     
-            activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm 
+            user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
+            user_info.save() 
+            
+            #activation email is sent after the user complete the form
+            activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm + sent email
             return HttpResponseRedirect(reverse('Accounts:login'))  
     else:
         userForm = UserCreationForm() #User auth connection
