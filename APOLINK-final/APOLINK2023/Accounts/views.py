@@ -129,7 +129,33 @@ class CustomLoginView(LoginView):
         print((user))
         return super().post(request, **kwargs)
 
-   
+
+def user_login (request):
+    
+    if request.method =='POST':
+        #get from dictionary, the name='username' filled in HTML form
+        print((request.POST.get('username')))
+        print((request.POST.get('password')))
+        username = request.POST.get('username') 
+        password = request.POST.get('password')
+        #check if account is active
+        user= authenticate(username=username, password=password) #PROBLEM HERE!!!
+        print((user))
+        if user: #not None
+            #check if user still uses the service
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('Account:login'))
+            else:
+                messages.warning(request, 'Your account is not active.')
+                return HttpResponseRedirect(reverse('Accounts:login'))
+        else:
+            print("Someone tried to login and failed!")
+            print("Username : {} and password {}".format(username, password))
+            return HttpResponse("invalid login details supplied")
+    else :
+        return render(request, 'Accounts/login.html')
+
     
     
 
