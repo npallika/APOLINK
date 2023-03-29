@@ -15,7 +15,6 @@ import os
 
 USE_DJANGO_JQUERY = True
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
-SESSION_COOKIE_DOMAIN = 'localhost'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

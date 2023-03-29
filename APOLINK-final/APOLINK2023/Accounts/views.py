@@ -121,13 +121,6 @@ class CustomLoginView(LoginView):
             messages.warning(self.request, 'Your account is not active.')
             #redirect('Accounts:login')
             return self.form_invalid(form)
-    
-    def post(self, request, **kwargs):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        print((user))
-        return super().post(request, **kwargs)
 
 
 def user_login (request):
@@ -139,7 +132,7 @@ def user_login (request):
         username = request.POST.get('username') 
         password = request.POST.get('password')
         #check if account is active
-        user= authenticate(username=username, password=password) #PROBLEM HERE!!!
+        user= authenticate(username=username, password1=password) #PROBLEM HERE!!!
         print((user))
         if user: #not None
             #check if user still uses the service
