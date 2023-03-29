@@ -14,6 +14,7 @@ from django.urls import reverse_lazy
 from .forms import UserCreationForm, PlatformUsersForm, AddressForm
 from Core import models
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -103,7 +104,34 @@ def user_logout(request):
     return redirect("Core:categories_list")
     
 
+class CustomLoginView(LoginView):
+    #1) first is called with a GET : after clicking on email link
+    #2) second is called with POST: user complete login form and is called again
+    def form_valid(self, form):
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        #print(vars(user))
+        if user is not None and user.is_active:
+            # Access user's pk
+            pk = user.pk
+            # Perform login operation as usual
+            return super().form_valid(form)
+        else:
+            messages.warning(self.request, 'Your account is not active.')
+            #redirect('Accounts:login')
+            return self.form_invalid(form)
+    
+    def post(self, request, **kwargs):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        print((user))
+        return super().post(request, **kwargs)
 
+   
+    
+    
 
 
 

@@ -7,6 +7,18 @@
 {% endif %}
 
 <form method="post" action="{% url 'Accounts:login' %}">
+    {% csrf_token %}
+    <h2>Login</h2>     
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>
+{% endblock %}
+
+
+
+<!--OLD IMPLEMENTATION-->
+<!--<form method="post" action="{% url 'Accounts:login' %}">
     <h2>Login</h2>
     <form method="post">
       {% csrf_token %}
@@ -14,5 +26,4 @@
       <button type="submit">Login</button>
     </form>
 
-<a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>
-{% endblock %}
+<a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>-->
