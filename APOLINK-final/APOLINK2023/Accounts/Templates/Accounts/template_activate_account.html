@@ -1,14 +1,53 @@
-{% autoescape off %}
-<!--CONTENNS OF THE EMAIL SENT:
-context passed:
-{'user': user.username,
-         'domain': get_current_site(request).domain,
-         'uid': urlsafe_base64_decode(force_bytes(user.pk)),
-         'token': account_activation_token.make_token(user),
-         'protocol': 'https' if request.is_secure() else 'http'
-}-->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Activate your user account</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Activate your user account</h1>
+        <p>Hi {{ user.username }},</p>
+        <p>Please click on the link below to confirm your registration:</p>
+        <p><a href="{{ protocol }}://{{ domain }}{% url 'Accounts:activate' uidb64=uid token=token %}" class="btn">Activate</a></p>
+        <p>Thank you!</p>
+    </div>
+</body>
+</html>
 
-    Hi {{ user.username }},
-    Please click on the link below to confirm your registration:
-    http://{{ domain }}{%url 'Accounts:activate' uidb64=uid token=token %}
-{% endautoescape %}
+
+ <!--CONTENNS OF THE EMAIL SENT:
+        context passed:
+        {'user': user.username,
+                'domain': get_current_site(request).domain,
+                'uid': urlsafe_base64_decode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+                'protocol': 'https' if request.is_secure() else 'http'
+        
+        {% autoescape off %}
+    
+            Hi {{ user.username }},
+            Please click on the link below to confirm your registration:
+            http://{{ domain }}{%url 'Accounts:activate' uidb64=uid token=token %}
+        {% endautoescape %} 
+    }-->
