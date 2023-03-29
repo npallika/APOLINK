@@ -31,12 +31,13 @@ def Activate(request, uidb64, token):
         user=None
     #if we found a current user saved (not actived yet) + check the token
     if user is not None and account_activation_token.check_token(user, token):
-        user.is_active=True
+        user.is_active = True
         user.save() #now user, already saved before, is saved again, but ACTIVE!
         messages.success(request, "Thank you for your email confirmation. Now you can LOGIN in your account")
         return HttpResponseRedirect(reverse('Accounts:login'))
     else:
         messages.error(request, "Activation link is invalid!")
+    return HttpResponseRedirect(reverse('Core:categories_list'))
 
 
 def activateEmail(request, user, to_email):
