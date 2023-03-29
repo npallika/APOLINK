@@ -25,11 +25,19 @@ from .tokens import account_activation_token
 def Activate(request, uidb64, token):
     User = get_user_model()
     try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
+        uid = force_str(urlsafe_base64_decode(uidb64)) #take the PK of the user by decoding URL
         user = User.objects.get(pk=uid)
-    except (KeyError):
-        return
-    return HttpResponseRedirect(reverse('Accounts:login')) 
+    except:
+        user=None
+    #if we found a current user saved (not actived yet) + check the token
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active=True
+        user.save() #now user, already saved before, is saved again, but ACTIVE!
+        messages.success(request, "Thank you for your email confirmation. Now you can LOGIN in your account")
+        return HttpResponseRedirect(reverse('Accounts:login'))
+    else:
+        messages.error(request, "Activation link is invalid!")
+
 
 def activateEmail(request, user, to_email):
     mail_subject = 'Activate your user account'
@@ -38,7 +46,7 @@ def activateEmail(request, user, to_email):
         'Accounts/template_activate_account.html',
         {'user': user.username,
          'domain': get_current_site(request).domain,
-         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+         'uid': urlsafe_base64_encode(force_bytes(user.pk)), #necessary for hiding user.pk in URL
          'token': account_activation_token.make_token(user),
          'protocol': 'https' if request.is_secure() else 'http'
          }
