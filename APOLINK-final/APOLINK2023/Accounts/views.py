@@ -46,6 +46,7 @@ def activateEmail(request, user, to_email):
     email = EmailMessage(mail_subject, 
                          message, 
                          to=[to_email]) #user email
+    email.content_subtype='html'
     if email.send(): #return 1 if the email is sent correctly
         messages.success(request, f'Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
     else :
