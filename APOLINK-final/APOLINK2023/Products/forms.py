@@ -7,6 +7,8 @@ from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 #from captcha.fields import CaptchaField
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator, validate_image_file_extension
+
 
 
 
@@ -25,7 +27,7 @@ class SellRentForm(forms.ModelForm):
 
    
 class ProductPhotosForm(forms.ModelForm):
-    photo=forms.FileField(label='Upload image')
+    photo=forms.ImageField(label='Upload image', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png']), validate_image_file_extension], error_messages={'invalid_extension': 'Only .jpg, .jpeg, and .png files are allowed.'}) #change FileField
     class Meta:
         model = ProductPhotos
         fields = ['photo']

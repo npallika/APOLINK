@@ -117,6 +117,7 @@ class CustomLoginView(LoginView):
             # Access user's pk
             pk = user.pk
             # Perform login operation as usual
+            messages.success(self.request, 'You have successfully logged in')
             return super().form_valid(form)
         else:
             messages.warning(self.request, 'Your account is not active.')

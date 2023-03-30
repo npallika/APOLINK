@@ -14,7 +14,14 @@
         {{ formset.management_form }}
         <table>
           {% for form in formset %}
-          <tr><td>{{ form | crispy }}</td></tr>
+            {%if form.errors%}
+              <div class='alert-danger'>
+                {%for error in form.errors%}
+                  <p>{{error}}</p>
+                {%endfor%}
+              </div> 
+            {% endif %}
+            <tr><td>{{ form | crispy }}</td></tr>
           {% endfor %}
       </table>
       <!--<input type="hidden" value="false" name="additems" id="additems">

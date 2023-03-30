@@ -115,7 +115,9 @@ def sell_rent(request):
                     photo.save()
 
             return redirect ('Products:technical_specs', pk=publish.id)
-        else:
+    else:
+            #formset is not valid : is read the validator passed to the field
+            
             sellRentForm = SellRentForm()
 
     return render(request, 'Products/sellRent_form.html', {'sellRentForm': sellRentForm, 'formset': formset  })
