@@ -105,7 +105,7 @@ def sell_rent(request):
         
         if sellRentForm.is_valid() and formset.is_valid(): 
             publish=sellRentForm.save(commit=False)
-            publish.user= request.user
+            publish.user= request.user #save a new Product associated with the user logged - in (foreign key)
             publish.save()
             
             print ("The Id of the product is %s" %(publish.id))
@@ -117,7 +117,8 @@ def sell_rent(request):
             messages.success(request, 'Photos uploaded succesfully')
             return redirect ('Products:technical_specs', pk=publish.id)
         else:
-          #formset is not valid : is read the validator passed to the field     
+          #formset is not valid : is read the validator passed to the field
+            
           messages.error(request, 'There was an error uploading your photos. Please ensure that the uploaded files are images.')
             
     else:     
