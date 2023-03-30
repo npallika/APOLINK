@@ -14,16 +14,19 @@
 </form>-->
 
 <form method="post" action="{% url 'Accounts:login' %}">
-  {% csrf_token %}
   <h2>Login</h2>
-  <div class= "jumbotron">     
-    <label for="username">Username</label>
-    <input type="text" name="username" placeholder="Enter Username" >
-
-    <label for="password">Password</label>
-    <input type="text" name="password" placeholder="Enter Password" >
-    <button type="submit">Login</button>
-  </div>
+  <form method='post'>
+    {% csrf_token %}
+    <div class= "jumbotron">     
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="Enter Username" >
+  
+      <label for="password">Password</label>
+      <input type="text" name="password" placeholder="Enter Password" >
+      <button type="submit">Login</button>
+    </div>
+  </form>
+  
 </form>
 <a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>
 {% endblock %}

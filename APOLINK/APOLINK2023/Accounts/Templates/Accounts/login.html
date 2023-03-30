@@ -1,5 +1,5 @@
 {% extends "core/base.html" %} 
-
+{% block title %}Login{% endblock %}
 {% block body_block %}
 
 {% if form.errors %}
@@ -7,23 +7,15 @@
 {% endif %}
 
 <form method="post" action="{% url 'Accounts:login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login">
-<input type="hidden" name="categories_list" value="{{ next }}">
+    <h2>Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
 </form>
 
-
+<a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>
 
 
 {% endblock %} 

@@ -38,7 +38,7 @@ def Signup(request):
         addressForm = AddressForm(request.POST)
         if userForm.is_valid() and addressForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save()
-            user.set_password(user.password)
+            #user.set_password(user.password)
             user.save()
             address = addressForm.save()
             user_info = userInfoForm.save(commit=False)
