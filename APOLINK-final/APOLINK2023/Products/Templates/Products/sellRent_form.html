@@ -12,18 +12,26 @@
         {{ sellRentForm | crispy }}  
         {{ ProductPhotosForm.media }}
         {{ formset.management_form }}
+      
+        {% for form in formset %}
         <table>
-          {% for form in formset %}
+          <tr>
+            <td>{{ form | crispy }}</td>
             {%if form.errors%}
-              <div class='alert-danger'>
-                {%for error in form.errors%}
-                  <p>{{error}}</p>
+              <div class='alert alert-danger'>
+                {%for field, errors in form.errors.items%}
+                  {%for error in errors%}
+                    <strong>{{field}} : {{error}}</strong><br>
+                  {%endfor%}
+                  
                 {%endfor%}
               </div> 
-            {% endif %}
-            <tr><td>{{ form | crispy }}</td></tr>
-          {% endfor %}
-      </table>
+            {% endif %}  
+          </tr>
+         
+        </table>
+        {% endfor %}
+      
       <!--<input type="hidden" value="false" name="additems" id="additems">
       <button class="btn btn-primary" id="additemsbutton">Add more photos</button>
               

@@ -14,6 +14,7 @@ from django.views.generic import (TemplateView,ListView,
                                   UpdateView,DeleteView)
 from datetime import datetime
 from django.utils import timezone
+from django.contrib import messages
 # Create your views here.
 
 def CategoriesProductsList(request, slug):
@@ -113,12 +114,14 @@ def sell_rent(request):
                     photo = form.save(commit=False)
                     photo.product = publish
                     photo.save()
-
+            messages.success(request, 'Photos uploaded succesfully')
             return redirect ('Products:technical_specs', pk=publish.id)
-    else:
-            #formset is not valid : is read the validator passed to the field
+        else:
+          #formset is not valid : is read the validator passed to the field     
+          messages.error(request, 'There was an error uploading your photos. Please ensure that the uploaded files are images.')
             
-            sellRentForm = SellRentForm()
+    else:     
+        sellRentForm = SellRentForm()
 
     return render(request, 'Products/sellRent_form.html', {'sellRentForm': sellRentForm, 'formset': formset  })
 

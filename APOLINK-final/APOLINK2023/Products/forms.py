@@ -25,9 +25,9 @@ class SellRentForm(forms.ModelForm):
         widgets = { 'manufactured_date' : DateInput(attrs={'type':'date', 'max': datetime.now().time()}) }
 
 
-   
+     
 class ProductPhotosForm(forms.ModelForm):
-    photo=forms.ImageField(label='Upload image', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png']), validate_image_file_extension], error_messages={'invalid_extension': 'Only .jpg, .jpeg, and .png files are allowed.'}) #change FileField
+    photo=forms.ImageField(label='Upload image', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png']), validate_image_file_extension], error_messages={'invalid_image': 'Only .jpg, .jpeg, and .png files are allowed.'}) #change FileField
     class Meta:
         model = ProductPhotos
         fields = ['photo']
