@@ -2,7 +2,7 @@
 {% block title %}Login{% endblock %}
 {% block body_block %}
 
-<!--{% if form.errors %}
+{% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
@@ -11,23 +11,8 @@
     <h2>Login</h2>     
     {{ form.as_p }}
     <button type="submit">Login</button>
-</form>-->
-
-<form method="post" action="{% url 'Accounts:login' %}">
-  <h2>Login</h2>
-  <form method='post'>
-    {% csrf_token %}
-    <div class= "jumbotron">     
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="Enter Username" >
-  
-      <label for="password">Password</label>
-      <input type="text" name="password" placeholder="Enter Password" >
-      <button type="submit">Login</button>
-    </div>
-  </form>
-  
 </form>
+
 <a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>
 {% endblock %}
 
@@ -43,3 +28,20 @@
     </form>
 
 <a class="nav-item nav-link" href="{% url 'Accounts:signup'%}">New here? Create an account.</a>-->
+
+<!--DEBUG IMPLEMENTATION-->
+<!--<form method="post" action="{% url 'Accounts:login' %}">
+  <h2>Login</h2>
+  <form method='post'>
+    {% csrf_token %}
+    <div class= "jumbotron">     
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="Enter Username" >
+  
+      <label for="password">Password</label>
+      <input type="text" name="password" placeholder="Enter Password" >
+      <button type="submit">Login</button>
+    </div>
+  </form>
+  
+</form>-->

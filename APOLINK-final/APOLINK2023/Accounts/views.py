@@ -28,12 +28,15 @@ def Activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64)) #take the PK of the user by decoding URL
         user = User.objects.get(pk=uid)
-    except:
+        print(f"USER FOUND {user} WITH PK = {uid} AND PASS = {user.password}")
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user=None
+        print("User NOT FOUND")
     #if we found a current user saved (not actived yet) + check the token
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save() #now user, already saved before, is saved again, but ACTIVE!
+        print(f"USER {vars(user)} HAS ACTIVE = {user.is_active}")
         messages.success(request, "Thank you for your email confirmation. Now you can LOGIN in your account")
         return HttpResponseRedirect(reverse('Accounts:login'))
     else:
@@ -67,13 +70,12 @@ def activateEmail(request, user, to_email):
 def Signup(request):
     if request.method == "POST":
         userForm = UserCreationForm(request.POST)
-        print(f"Ther UserCreatonForm is {userForm}")
         userInfoForm = PlatformUsersForm(request.POST)
         addressForm = AddressForm(request.POST)
         if userForm.is_valid() and addressForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
-            user.is_active = False #not yet activated, email verification first: activation through ACTIVATE VIEW
-            user.set_password(user.password)
+            #not yet activated, email verification first (activation) and don't set password!
+            user.is_active = False 
             user.save() #save as unactive before email verification
             
             #Address and user_info must be saved, in any case if i delete user, delete everything else
@@ -90,7 +92,6 @@ def Signup(request):
         userForm = UserCreationForm() #User auth connection
         userInfoForm = PlatformUsersForm() #user auth + added information
         addressForm = AddressForm() #added information of address of User
-        print(f"Ther UserCreatonForm is {userForm}")
     return render(request, 'accounts/signup.html', {'userForm': userForm, 'userInfoForm': userInfoForm, 'addressForm': addressForm})
 
 
@@ -123,6 +124,8 @@ class CustomLoginView(LoginView):
             return self.form_invalid(form)
 
 
+'''
+#DEBUG FUNCTION FOR LOG-IN
 def user_login (request):
     
     if request.method =='POST':
@@ -132,13 +135,13 @@ def user_login (request):
         username = request.POST.get('username') 
         password = request.POST.get('password')
         #check if account is active
-        user= authenticate(username=username, password1=password) #PROBLEM HERE!!!
+        user= authenticate(username=username, password=password) 
         print((user))
         if user: #not None
             #check if user still uses the service
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('Account:login'))
+                return HttpResponseRedirect(reverse('Core:categories_list'))
             else:
                 messages.warning(request, 'Your account is not active.')
                 return HttpResponseRedirect(reverse('Accounts:login'))
@@ -148,8 +151,7 @@ def user_login (request):
             return HttpResponse("invalid login details supplied")
     else :
         return render(request, 'Accounts/login.html')
-
-    
+    '''
     
 
 
