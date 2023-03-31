@@ -12,7 +12,11 @@
             <img src="{{photo.photo.url}}" style="height:100px" alt="{{ product.name }}">
         {% endif %}
        
-        <p> <a href="{% url 'Products:product_details' pk=product.pk %}">  {{ product.product_name }} </a> <a href="{% url 'Products:update_product' product_id=product.id %}" class="btn btn-info">Edit</a> <a href="{% url 'Products:delete_product' product_id=product.id %}" class="btn btn-danger">Delete</a></p>
+        <p> 
+            <a href="{% url 'Products:product_details' pk=product.pk %}">  {{ product.product_name }} </a> 
+            <a href="{% url 'Products:update_product' product_id=product.id %}" class="btn btn-info">Edit</a> 
+            <a href="{% url 'Products:delete_product' product_id=product.id %}" class="btn btn-danger">Delete</a>
+        </p>
         <p>Manufactured date: {{ product.manufactured_date }}</p>
         <p>Registered Date: {{ product.date_registered}}</P>
         <hr class="dotted">

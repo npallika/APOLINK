@@ -16,7 +16,8 @@
         {% for form in formset %}
         <table>
           <tr>
-            <td>{{ form | crispy }}</td>
+            <td>{{ form | crispy }}
+            </td>
             {%if form.errors%}
               <div class='alert alert-danger'>
                 {%for field, errors in form.errors.items%}
@@ -55,6 +56,7 @@
 
       //JAVA-SCRIPT : avoid user upload wrong files before pressing submit
       
+      //JAVA-SCRIPT : upload image label when you put an image
 
       
     </script>

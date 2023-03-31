@@ -98,10 +98,10 @@ def search_product(request):
 def sell_rent(request):
     sellRentForm = SellRentForm()
     formset = PhotoFormSet(prefix="photos")
-       
+
     if request.method == 'POST':
         sellRentForm = SellRentForm(request.POST)
-        formset = PhotoFormSet(request.POST, request.FILES, prefix="photos")
+        formset = PhotoFormSet(request.POST, request.FILES, prefix="photos") #mandatory passing FILES
         
         if sellRentForm.is_valid() and formset.is_valid(): 
             publish=sellRentForm.save(commit=False)
@@ -114,16 +114,13 @@ def sell_rent(request):
                     photo = form.save(commit=False)
                     photo.product = publish
                     photo.save()
-            messages.success(request, 'Photos uploaded succesfully')
+            messages.success(request, 'Product uploaded succesfully')
             return redirect ('Products:technical_specs', pk=publish.id)
         else:
           #formset is not valid : is read the validator passed to the field
-            
-          messages.error(request, 'There was an error uploading your photos. Please ensure that the uploaded files are images.')
-            
+          messages.error(request, 'There was an error uploading your photos. Please ensure that the uploaded files are images.')    
     else:     
         sellRentForm = SellRentForm()
-
     return render(request, 'Products/sellRent_form.html', {'sellRentForm': sellRentForm, 'formset': formset  })
 
 
@@ -201,7 +198,10 @@ def delete_product(request, product_id):
 
 @login_required
 def update_product(request, product_id):
-    product = ProductsDisplayed.objects.get(id=product_id)
+    product = ProductsDisplayed.objects.get(id=product_id) #take the product clicked
+    photos = product.productphotos_set.all()
+    print(f"HERE THE PHOTOS : {photos}")
+    #for each photo associated to the product
     initial_data = [{'id': photo.id, 'photo':photo.photo} for photo in product.productphotos_set.all()]
     #PhotoFormSet = formset_factory(ProductPhotosForm, extra=0)
     
@@ -226,10 +226,11 @@ def update_product(request, product_id):
             #return redirect ('Products:technical_specs', pk=publish.id)
             return redirect('Products:show_my_products')
     else:
-        form = UpdateProductForm(instance=product)
+        # UPDATING FORMS
+        form = UpdateProductForm(instance=product) #take precompiled form of that Product
         formset = PhotoFormSet(prefix='photos')
         for photo in product.productphotos_set.all():
-            form = formset.empty_form.copy()
+            #form = formset.empty_form.copy() #FIXING
             form['id'].field.initial = photo.id
             form['photo'].field.initial = photo.photo
             formset.append_form(form)
