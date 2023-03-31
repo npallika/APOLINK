@@ -47,5 +47,5 @@ def categories_list(request, slug):
     for third in third_level_categories:
         print(f"The third level categories is {third}")
 
-    return render(request, 'Core/subcategories_list.html', {'category':main_category, 'subcategories':sub_categories, 'thirdlevelcategories':third_level_categories})
+    return render(request, 'Core/categories_list.html', {'category':main_category, 'subcategories':sub_categories, 'thirdlevelcategories':third_level_categories})
 
