@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import widgets, formset_factory 
+from django.forms import widgets, formset_factory , modelformset_factory
 from django.contrib.admin.widgets import AdminDateWidget
 from Accounts.models import PlatformUsers, Address, Country, Industry_Type
 from .models import ProductsDisplayed, ProductPhotos, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories
@@ -33,7 +33,6 @@ class ProductPhotosForm(forms.ModelForm):
         fields = ['photo']
        
 PhotoFormSet = formset_factory(ProductPhotosForm, extra=3, max_num=3)
-
 
 class UpdateProductForm(forms.ModelForm):
     class Meta:
