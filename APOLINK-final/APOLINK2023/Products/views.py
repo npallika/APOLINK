@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms.formsets import formset_factory
 from django.forms import modelformset_factory
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.admin.widgets import AdminDateWidget
 from django.http import HttpResponseRedirect
@@ -198,15 +199,12 @@ def delete_product(request, product_id):
 
 @login_required
 def update_product(request, product_id):
-    product = ProductsDisplayed.objects.get(id=product_id) #take the product clicked
-    productPhotos = product.productphotos_set.all()
-    #print(f"HERE THE PHOTOS : {productPhotos}")
-    #for each photo associated to the product
-    initial_data = [{'id': photo.id, 'photo':photo.photo} for photo in productPhotos]
-    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3)
-    
+    product = get_object_or_404(ProductsDisplayed, id=product_id) #take the product clicked
+    productPhotos = product.productphotos_set.all() #take all the photos related to that product (product_id)
+    print(f"HERE THE PHOTOS : {productPhotos}")
+    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3, validate_max=True, can_delete=True)
     if request.method == 'POST':
-        #print(f"The request.POST is {request.POST}")
+        print(f"The request.POST is {request.POST}")
         print(f"The request.FILES is {request.FILES}")
         form = UpdateProductForm(request.POST, instance=product)
         formset = UpdateFormset(request.POST or None, request.FILES or None, queryset=productPhotos, prefix='photos')
@@ -214,18 +212,13 @@ def update_product(request, product_id):
         if form.is_valid() and formset.is_valid():
             print(formset.is_valid())
             product = form.save() #save the updated product
-            formset.save()
-            #for form in formset:
-            #    print(form.cleaned_data)
-            #    if form.cleaned_data.get('id'):
-            #        photo = ProductPhotos.objects.get(id=form.cleaned_data.get('id'))
-            #        photo.photo = form.cleaned_data.get('form')
-            #        photo.save()
-            #    else:
-            #        photo = form.save(commit=False)
-            #        photo.product = product
-            #        photo.save()
-                    
+            product.save()
+            for form in formset:
+                photo = form.save(commit=False) #take the instance from model
+                photo.product = product
+                photo.save()
+            formset.save() #returns istances saved in database, just if are filled in the form
+            print(formset.save())                    
                     
             #return redirect ('Products:technical_specs', pk=publish.id)
             return redirect('Products:show_my_products')
@@ -235,14 +228,7 @@ def update_product(request, product_id):
     else:
         # UPDATING FORMS
         form = UpdateProductForm(instance=product) #take precompiled form of that Product
-        formset = UpdateFormset(queryset= productPhotos)
+        formset = UpdateFormset(queryset= productPhotos, prefix='photos')
         #formset = PhotoFormSet(initial = initial_data, prefix='photos') #old photos still uploaded
-        
-        #for photo in productPhotos:
-            #form = formset.empty_form.copy() #FIXING
-            #form['id'].field.initial = photo.id
-            #form['photo'].field.initial = photo.photo
-            #formset.append_form(form)
-            
         #print(f"The formset is {formset}")
-    return render(request, 'Products/update_product.html',  {'form': form, 'formset': formset})
+    return render(request, 'Products/update_product.html',  {'form': form, 'formset': formset, 'product': product})
