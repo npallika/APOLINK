@@ -202,7 +202,7 @@ def update_product(request, product_id):
     product = get_object_or_404(ProductsDisplayed, id=product_id) #take the product clicked
     productPhotos = product.productphotos_set.all() #take all the photos related to that product (product_id)
     #print(f"HERE THE PHOTOS : {productPhotos}")
-    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3, validate_max=True, can_delete=True, can_delete_extra=False)
+    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3, validate_max=True, can_delete=True, can_delete_extra=True)
     if request.method == 'POST':
         #print(f"The request.POST is {request.POST}")
         #print(f"The request.FILES is {request.FILES}")
