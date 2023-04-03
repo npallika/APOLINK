@@ -201,11 +201,11 @@ def delete_product(request, product_id):
 def update_product(request, product_id):
     product = get_object_or_404(ProductsDisplayed, id=product_id) #take the product clicked
     productPhotos = product.productphotos_set.all() #take all the photos related to that product (product_id)
-    print(f"HERE THE PHOTOS : {productPhotos}")
-    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3, validate_max=True, can_delete=True,)
+    #print(f"HERE THE PHOTOS : {productPhotos}")
+    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3, validate_max=True, can_delete=True, can_delete_extra=False)
     if request.method == 'POST':
-        print(f"The request.POST is {request.POST}")
-        print(f"The request.FILES is {request.FILES}")
+        #print(f"The request.POST is {request.POST}")
+        #print(f"The request.FILES is {request.FILES}")
         form = UpdateProductForm(request.POST, instance=product)
         formset = UpdateFormset(request.POST or None, request.FILES or None, queryset=productPhotos, prefix='photos')
         #formset = PhotoFormSet(request.POST or None, request.FILES or None, prefix='photos')
@@ -213,14 +213,8 @@ def update_product(request, product_id):
             product = form.save() #save the updated product
             product.save()
             formset_objs = formset.save(commit=False)
-            #f you click on delete button , delete the photo related to that product
-            print(formset.deleted_objects)
-            #DELETE 
-            for form in formset.deleted_forms:
-                if form.cleaned_data:
-                    print(f"DELETED PHOTOS: {formset.deleted_forms}")
-
             #UPDATE : i need manually to set every product per photos, because so far i updated just the photos
+            #if you click on delete button , delete the photo related to that product
             for form in formset:
                 if form.cleaned_data: #if i have any photos in my forms
                     print(f"CLEANED DATA : {form.cleaned_data}")
@@ -228,8 +222,7 @@ def update_product(request, product_id):
                     photo.product = product
                     photo.save()
             formset.save() #returns istances saved in database, just if are filled in the form
-            print(formset.save())                    
-                    
+            print(formset.save())                         
             #return redirect ('Products:technical_specs', pk=publish.id)
             return redirect('Products:show_my_products')
         else:
