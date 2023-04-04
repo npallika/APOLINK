@@ -72,7 +72,6 @@
       </div>
   
     </div>
-  
   </div>
   
 
@@ -87,7 +86,38 @@
       //JAVA-SCRIPT : avoid user upload wrong files before pressing submit
       
       //JAVA-SCRIPT : upload image preview when you put an image
-
+      let files =[],
+      button = document.querySelector('child-template .top button');
+      form = document.querySelector('child-template form');
+      container = document.querySelector('child-template .container');
+      text = document.querySelector('child-template .inner');
+      browse = document.querySelector('child-template .select');
+      input = document.querySelector('child-template form input');
+      browse.addEventListener('click', ()=> input.click());
+      //input change event
+      input.addEventListener('change', ()=> {
+        let file = input.files;
+        for(let i =0; i<file.length ; i++){
+          files.push(file[i])
+        }
+        form.reset();
+        showImages();
+      });
+      const showImages = ()=> {
+        let images = '';
+        files.forEach((e, i)=> 
+        {
+          images+= `<div class="image">
+                    <img src=${URL.createObjectURL(e)}" alt="image"> 
+                    <span onclick="delImage(${i})">&times;</span>
+                    </div>)}`
+       })
+       container.inneHTML = images;
+      }
+      const delImage = index => {
+        files.splice(index,1)
+        showImages()
+      }
       
     </script>
     

@@ -1,6 +1,7 @@
 from django import forms
-from django.forms import widgets, formset_factory , modelformset_factory
+from django.forms import widgets, formset_factory , modelformset_factory, BaseFormSet
 from django.contrib.admin.widgets import AdminDateWidget
+from django.forms.widgets import CheckboxInput
 from Accounts.models import PlatformUsers, Address, Country, Industry_Type
 from .models import ProductsDisplayed, ProductPhotos, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories
 from datetime import datetime
@@ -25,13 +26,13 @@ class SellRentForm(forms.ModelForm):
         widgets = { 'manufactured_date' : DateInput(attrs={'type':'date', 'max': datetime.now().time()}) }
 
 
-     
+
 class ProductPhotosForm(forms.ModelForm):
     photo=forms.ImageField(label='Upload image', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif']), validate_image_file_extension], error_messages={'invalid_image': 'Only .jpg, .jpeg, and .png files are allowed.'}) #changed from FileField
     class Meta:
         model = ProductPhotos
         fields = ['photo']
-       
+    
 PhotoFormSet = formset_factory(ProductPhotosForm, extra=3, max_num=3)
 
 class UpdateProductForm(forms.ModelForm):

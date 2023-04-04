@@ -160,7 +160,6 @@ def ProductsSpecsCreate(request, pk):
             publish.product = product   
             publish.save()
             #print (publish.product)
-            
             return redirect ('Products:product_details', pk)
 
     else:
@@ -220,7 +219,10 @@ def update_product(request, product_id):
                     print(f"CLEANED DATA : {form.cleaned_data}")
                     photo = form.save(commit=False) #take the instance from model
                     photo.product = product
-                    photo.save()
+                    if form.cleaned_data["DELETE"]==True:
+                        photo.delete()
+                    else:
+                        photo.save()
             formset.save() #returns istances saved in database, just if are filled in the form
             print(formset.save())                         
             #return redirect ('Products:technical_specs', pk=publish.id)

@@ -1,3 +1,12 @@
+ .product-photo{
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+ }
+ 
+ 
+ 
  .child-template .card {
     width:400px;
     height: auto;
