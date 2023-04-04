@@ -2,16 +2,22 @@
 {% block title %}Sell or Rent{% endblock %}
 {% load crispy_forms_tags %}
 {% block body_block %}
+{%load static%}
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <link rel="stylesheet" href= "{%static 'Products/products.css' %}">
+</head>
 
 <body>
-   
-    
     <div class="container">
       <h1>Register New Product</h1>
       <form method = "POST" enctype="multipart/form-data">
         {{ sellRentForm | crispy }}  
         {{ ProductPhotosForm.media }}
         {{ formset.management_form }}
+        
       
         {% for form in formset %}
         <table>
@@ -46,6 +52,30 @@
       </form>
     </div> 
 
+    <!--PREVIEW OF IMAGES UPLOADED-->
+  <div class="child-template">
+    <div class='card'>
+      <div class='top'>
+          <p>Drag & drop image uploading</p>
+          <button type="button">Upload</button>
+      </div>
+      <form action="{%url 'Products:sellRent'%} " method="post" class="dragover" enctype="multipart/form-data">
+          <span class= "inner"> Drag & drop image here or <span class="select">Browse</span></span>
+          
+          <input name="file" type ="file" class="file" multiple/>
+      </form>
+      <div class="container">
+          <div class="image">
+              <img src="{%static 'Products/CasePacker_gX59GMp.jpg' %}" alt="image"> 
+              <span>&times;</span>
+          </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+
     <script>
       $(document).ready(function() {
               $("#additemsbutton").on('click',function(event) {
@@ -56,12 +86,12 @@
 
       //JAVA-SCRIPT : avoid user upload wrong files before pressing submit
       
-      //JAVA-SCRIPT : upload image label when you put an image
+      //JAVA-SCRIPT : upload image preview when you put an image
 
       
     </script>
     
     
 </body>
-
+</html>
 {% endblock %} 

@@ -103,7 +103,7 @@ def sell_rent(request):
 
     if request.method == 'POST':
         sellRentForm = SellRentForm(request.POST)
-        formset = PhotoFormSet(request.POST, request.FILES, prefix="photos") #mandatory passing FILES
+        formset = PhotoFormSet(request.POST, request.FILES, prefix="photos") #mandatory passing request.FILES
         if sellRentForm.is_valid() and formset.is_valid(): 
             publish=sellRentForm.save(commit=False)
             publish.user= request.user #save a new Product associated with the user logged - in (foreign key)

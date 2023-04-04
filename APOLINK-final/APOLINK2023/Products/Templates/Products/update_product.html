@@ -1,7 +1,13 @@
 {% extends "core/base.html" %}
 {% load crispy_forms_tags %}
 {% block body_block %}
-
+{%load static%}
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <link rel="stylesheet" href= "{%static 'Products/products.css' %}">
+</head>
 
 <div class="container">
 <form method="post" enctype="multipart/form-data">
@@ -13,6 +19,7 @@
             <tr><td>
                 {% if form.instance.photo %}
                 <img src="{{ form.instance.photo.url }}">
+                
                 {% endif %}
             </tr></td>
             <tr>
@@ -25,29 +32,27 @@
 </div>
 
 <!--PREVIEW OF IMAGES UPLOADED-->
-<div class='card'>
-    <div class='top'>
-        <p>Drag & drop image uploading</p>
-        <button type="button">Upload</button>
+ <div class="child-template">
+    <div class='card'>
+      <div class='top'>
+          <p>Drag & drop image uploading</p>
+          <button type="button">Upload</button>
+      </div>
+      <form action="{%url 'Products:sellRent'%} " method="post" class="dragover" enctype="multipart/form-data">
+          <span class= "inner"> Drag & drop image here or <span class="select">Browse</span></span>
+          
+          <input name="file" type ="file" class="file" multiple/>
+      </form>
+      <div class="container">
+          <div class="image">
+              <img src="{%static 'Products/CasePacker_gX59GMp.jpg' %}" alt="image"> 
+              <span>&times;</span>
+          </div>
+      </div>
+  
     </div>
-    <form action="{%url 'Products:update_product' product.id%} " method="post" enctype="multipart/form-data">
-        <span class= "inner"> Drag & drop image here or <span class="select">Browse</span></span>
-        <input name="file" type ="file" class="file" multiple/>
-    </form>
-    <div class="container">
-        <div class="image">
-            {% for form in formset %}
-                {% if form.instance.photo %}
-                <img src="{{ form.instance.photo.url }}" alt="image">
-                {% endif %}
-            {% endfor %}
-            <span>&times;</span>
-        </div>
-    </div>
-
-    
-
-</div>
-
-
+  
+  </div>
+  
+</html>
 {% endblock %}

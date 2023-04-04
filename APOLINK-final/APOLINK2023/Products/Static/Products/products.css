@@ -1,0 +1,211 @@
+ .child-template .card {
+    width:400px;
+    height: auto;
+    padding: 15 px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fafbff;
+
+  }
+  
+ .child-template .card .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+ .child-template .card .top p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #878a9a
+  }
+ .child-template .card .top button{
+    outline: 0;
+    border: 0;
+    background: #5256ad;
+    color:#fff;
+    border-radius : 4px;
+    transition: 0.3s;
+    cursor: pointer;
+    font-weight: 400;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    font-size: 0.8rem;
+    padding: 8px 13px;
+  }
+
+ .child-template .card button:hover {
+    opacity: 0.8;
+  }
+  
+ .child-template .card button:active {
+    transform: translateY(5px);
+  }
+
+ .child-template form{
+    width: 100%;
+    height: 160px;
+    border-radius: 5px;
+    border: 2px dashed #d5d5e1;
+    color: #c8c9dd;
+    font-size: 0.9rem;
+    position: relative;
+    background: #dfe3f259;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    margin-top:20px;
+
+  }
+
+ .child-template form .select{
+    color: #5256ad;
+    margin-left: 7px;
+    cursor: pointer;
+  }
+
+ .child-template form input {
+    display: none;
+  }
+
+.child-template form .select{
+  color: #5256ad;
+  margin-left: 7px;
+  cursor:pointer;
+
+}
+.child-template form input{
+  display: none;
+}
+.child-template form .dragover{
+  border-style: solid;
+  font-size: 2rem;
+  color: #c8c9dd;
+  font-weight: 600;
+  background:rgba(0, 0, 0, 0.34) ;
+}
+.child-template .container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y:auto;
+}
+.child-template .container .image{
+  height: 85px;
+  width: 85px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 7px;
+  margin-right: 7px;
+}
+.child-template .image:nth-child(4n){
+  margin-right: 0;
+}
+
+.child-template .container .image img{
+  height:100%;
+  width: 100%;
+}
+.child-template .container .image span{
+  position: absolute;
+  top:-4px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #fff;
+}
+.child-template .container .image span:hover{
+  opacity:0.8;
+}
+
+
+  /*ADDED:*/
+ .child-template .card .drag-area {
+    width: 100%;
+    height: 160px;
+    border-radius: 5px;
+    border: 2px dashed #d5d5e1;
+    color: #c8c9dd;
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    background: #dfe3f259;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-top: 10px;
+  }
+  
+.child-template .card .drag-area .visible {
+    font-size: 18px;
+  }
+.child-template .card .select {
+      color: #5256ad;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+.child-template .card .select:hover {
+    opacity: 0.6;
+  }
+  
+.child-template .card .container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+  
+.child-template .card .container .image {
+    width: calc(26% - 19px);
+    margin-right: 15px;
+    height: 75px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  
+.child-template .card .container .image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+.child-template .card .container .image span {
+    position: absolute;
+    top: -2px;
+    right: 9px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* dragover class will used in drag and drop system */
+.child-template .card .drag-area.dragover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.child-template .card .drag-area.dragover .on-drop {
+	display: inline;
+	font-size: 28px;
+}
+
+.child-template .card input,
+.card .drag-area .on-drop, 
+.card .drag-area.dragover .visible {
+	display: none;
+}
