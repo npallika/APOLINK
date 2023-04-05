@@ -4,8 +4,12 @@
     max-width: 300px;
     max-height: 300px;
  }
- 
- 
+ .form-check{
+    
+ }
+ .deletion.checkboxinput.form-check-input {
+  background: #ff0000;
+ }
  
  .child-template .card {
     width:400px;

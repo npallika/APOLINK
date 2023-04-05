@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms.formsets import formset_factory
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, inlineformset_factory
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.admin.widgets import AdminDateWidget
 from django.http import HttpResponseRedirect
 from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs
-from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet, CaseSealersTechSpecsForm, CasePackerTechSpecsForm, DispersersTechSpecsForm
+from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, CaseSealersTechSpecsForm, CasePackerTechSpecsForm, DispersersTechSpecsForm
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -100,7 +100,6 @@ def search_product(request):
 def sell_rent(request):
     sellRentForm = SellRentForm()
     formset = PhotoFormSet(prefix="photos")
-
     if request.method == 'POST':
         sellRentForm = SellRentForm(request.POST)
         formset = PhotoFormSet(request.POST, request.FILES, prefix="photos") #mandatory passing request.FILES
@@ -131,8 +130,6 @@ models_form_dict = {
     'Dispersers-Mixers':DispersersTechSpecsForm
 }
 
-
-
 @login_required
 def ProductsSpecsCreate(request, pk):
     try:
@@ -144,14 +141,18 @@ def ProductsSpecsCreate(request, pk):
 
     #product = get_object_or_404(ProductsDisplayed, pk=pk)
     
-    category = product.product_category
+    category = product.product_category #third level cat object
     category_name = category.name
-    #print(f"The category name is: {category_name}")
+    specsCategory = product.casepackerspecs #da modificare dinamicamente
+    print(f"SPCIFICHE PRODOTTO : {specsCategory}")
+    
+    print(f"The category name is: {category_name}")
     #ProductSpecsForm = models_form_dict[category_name]()
     
     if request.method == 'POST':
         #print("Now, I post!")
-        ProductSpecsForm = models_form_dict[category_name](request.POST)
+        ProductSpecsForm = models_form_dict[category_name](request.POST) 
+        
         #ProductSpecsForm.product = product
         #print(f"Contents of the form: {ProductSpecsForm}")
         if ProductSpecsForm.is_valid():
@@ -163,7 +164,7 @@ def ProductsSpecsCreate(request, pk):
             return redirect ('Products:product_details', pk)
 
     else:
-        ProductSpecsForm = models_form_dict[category_name]()
+        ProductSpecsForm = models_form_dict[category_name]()#take the right form from dictionary based on thirdlevelcategory
             
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
 
@@ -200,8 +201,9 @@ def delete_product(request, product_id):
 def update_product(request, product_id):
     product = get_object_or_404(ProductsDisplayed, id=product_id) #take the product clicked
     productPhotos = product.productphotos_set.all() #take all the photos related to that product (product_id)
-    #print(f"HERE THE PHOTOS : {productPhotos}")
-    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm, extra=3, max_num=3, validate_max=True, can_delete=True, can_delete_extra=True)
+    #print(f"HERE THE PHOTOS : {productPhotos}") formset=ProductPhotosFormSet
+    UpdateFormset = modelformset_factory(ProductPhotos, form=ProductPhotosForm ,formset= ProductPhotosFormSet ,extra=3, max_num=3, validate_max=True, can_delete=True, can_delete_extra=True)
+    #UpdateFormset = inlineformset_factory(ProductsDisplayed,ProductPhotos, form=ProductPhotosForm , extra=3, max_num=3)
     if request.method == 'POST':
         #print(f"The request.POST is {request.POST}")
         #print(f"The request.FILES is {request.FILES}")
@@ -211,29 +213,46 @@ def update_product(request, product_id):
         if form.is_valid() and formset.is_valid():
             product = form.save() #save the updated product
             product.save()
-            formset_objs = formset.save(commit=False)
+            #formset_objs = formset.save(commit=False)
             #UPDATE : i need manually to set every product per photos, because so far i updated just the photos
             #if you click on delete button , delete the photo related to that product
             for form in formset:
                 if form.cleaned_data: #if i have any photos in my forms
                     print(f"CLEANED DATA : {form.cleaned_data}")
                     photo = form.save(commit=False) #take the instance from model
+                    print(photo)
                     photo.product = product
                     if form.cleaned_data["DELETE"]==True:
                         photo.delete()
                     else:
                         photo.save()
-            formset.save() #returns istances saved in database, just if are filled in the form
-            print(formset.save())                         
+                    
+            formset.save() #returns istances saved in database, just if are filled in the form                        
             #return redirect ('Products:technical_specs', pk=publish.id)
-            return redirect('Products:show_my_products')
+            return redirect('Products:technical_specs', product_id)
         else:
             print(f"ERROR IN FORMSET : {formset.non_form_errors()}")
         
     else:
         # UPDATING FORMS
         form = UpdateProductForm(instance=product) #take precompiled form of that Product
+        print(f"OBJECT : {product} : {productPhotos}")
         formset = UpdateFormset(queryset= productPhotos, prefix='photos')
         #formset = PhotoFormSet(initial = initial_data, prefix='photos') #old photos still uploaded
         #print(f"The formset is {formset}")
     return render(request, 'Products/update_product.html',  {'form': form, 'formset': formset, 'product': product})
+
+def delete_image(request, pk):
+    try:
+        photo = photo.objects.get(id=pk)
+    except photo.DoesNotExist:
+        messages.success(
+            request, 'Object Does not exit'
+            )
+        return redirect('Products:update_product', pk=photo.product.id)
+
+    photo.delete()
+    messages.success(
+            request, 'Image deleted successfully'
+            )
+    return redirect('products:update_product', pk=photo.product.id)

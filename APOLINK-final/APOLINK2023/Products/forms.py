@@ -28,10 +28,15 @@ class SellRentForm(forms.ModelForm):
 
 
 class ProductPhotosForm(forms.ModelForm):
-    photo=forms.ImageField(label='Upload image', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif']), validate_image_file_extension], error_messages={'invalid_image': 'Only .jpg, .jpeg, and .png files are allowed.'}) #changed from FileField
+    photo=forms.ImageField(label='Upload image' , validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif']), validate_image_file_extension], error_messages={'invalid_image': 'Only .jpg, .jpeg, and .png files are allowed.'}) #changed from FileField
     class Meta:
         model = ProductPhotos
         fields = ['photo']
+       
+class ProductPhotosFormSet(forms.BaseModelFormSet):            
+    def get_deletion_widget(self):
+        return CheckboxInput(attrs={'class': 'deletion', 'type': 'checkbox', 'name': 'deletion', 'size': '1'})
+   
     
 PhotoFormSet = formset_factory(ProductPhotosForm, extra=3, max_num=3)
 
