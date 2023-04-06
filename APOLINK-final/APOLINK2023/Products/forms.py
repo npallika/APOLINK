@@ -32,10 +32,12 @@ class ProductPhotosForm(forms.ModelForm):
     class Meta:
         model = ProductPhotos
         fields = ['photo']
+        widgets = { 'photo' : forms.FileInput(attrs={'class': 'photos-form'}) }
        
 class ProductPhotosFormSet(forms.BaseModelFormSet):            
     def get_deletion_widget(self):
         return CheckboxInput(attrs={'class': 'deletion', 'type': 'checkbox', 'name': 'deletion', 'size': '1'})
+    
    
     
 PhotoFormSet = formset_factory(ProductPhotosForm, extra=3, max_num=3)

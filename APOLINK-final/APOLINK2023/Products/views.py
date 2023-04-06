@@ -17,6 +17,7 @@ from django.views.generic import (TemplateView,ListView,
 from datetime import datetime
 from django.utils import timezone
 from django.contrib import messages
+from django.apps import apps
 # Create your views here.
 
 def CategoriesProductsList(request, slug):
@@ -129,6 +130,11 @@ models_form_dict = {
     'Case Packers':CasePackerTechSpecsForm,
     'Dispersers-Mixers':DispersersTechSpecsForm
 }
+models_dict = {
+    'Case Sealers':CaseSealerSpecs,
+    'Case Packers':CasePackerSpecs,
+    'Dispersers-Mixers': DispersersSpecs
+}
 
 @login_required
 def ProductsSpecsCreate(request, pk):
@@ -143,10 +149,6 @@ def ProductsSpecsCreate(request, pk):
     
     category = product.product_category #third level cat object
     category_name = category.name
-    specsCategory = product.casepackerspecs #da modificare dinamicamente
-    print(f"SPCIFICHE PRODOTTO : {specsCategory}")
-    
-    print(f"The category name is: {category_name}")
     #ProductSpecsForm = models_form_dict[category_name]()
     
     if request.method == 'POST':
@@ -167,6 +169,37 @@ def ProductsSpecsCreate(request, pk):
         ProductSpecsForm = models_form_dict[category_name]()#take the right form from dictionary based on thirdlevelcategory
             
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
+
+@login_required
+def ProductsSpecsUpdate(request, pk):
+    try:
+        product = ProductsDisplayed.objects.get(id=pk)
+        #print(f"The product is: {product}")
+    except ProductsDisplayed.DoesNotExist:
+        # Handle the case where the product does not exist
+        return redirect('products_category')
+    category = product.product_category #third level cat object
+    category_name = category.name
+    #specsCategory = product.casepackerspecs 
+    specsModel = models_dict[category_name] #model of the specs of that product
+    specsCategory = specsModel.objects.get(product=product) #take one-to-one specs of the product
+    print(f"SPECS PRODUCT : {specsCategory}")
+    print(f"The category name is: {category_name}")
+    if request.method == 'POST':
+        ProductSpecsForm = models_form_dict[category_name](request.POST, instance=specsCategory)  
+        if ProductSpecsForm.is_valid():
+            publish=ProductSpecsForm.save(commit=False)
+            #print (f"The publish is {publish}")
+            publish.product = product   
+            publish.save()
+            #print (publish.product)
+            return redirect ('Products:product_details', pk)
+
+    else:
+        ProductSpecsForm = models_form_dict[category_name](instance=specsCategory)#take the right form from dictionary based on thirdlevelcategory
+            
+    return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
+
 
 
 @login_required
@@ -229,7 +262,7 @@ def update_product(request, product_id):
                     
             formset.save() #returns istances saved in database, just if are filled in the form                        
             #return redirect ('Products:technical_specs', pk=publish.id)
-            return redirect('Products:technical_specs', product_id)
+            return redirect('Products:technical_specs_update', product_id)
         else:
             print(f"ERROR IN FORMSET : {formset.non_form_errors()}")
         

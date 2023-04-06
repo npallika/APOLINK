@@ -9,6 +9,7 @@ urlpatterns = [
     #path('<int:pk>/Display', views.ProductDetails.as_view(), name='product_details'),
     path('Display/<int:pk>/', views.ProductSelected, name='product_details'),
     path('Create/<int:pk>/', views.ProductsSpecsCreate, name='technical_specs'),
+    path('UpdateSpecs/<int:pk>/', views.ProductsSpecsUpdate, name='technical_specs_update'),
     path('RegisterProduct/', views.sell_rent, name='sellRent'),
     path('Search/', views.search_product, name='search_product'),
     path('My_Products/', views.show_my_products, name='show_my_products'),
