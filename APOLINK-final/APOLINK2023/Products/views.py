@@ -180,11 +180,18 @@ def ProductsSpecsUpdate(request, pk):
         return redirect('products_category')
     category = product.product_category #third level cat object
     category_name = category.name
+    print(f"The category name is: {category_name}")
     #specsCategory = product.casepackerspecs 
     specsModel = models_dict[category_name] #model of the specs of that product
-    specsCategory = specsModel.objects.get(product=product) #take one-to-one specs of the product
-    print(f"SPECS PRODUCT : {specsCategory}")
+    try:
+        specsCategory = specsModel.objects.get(product=product) #take one-to-one specs of the product
+    except specsModel.DoesNotExist:
+        # Handle the case where the product does not exist
+        return redirect('Products:technical_specs', pk)
     print(f"The category name is: {category_name}")
+    
+    print(f"SPECS PRODUCT : {specsCategory}")
+   
     if request.method == 'POST':
         ProductSpecsForm = models_form_dict[category_name](request.POST, instance=specsCategory)  
         if ProductSpecsForm.is_valid():
