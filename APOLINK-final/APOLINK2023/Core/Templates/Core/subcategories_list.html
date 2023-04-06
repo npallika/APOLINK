@@ -6,7 +6,7 @@
 <h5> <strong><a href="{% url 'Core:categories' slug=product_subcategories.parent_cat.slug %}">{{product_subcategories.parent_cat.name}}</a></strong>/{{product_subcategories.name}} </h5>
 {% for subcat in Subcategories %}
     
-            <p> <img src="{{subcat.icon.url}}" alt="no photo" > <a href="{% url 'Products:category_products_list' slug=subcat.slug  %}"> {{subcat.name}} </a> </p>
+            <p> <img style="height:100px" src="{{subcat.icon.url}}" alt="no photo" > <a href="{% url 'Products:category_products_list' slug=subcat.slug  %}"> {{subcat.name}} </a> </p>
   
 {% endfor %}
 

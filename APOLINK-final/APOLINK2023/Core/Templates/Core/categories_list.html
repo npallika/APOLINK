@@ -7,11 +7,14 @@
 {% for cat in subcategories %}
 <ul>
     <li>{{ cat.name }}</li>
-        <ol>
-    {% for third_cat in thirdlevelcategories %}
-        {% if third_cat.parent == cat %}
-            <li>{{ third_cat.name }}</li>
-        {% endif %}
+        
+        {% for third_cat in thirdlevelcategories %} 
+        <ol>  
+            {% if third_cat.parent_cat == cat %}
+           
+                <li>{{ third_cat.name }}</li>
+            
+            {% endif %}
         </ol>
     {% endfor %}
 </ul>        
