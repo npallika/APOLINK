@@ -2,7 +2,8 @@ from django import forms
 from django.forms import widgets, formset_factory , modelformset_factory, BaseFormSet
 from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.widgets import CheckboxInput
-from Accounts.models import PlatformUsers, Address, Country, Industry_Type
+#from Accounts.models import PlatformUsers, Address, Country, Industry_Type
+from Accounts.models import PlatformUsersAll, Country, Industry_Type
 from .models import ProductsDisplayed, ProductPhotos, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm

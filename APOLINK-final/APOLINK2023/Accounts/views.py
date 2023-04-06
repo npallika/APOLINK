@@ -11,7 +11,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.urls import reverse_lazy
-from .forms import UserCreationForm, PlatformUsersForm, AddressForm
+from .forms import UserCreationForm, PlatformUsersFormAll
+#from .forms import UserCreationForm, PlatformUsersForm, AddressForm, PlatformUsersForm
+from .models import PlatformUsersAll
 from Core import models
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
@@ -70,19 +72,20 @@ def activateEmail(request, user, to_email):
 def Signup(request):
     if request.method == "POST":
         userForm = UserCreationForm(request.POST)
-        userInfoForm = PlatformUsersForm(request.POST)
-        addressForm = AddressForm(request.POST)
-        if userForm.is_valid() and addressForm.is_valid() and userInfoForm.is_valid() :
+        userInfoForm = PlatformUsersFormAll(request.POST)
+        #addressForm = AddressForm(request.POST)
+        #and addressForm.is_valid()
+        if userForm.is_valid()  and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
             #not yet activated, email verification first (activation) and don't set password!
             user.is_active = False 
             user.save() #save as unactive before email verification
             
             #Address and user_info must be saved, in any case if i delete user, delete everything else
-            address = addressForm.save()
+            #address = addressForm.save()
             user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
             user_info.user=user
-            user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
+            #user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
             user_info.save() 
             
             #activation email is sent after the user complete the form
@@ -90,9 +93,10 @@ def Signup(request):
             return HttpResponseRedirect(reverse('Accounts:login'))  
     else:
         userForm = UserCreationForm() #User auth connection
-        userInfoForm = PlatformUsersForm() #user auth + added information
-        addressForm = AddressForm() #added information of address of User
-    return render(request, 'accounts/signup.html', {'userForm': userForm, 'userInfoForm': userInfoForm, 'addressForm': addressForm})
+        userInfoForm = PlatformUsersFormAll() #user auth + added information
+        #addressForm = AddressForm() #added information of address of User
+        #'addressForm': addressForm
+    return render(request, 'accounts/signup.html', {'userForm': userForm, 'userInfoForm': userInfoForm})
 
 
 
@@ -123,6 +127,41 @@ class CustomLoginView(LoginView):
             messages.warning(self.request, 'Your account is not active.')
             #redirect('Accounts:login')
             return self.form_invalid(form)
+
+
+@login_required
+def EditProfile(request):
+    
+    user = get_object_or_404(User, pk=request.user.id)
+    #platformUser = PlatformUsersAll.objects.get(user=user)
+    #print(platformUser)
+    
+    if request.method == "POST":
+        userForm = UserCreationForm(request.POST)
+        userInfoForm = PlatformUsersFormAll(request.POST)
+        #addressForm = AddressForm(request.POST)
+        #and addressForm.is_valid()
+        if userForm.is_valid()  and userInfoForm.is_valid() :
+            user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
+            user.save() #save as unactive before email verification
+            
+            #Address and user_info must be saved, in any case if i delete user, delete everything else
+            #address = addressForm.save()
+            user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
+            user_info.user=user
+            #user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
+            user_info.save() 
+            
+            #activation email is sent after the user complete the form
+            activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm + sent email
+            return HttpResponseRedirect(reverse('Accounts:login'))  
+    else:
+        userForm = UserCreationForm(instance = user ) #User auth connection
+        userInfoForm = PlatformUsersFormAll() #user auth + added information
+        #addressForm = AddressForm() #added information of address of User
+        #'addressForm': addressForm
+    return render(request, 'Accounts/account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
+
 
 
 '''

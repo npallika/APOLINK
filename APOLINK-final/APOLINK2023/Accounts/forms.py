@@ -1,7 +1,8 @@
 #from django.forms.fields import DateField
 #from django.contrib.admin.widgets import AdminDateWidget
 from django.forms import widgets 
-from .models import PlatformUsers, Address, Country, Industry_Type
+from .models import PlatformUsersAll, Country, Industry_Type
+#from .models import PlatformUsers, PlatformUsersAll, Address, Country, Industry_Type
 
 from django import forms 
 from datetime import datetime
@@ -32,17 +33,20 @@ class UserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
+'''
 class PlatformUsersForm(forms.ModelForm):
 
     class Meta:
         model = PlatformUsers
         fields = ['industry', 'phone_mobile_country', 'phone_mobile_number','phone_landline_country', 'phone_landline_number', 'company_name', 'company_position']
-
+'''
 
 class AddressCountryModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
          return obj.get_simple_name()
 
+
+'''
 class AddressForm(forms.ModelForm):
     country = AddressCountryModelChoiceField(required=True, queryset=Country.objects.all())
 
@@ -53,8 +57,18 @@ class AddressForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
             kwargs.setdefault('label_suffix', '')
             super(AddressForm, self).__init__(*args, **kwargs)
-
+'''
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+
+# PLATFORM USER + ADRESS FORMS
+class PlatformUsersFormAll(forms.ModelForm):
+
+    class Meta:
+        model = PlatformUsersAll
+        fields = ['industry', 'phone_mobile_country', 'phone_mobile_number','phone_landline_country', 'phone_landline_number', 'company_name', 'company_position','street_address', 'city', 'region', 'zipcode', 'country']
+        def __init__(self, *args, **kwargs):
+            kwargs.setdefault('label_suffix', '')
+            super(PlatformUsersFormAll, self).__init__(*args, **kwargs)
