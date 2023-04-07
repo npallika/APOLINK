@@ -184,6 +184,7 @@ def EditAccount(request, user_id):
         
         if userForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
+            print(user)
             #if user is a superuser, doesn't need to be activated; is supposed to be activated by default
             if user.is_superuser:
                 user.save()
@@ -191,11 +192,10 @@ def EditAccount(request, user_id):
                 user_info.user=user
                 user_info.save() 
                 messages.success(request, 'Your profile is updated successfully')
-                return HttpResponseRedirect(reverse('Accounts:editProfile', user_id))  
+                return HttpResponseRedirect(reverse('Accounts:account', user_id))  
             else:
                 user.is_active = False 
                 user.save() #save as unactive before email verification
-                
                 #Address and user_info must be saved, in any case if i delete user, delete everything else
                 #address = addressForm.save()
                 user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
@@ -205,14 +205,14 @@ def EditAccount(request, user_id):
                 #activation email is sent after the user complete the form
                 activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm + sent email
                 messages.success(request, 'Your profile is updated successfully')
-                return HttpResponseRedirect(reverse('Accounts:editProfile', user_id))    
+                return HttpResponseRedirect(reverse('Accounts:account', user_id))    
     else:
         userForm = UserCreationForm(instance = user) #User auth connection
         userInfoForm = PlatformUsersFormAll(instance=userInfo) #user auth + added information
         
         #addressForm = AddressForm() #added information of address of User
         #'addressForm': addressForm
-    return render(request, 'Accounts/account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
+    return render(request, 'Accounts/edit_account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
 
 
 
