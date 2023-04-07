@@ -78,9 +78,11 @@
 		  <div class="card-body">
                 <div class="d-flex flex-column justify-content-center p-4">
                     <div class="image-container mx-auto mb-4">
-                        <img class="d-block border border-dark rounded-circle img-fluid mx-auto profile-image" alt="user photo" id="id_profile_image" src="{{profile_image}}">
+						<!--user photo : you have to put the photo field in the model and in the form when you REGISTER a new user-->
+                        <img class="d-block border border-dark rounded-circle img-fluid mx-auto profile-image" alt="user photo" id="id_profile_image" src="{%static "Accounts/profile.jpg" %}">
                     </div>
                     <p class="mt-4 mb-1 field-heading">Email</p>
+					<!--if it is your profile : show everythings-->
                     {%  if is_self %}
                         <h5>{{email}}</h5>
                     {% else %}
@@ -95,9 +97,10 @@
 
                     <!-- If Auth user is viewing their own profile -->
                     {% if is_self %}
-                    <a  class="mt-4 btn btn-primary" href="#">Update</a>
-                    <div class="d-flex flex-column mt-4">
-                        <a class="m-auto" href="{% url 'password_change' %}">Change password</a>
+                    <a  class="mt-4 btn btn-primary" href="{%url 'Accounts:editProfile' user_id=id%}">Update</a>
+	
+                    <div class="d-flex flex-column mt-4"> 
+                        
                     </div>
                     {% endif %}
                 </div>

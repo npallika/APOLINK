@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
+from django.conf import settings
 from django.contrib.auth.models import User
 from django import forms
 from django.forms.formsets import formset_factory 
@@ -130,37 +130,83 @@ class CustomLoginView(LoginView):
 
 
 @login_required
-def EditProfile(request):
-    
-    user = get_object_or_404(User, pk=request.user.id)
+def EditProfile(request, user_id):
+    """
+    update user info : take the FORM for the user creation and update through thse ones:
+    UserCreationForm, PlatformUsersFormAll
+    """
+    try:
+        user = User.objects.get(pk=user_id)
+        userInfo = PlatformUsersAll.objects.get(user=user)
+    except User.DoesNotExist and PlatformUsersAll.DoesNotExist:
+        return HttpResponseRedirect(reverse('Accounts:signup'))
+        
     #platformUser = PlatformUsersAll.objects.get(user=user)
     #print(platformUser)
-    
     if request.method == "POST":
-        userForm = UserCreationForm(request.POST)
-        userInfoForm = PlatformUsersFormAll(request.POST)
-        #addressForm = AddressForm(request.POST)
-        #and addressForm.is_valid()
-        if userForm.is_valid()  and userInfoForm.is_valid() :
+        userForm = UserCreationForm(request.POST, instance= user)
+        userInfoForm = PlatformUsersFormAll(request.POST, instance=userInfo)
+        
+        if userForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
-            user.save() #save as unactive before email verification
-            
-            #Address and user_info must be saved, in any case if i delete user, delete everything else
-            #address = addressForm.save()
-            user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
-            user_info.user=user
-            #user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
-            user_info.save() 
-            
-            #activation email is sent after the user complete the form
-            activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm + sent email
-            return HttpResponseRedirect(reverse('Accounts:login'))  
+            #if user is a superuser, doesn't need to be activated; is supposed to be activated by default
+            if user.is_superuser:
+                user.save()
+                user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
+                user_info.user=user
+                user_info.save() 
+                messages.success(request, 'Your profile is updated successfully')
+                return HttpResponseRedirect(reverse('Accounts:editProfile', user_id))  
+            else:
+                user.is_active = False 
+                user.save() #save as unactive before email verification
+                
+                #Address and user_info must be saved, in any case if i delete user, delete everything else
+                #address = addressForm.save()
+                user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
+                user_info.user=user
+                #user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
+                user_info.save() 
+                #activation email is sent after the user complete the form
+                activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm + sent email
+                messages.success(request, 'Your profile is updated successfully')
+                return HttpResponseRedirect(reverse('Accounts:editProfile', user_id))    
     else:
-        userForm = UserCreationForm(instance = user ) #User auth connection
-        userInfoForm = PlatformUsersFormAll() #user auth + added information
+        userForm = UserCreationForm(instance = user) #User auth connection
+        userInfoForm = PlatformUsersFormAll(instance=userInfo) #user auth + added information
+        
         #addressForm = AddressForm() #added information of address of User
         #'addressForm': addressForm
     return render(request, 'Accounts/account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
+
+@login_required
+def AccountInfo(request, user_id):
+    context={}
+    try:
+        user = User.objects.get(pk=user_id)
+        userInfo = PlatformUsersAll.objects.get(user=user)
+    except User.DoesNotExist and PlatformUsersAll.DoesNotExist:
+        return HttpResponseRedirect(reverse('Accounts:signup'))
+    
+    context["id"] = user.id
+    context["username"] = user.username
+    context["password"] = user.password
+    context["email"] = user.email
+
+    # Define template variables
+    is_self = True
+    is_friend = False
+    user = request.user
+    if user.is_authenticated and user != userInfo.user:
+        is_self = False
+    elif not user.is_authenticated:
+        is_self = False
+        
+    # Set the template variables to the values
+    context['is_self'] = is_self
+    context['is_friend'] = is_friend
+    context['BASE_URL'] = settings.BASE_URL
+    return render(request, "Accounts/account.html", context)
 
 
 
