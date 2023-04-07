@@ -94,13 +94,31 @@
                     {% endif %}
                     <p class="mt-4 mb-1 field-heading">Username</p>
                     <h5>{{username}}</h5>
-
+					<p class="mt-4 mb-1 field-heading">Password</p>
+					<div style="form-inline">
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<input type="password" value="{{password}}" id="password" class="form-control" readonly>
+							</span>
+							<span class="input-group-addon">
+								<input type="checkbox" onclick="myFunction()" class="form-control" style="display: inline-block">
+                            </span>
+						</div>
+					</div>
+					<p class="mt-4 mb-1 field-heading">Address</p>
+                    <h5>{{address}}</h5>
+					<p class="mt-4 mb-1 field-heading">Company Name</p>
+                    <h5>{{company_name}}</h5>
+					<p class="mt-4 mb-1 field-heading">Industry</p>
+                    <h5>{{industry}}</h5>
+					
+					
                     <!-- If Auth user is viewing their own profile -->
                     {% if is_self %}
-                    <a  class="mt-4 btn btn-primary" href="{%url 'Accounts:editProfile' user_id=id%}">Update</a>
+                    <a  class="mt-4 btn btn-primary" href="{%url 'Accounts:editAccount' user_id=id%}">Update</a>
 	
                     <div class="d-flex flex-column mt-4"> 
-                        
+                        <!--CHANGE PASSWORD : implementation-->
                     </div>
                     {% endif %}
                 </div>
@@ -112,72 +130,14 @@
 
 
 <script type="text/javascript">
-
-	// called from base_js.html
-	//preloadImage("{{profile_image|safe}}", 'id_profile_image')
-
-	function onFriendRequestSent(){
-		location.reload();
-	}
-
-	function onFriendRequestCancelled(){
-		location.reload();
-	}
-
-	function onFriendRemoved(){
-		location.reload();
-	}
-
-	function onFriendRequestAccepted(){
-		location.reload();
-	}
-
-	function onFriendRequestDeclined(){
-		location.reload();
-	}
-
-
-	var sendFriendRequestBtn = document.getElementById("id_send_friend_request_btn")
-	if (sendFriendRequestBtn != null){
-		sendFriendRequestBtn.addEventListener("click", function(){
-			//sendFriendRequest("{{id}}", onFriendRequestSent)
-		})
-	}
-
-	var cancelFriendRequestBtn = document.getElementById("id_cancel_friend_request_btn")
-	if(cancelFriendRequestBtn != null){
-		cancelFriendRequestBtn.addEventListener("click", function(){
-			//cancelFriendRequest("{{id}}", onFriendRequestCancelled)
-		})
-	}
-
-	var removeFriendBtn = document.getElementById("id_unfriend_btn")
-	if (removeFriendBtn != null){
-		removeFriendBtn.addEventListener("click", function(){
-			//removeFriend("{{id}}", onFriendRemoved)
-		})
-	}
-
-	function triggerAcceptFriendRequest(friend_request_id){
-		//acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
-	}
-
-	function triggerDeclineFriendRequest(friend_request_id){
-		//declineFriendRequest(friend_request_id, onFriendRequestDeclined)
-	}
-	
+	function myFunction() {
+		var x = document.getElementById("password");
+		if (x.type === "password") {
+		  x.type = "text";
+		} else {
+		  x.type = "password";
+		}
+	  }
 </script>
-
-{#% include 'snippets/send_friend_request.html' %#}
-{#% include 'snippets/accept_friend_request.html' %#}
-{#% include 'snippets/decline_friend_request.html' %#}
-{#% include 'snippets/cancel_friend_request.html' %#}
-{#% include 'snippets/remove_friend.html' %#}
-{#% include 'chat/create_or_return_private_chat.html' %#}
-
-
-
-
-
 
 {% endblock %}

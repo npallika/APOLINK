@@ -129,8 +129,43 @@ class CustomLoginView(LoginView):
             return self.form_invalid(form)
 
 
+
 @login_required
-def EditProfile(request, user_id):
+def AccountInfo(request, user_id):
+    context={}
+    try:
+        user = User.objects.get(pk=user_id)
+        userInfo = PlatformUsersAll.objects.get(user=user)
+    except User.DoesNotExist and PlatformUsersAll.DoesNotExist:
+        return HttpResponseRedirect(reverse('Accounts:signup'))
+    
+    context["id"] = user.id
+    context["username"] = user.username
+    context["password"] = user.password
+    context["email"] = user.email
+    context["company_name"] = userInfo.company_name
+    context["industry"] = userInfo.industry
+    context["address"] = userInfo.street_address
+
+    # Define template variables
+    is_self = True
+    is_friend = False
+    user = request.user
+    if user.is_authenticated and user != userInfo.user:
+        is_self = False
+    elif not user.is_authenticated:
+        is_self = False
+        
+    # Set the template variables to the values
+    context['is_self'] = is_self
+    context['is_friend'] = is_friend
+    context['BASE_URL'] = settings.BASE_URL
+    return render(request, "Accounts/account.html", context)
+
+
+
+@login_required
+def EditAccount(request, user_id):
     """
     update user info : take the FORM for the user creation and update through thse ones:
     UserCreationForm, PlatformUsersFormAll
@@ -178,35 +213,6 @@ def EditProfile(request, user_id):
         #addressForm = AddressForm() #added information of address of User
         #'addressForm': addressForm
     return render(request, 'Accounts/account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
-
-@login_required
-def AccountInfo(request, user_id):
-    context={}
-    try:
-        user = User.objects.get(pk=user_id)
-        userInfo = PlatformUsersAll.objects.get(user=user)
-    except User.DoesNotExist and PlatformUsersAll.DoesNotExist:
-        return HttpResponseRedirect(reverse('Accounts:signup'))
-    
-    context["id"] = user.id
-    context["username"] = user.username
-    context["password"] = user.password
-    context["email"] = user.email
-
-    # Define template variables
-    is_self = True
-    is_friend = False
-    user = request.user
-    if user.is_authenticated and user != userInfo.user:
-        is_self = False
-    elif not user.is_authenticated:
-        is_self = False
-        
-    # Set the template variables to the values
-    context['is_self'] = is_self
-    context['is_friend'] = is_friend
-    context['BASE_URL'] = settings.BASE_URL
-    return render(request, "Accounts/account.html", context)
 
 
 

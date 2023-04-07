@@ -10,7 +10,7 @@ urlpatterns = [
     path('signup/', views.Signup, name='signup'),
     path('activate/<uidb64>/<token>', views.Activate, name ='activate'),
     path('AccountInfo/<int:user_id>/', views.AccountInfo, name='account'),
-    path('EditProfile/<int:user_id>/', views.EditProfile, name='editProfile'),
+    path('EditAccount/<int:user_id>/', views.EditAccount, name='editAccount'),
     path('login/', views.CustomLoginView.as_view(template_name="Accounts/login.html"), name='login'),
     #path('login/', views.user_login, name='login'), #DEBUG
     path('logout/', views.user_logout, name='logout'),
