@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.views import generic
 from django.contrib.auth import authenticate,login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.urls import reverse_lazy
@@ -16,7 +17,7 @@ from .forms import UserCreationForm, PlatformUsersFormAll
 from .models import PlatformUsersAll
 from Core import models
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordResetView
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -24,12 +25,14 @@ from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
 
+
+
 #EMAIL VERIFICATION
 def Activate(request, uidb64, token):
     User = get_user_model()
     try:
         uid = force_str(urlsafe_base64_decode(uidb64)) #take the PK of the user by decoding URL
-        user = User.objects.get(pk=uid)
+        user = User.objects.get(pk=uid) #substituting the user from model with user from request
         print(f"USER FOUND {user} WITH PK = {uid} AND PASS = {user.password}")
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user=None
@@ -171,20 +174,22 @@ def EditAccount(request, user_id):
     UserCreationForm, PlatformUsersFormAll
     """
     try:
-        user = User.objects.get(pk=user_id)
+        #user = User.objects.get(pk=user_id)
+        user = request.user
         userInfo = PlatformUsersAll.objects.get(user=user)
+        if not user.is_authenticated :
+            return redirect('Accounts:login')
+        if userInfo.user != request.user:
+            return HttpResponse("You cannot edit someone elses profile.")
     except User.DoesNotExist and PlatformUsersAll.DoesNotExist:
-        return HttpResponseRedirect(reverse('Accounts:signup'))
-        
-    #platformUser = PlatformUsersAll.objects.get(user=user)
-    #print(platformUser)
+        return HttpResponseRedirect(reverse('Accounts:signup'))   
+
     if request.method == "POST":
-        userForm = UserCreationForm(request.POST, instance= user)
-        userInfoForm = PlatformUsersFormAll(request.POST, instance=userInfo)
+        userForm = UserCreationForm(request.POST, instance= user, update = True)
+        userInfoForm = PlatformUsersFormAll(request.POST,  instance=userInfo) #request.FILES, if we want photos
         
         if userForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
-            print(user)
             #if user is a superuser, doesn't need to be activated; is supposed to be activated by default
             if user.is_superuser:
                 user.save()
@@ -192,27 +197,33 @@ def EditAccount(request, user_id):
                 user_info.user=user
                 user_info.save() 
                 messages.success(request, 'Your profile is updated successfully')
-                return HttpResponseRedirect(reverse('Accounts:account', user_id))  
+                return HttpResponseRedirect(reverse('Accounts:login'))  
             else:
                 user.is_active = False 
                 user.save() #save as unactive before email verification
-                #Address and user_info must be saved, in any case if i delete user, delete everything else
-                #address = addressForm.save()
                 user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
-                user_info.user=user
-                #user_info.main_address = address #note : if you delete user/platformUser -> not delete address created          
+                user_info.user=user        
                 user_info.save() 
                 #activation email is sent after the user complete the form
-                activateEmail(request, user, userForm.cleaned_data.get('email')) #if the user SIGN-UP, compare this message: go to email and confirm + sent email
+                activateEmail(request, user, userForm.cleaned_data.get('email')) 
                 messages.success(request, 'Your profile is updated successfully')
-                return HttpResponseRedirect(reverse('Accounts:account', user_id))    
+                return HttpResponseRedirect(reverse('Accounts:login'))    
     else:
-        userForm = UserCreationForm(instance = user) #User auth connection
+        userForm = UserCreationForm(instance = user, update=True) #update : remove the possibility to change passwrod here
         userInfoForm = PlatformUsersFormAll(instance=userInfo) #user auth + added information
-        
-        #addressForm = AddressForm() #added information of address of User
-        #'addressForm': addressForm
+        #context['DATA_UPLOAD_MAX_MEMORY_SIZE'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
     return render(request, 'Accounts/edit_account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'Accounts/password_reset.html'
+    email_template_name = 'Accounts/password_reset_email.html'
+    subject_template_name = 'Accounts/password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('users-home')
 
 
 

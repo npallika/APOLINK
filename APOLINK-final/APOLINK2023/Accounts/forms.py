@@ -28,6 +28,15 @@ class UserCreationForm(UserCreationForm):
     #captcha = CaptchaField()
     
     #password = forms.CharField(widget=forms.PasswordInput())
+    
+    # Only show password fields when creating a new user
+    def __init__(self, *args, **kwargs):
+        update = kwargs.pop('update', False)
+        super().__init__(*args, **kwargs)
+        if update:
+            self.fields.pop('password1')
+            self.fields.pop('password2')
+
 
     class Meta:
         model = User

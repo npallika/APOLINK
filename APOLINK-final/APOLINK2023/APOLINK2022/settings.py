@@ -144,7 +144,7 @@ BASE_URL = "http://127.0.0.1:8000"
 
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS =[STATIC_DIR, os.path.join(BASE_DIR, 'Accounts'), os.path.join(BASE_DIR, 'Products')]
+STATICFILES_DIRS =[STATIC_DIR, os.path.join(BASE_DIR,'Core') , os.path.join(BASE_DIR, 'Accounts'), os.path.join(BASE_DIR, 'Products')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -166,4 +166,6 @@ EMAIL_HOST_USER = 'ale2.brex99@gmail.com' #email we send from (APOLINK_email)
 EMAIL_HOST_PASSWORD= 'qrldvykrmikkieyx' #password of the superuser
 PASSWORD_RESET_TIMEOUT = 14400
 
+#data upload
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 #10 * 1024 * 1024 (10 MB)
 
