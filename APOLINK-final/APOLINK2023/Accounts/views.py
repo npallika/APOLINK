@@ -215,11 +215,12 @@ def EditAccount(request, user_id):
     return render(request, 'Accounts/edit_account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
 
 
-class MyPasswordResetView(PasswordResetView):
-    template_name = "registration/password_reset_form.html"
+class MyPasswordResetView(SuccessMessageMixin,PasswordResetView):
+    template_name = "Accounts/password_reset/password_reset_form.html"
     email_template_name = "Accounts/password_reset/password_reset_email.html"
     subject_template_name = "Accounts/password_reset/password_reset_subject.txt"
     success_url = reverse_lazy ("Accounts:password_reset_done")
+
 
 
 
