@@ -215,15 +215,11 @@ def EditAccount(request, user_id):
     return render(request, 'Accounts/edit_account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})
 
 
-class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
-    template_name = 'Accounts/password_reset.html'
-    email_template_name = 'Accounts/password_reset_email.html'
-    subject_template_name = 'Accounts/password_reset_subject'
-    success_message = "We've emailed you instructions for setting your password, " \
-                      "if an account exists with the email you entered. You should receive them shortly." \
-                      " If you don't receive an email, " \
-                      "please make sure you've entered the address you registered with, and check your spam folder."
-    success_url = reverse_lazy('users-home')
+class MyPasswordResetView(PasswordResetView):
+    template_name = "registration/password_reset_form.html"
+    email_template_name = "Accounts/password_reset/password_reset_email.html"
+    subject_template_name = "Accounts/password_reset/password_reset_subject.txt"
+    success_url = reverse_lazy ("Accounts:password_reset_done")
 
 
 
