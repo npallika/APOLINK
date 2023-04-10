@@ -185,9 +185,9 @@ def EditAccount(request, user_id):
         return HttpResponseRedirect(reverse('Accounts:signup'))   
 
     if request.method == "POST":
-        userForm = UserCreationForm(request.POST, instance= user, update = True)
+        userForm = UserCreationForm(request.POST, instance= user) #update = True
         userInfoForm = PlatformUsersFormAll(request.POST,  instance=userInfo) #request.FILES, if we want photos
-        
+        print(userForm)
         if userForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
             #if user is a superuser, doesn't need to be activated; is supposed to be activated by default
@@ -209,7 +209,7 @@ def EditAccount(request, user_id):
                 messages.success(request, 'Your profile is updated successfully')
                 return HttpResponseRedirect(reverse('Accounts:login'))    
     else:
-        userForm = UserCreationForm(instance = user, update=True) #update : remove the possibility to change passwrod here
+        userForm = UserCreationForm(instance = user) #update=True : update : remove the possibility to change passwrod here
         userInfoForm = PlatformUsersFormAll(instance=userInfo) #user auth + added information
         #context['DATA_UPLOAD_MAX_MEMORY_SIZE'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
     return render(request, 'Accounts/edit_account.html',  {'userForm': userForm, 'userInfoForm': userInfoForm})

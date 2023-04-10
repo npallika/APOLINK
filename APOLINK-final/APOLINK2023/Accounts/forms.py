@@ -30,12 +30,15 @@ class UserCreationForm(UserCreationForm):
     #password = forms.CharField(widget=forms.PasswordInput())
     
     # Only show password fields when creating a new user
-    def __init__(self, *args, **kwargs):
-        update = kwargs.pop('update', False)
-        super().__init__(*args, **kwargs)
-        if update:
-            self.fields.pop('password1')
-            self.fields.pop('password2')
+    #def __init__(self, *args, **kwargs):
+    #    update = kwargs.pop('update', False)
+    #    super().__init__(*args, **kwargs)
+    #    if update:
+    #        self.fields['password1'].required = False
+    #        self.fields['password2'].required = False
+    #        self.fields.pop('password1')
+    #        self.fields.pop('password2')
+            
 
 
     class Meta:
