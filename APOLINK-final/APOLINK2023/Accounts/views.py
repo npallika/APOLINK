@@ -215,7 +215,7 @@ def EditAccount(request, user_id):
                     user_info.user=user        
                     user_info.save() 
                     messages.success(request, 'Your profile is updated successfully')
-                return HttpResponseRedirect(reverse('Accounts:login'))    
+                return HttpResponseRedirect(reverse('Core:categories_list'))      
     else:
         userForm = UserUpdateForm(instance = user) #update=True : update : remove the possibility to change passwrod here
         userInfoForm = PlatformUsersFormAll(instance=userInfo) #user auth + added information
