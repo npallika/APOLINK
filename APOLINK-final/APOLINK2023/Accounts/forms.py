@@ -37,13 +37,30 @@ class UserCreationForm(UserCreationForm):
     #        self.fields['password1'].required = False
     #        self.fields['password2'].required = False
     #        self.fields.pop('password1')
-    #        self.fields.pop('password2')
-            
-
-
+    #        self.fields.pop('password2')      
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+
+
+class UserUpdateForm(forms.ModelForm):
+    username = forms.RegexField(
+        label=("Username"), max_length=30, regex=r"^[\w.@+-]+$",
+        help_text=("Required. 30 characters or fewer. Letters, digits and "
+                "@/./+/-/_ only."),
+        error_messages={
+        'invalid': ("This value may contain only letters, numbers and "
+                     "@/./+/-/_ characters.")},
+        widget=forms.TextInput(attrs={'class': 'form-control',
+                            'required': 'true',
+                            'placeholder': 'Username'
+        })
+        )
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email',]
+        
+
 
 '''
 class PlatformUsersForm(forms.ModelForm):
