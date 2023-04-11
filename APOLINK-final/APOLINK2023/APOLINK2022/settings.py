@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 import os
 
 USE_DJANGO_JQUERY = True
@@ -57,11 +58,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', #for languages
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'APOLINK2022.urls'
@@ -81,6 +84,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'APOLINK2022.wsgi.application'
 
@@ -125,8 +129,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us' #default language
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('gr', _('Greek')),
+)
 
 TIME_ZONE = 'Europe/Athens'
 
