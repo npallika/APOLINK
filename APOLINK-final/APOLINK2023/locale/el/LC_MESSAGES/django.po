@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 #: .\APOLINK2022\settings.py:137
 msgid "English"
-msgstr ""
+msgstr "Αγγλικά"
 
 #: .\APOLINK2022\settings.py:138
 msgid "Greek"
-msgstr ""
+msgstr "Ελληνικά"
 
 #: .\Core\Templates\Core\base.html:132 .\Core\views.py:30
 msgid "hello"

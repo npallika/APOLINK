@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'smart_selects',
     'jsonfield',
     'crispy_bootstrap4',
+    'rosetta',
     
 ]
 

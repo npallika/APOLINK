@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.contrib.auth import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,16 +28,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
-    
     ]
 
-urlpatterns += i18n_patterns (
-    path('', include('Core.urls', namespace='lang-Core')),
-    path('accounts/', include ('Accounts.urls', namespace='lang-Accounts')),
-    path('Products/', include ('Products.urls', namespace='lang_Products')),
+urlpatterns= i18n_patterns(
+    path('', include('Core.urls')),
+    path('accounts/', include ('Accounts.urls')),
+    path('Products/', include ('Products.urls')),
+    path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
 )
+
+#if you want manage url either with /el/ or without :
+#urlpatterns += i18n_patterns( path ..., )
+
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        path('rosetta/', include('rosetta.urls')),
+    ]
 
 if settings.DEBUG:
      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -28,7 +28,6 @@ def translate(language):
     try:
         activate(language)
         text = _('hello')
-        print(text)
     finally:
         activate(cur_language)
     #return text already translated
