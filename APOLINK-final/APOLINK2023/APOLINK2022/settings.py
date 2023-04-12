@@ -134,8 +134,8 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 LANGUAGE_CODE = 'en-us' #default language
 
 LANGUAGES = (
+    ('el', _('Greek')),
     ('en', _('English')),
-    ('gr', _('Greek')),
 )
 
 TIME_ZONE = 'Europe/Athens'
