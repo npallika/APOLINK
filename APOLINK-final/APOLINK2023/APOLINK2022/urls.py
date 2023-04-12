@@ -32,9 +32,9 @@ urlpatterns = [
     ]
 
 urlpatterns += i18n_patterns (
-    path('', include('Core.urls', namespace='lang_core')),
-    path('accounts/', include ('Accounts.urls', namespace='lang_accounts')),
-    path('Products/', include ('Products.urls', namespace='lang_products')),
+    path('', include('Core.urls', namespace='lang-Core')),
+    path('accounts/', include ('Accounts.urls', namespace='lang-Accounts')),
+    path('Products/', include ('Products.urls', namespace='lang_Products')),
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
 )

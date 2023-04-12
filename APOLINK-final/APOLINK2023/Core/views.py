@@ -17,7 +17,7 @@ class CategoriesListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        trans = translate(language='gr')
+        trans = translate(language='el')
         context['SecondLevelCategories'] = SecondLevelCategories.objects.all()
         context['searchable'] = ThirdLevelCategories.objects.all()
         context['trans'] = trans
@@ -28,8 +28,10 @@ def translate(language):
     try:
         activate(language)
         text = _('hello')
+        print(text)
     finally:
         activate(cur_language)
+    #return text already translated
     return text
 
 class SubcategoriesListView(DetailView):
