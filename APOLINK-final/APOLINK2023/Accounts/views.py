@@ -24,6 +24,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
+from django.utils.translation import gettext as _
+from django.utils.translation import get_language, activate, gettext
 
 
 
@@ -69,6 +71,16 @@ def activateEmail(request, user, to_email):
         messages.success(request, f'Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
     else :
         messages.error(request, f'Problem sending email to {to_email}', 'check if you typed it correctly')
+
+def translate(language):
+    cur_language = get_language()
+    try:
+        activate(language)
+        text = _('hello')
+    finally:
+        activate(cur_language)
+    #return text already translated
+    return text
 
     
 # pip install django-braces

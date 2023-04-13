@@ -8,24 +8,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 10:38+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-04-13 12:21+0300\n"
+"PO-Revision-Date: 2023-04-13 12:24+0300\n"
+"Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\APOLINK2022\settings.py:138
+#: .\APOLINK2022\settings.py:139
 msgid "English"
 msgstr "Αγγλικά"
 
-#: .\APOLINK2022\settings.py:139
+#: .\APOLINK2022\settings.py:140
 msgid "Greek"
 msgstr "Ελληνικά"
 
-#: .\Core\Templates\Core\base.html:132 .\Core\views.py:30
+#: .\APOLINK2022\urls.py:35
+msgid "accounts/"
+msgstr "λογαριασμούς/"
+
+#: .\APOLINK2022\urls.py:36
+msgid "Products/"
+msgstr "προϊόντα/"
+
+#: .\APOLINK2022\urls.py:37
+msgid "admin/"
+msgstr "διαχειριστής/"
+
+#: .\Accounts\views.py:79 .\Core\Templates\Core\base.html:132
+#: .\Core\views.py:30
 msgid "hello"
 msgstr "ΓΕΙΑ"

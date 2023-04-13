@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 10:38+0300\n"
+"POT-Creation-Date: 2023-04-13 12:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\APOLINK2022\settings.py:138
+#: .\APOLINK2022\settings.py:139
 msgid "English"
 msgstr ""
 
-#: .\APOLINK2022\settings.py:139
+#: .\APOLINK2022\settings.py:140
 msgid "Greek"
 msgstr ""
 
-#: .\Core\Templates\Core\base.html:132 .\Core\views.py:30
+#: .\APOLINK2022\urls.py:35
+msgid "accounts/"
+msgstr ""
+
+#: .\APOLINK2022\urls.py:36
+msgid "Products/"
+msgstr ""
+
+#: .\APOLINK2022\urls.py:37
+msgid "admin/"
+msgstr ""
+
+#: .\Accounts\views.py:79 .\Core\Templates\Core\base.html:132
+#: .\Core\views.py:30
 msgid "hello"
 msgstr ""

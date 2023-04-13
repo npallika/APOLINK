@@ -32,9 +32,9 @@ urlpatterns = [
 
 urlpatterns= i18n_patterns(
     path('', include('Core.urls')),
-    path('accounts/', include ('Accounts.urls')),
-    path('Products/', include ('Products.urls')),
-    path('admin/', admin.site.urls),
+    path(_('accounts/'), include ('Accounts.urls')),
+    path(_('Products/'), include ('Products.urls')),
+    path(_('admin/'), admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
 )
