@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 16:50+0300\n"
+"POT-Creation-Date: 2023-04-13 17:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Products/"
 msgstr ""
 
-#: .\Accounts\forms.py:17
+#: .\Accounts\forms.py:17 .\Accounts\forms.py:45
 msgid "Username"
 msgstr ""
 
@@ -46,27 +46,27 @@ msgstr ""
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: .\Accounts\forms.py:45
+#: .\Accounts\forms.py:46
 msgid "First name"
 msgstr ""
 
-#: .\Accounts\forms.py:46
+#: .\Accounts\forms.py:47
 msgid "Last name"
 msgstr ""
 
-#: .\Accounts\forms.py:47
+#: .\Accounts\forms.py:48
 msgid "Email address"
 msgstr ""
 
-#: .\Accounts\forms.py:48
+#: .\Accounts\forms.py:49
 msgid "Password"
 msgstr ""
 
-#: .\Accounts\forms.py:49
+#: .\Accounts\forms.py:50
 msgid "Password confirmation"
 msgstr ""
 
-#: .\Accounts\models.py:12 .\Accounts\models.py:33
+#: .\Accounts\models.py:12 .\Accounts\models.py:33 .\Core\models.py:10
 msgid "name"
 msgstr ""
 
@@ -92,6 +92,10 @@ msgstr ""
 
 #: .\Accounts\models.py:76
 msgid "region"
+msgstr ""
+
+#: .\Accounts\models.py:77
+msgid "zipcode"
 msgstr ""
 
 #: .\Accounts\models.py:78
@@ -125,4 +129,8 @@ msgstr ""
 #: .\Accounts\views.py:81 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
 msgid "hello"
+msgstr ""
+
+#: .\Core\Templates\Core\maincategories_list.html:38
+msgid "Product Categories"
 msgstr ""

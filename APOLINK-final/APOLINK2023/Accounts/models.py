@@ -74,7 +74,7 @@ class PlatformUsersAll(models.Model):
     street_address = models.CharField(_("street_address"),max_length=100, null=True)
     city = models.CharField(_("city"),max_length=30, null=True)
     region = models.CharField(_("region"),max_length=20, null=True)
-    zipcode = models.CharField(max_length=30, null=True)
+    zipcode = models.CharField(_("zipcode"),max_length=30, null=True)
     country = models.ForeignKey(Country, verbose_name=_("country"), null=True, on_delete=models.CASCADE)
     
     class Meta:

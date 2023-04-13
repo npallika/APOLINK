@@ -2,11 +2,12 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 
 class FirstLevelCategories(models.Model):
-    name = models.CharField(max_length=200, null=True)
+    name = models.CharField(_('name'), max_length=200, null=True)
     short_name = models.CharField(max_length=40, null=True, blank=True)
     short_description = models.TextField(null=True, blank=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
@@ -22,7 +23,7 @@ class FirstLevelCategories(models.Model):
 
 class SecondLevelCategories(models.Model):
     name = models.CharField(max_length=200, null=True)
-    parent_cat = models.ForeignKey(FirstLevelCategories, on_delete=models.CASCADE)
+    parent_cat = models.ForeignKey(FirstLevelCategories ,on_delete=models.CASCADE)
     short_name = models.CharField(max_length=40, null=True, blank=True)
     short_description = models.TextField(null=True, blank=True)
     slug = models.SlugField(allow_unicode=True, unique=True)

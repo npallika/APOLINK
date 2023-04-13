@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 16:50+0300\n"
-"PO-Revision-Date: 2023-04-13 16:53+0300\n"
+"POT-Creation-Date: 2023-04-13 17:39+0300\n"
+"PO-Revision-Date: 2023-04-13 17:25+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -35,9 +35,7 @@ msgstr "λογαριασμούς/"
 msgid "Products/"
 msgstr "προϊόντα/"
 
-#: .\Accounts\forms.py:17
-#, fuzzy
-#| msgid "name"
+#: .\Accounts\forms.py:17 .\Accounts\forms.py:45
 msgid "Username"
 msgstr "όνομα"
 
@@ -52,28 +50,27 @@ msgstr ""
 "Αυτή η τιμή μπορεί να περιέχει μόνο γράμματα, αριθμούς και @/./+/-/_ "
 "χαρακτήρες."
 
-#: .\Accounts\forms.py:45
+#: .\Accounts\forms.py:46
 msgid "First name"
 msgstr "Ονομα"
 
-#: .\Accounts\forms.py:46
-#| msgid "name"
+#: .\Accounts\forms.py:47
 msgid "Last name"
 msgstr "Επίθετο"
 
-#: .\Accounts\forms.py:47
+#: .\Accounts\forms.py:48
 msgid "Email address"
 msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
 
-#: .\Accounts\forms.py:48
+#: .\Accounts\forms.py:49
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: .\Accounts\forms.py:49
+#: .\Accounts\forms.py:50
 msgid "Password confirmation"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
-#: .\Accounts\models.py:12 .\Accounts\models.py:33
+#: .\Accounts\models.py:12 .\Accounts\models.py:33 .\Core\models.py:10
 msgid "name"
 msgstr "όνομα"
 
@@ -100,6 +97,10 @@ msgstr "πόλη"
 #: .\Accounts\models.py:76
 msgid "region"
 msgstr "περιοχή"
+
+#: .\Accounts\models.py:77
+msgid "zipcode"
+msgstr "ταχυδρομικός κώδικας"
 
 #: .\Accounts\models.py:78
 #, fuzzy
@@ -137,6 +138,15 @@ msgstr "Αποσύνδεση/"
 #: .\Core\views.py:30
 msgid "hello"
 msgstr "ΓΕΙΑ"
+
+#: .\Core\Templates\Core\maincategories_list.html:38
+msgid "Product Categories"
+msgstr "κατηγορίες προϊόντων"
+
+#, fuzzy
+#~| msgid "name"
+#~ msgid "name1"
+#~ msgstr "όνομα"
 
 #~ msgid "admin/"
 #~ msgstr "διαχειριστής/"
