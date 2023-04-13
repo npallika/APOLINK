@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 14:39+0300\n"
-"PO-Revision-Date: 2023-04-13 14:29+0300\n"
+"POT-Creation-Date: 2023-04-13 16:50+0300\n"
+"PO-Revision-Date: 2023-04-13 16:53+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -34,6 +34,78 @@ msgstr "λογαριασμούς/"
 #: .\APOLINK2022\urls.py:32
 msgid "Products/"
 msgstr "προϊόντα/"
+
+#: .\Accounts\forms.py:17
+#, fuzzy
+#| msgid "name"
+msgid "Username"
+msgstr "όνομα"
+
+#: .\Accounts\forms.py:18
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Απαιτείται. 30 χαρακτήρες ή λιγότεροι. Μόνο γράμματα, ψηφία και @/./+/-/_."
+
+#: .\Accounts\forms.py:21
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+"Αυτή η τιμή μπορεί να περιέχει μόνο γράμματα, αριθμούς και @/./+/-/_ "
+"χαρακτήρες."
+
+#: .\Accounts\forms.py:45
+msgid "First name"
+msgstr "Ονομα"
+
+#: .\Accounts\forms.py:46
+#| msgid "name"
+msgid "Last name"
+msgstr "Επίθετο"
+
+#: .\Accounts\forms.py:47
+msgid "Email address"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+#: .\Accounts\forms.py:48
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: .\Accounts\forms.py:49
+msgid "Password confirmation"
+msgstr "Επιβεβαίωση κωδικού πρόσβασης"
+
+#: .\Accounts\models.py:12 .\Accounts\models.py:33
+msgid "name"
+msgstr "όνομα"
+
+#: .\Accounts\models.py:63
+msgid "company_name"
+msgstr "Όνομα_εταιρείας"
+
+#: .\Accounts\models.py:64
+msgid "industry"
+msgstr "βιομηχανία"
+
+#: .\Accounts\models.py:65
+msgid "company_position"
+msgstr "εταιρεία_θέση"
+
+#: .\Accounts\models.py:74
+msgid "street_address"
+msgstr "διεύθυνση"
+
+#: .\Accounts\models.py:75
+msgid "city"
+msgstr "πόλη"
+
+#: .\Accounts\models.py:76
+msgid "region"
+msgstr "περιοχή"
+
+#: .\Accounts\models.py:78
+#, fuzzy
+#| msgid "accounts/"
+msgid "country"
+msgstr "λογαριασμούς/"
 
 #: .\Accounts\urls.py:13
 msgid "signup/"
@@ -61,7 +133,7 @@ msgstr "Σύνδεση/"
 msgid "logout/"
 msgstr "Αποσύνδεση/"
 
-#: .\Accounts\views.py:79 .\Core\Templates\Core\base.html:131
+#: .\Accounts\views.py:81 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
 msgid "hello"
 msgstr "ΓΕΙΑ"

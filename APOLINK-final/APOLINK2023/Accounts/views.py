@@ -72,10 +72,12 @@ def activateEmail(request, user, to_email):
     else :
         messages.error(request, f'Problem sending email to {to_email}', 'check if you typed it correctly')
 
+
+#TRANSLATION
 def translate(language):
     cur_language = get_language()
     try:
-        activate(language)
+        activate(language) #is not persistant
         text = _('hello')
     finally:
         activate(cur_language)

@@ -108,10 +108,14 @@
                 <a class="nav-item nav-link" href="{% url 'Products:sellRent' %}">Sell/Rent</a>
               </li>
               
+              <!--LANGUAGE CHOICE-->
               <li class="nav-item dropdown">
+                {%get_current_language as LANGUAGE_CODE%}
+                {%get_language_info for LANGUAGE_CODE as languageInfo%}
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Language
+                  Language <p>current : {{languageInfo.name_local}}</p>
                 </a>
+                <!--
                 <ul class="dropdown-menu">
                   {% get_current_language as LANGUAGE_CODE %}
                   {% get_available_languages as LANGUAGES %}
@@ -124,15 +128,29 @@
                     </li>
                   {% endfor %}
                 </ul>
-              </li>
-            </ul>
-        <!--LANGUAGES -->
-        <div>
-          <p>text translated with tag .po file: {% translate "hello" %}</p>
-          <p>text already translated by view:  {{trans}}</p>
-         
-        </div>
+                -->
 
+                 <!--WITH DJANGO LANGUAGE FORM -->
+                 <li>
+                 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                  <input name="next" type="hidden" value="{{ redirect_to }}">
+                  <select class="nav-link dropdown-toggle" name="language">
+                      {% get_current_language as LANGUAGE_CODE %}
+                      {% get_available_languages as LANGUAGES %}
+                      {% get_language_info_list for LANGUAGES as languages %}
+                      {% for language in languages %}
+                          <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                              {{ language.name_local }} ({{ language.code }})
+                          </option>
+                      {% endfor %}
+                  </select>
+                  <input type="submit" value="change">
+                </form>
+                </li>
+              </li>
+
+
+            </ul>
 
         <!--Search Product-->
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -199,9 +217,13 @@
               {% include  'Core/messages.html' %}
             </div>
         </div>
-        {%get_current_language as LANGUAGE_CODE%}
-        <p>{{LANGUAGE_CODE}}</p>
-        
+        <!--LANGUAGES -->
+        <div>
+          <p>text translated with tag .po file: {% translate "hello" %}</p>
+          <p>text already translated by view:  {{trans}}</p>
+         
+        </div>
+
         {% block body_block %}
         {% endblock %}
         </div>

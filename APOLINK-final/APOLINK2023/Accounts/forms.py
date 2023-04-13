@@ -10,15 +10,15 @@ from django.contrib.auth.forms import UserCreationForm
 #from captcha.fields import CaptchaField
 from django.contrib.auth.models import User
 #import datetime
-
+from django.utils.translation import gettext_lazy as _
 
 class UserCreationForm(UserCreationForm):
     username = forms.RegexField(
-        label=("Username"), max_length=30, regex=r"^[\w.@+-]+$",
-        help_text=("Required. 30 characters or fewer. Letters, digits and "
+        label=_("Username"), max_length=30, regex=r"^[\w.@+-]+$",
+        help_text=_("Required. 30 characters or fewer. Letters, digits and "
                 "@/./+/-/_ only."),
         error_messages={
-        'invalid': ("This value may contain only letters, numbers and "
+        'invalid': _("This value may contain only letters, numbers and "
                      "@/./+/-/_ characters.")},
         widget=forms.TextInput(attrs={'class': 'form-control',
                             'required': 'true',
@@ -41,7 +41,13 @@ class UserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-
+        labels= {
+            'first_name': _('First name'),
+            'last_name': _('Last name'),
+            'email': _('Email address'),
+            'password1': _('Password'),
+            'password2': _('Password confirmation'),
+        }
 
 class UserUpdateForm(forms.ModelForm):
     username = forms.RegexField(
