@@ -115,6 +115,7 @@ def user_logout(request):
 class CustomLoginView(LoginView):
     #1) first is called with a GET : after clicking on email link
     #2) second is called with POST: user complete login form and is called again
+    success_url = settings.LOGIN_REDIRECT_URL
     def form_valid(self, form):
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')

@@ -38,8 +38,9 @@ urlpatterns= i18n_patterns(
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
 )
+# prefix_default_language = False : put in i18n_patterns to remove prefix for default language
 
-#if you want manage url either with /el/ or without :
+#you can delete from urlpatterns and add directly to urlpatterns += i18n_patterns( path1 , path2, )
 #urlpatterns += i18n_patterns( path ..., )
 
 if 'rosetta' in settings.INSTALLED_APPS:
