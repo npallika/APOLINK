@@ -22,19 +22,14 @@ from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
-    path('', include('Core.urls')),
-    path('accounts/', include ('Accounts.urls')),
-    path('Products/', include ('Products.urls')),
     path('admin/', admin.site.urls),
-    path('captcha/', include('captcha.urls')),
-    path('chaining/', include('smart_selects.urls')),
+    path("i18n/", include("django.conf.urls.i18n"))
     ]
 
-urlpatterns= i18n_patterns(
+urlpatterns += i18n_patterns(
     path('', include('Core.urls')),
     path(_('accounts/'), include ('Accounts.urls')),
     path(_('Products/'), include ('Products.urls')),
-    path(_('admin/'), admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
 )

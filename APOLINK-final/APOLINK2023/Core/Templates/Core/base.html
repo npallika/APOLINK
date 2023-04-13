@@ -199,6 +199,9 @@
               {% include  'Core/messages.html' %}
             </div>
         </div>
+        {%get_current_language as LANGUAGE_CODE%}
+        <p>{{LANGUAGE_CODE}}</p>
+        
         {% block body_block %}
         {% endblock %}
         </div>

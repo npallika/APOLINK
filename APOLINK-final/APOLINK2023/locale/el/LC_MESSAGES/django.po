@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 12:21+0300\n"
-"PO-Revision-Date: 2023-04-13 12:24+0300\n"
+"POT-Creation-Date: 2023-04-13 14:39+0300\n"
+"PO-Revision-Date: 2023-04-13 14:29+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,19 +27,44 @@ msgstr "Αγγλικά"
 msgid "Greek"
 msgstr "Ελληνικά"
 
-#: .\APOLINK2022\urls.py:35
+#: .\APOLINK2022\urls.py:31
 msgid "accounts/"
 msgstr "λογαριασμούς/"
 
-#: .\APOLINK2022\urls.py:36
+#: .\APOLINK2022\urls.py:32
 msgid "Products/"
 msgstr "προϊόντα/"
 
-#: .\APOLINK2022\urls.py:37
-msgid "admin/"
-msgstr "διαχειριστής/"
+#: .\Accounts\urls.py:13
+msgid "signup/"
+msgstr "Εγγραφείτε/"
 
-#: .\Accounts\views.py:79 .\Core\Templates\Core\base.html:132
+#: .\Accounts\urls.py:14
+msgid "activate/<uidb64>/<token>"
+msgstr "δραστηριοποιώ/<uidb64>/<token>"
+
+#: .\Accounts\urls.py:15
+msgid "accountInfo/<int:user_id>/"
+msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
+
+#: .\Accounts\urls.py:16
+#, fuzzy
+#| msgid "accountInfo/<int:user_id>/"
+msgid "editAccount/<int:user_id>/"
+msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
+
+#: .\Accounts\urls.py:17
+msgid "login/"
+msgstr "Σύνδεση/"
+
+#: .\Accounts\urls.py:19
+msgid "logout/"
+msgstr "Αποσύνδεση/"
+
+#: .\Accounts\views.py:79 .\Core\Templates\Core\base.html:131
 #: .\Core\views.py:30
 msgid "hello"
 msgstr "ΓΕΙΑ"
+
+#~ msgid "admin/"
+#~ msgstr "διαχειριστής/"
