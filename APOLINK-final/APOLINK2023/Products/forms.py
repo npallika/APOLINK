@@ -4,7 +4,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.widgets import CheckboxInput
 #from Accounts.models import PlatformUsers, Address, Country, Industry_Type
 from Accounts.models import PlatformUsersAll, Country, Industry_Type
-from .models import ProductsDisplayed, ProductPhotos, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories
+from .models import ProductsDisplayed, ProductPhotos, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories, PalletizerSpecs
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 #from captcha.fields import CaptchaField
@@ -47,11 +47,19 @@ class UpdateProductForm(forms.ModelForm):
     class Meta:
         model = ProductsDisplayed
         fields = ['product_name', 'manufactured_date', 'product_category', 'manufacturer', 'model','for_sell_rent', 'product_short_description']
-        widgets = { 'manufactured_date' : DateInput(attrs={'type':'date', 'max': datetime.now().time()}) }
+        #widgets = { 'manufactured_date' : DateInput(attrs={'type':'date', 'max': datetime.now().time()}) }
 
 #  ------------------ Around Categories Specifications --------------------------- #
 
-class CaseSealersTechSpecsForm(forms.ModelForm):
+def TechSpecs(Model):
+    class TechSpecsForm(forms.ModelForm):
+        class Meta:
+            model = Model
+            exclude = ['product']
+    
+    return TechSpecsForm
+
+'''class CaseSealersTechSpecsForm(forms.ModelForm):
     class Meta:
         model = CaseSealerSpecs
         exclude = ['product']
@@ -68,5 +76,10 @@ class DispersersTechSpecsForm(forms.ModelForm):
     class Meta:
         model = DispersersSpecs
         exclude = ['product']
+        
 
-
+class PalletizersTechSpecsForm(forms.ModelForm):
+    class Meta:
+        model = PalletizerSpecs
+        exclude = ['product']
+        '''

@@ -153,7 +153,9 @@ def AccountInfo(request, user_id):
     context={}
     try:
         user = User.objects.get(pk=user_id)
+        print(f'the user is {user}')
         userInfo = PlatformUsersAll.objects.get(user=user)
+        print(f'userInfo {userInfo}')
     except User.DoesNotExist and PlatformUsersAll.DoesNotExist:
         return HttpResponseRedirect(reverse('Accounts:signup'))
     
@@ -191,6 +193,7 @@ def EditAccount(request, user_id):
     try:
         #user = User.objects.get(pk=user_id)
         user = request.user
+        print(f'the request user is {user}')
         userInfo = PlatformUsersAll.objects.get(user=user)
         if not user.is_authenticated :
             return redirect('Accounts:login')
@@ -200,8 +203,20 @@ def EditAccount(request, user_id):
         return HttpResponseRedirect(reverse('Accounts:signup'))   
 
     if request.method == "POST":
+#<<<<<<< Updated upstream
         userForm = UserUpdateForm(request.POST, instance=user) #update = True
         userInfoForm = PlatformUsersFormAll(request.POST,  instance=userInfo) #request.FILES, if we want photos
+#=======
+#<<<<<<< Updated upstream
+        #userForm = UserCreationForm(request.POST, instance= user) #update = True
+        #userInfoForm = PlatformUsersFormAll(request.POST,  instance=userInfo) #request.FILES, if we want photos
+        #print(userForm)
+#=======
+        #userForm = UserCreationForm(request.POST)
+        #userInfoForm = PlatformUsersFormAll(request.POST)
+        
+#>>>>>>> Stashed changes
+#>>>>>>> Stashed changes
         if userForm.is_valid() and userInfoForm.is_valid() :
             user = userForm.save(commit=False) #don't save immediatley in DB , first put active = False
             #if user is a superuser, doesn't need to be activated; is supposed to be activated by default
@@ -225,7 +240,7 @@ def EditAccount(request, user_id):
                     activateEmail(request, user, userForm.cleaned_data.get('email')) 
                     messages.success(request, 'Your profile is updated successfully')
                 else :
-                    user.save() #save active
+                    #user.save() #save active
                     user_info = userInfoForm.save(commit=False) #don't save immediatley in DB (1-1 field)
                     user_info.user=user        
                     user_info.save() 

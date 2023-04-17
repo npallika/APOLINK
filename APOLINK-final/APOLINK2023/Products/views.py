@@ -4,9 +4,10 @@ from django.forms import modelformset_factory, inlineformset_factory
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.admin.widgets import AdminDateWidget
+from django import forms
 from django.http import HttpResponseRedirect
-from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs
-from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, CaseSealersTechSpecsForm, CasePackerTechSpecsForm, DispersersTechSpecsForm
+from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs, PalletizerSpecs
+from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -19,6 +20,9 @@ from django.utils import timezone
 from django.contrib import messages
 from django.apps import apps
 # Create your views here.
+
+
+
 
 def CategoriesProductsList(request, slug):
     category = ThirdLevelCategories.objects.get(slug=slug)
@@ -62,6 +66,7 @@ models_dict = {
     'Case Sealers':CaseSealerSpecs,
     'Case Packers':CasePackerSpecs,
     'Dispersers-Mixers':DispersersSpecs,
+    'Palletizers': PalletizerSpecs,
 }
 
 
@@ -125,16 +130,7 @@ def sell_rent(request):
     return render(request, 'Products/sellRent_form.html', {'sellRentForm': sellRentForm, 'formset': formset  })
 
 
-models_form_dict = {
-    'Case Sealers':CaseSealersTechSpecsForm,
-    'Case Packers':CasePackerTechSpecsForm,
-    'Dispersers-Mixers':DispersersTechSpecsForm
-}
-models_dict = {
-    'Case Sealers':CaseSealerSpecs,
-    'Case Packers':CasePackerSpecs,
-    'Dispersers-Mixers': DispersersSpecs
-}
+
 
 @login_required
 def ProductsSpecsCreate(request, pk):
@@ -153,7 +149,8 @@ def ProductsSpecsCreate(request, pk):
     
     if request.method == 'POST':
         #print("Now, I post!")
-        ProductSpecsForm = models_form_dict[category_name](request.POST) 
+        ProductSpecsForm = TechSpecs(models_dict[category_name])(request.POST)
+        #ProductSpecsForm = models_form_dict[category_name](request.POST) 
         
         #ProductSpecsForm.product = product
         #print(f"Contents of the form: {ProductSpecsForm}")
@@ -166,7 +163,8 @@ def ProductsSpecsCreate(request, pk):
             return redirect ('Products:product_details', pk)
 
     else:
-        ProductSpecsForm = models_form_dict[category_name]()#take the right form from dictionary based on thirdlevelcategory
+        ProductSpecsForm = TechSpecs(models_dict[category_name])()
+        #ProductSpecsForm = models_form_dict[category_name]()#take the right form from dictionary based on thirdlevelcategory
             
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
 
@@ -193,7 +191,8 @@ def ProductsSpecsUpdate(request, pk):
     print(f"SPECS PRODUCT : {specsCategory}")
    
     if request.method == 'POST':
-        ProductSpecsForm = models_form_dict[category_name](request.POST, instance=specsCategory)  
+        #ProductSpecsForm = models_form_dict[category_name](request.POST, instance=specsCategory)
+        ProductSpecsForm = TechSpecs(models_dict[category_name])(request.POST, instance=specsCategory)  
         if ProductSpecsForm.is_valid():
             publish=ProductSpecsForm.save(commit=False)
             #print (f"The publish is {publish}")
@@ -203,7 +202,7 @@ def ProductsSpecsUpdate(request, pk):
             return redirect ('Products:product_details', pk)
 
     else:
-        ProductSpecsForm = models_form_dict[category_name](instance=specsCategory)#take the right form from dictionary based on thirdlevelcategory
+        ProductSpecsForm = TechSpecs(models_dict[category_name])(instance=specsCategory)#take the right form from dictionary based on thirdlevelcategory
             
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
 

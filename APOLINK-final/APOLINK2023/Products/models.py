@@ -101,3 +101,21 @@ class DispersersSpecs(models.Model):
     power = models.FloatField(verbose_name="Motor Power in kW")
     application = models.CharField(verbose_name="Application", max_length=80, blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.product.id}. {self.product.product_name} specs"
+
+
+class PalletizerSpecs(models.Model):
+    TYPES = (
+        ('layer', 'Layer'),
+        ('gantry', 'Gantry'),
+        ('robotic', 'Robotic'),
+        ('other', 'Other')
+    )
+    product = models.OneToOneField(ProductsDisplayed, on_delete=models.CASCADE)
+    type = models.CharField(verbose_name="Palletizer Type", max_length=25, choices=TYPES, blank=True, null=True)
+    throughput = models.FloatField(verbose_name="Throughput (pieces/min)")
+    application = models.CharField(verbose_name="Application", max_length=80, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.product.id}. {self.product.product_name} specs"

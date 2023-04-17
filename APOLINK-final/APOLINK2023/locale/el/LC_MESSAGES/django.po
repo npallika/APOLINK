@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 17:39+0300\n"
-"PO-Revision-Date: 2023-04-13 17:25+0300\n"
-"Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
+"POT-Creation-Date: 2023-04-13 23:28+0300\n"
+"PO-Revision-Date: 2023-04-13 22:55+0300\n"
+"Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "προϊόντα/"
 
 #: .\Accounts\forms.py:17 .\Accounts\forms.py:45
 msgid "Username"
-msgstr "όνομα"
+msgstr "Όνομα"
 
 #: .\Accounts\forms.py:18
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
@@ -72,7 +72,7 @@ msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:33 .\Core\models.py:10
 msgid "name"
-msgstr "όνομα"
+msgstr "Όνομα"
 
 #: .\Accounts\models.py:63
 msgid "company_name"
@@ -103,10 +103,8 @@ msgid "zipcode"
 msgstr "ταχυδρομικός κώδικας"
 
 #: .\Accounts\models.py:78
-#, fuzzy
-#| msgid "accounts/"
 msgid "country"
-msgstr "λογαριασμούς/"
+msgstr "χώρα/"
 
 #: .\Accounts\urls.py:13
 msgid "signup/"
@@ -114,7 +112,7 @@ msgstr "Εγγραφείτε/"
 
 #: .\Accounts\urls.py:14
 msgid "activate/<uidb64>/<token>"
-msgstr "δραστηριοποιώ/<uidb64>/<token>"
+msgstr "ενεργοποίηση/<uidb64>/<token>"
 
 #: .\Accounts\urls.py:15
 msgid "accountInfo/<int:user_id>/"
@@ -144,7 +142,6 @@ msgid "Product Categories"
 msgstr "κατηγορίες προϊόντων"
 
 #, fuzzy
-#~| msgid "name"
 #~ msgid "name1"
 #~ msgstr "όνομα"
 
