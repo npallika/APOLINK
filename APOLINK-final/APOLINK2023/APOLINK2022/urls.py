@@ -23,10 +23,10 @@ from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
-    path('admin/', admin.site.urls),
     ]
 
 urlpatterns += i18n_patterns(
+    path('admin/', admin.site.urls),
     path('', include('Core.urls')),
     path(_('accounts/'), include ('Accounts.urls')),
     path(_('Products/'), include ('Products.urls')),

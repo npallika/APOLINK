@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 17:39+0300\n"
+"POT-Creation-Date: 2023-04-18 12:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,12 +66,20 @@ msgstr ""
 msgid "Password confirmation"
 msgstr ""
 
+#: .\Accounts\models.py:10
+msgid "code"
+msgstr ""
+
+#: .\Accounts\models.py:11
+msgid "phone code"
+msgstr ""
+
 #: .\Accounts\models.py:12 .\Accounts\models.py:33 .\Core\models.py:10
 msgid "name"
 msgstr ""
 
 #: .\Accounts\models.py:63
-msgid "company_name"
+msgid "company name"
 msgstr ""
 
 #: .\Accounts\models.py:64
@@ -79,11 +87,11 @@ msgid "industry"
 msgstr ""
 
 #: .\Accounts\models.py:65
-msgid "company_position"
+msgid "company position"
 msgstr ""
 
 #: .\Accounts\models.py:74
-msgid "street_address"
+msgid "street address"
 msgstr ""
 
 #: .\Accounts\models.py:75

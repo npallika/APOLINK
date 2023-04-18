@@ -7,8 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Country(models.Model):
-    code = models.CharField(max_length=3, null=True)
-    phoneCode = models.CharField(max_length=4, null=True)
+    code = models.CharField(_('code'),max_length=3, null=True)
+    phoneCode = models.CharField(_('phone code'),max_length=4, null=True)
     name = models.CharField(_("name"),max_length=30, null=True)
     
     def __str__(self):
@@ -60,9 +60,9 @@ class PlatformUsersAll(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #added informations:    
     #base-code
-    company_name = models.CharField(_("company_name") ,max_length=50, null=True)
+    company_name = models.CharField(_("company name") ,max_length=50, null=True)
     industry = models.ForeignKey(Industry_Type, verbose_name=_("industry"), null=True, on_delete=models.CASCADE)
-    company_position = models.CharField(_("company_position"),max_length=20, null=True)
+    company_position = models.CharField(_("company position"),max_length=20, null=True)
     #other_addresses = models.ManyToManyField(Address, blank= True, related_name = 'other_addresses')
 
     phone_landline_country = models.ForeignKey(Country, null=True, blank= True, on_delete=models.CASCADE, related_name = 'landline_country')
@@ -71,7 +71,7 @@ class PlatformUsersAll(models.Model):
     phone_mobile_number = models.CharField(max_length=12, null=True, blank=True)
 
     #adress 
-    street_address = models.CharField(_("street_address"),max_length=100, null=True)
+    street_address = models.CharField(_("street address"),max_length=100, null=True)
     city = models.CharField(_("city"),max_length=30, null=True)
     region = models.CharField(_("region"),max_length=20, null=True)
     zipcode = models.CharField(_("zipcode"),max_length=30, null=True)
