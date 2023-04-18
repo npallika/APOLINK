@@ -105,6 +105,22 @@ class PlatformUsersFormAll(forms.ModelForm):
     class Meta:
         model = PlatformUsersAll
         fields = ['industry', 'phone_mobile_country', 'phone_mobile_number','phone_landline_country', 'phone_landline_number', 'company_name', 'company_position','street_address', 'city', 'region', 'zipcode', 'country']
+        labels= {
+            'industry': _('industry'),
+            'phone_mobile_country': _('phone mobile country'),
+            'phone_mobile_number': _('phone mobile number'),
+            'phone_landline_country': _('phone landline country'),
+            'phone_landline_number': _('phone landline number'),
+            'company_name': _('company name'),
+            'company_position': _('company position'),
+            'street_address': _('street address'),
+            'city': _('city'),
+            'region': _('region'),
+            'zipcode': _('zipcode'),
+            'country': _('country'),
+        }
+        
+        
         def __init__(self, *args, **kwargs):
             kwargs.setdefault('label_suffix', '')
             super(PlatformUsersFormAll, self).__init__(*args, **kwargs)

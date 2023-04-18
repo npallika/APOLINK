@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    #'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,7 @@ INSTALLED_APPS = [
     'jsonfield',
     'crispy_bootstrap4',
     'rosetta',
-    'parler',
+    #'parler',
     
 ]
 
@@ -140,6 +141,18 @@ LANGUAGES = (
     ('en', _('English')),
     ('el', _('Greek')),
 )
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en',}, # English
+        {'code': 'el',}, # Greek
+    ),
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
+
 
 TIME_ZONE = 'Europe/Athens'
 

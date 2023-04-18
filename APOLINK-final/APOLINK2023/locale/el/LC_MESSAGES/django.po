@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 15:11+0300\n"
-"PO-Revision-Date: 2023-04-18 15:29+0300\n"
+"POT-Creation-Date: 2023-04-18 16:44+0300\n"
+"PO-Revision-Date: 2023-04-18 16:46+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\APOLINK2022\settings.py:139
+#: .\APOLINK2022\settings.py:141
 msgid "English"
 msgstr "Αγγλικά"
 
-#: .\APOLINK2022\settings.py:140
+#: .\APOLINK2022\settings.py:142
 msgid "Greek"
 msgstr "Ελληνικά"
 
@@ -70,6 +70,54 @@ msgstr "Κωδικός πρόσβασης"
 msgid "Password confirmation"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
+#: .\Accounts\forms.py:109 .\Accounts\models.py:64
+msgid "industry"
+msgstr "βιομηχανία"
+
+#: .\Accounts\forms.py:110
+msgid "phone mobile country"
+msgstr "τηλέφωνο κινητό χώρα"
+
+#: .\Accounts\forms.py:111
+msgid "phone mobile number"
+msgstr "αριθμός κινητού τηλεφώνου"
+
+#: .\Accounts\forms.py:112
+msgid "phone landline country"
+msgstr "τηλέφωνο σταθερό τηλέφωνο χώρα"
+
+#: .\Accounts\forms.py:113
+msgid "phone landline number"
+msgstr "αριθμός σταθερού τηλεφώνου"
+
+#: .\Accounts\forms.py:114 .\Accounts\models.py:63
+msgid "company name"
+msgstr "ονομα εταιρείας"
+
+#: .\Accounts\forms.py:115 .\Accounts\models.py:65
+msgid "company position"
+msgstr "εταιρεία θέση"
+
+#: .\Accounts\forms.py:116 .\Accounts\models.py:74
+msgid "street address"
+msgstr "διεύθυνση οδού"
+
+#: .\Accounts\forms.py:117 .\Accounts\models.py:75
+msgid "city"
+msgstr "πόλη"
+
+#: .\Accounts\forms.py:118 .\Accounts\models.py:76
+msgid "region"
+msgstr "περιοχή"
+
+#: .\Accounts\forms.py:119 .\Accounts\models.py:77
+msgid "zipcode"
+msgstr "ταχυδρομικός κώδικας"
+
+#: .\Accounts\forms.py:120 .\Accounts\models.py:78
+msgid "country"
+msgstr "χώρα"
+
 #: .\Accounts\models.py:10
 msgid "code"
 msgstr "κώδικας"
@@ -81,38 +129,6 @@ msgstr "κωδικός τηλεφώνου"
 #: .\Accounts\models.py:12 .\Accounts\models.py:33 .\Core\models.py:10
 msgid "name"
 msgstr "oνομα"
-
-#: .\Accounts\models.py:63
-msgid "company name"
-msgstr "ονομα εταιρείας"
-
-#: .\Accounts\models.py:64
-msgid "industry"
-msgstr "βιομηχανία"
-
-#: .\Accounts\models.py:65
-msgid "company position"
-msgstr "εταιρεία θέση"
-
-#: .\Accounts\models.py:74
-msgid "street address"
-msgstr "διεύθυνση οδού"
-
-#: .\Accounts\models.py:75
-msgid "city"
-msgstr "πόλη"
-
-#: .\Accounts\models.py:76
-msgid "region"
-msgstr "περιοχή"
-
-#: .\Accounts\models.py:77
-msgid "zipcode"
-msgstr "ταχυδρομικός κώδικας"
-
-#: .\Accounts\models.py:78
-msgid "country"
-msgstr "χώρα"
 
 #: .\Accounts\urls.py:13
 msgid "signup/"

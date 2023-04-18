@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 15:11+0300\n"
+"POT-Creation-Date: 2023-04-18 16:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\APOLINK2022\settings.py:139
+#: .\APOLINK2022\settings.py:141
 msgid "English"
 msgstr ""
 
-#: .\APOLINK2022\settings.py:140
+#: .\APOLINK2022\settings.py:142
 msgid "Greek"
 msgstr ""
 
@@ -66,6 +66,54 @@ msgstr ""
 msgid "Password confirmation"
 msgstr ""
 
+#: .\Accounts\forms.py:109 .\Accounts\models.py:64
+msgid "industry"
+msgstr ""
+
+#: .\Accounts\forms.py:110
+msgid "phone mobile country"
+msgstr ""
+
+#: .\Accounts\forms.py:111
+msgid "phone mobile number"
+msgstr ""
+
+#: .\Accounts\forms.py:112
+msgid "phone landline country"
+msgstr ""
+
+#: .\Accounts\forms.py:113
+msgid "phone landline number"
+msgstr ""
+
+#: .\Accounts\forms.py:114 .\Accounts\models.py:63
+msgid "company name"
+msgstr ""
+
+#: .\Accounts\forms.py:115 .\Accounts\models.py:65
+msgid "company position"
+msgstr ""
+
+#: .\Accounts\forms.py:116 .\Accounts\models.py:74
+msgid "street address"
+msgstr ""
+
+#: .\Accounts\forms.py:117 .\Accounts\models.py:75
+msgid "city"
+msgstr ""
+
+#: .\Accounts\forms.py:118 .\Accounts\models.py:76
+msgid "region"
+msgstr ""
+
+#: .\Accounts\forms.py:119 .\Accounts\models.py:77
+msgid "zipcode"
+msgstr ""
+
+#: .\Accounts\forms.py:120 .\Accounts\models.py:78
+msgid "country"
+msgstr ""
+
 #: .\Accounts\models.py:10
 msgid "code"
 msgstr ""
@@ -76,38 +124,6 @@ msgstr ""
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:33 .\Core\models.py:10
 msgid "name"
-msgstr ""
-
-#: .\Accounts\models.py:63
-msgid "company name"
-msgstr ""
-
-#: .\Accounts\models.py:64
-msgid "industry"
-msgstr ""
-
-#: .\Accounts\models.py:65
-msgid "company position"
-msgstr ""
-
-#: .\Accounts\models.py:74
-msgid "street address"
-msgstr ""
-
-#: .\Accounts\models.py:75
-msgid "city"
-msgstr ""
-
-#: .\Accounts\models.py:76
-msgid "region"
-msgstr ""
-
-#: .\Accounts\models.py:77
-msgid "zipcode"
-msgstr ""
-
-#: .\Accounts\models.py:78
-msgid "country"
 msgstr ""
 
 #: .\Accounts\urls.py:13
