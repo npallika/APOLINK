@@ -49,8 +49,7 @@ background-color: #f1f1f1;
   <ul>
       
       {% for category in FirstLevelCategories %}
-      
-         <div> <button onclick="myFunction({{ forloop.counter }})" class="collapsible"> {{category.name}}  </button>
+         <div> <button onclick="myFunction({{ forloop.counter }})" class="collapsible"> {% blocktranslate with catName_t=category.name %}{{catName_t}} {% endblocktranslate %} </button>
          </div>
           <div id="{{ forloop.counter }}" style="display:none" class="content">  
           {% for subcat in SecondLevelCategories %}

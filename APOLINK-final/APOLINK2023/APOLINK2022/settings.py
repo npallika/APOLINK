@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'jsonfield',
     'crispy_bootstrap4',
     'rosetta',
+    'parler',
     
 ]
 

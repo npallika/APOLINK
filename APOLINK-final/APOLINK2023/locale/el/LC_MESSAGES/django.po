@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 12:26+0300\n"
-"PO-Revision-Date: 2023-04-18 12:42+0300\n"
+"POT-Creation-Date: 2023-04-18 15:11+0300\n"
+"PO-Revision-Date: 2023-04-18 15:29+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -95,7 +95,6 @@ msgid "company position"
 msgstr "εταιρεία θέση"
 
 #: .\Accounts\models.py:74
-#| msgid "street_address"
 msgid "street address"
 msgstr "διεύθυνση οδού"
 
@@ -149,6 +148,11 @@ msgstr "ΓΕΙΑ"
 #: .\Core\Templates\Core\maincategories_list.html:38
 msgid "Product Categories"
 msgstr "κατηγορίες προϊόντων"
+
+#: .\Core\Templates\Core\maincategories_list.html:52
+#, python-format
+msgid "%(catName_t)s "
+msgstr "%(catName_t)s"
 
 #, fuzzy
 #~ msgid "name1"
