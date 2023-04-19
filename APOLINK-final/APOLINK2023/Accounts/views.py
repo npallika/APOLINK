@@ -44,15 +44,15 @@ def Activate(request, uidb64, token):
         user.is_active = True
         user.save() #now user, already saved before, is saved again, but ACTIVE!
         print(f"USER {vars(user)} HAS ACTIVE = {user.is_active}")
-        messages.success(request, "Thank you for your email confirmation. Now you can LOGIN in your account")
+        messages.success(request, _("Thank you for your email confirmation. Now you can LOGIN in your account"))
         return HttpResponseRedirect(reverse('Accounts:login'))
     else:
-        messages.error(request, "Activation link is invalid!")
+        messages.error(request, _("Activation link is invalid!"))
     return HttpResponseRedirect(reverse('Core:categories_list'))
 
 
 def activateEmail(request, user, to_email):
-    mail_subject = 'Activate your user account'
+    mail_subject = _('Activate your user account')
     #send a message contained in a template, pass context
     message = render_to_string(
         'Accounts/template_activate_account.html',
@@ -68,9 +68,9 @@ def activateEmail(request, user, to_email):
                          to=[to_email]) #user email
     email.content_subtype='html'
     if email.send(): #return 1 if the email is sent correctly
-        messages.success(request, f'Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
+        messages.success(request, _(f'Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.'))
     else :
-        messages.error(request, f'Problem sending email to {to_email}', 'check if you typed it correctly')
+        messages.error(request, _(f'Problem sending email to {to_email}', 'check if you typed it correctly'))
 
 
 #TRANSLATION
@@ -120,7 +120,7 @@ def Signup(request):
 @login_required
 def user_logout(request):
     # Log out the user.
-    messages.info(request, "You have successfully logged out.") 
+    messages.info(request, _("You have successfully logged out.")) 
     logout(request)
     # Return to homepage.
     return redirect("Core:categories_list")
@@ -139,10 +139,10 @@ class CustomLoginView(LoginView):
             # Access user's pk
             pk = user.pk
             # Perform login operation as usual
-            messages.success(self.request, 'You have successfully logged in')
+            messages.success(self.request, _('You have successfully logged in'))
             return super().form_valid(form)
         else:
-            messages.warning(self.request, 'Your account is not active.')
+            messages.warning(self.request, _('Your account is not active.'))
             #redirect('Accounts:login')
             return self.form_invalid(form)
 

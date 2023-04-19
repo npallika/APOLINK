@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 14:56+0300\n"
-"PO-Revision-Date: 2023-04-19 14:57+0300\n"
+"POT-Creation-Date: 2023-04-19 16:55+0300\n"
+"PO-Revision-Date: 2023-04-19 17:02+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -41,7 +41,6 @@ msgid "Username"
 msgstr "Όνομα"
 
 #: .\Accounts\Templates\Accounts\account.html:110
-#| msgid "%(address)s"
 msgid "Address"
 msgstr "Διεύθυνση"
 
@@ -75,6 +74,77 @@ msgstr "Ενημέρωση"
 #: .\Accounts\Templates\Accounts\account.html:123
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\edit_account.html:43
+msgid "cancel"
+msgstr "ακυρώστε το "
+
+#: .\Accounts\Templates\Accounts\edit_account.html:44
+msgid "check"
+msgstr "έλεγχος "
+
+#: .\Accounts\Templates\Accounts\edit_account.html:49
+msgid "EDIT"
+msgstr "επεξεργασία"
+
+#: .\Accounts\Templates\Accounts\edit_account.html:89
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: .\Accounts\Templates\Accounts\login.html:7
+#: .\Accounts\Templates\Accounts\login1.html:7
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Το όνομα χρήστη και ο κωδικός πρόσβασής σας δεν ταιριάζουν. Παρακαλώ "
+"δοκιμάστε ξανά."
+
+#: .\Accounts\Templates\Accounts\login.html:12
+#: .\Accounts\Templates\Accounts\login.html:14
+msgid "Login"
+msgstr "σύνδεση"
+
+#: .\Accounts\Templates\Accounts\login.html:17
+msgid "Reset password"
+msgstr "Επαναφορά κωδικού πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\login.html:18
+#: .\Accounts\Templates\Accounts\login1.html:27
+msgid "New here? Create an account."
+msgstr "Νέος εδώ; Δημιουργήστε ένα λογαριασμό."
+
+#: .\Accounts\Templates\Accounts\login1.html:14
+#, python-format
+msgid " %(form.username.label_tag)s "
+msgstr "%(form.username.label_tag)s"
+
+#: .\Accounts\Templates\Accounts\signup.html:16
+#: .\Accounts\Templates\Accounts\signup.html:21
+msgid "Sign Up"
+msgstr "Εγγραφείτε"
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:7
+#: .\Accounts\Templates\Accounts\template_activate_account.html:30
+#: .\Accounts\views.py:55
+msgid "Activate your user account"
+msgstr "Ενεργοποιήστε το λογαριασμό χρήστη σας"
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:31
+#, python-format
+msgid "  Hi %(user.username)s,  "
+msgstr "Γεια σας %(user.username)s,"
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:32
+msgid "Please click on the link below to confirm your registration:"
+msgstr ""
+"Κάντε κλικ στον παρακάτω σύνδεσμο για να επιβεβαιώσετε την εγγραφή σας:"
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:33
+msgid "Activate"
+msgstr "Ενεργοποίηση"
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:34
+msgid "Thank you!"
+msgstr "Σας ευχαριστώ!"
 
 #: .\Accounts\forms.py:18
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
@@ -217,12 +287,48 @@ msgstr "σύνδεση/"
 msgid "logout/"
 msgstr "αποσύνδεση/"
 
+#: .\Accounts\views.py:47
+msgid ""
+"Thank you for your email confirmation. Now you can LOGIN in your account"
+msgstr ""
+"Σας ευχαριστούμε για την επιβεβαίωση του email σας. Τώρα μπορείτε να "
+"συνδεθείτε στο λογαριασμό σας"
+
+#: .\Accounts\views.py:50
+msgid "Activation link is invalid!"
+msgstr "Ο σύνδεσμος ενεργοποίησης είναι άκυρος!"
+
+#: .\Accounts\views.py:71
+#, python-brace-format
+msgid ""
+"Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on "
+"received activation link to confirm and complete the registration.<b> Note: "
+"</b>. Check your spam folder."
+msgstr ""
+
+#: .\Accounts\views.py:73
+#, python-brace-format
+msgid "Problem sending email to {to_email}"
+msgstr "Πρόβλημα αποστολής email σε %(to_email)s"
+
 #: .\Accounts\views.py:81 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
 msgid "hello"
 msgstr "ΓΕΙΑ"
 
-#: .\Accounts\views.py:229 .\Accounts\views.py:241
+#: .\Accounts\views.py:123
+msgid "You have successfully logged out."
+msgstr ""
+
+#: .\Accounts\views.py:142
+msgid "You have successfully logged in"
+msgstr ""
+
+#: .\Accounts\views.py:145
+msgid "Your account is not active."
+msgstr ""
+
+#: .\Accounts\views.py:229 .\Accounts\views.py:241 .\Accounts\views.py:247
 msgid "Your profile is updated successfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 

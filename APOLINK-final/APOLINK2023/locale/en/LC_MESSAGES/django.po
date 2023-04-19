@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 14:56+0300\n"
+"POT-Creation-Date: 2023-04-19 16:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,6 +72,74 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\account.html:123
 msgid "Change password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\edit_account.html:43
+msgid "cancel"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\edit_account.html:44
+msgid "check"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\edit_account.html:49
+msgid "EDIT"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\edit_account.html:89
+msgid "Save"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\login.html:7
+#: .\Accounts\Templates\Accounts\login1.html:7
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\login.html:12
+#: .\Accounts\Templates\Accounts\login.html:14
+msgid "Login"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\login.html:17
+msgid "Reset password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\login.html:18
+#: .\Accounts\Templates\Accounts\login1.html:27
+msgid "New here? Create an account."
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\login1.html:14
+#, python-format
+msgid " %(form.username.label_tag)s "
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\signup.html:16
+#: .\Accounts\Templates\Accounts\signup.html:21
+msgid "Sign Up"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:7
+#: .\Accounts\Templates\Accounts\template_activate_account.html:30
+#: .\Accounts\views.py:55
+msgid "Activate your user account"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:31
+#, python-format
+msgid "  Hi %(user.username)s,  "
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:32
+msgid "Please click on the link below to confirm your registration:"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:33
+msgid "Activate"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\template_activate_account.html:34
+msgid "Thank you!"
 msgstr ""
 
 #: .\Accounts\forms.py:18
@@ -210,12 +278,46 @@ msgstr ""
 msgid "logout/"
 msgstr ""
 
+#: .\Accounts\views.py:47
+msgid ""
+"Thank you for your email confirmation. Now you can LOGIN in your account"
+msgstr ""
+
+#: .\Accounts\views.py:50
+msgid "Activation link is invalid!"
+msgstr ""
+
+#: .\Accounts\views.py:71
+#, python-brace-format
+msgid ""
+"Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on "
+"received activation link to confirm and complete the registration.<b> Note: "
+"</b>. Check your spam folder."
+msgstr ""
+
+#: .\Accounts\views.py:73
+#, python-brace-format
+msgid "Problem sending email to {to_email}"
+msgstr ""
+
 #: .\Accounts\views.py:81 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
 msgid "hello"
 msgstr ""
 
-#: .\Accounts\views.py:229 .\Accounts\views.py:241
+#: .\Accounts\views.py:123
+msgid "You have successfully logged out."
+msgstr ""
+
+#: .\Accounts\views.py:142
+msgid "You have successfully logged in"
+msgstr ""
+
+#: .\Accounts\views.py:145
+msgid "Your account is not active."
+msgstr ""
+
+#: .\Accounts\views.py:229 .\Accounts\views.py:241 .\Accounts\views.py:247
 msgid "Your profile is updated successfully"
 msgstr ""
 
