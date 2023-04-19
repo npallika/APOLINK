@@ -52,7 +52,7 @@ class UserCreationForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     username = forms.RegexField(
-        label=("Username"), max_length=30, regex=r"^[\w.@+-]+$",
+        label=_("Username"), max_length=30, regex=r"^[\w.@+-]+$",
         help_text=("Required. 30 characters or fewer. Letters, digits and "
                 "@/./+/-/_ only."),
         error_messages={
@@ -66,6 +66,10 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email',]
+        labels = {
+            'username': _('Username'),
+            'first_name': _('First name'),
+            'last_name': _('Last name'),}
         
 
 

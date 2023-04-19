@@ -11,12 +11,16 @@ class Country(models.Model):
     phoneCode = models.CharField(_('phone code'),max_length=4, null=True)
     name = models.CharField(_("name"),max_length=30, null=True)
     
+    class Meta:
+        verbose_name = _("Country")
+        verbose_name_plural = _("Countries")
+        
     def __str__(self):
         return self.name + " : " + self.phoneCode
 		
     
     def get_simple_name(self):
-        return self.name    
+        return self.name  
 
 '''
 class Address(models.Model):
@@ -31,6 +35,9 @@ class Address(models.Model):
 
 class Industry_Type(models.Model):
     name = models.CharField(_("name"),max_length=30, null=True)
+    class Meta:
+        verbose_name = _("Industry Type")
+        verbose_name_plural = _("Industry Types")
     def __str__(self):
         return self.name
 
@@ -78,8 +85,8 @@ class PlatformUsersAll(models.Model):
     country = models.ForeignKey(Country, verbose_name=_("country"), null=True, on_delete=models.CASCADE)
     
     class Meta:
-        verbose_name = "Platform User"
-        verbose_name_plural = "Platform Users"
+        verbose_name = _("Platform User")
+        verbose_name_plural = _("Platform Users")
     def __str__(self):
         return self.user.username + ' ' + self.company_name 
     
