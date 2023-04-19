@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 13:09+0300\n"
-"PO-Revision-Date: 2023-04-19 13:06+0300\n"
+"POT-Creation-Date: 2023-04-19 14:56+0300\n"
+"PO-Revision-Date: 2023-04-19 14:57+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -35,10 +35,46 @@ msgstr "λογαριασμούς/"
 msgid "Products/"
 msgstr "προϊόντα/"
 
-#: .\Accounts\forms.py:17 .\Accounts\forms.py:45 .\Accounts\forms.py:55
-#: .\Accounts\forms.py:70
+#: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:17
+#: .\Accounts\forms.py:45 .\Accounts\forms.py:55 .\Accounts\forms.py:70
 msgid "Username"
 msgstr "Όνομα"
+
+#: .\Accounts\Templates\Accounts\account.html:110
+#| msgid "%(address)s"
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: .\Accounts\Templates\Accounts\account.html:111
+#, python-format
+msgid "%(address)s"
+msgstr "%(address)s"
+
+#: .\Accounts\Templates\Accounts\account.html:112
+msgid "Company Name"
+msgstr "Όνομα εταιρείας"
+
+#: .\Accounts\Templates\Accounts\account.html:113
+#, python-format
+msgid "%(company_name)s"
+msgstr "%(company_name)s"
+
+#: .\Accounts\Templates\Accounts\account.html:114
+msgid "Industry"
+msgstr "Βιομηχανία"
+
+#: .\Accounts\Templates\Accounts\account.html:115
+#, python-format
+msgid "%(industry)s"
+msgstr "%(industry)s"
+
+#: .\Accounts\Templates\Accounts\account.html:120
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#: .\Accounts\Templates\Accounts\account.html:123
+msgid "Change password"
+msgstr "Αλλαγή κωδικού πρόσβασης"
 
 #: .\Accounts\forms.py:18
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
@@ -185,6 +221,10 @@ msgstr "αποσύνδεση/"
 #: .\Core\views.py:30
 msgid "hello"
 msgstr "ΓΕΙΑ"
+
+#: .\Accounts\views.py:229 .\Accounts\views.py:241
+msgid "Your profile is updated successfully"
+msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
 #: .\Core\Templates\Core\maincategories_list.html:38
 msgid "Product Categories"

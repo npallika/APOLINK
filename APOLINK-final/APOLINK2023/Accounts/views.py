@@ -24,7 +24,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, activate, gettext
 
 
@@ -226,7 +226,7 @@ def EditAccount(request, user_id):
                 user_info = userInfoForm.save(commit=False) #don't save immediatley in DB
                 user_info.user=user
                 user_info.save() 
-                messages.success(request, 'Your profile is updated successfully')
+                messages.success(request, _('Your profile is updated successfully'))
                 return HttpResponseRedirect(reverse('Accounts:login'))  
             else:
             #if user is not a superuser, activate it again , but just if it has modified something
@@ -238,13 +238,13 @@ def EditAccount(request, user_id):
                     user_info.save() 
                     #activation email is sent after the user complete the form and if cleaned data of userForms (old and new) are different
                     activateEmail(request, user, userForm.cleaned_data.get('email')) 
-                    messages.success(request, 'Your profile is updated successfully')
+                    messages.success(request, _('Your profile is updated successfully'))
                 else :
                     #user.save() #save active
                     user_info = userInfoForm.save(commit=False) #don't save immediatley in DB (1-1 field)
                     user_info.user=user        
                     user_info.save() 
-                    messages.success(request, 'Your profile is updated successfully')
+                    messages.success(request, _('Your profile is updated successfully'))
                 return HttpResponseRedirect(reverse('Core:categories_list'))      
     else:
         userForm = UserUpdateForm(instance = user) #update=True : update : remove the possibility to change passwrod here

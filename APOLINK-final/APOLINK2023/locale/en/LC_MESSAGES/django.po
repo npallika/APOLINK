@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 13:09+0300\n"
+"POT-Creation-Date: 2023-04-19 14:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,9 +34,44 @@ msgstr ""
 msgid "Products/"
 msgstr ""
 
-#: .\Accounts\forms.py:17 .\Accounts\forms.py:45 .\Accounts\forms.py:55
-#: .\Accounts\forms.py:70
+#: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:17
+#: .\Accounts\forms.py:45 .\Accounts\forms.py:55 .\Accounts\forms.py:70
 msgid "Username"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:110
+msgid "Address"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:111
+#, python-format
+msgid "%(address)s"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:112
+msgid "Company Name"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:113
+#, python-format
+msgid "%(company_name)s"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:114
+msgid "Industry"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:115
+#, python-format
+msgid "%(industry)s"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:120
+msgid "Update"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\account.html:123
+msgid "Change password"
 msgstr ""
 
 #: .\Accounts\forms.py:18
@@ -178,6 +213,10 @@ msgstr ""
 #: .\Accounts\views.py:81 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
 msgid "hello"
+msgstr ""
+
+#: .\Accounts\views.py:229 .\Accounts\views.py:241
+msgid "Your profile is updated successfully"
 msgstr ""
 
 #: .\Core\Templates\Core\maincategories_list.html:38
