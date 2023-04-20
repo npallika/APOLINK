@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 14:33+0300\n"
+"POT-Creation-Date: 2023-04-20 16:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,11 +50,6 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\account.html:112
 msgid "Company Name"
-msgstr ""
-
-#: .\Accounts\Templates\Accounts\account.html:113
-#, python-format
-msgid "%(company_name)s"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\account.html:114
@@ -285,7 +280,7 @@ msgid "phone code"
 msgstr ""
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
-#: .\Core\models.py:27
+#: .\Core\models.py:27 .\Products\models.py:13
 msgid "name"
 msgstr ""
 
@@ -420,7 +415,7 @@ msgstr ""
 msgid "short description"
 msgstr ""
 
-#: .\Core\models.py:13 .\Core\models.py:31
+#: .\Core\models.py:13 .\Core\models.py:31 .\Products\models.py:17
 msgid "slug"
 msgstr ""
 
@@ -432,7 +427,7 @@ msgstr ""
 msgid "First Level Categories"
 msgstr ""
 
-#: .\Core\models.py:28
+#: .\Core\models.py:28 .\Products\models.py:14
 msgid "parent cat"
 msgstr ""
 
@@ -442,4 +437,24 @@ msgstr ""
 
 #: .\Core\models.py:36
 msgid "Second Level Categories"
+msgstr ""
+
+#: .\Products\models.py:15
+msgid "short_name"
+msgstr ""
+
+#: .\Products\models.py:16
+msgid "short_description"
+msgstr ""
+
+#: .\Products\models.py:18
+msgid "icon"
+msgstr ""
+
+#: .\Products\models.py:21
+msgid "Third Level Category"
+msgstr ""
+
+#: .\Products\models.py:22
+msgid "Third Level Categories"
 msgstr ""
