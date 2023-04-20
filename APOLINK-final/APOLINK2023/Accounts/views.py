@@ -26,6 +26,8 @@ from django.core.mail import EmailMessage, get_connection, send_mail
 from .tokens import account_activation_token
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, activate, gettext
+from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
 
 
@@ -68,9 +70,14 @@ def activateEmail(request, user, to_email):
                          to=[to_email]) #user email
     email.content_subtype='html'
     if email.send(): #return 1 if the email is sent correctly
-        messages.success(request, _(f'Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.'))
+        username = _(user.username)
+        msg = _('Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
+        msg = format_html(msg, username =user.username, to_email=to_email)  # insert the translated variables into the message and mark it as safe
+        messages.success(request, msg)  # show the translated message
+        #successMex =  mark_safe(_(f'Dear <b>{user.username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.'))
+        #messages.success(request,successMex)
     else :
-        messages.error(request, _(f'Problem sending email to {to_email}', 'check if you typed it correctly'))
+        messages.error(request, mark_safe(_(f'Problem sending email to {to_email}', 'check if you typed it correctly')))
 
 
 #TRANSLATION

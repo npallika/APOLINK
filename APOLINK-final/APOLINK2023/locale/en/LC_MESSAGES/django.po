@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 16:55+0300\n"
+"POT-Creation-Date: 2023-04-20 11:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\template_activate_account.html:7
 #: .\Accounts\Templates\Accounts\template_activate_account.html:30
-#: .\Accounts\views.py:55
+#: .\Accounts\views.py:57
 msgid "Activate your user account"
 msgstr ""
 
@@ -278,46 +278,46 @@ msgstr ""
 msgid "logout/"
 msgstr ""
 
-#: .\Accounts\views.py:47
+#: .\Accounts\views.py:49
 msgid ""
 "Thank you for your email confirmation. Now you can LOGIN in your account"
 msgstr ""
 
-#: .\Accounts\views.py:50
+#: .\Accounts\views.py:52
 msgid "Activation link is invalid!"
 msgstr ""
 
-#: .\Accounts\views.py:71
+#: .\Accounts\views.py:74
 #, python-brace-format
 msgid ""
-"Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on "
-"received activation link to confirm and complete the registration.<b> Note: "
-"</b>. Check your spam folder."
+"Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click "
+"on received activation link to confirm and complete the registration.<b> "
+"Note: </b>. Check your spam folder."
 msgstr ""
 
-#: .\Accounts\views.py:73
+#: .\Accounts\views.py:80
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
 msgstr ""
 
-#: .\Accounts\views.py:81 .\Core\Templates\Core\base.html:222
+#: .\Accounts\views.py:88 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
 msgid "hello"
 msgstr ""
 
-#: .\Accounts\views.py:123
+#: .\Accounts\views.py:130
 msgid "You have successfully logged out."
 msgstr ""
 
-#: .\Accounts\views.py:142
+#: .\Accounts\views.py:149
 msgid "You have successfully logged in"
 msgstr ""
 
-#: .\Accounts\views.py:145
+#: .\Accounts\views.py:152
 msgid "Your account is not active."
 msgstr ""
 
-#: .\Accounts\views.py:229 .\Accounts\views.py:241 .\Accounts\views.py:247
+#: .\Accounts\views.py:236 .\Accounts\views.py:248 .\Accounts\views.py:254
 msgid "Your profile is updated successfully"
 msgstr ""
 
