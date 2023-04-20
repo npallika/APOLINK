@@ -158,7 +158,7 @@
         <form class="form-inline my-2 my-lg-0" method=POST action="{% url 'Products:search_product' %}">
             {% csrf_token %}
             <span class="px-1">
-            <input class="form-control me-2" type="search" placeholder="Search Product" name="searched">
+            <input class="form-control me-2" type="search" placeholder="{% trans 'Search Product' %}" name="searched">
             <button type="submit" class="search-button">
               <img src="{% static 'search.png' %}" style="height:40px">
             </button>

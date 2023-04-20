@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 12:02+0300\n"
+"POT-Creation-Date: 2023-04-20 14:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,6 +115,18 @@ msgstr ""
 #: .\Accounts\Templates\Accounts\login1.html:14
 #, python-format
 msgid " %(form.username.label_tag)s "
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:38
+msgid "Old password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:39
+msgid "New password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:40
+msgid "Confirm password"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\password_reset\password_change_done.html:8
@@ -273,6 +285,7 @@ msgid "phone code"
 msgstr ""
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
+#: .\Core\models.py:27
 msgid "name"
 msgstr ""
 
@@ -375,6 +388,10 @@ msgstr ""
 msgid "Sell/Rent"
 msgstr ""
 
+#: .\Core\Templates\Core\base.html:161
+msgid "Search Product"
+msgstr ""
+
 #: .\Core\Templates\Core\base.html:183
 msgid "My Products"
 msgstr ""
@@ -391,7 +408,38 @@ msgstr ""
 msgid "Product Categories"
 msgstr ""
 
-#: .\Core\Templates\Core\maincategories_list.html:52
-#, python-format
-msgid "%(catName_t)s "
+#: .\Core\Templates\Core\maincategories_list.html:41
+msgid "Search Category"
+msgstr ""
+
+#: .\Core\models.py:11 .\Core\models.py:29
+msgid "short name"
+msgstr ""
+
+#: .\Core\models.py:12 .\Core\models.py:30
+msgid "short description"
+msgstr ""
+
+#: .\Core\models.py:13 .\Core\models.py:31
+msgid "slug"
+msgstr ""
+
+#: .\Core\models.py:16
+msgid "First Level Category"
+msgstr ""
+
+#: .\Core\models.py:17
+msgid "First Level Categories"
+msgstr ""
+
+#: .\Core\models.py:28
+msgid "parent cat"
+msgstr ""
+
+#: .\Core\models.py:35
+msgid "Second Level Category"
+msgstr ""
+
+#: .\Core\models.py:36
+msgid "Second Level Categories"
 msgstr ""

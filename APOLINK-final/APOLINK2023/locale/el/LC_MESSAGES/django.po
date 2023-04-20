@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 12:02+0300\n"
-"PO-Revision-Date: 2023-04-20 12:06+0300\n"
+"POT-Creation-Date: 2023-04-20 14:36+0300\n"
+"PO-Revision-Date: 2023-04-20 14:39+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -120,6 +120,18 @@ msgstr "Νέος εδώ; Δημιουργήστε ένα λογαριασμό."
 msgid " %(form.username.label_tag)s "
 msgstr "%(form.username.label_tag)s"
 
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:38
+msgid "Old password"
+msgstr "Παλαιός κωδικός πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:39
+msgid "New password"
+msgstr "Νέος κωδικός πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:40
+msgid "Confirm password"
+msgstr "Αλλαγή κωδικού πρόσβασης"
+
 #: .\Accounts\Templates\Accounts\password_reset\password_change_done.html:8
 msgid "Your password has been Updated."
 msgstr "Ο κωδικός πρόσβασής σας έχει ενημερωθεί."
@@ -134,22 +146,18 @@ msgstr ""
 "τώρα."
 
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:12
-#| msgid "Reset password"
 msgid "Reset Your Password"
 msgstr "Επαναφορά κωδικού πρόσβασης"
 
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:33
-#| msgid "Password"
 msgid "New Password"
 msgstr "Κωδικός πρόσβασης"
 
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:45
-#| msgid "Password confirmation"
 msgid "New Password Confirmation"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:55
-#| msgid "Reset password"
 msgid "Reset Password"
 msgstr "Επαναφορά κωδικού πρόσβασης"
 
@@ -290,6 +298,7 @@ msgid "phone code"
 msgstr "κωδικός τηλεφώνου"
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
+#: .\Core\models.py:27
 msgid "name"
 msgstr "oνομα"
 
@@ -330,7 +339,6 @@ msgid "accountInfo/<int:user_id>/"
 msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
 
 #: .\Accounts\urls.py:16
-#| msgid "accountInfo/<int:user_id>/"
 msgid "editAccount/<int:user_id>/"
 msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
 
@@ -368,7 +376,7 @@ msgstr ""
 #: .\Accounts\views.py:80
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
-msgstr "Πρόβλημα αποστολής email σε %(to_email)s"
+msgstr "Πρόβλημα αποστολής email σε {to_email}"
 
 #: .\Accounts\views.py:88 .\Core\Templates\Core\base.html:222
 #: .\Core\views.py:30
@@ -392,7 +400,6 @@ msgid "Your profile is updated successfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
 #: .\Core\Templates\Core\base.html:104
-#| msgid "admin/"
 msgid "Admin"
 msgstr "Διαχειριστής"
 
@@ -400,18 +407,19 @@ msgstr "Διαχειριστής"
 msgid "Sell/Rent"
 msgstr "Πώληση/Ενοικίαση"
 
+#: .\Core\Templates\Core\base.html:161
+msgid "Search Product"
+msgstr "Τα προϊόντα μου"
+
 #: .\Core\Templates\Core\base.html:183
-#| msgid "Products/"
 msgid "My Products"
 msgstr "Τα προϊόντα μου"
 
 #: .\Core\Templates\Core\base.html:184
-#| msgid "logout/"
 msgid "Logout"
 msgstr "Αποσύνδεση"
 
 #: .\Core\Templates\Core\base.html:199
-#| msgid "Sign Up"
 msgid "Login/Sign Up"
 msgstr "Σύνδεση/Εγγραφή"
 
@@ -419,10 +427,45 @@ msgstr "Σύνδεση/Εγγραφή"
 msgid "Product Categories"
 msgstr "κατηγορίες προϊόντων"
 
-#: .\Core\Templates\Core\maincategories_list.html:52
+#: .\Core\Templates\Core\maincategories_list.html:41
+msgid "Search Category"
+msgstr "Κατηγορία αναζήτησης"
+
+#: .\Core\models.py:11 .\Core\models.py:29
+msgid "short name"
+msgstr "σύντομο όνομα"
+
+#: .\Core\models.py:12 .\Core\models.py:30
+msgid "short description"
+msgstr "σύντομη περιγραφή"
+
+#: .\Core\models.py:13 .\Core\models.py:31
+msgid "slug"
+msgstr "γυμνοσάλιαγκας"
+
+#: .\Core\models.py:16
+msgid "First Level Category"
+msgstr "Κατηγορία πρώτου επιπέδου"
+
+#: .\Core\models.py:17
+msgid "First Level Categories"
+msgstr "κατηγορίες προϊόντων"
+
+#: .\Core\models.py:28
+msgid "parent cat"
+msgstr "μητρική γάτα"
+
+#: .\Core\models.py:35
+msgid "Second Level Category"
+msgstr "Κατηγορία δεύτερου επιπέδου"
+
+#: .\Core\models.py:36
+msgid "Second Level Categories"
+msgstr "κατηγορίες προϊόντων"
+
 #, python-format
-msgid "%(catName_t)s "
-msgstr "%(catName_t)s"
+#~ msgid "%(catName_t)s "
+#~ msgstr "%(catName_t)s"
 
 #, python-format
 #~ msgid "%(message|safe|escape)s"

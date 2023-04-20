@@ -38,7 +38,7 @@ background-color: #f1f1f1;
   <h2>{%translate 'Product Categories'%}</h2>
   <div class="container">
     <div class="wrapper">
-      <input type="text" name="search" id="search" placeholder="Search Category" autocomplete="chrome-off">
+      <input type="text" name="search" id="search" placeholder={%trans "Search Category" %} autocomplete="chrome-off">
       <button class="button"><i class="fa fa-search"></i></button>
       <div class="results">
         <ul>
@@ -49,7 +49,7 @@ background-color: #f1f1f1;
   <ul>
       
       {% for category in FirstLevelCategories %}
-         <div> <button onclick="myFunction({{ forloop.counter }})" class="collapsible"> {% blocktranslate with catName_t=category.name %}{{catName_t}} {% endblocktranslate %} </button>
+         <div> <button onclick="myFunction({{ forloop.counter }})" class="collapsible"> {{category.name}} </button>
          </div>
           <div id="{{ forloop.counter }}" style="display:none" class="content">  
           {% for subcat in SecondLevelCategories %}
