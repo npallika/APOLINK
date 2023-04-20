@@ -142,6 +142,7 @@ LANGUAGES = (
     ('el', _('Greek')),
 )
 
+'''
 PARLER_LANGUAGES = {
     None: (
         {'code': 'en',}, # English
@@ -152,6 +153,7 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,
     }
 }
+'''
 
 
 TIME_ZONE = 'Europe/Athens'

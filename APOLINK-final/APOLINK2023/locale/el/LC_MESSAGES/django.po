@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 11:12+0300\n"
-"PO-Revision-Date: 2023-04-20 11:13+0300\n"
+"POT-Creation-Date: 2023-04-20 12:02+0300\n"
+"PO-Revision-Date: 2023-04-20 12:06+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -68,10 +68,12 @@ msgid "%(industry)s"
 msgstr "%(industry)s"
 
 #: .\Accounts\Templates\Accounts\account.html:120
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:48
 msgid "Update"
 msgstr "Ενημέρωση"
 
 #: .\Accounts\Templates\Accounts\account.html:123
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:37
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
 
@@ -104,6 +106,7 @@ msgid "Login"
 msgstr "σύνδεση"
 
 #: .\Accounts\Templates\Accounts\login.html:17
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_form.html:39
 msgid "Reset password"
 msgstr "Επαναφορά κωδικού πρόσβασης"
 
@@ -116,6 +119,59 @@ msgstr "Νέος εδώ; Δημιουργήστε ένα λογαριασμό."
 #, python-format
 msgid " %(form.username.label_tag)s "
 msgstr "%(form.username.label_tag)s"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change_done.html:8
+msgid "Your password has been Updated."
+msgstr "Ο κωδικός πρόσβασής σας έχει ενημερωθεί."
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_complete.html:9
+#, python-format
+msgid ""
+" Your password has been reset. You may go ahead and <a "
+"href=\"%(login_url)s\">sign in</a> now. "
+msgstr ""
+"Ο κωδικός πρόσβασής σας έχει επανέλθει. Μπορείτε να <a href=\"%(login_url)s\"> προχωρήσετε και να συνδεθείτε \n"
+"τώρα."
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:12
+#| msgid "Reset password"
+msgid "Reset Your Password"
+msgstr "Επαναφορά κωδικού πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:33
+#| msgid "Password"
+msgid "New Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:45
+#| msgid "Password confirmation"
+msgid "New Password Confirmation"
+msgstr "Επιβεβαίωση κωδικού πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:55
+#| msgid "Reset password"
+msgid "Reset Password"
+msgstr "Επαναφορά κωδικού πρόσβασης"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_done.html:16
+msgid "Return to home page"
+msgstr "Επιστροφή στην αρχική σελίδα"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_email.html:3
+#, python-format
+msgid ""
+"\n"
+"To initiate the password reset process for your Account %(user.email)s,\n"
+"click the link below:\n"
+msgstr ""
+"\n"
+"Για να ξεκινήσετε τη διαδικασία επαναφοράς του κωδικού πρόσβασης για το Λογαριασμό σας \n"
+"%(user.email)s,\n"
+"κάντε κλικ στον παρακάτω σύνδεσμο:\n"
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_form.html:41
+msgid "Send reset email"
+msgstr "Αποστολή email επαναφοράς"
 
 #: .\Accounts\Templates\Accounts\signup.html:16
 #: .\Accounts\Templates\Accounts\signup.html:21
@@ -274,7 +330,6 @@ msgid "accountInfo/<int:user_id>/"
 msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
 
 #: .\Accounts\urls.py:16
-#, fuzzy
 #| msgid "accountInfo/<int:user_id>/"
 msgid "editAccount/<int:user_id>/"
 msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
@@ -300,10 +355,6 @@ msgstr "Ο σύνδεσμος ενεργοποίησης είναι άκυρος
 
 #: .\Accounts\views.py:74
 #, python-brace-format
-#| msgid ""
-#| "Dear <b>{user}</b>, please go to email <b>{to_email}</b> inbox and click on "
-#| "received activation link to confirm and complete the registration.<b> Note: "
-#| "</b>. Check your spam folder."
 msgid ""
 "Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click"
 " on received activation link to confirm and complete the registration.<b> "
@@ -340,6 +391,30 @@ msgstr "Ο λογαριασμός σας δεν είναι ενεργός."
 msgid "Your profile is updated successfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
+#: .\Core\Templates\Core\base.html:104
+#| msgid "admin/"
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+#: .\Core\Templates\Core\base.html:108
+msgid "Sell/Rent"
+msgstr "Πώληση/Ενοικίαση"
+
+#: .\Core\Templates\Core\base.html:183
+#| msgid "Products/"
+msgid "My Products"
+msgstr "Τα προϊόντα μου"
+
+#: .\Core\Templates\Core\base.html:184
+#| msgid "logout/"
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: .\Core\Templates\Core\base.html:199
+#| msgid "Sign Up"
+msgid "Login/Sign Up"
+msgstr "Σύνδεση/Εγγραφή"
+
 #: .\Core\Templates\Core\maincategories_list.html:38
 msgid "Product Categories"
 msgstr "κατηγορίες προϊόντων"
@@ -356,6 +431,3 @@ msgstr "%(catName_t)s"
 #, fuzzy
 #~ msgid "name1"
 #~ msgstr "όνομα"
-
-#~ msgid "admin/"
-#~ msgstr "διαχειριστής/"

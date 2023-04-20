@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 11:12+0300\n"
+"POT-Creation-Date: 2023-04-20 12:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,10 +67,12 @@ msgid "%(industry)s"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\account.html:120
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:48
 msgid "Update"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\account.html:123
+#: .\Accounts\Templates\Accounts\password_reset\password_change.html:37
 msgid "Change password"
 msgstr ""
 
@@ -101,6 +103,7 @@ msgid "Login"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\login.html:17
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_form.html:39
 msgid "Reset password"
 msgstr ""
 
@@ -112,6 +115,49 @@ msgstr ""
 #: .\Accounts\Templates\Accounts\login1.html:14
 #, python-format
 msgid " %(form.username.label_tag)s "
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_change_done.html:8
+msgid "Your password has been Updated."
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_complete.html:9
+#, python-format
+msgid ""
+" Your password has been reset. You may go ahead and <a href=\"%(login_url)s"
+"\">sign in</a> now. "
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:12
+msgid "Reset Your Password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:33
+msgid "New Password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:45
+msgid "New Password Confirmation"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:55
+msgid "Reset Password"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_done.html:16
+msgid "Return to home page"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_email.html:3
+#, python-format
+msgid ""
+"\n"
+"To initiate the password reset process for your Account %(user.email)s,\n"
+"click the link below:\n"
+msgstr ""
+
+#: .\Accounts\Templates\Accounts\password_reset\password_reset_form.html:41
+msgid "Send reset email"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\signup.html:16
@@ -319,6 +365,26 @@ msgstr ""
 
 #: .\Accounts\views.py:236 .\Accounts\views.py:248 .\Accounts\views.py:254
 msgid "Your profile is updated successfully"
+msgstr ""
+
+#: .\Core\Templates\Core\base.html:104
+msgid "Admin"
+msgstr ""
+
+#: .\Core\Templates\Core\base.html:108
+msgid "Sell/Rent"
+msgstr ""
+
+#: .\Core\Templates\Core\base.html:183
+msgid "My Products"
+msgstr ""
+
+#: .\Core\Templates\Core\base.html:184
+msgid "Logout"
+msgstr ""
+
+#: .\Core\Templates\Core\base.html:199
+msgid "Login/Sign Up"
 msgstr ""
 
 #: .\Core\Templates\Core\maincategories_list.html:38

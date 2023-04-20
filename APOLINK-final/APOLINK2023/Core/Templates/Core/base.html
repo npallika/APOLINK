@@ -101,11 +101,11 @@
             <a class="navbar-brand" href="{% url 'Core:categories_list'%}"><img class="navbar-brand" src="{% static 'Photos/ApolinkLogo.png' %}" height="60" alt="Logo" /></a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+                <a class="nav-item nav-link" href="{% url 'admin:index' %}">{%trans "Admin" %}</a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-item nav-link" href="{% url 'Products:sellRent' %}">Sell/Rent</a>
+                <a class="nav-item nav-link" href="{% url 'Products:sellRent' %}">{%trans "Sell/Rent" %} </a>
               </li>
               
               <!--LANGUAGE CHOICE-->
@@ -113,7 +113,7 @@
                 {%get_current_language as LANGUAGE_CODE%}
                 {%get_language_info for LANGUAGE_CODE as languageInfo%}
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Language <p>current : {{languageInfo.name_local}}</p>
+                <p>current language: {{languageInfo.name_local}}</p> 
                 </a>
                 <!--
                 <ul class="dropdown-menu">
@@ -180,8 +180,8 @@
                 <!--<a class="dropdown-item" href="#">{{user.username}}</a>-->
                 <a class="dropdown-item" href="{% url 'Accounts:account' user_id=request.user.id  %}">{{user.username}}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'Products:show_my_products'  %}">My Products</a>
-                <a class="dropdown-item" href="{% url 'Accounts:logout' %}">Logout</a>
+                <a class="dropdown-item" href="{% url 'Products:show_my_products'  %}">{%trans "My Products" %}</a>
+                <a class="dropdown-item" href="{% url 'Accounts:logout' %}">{%trans "Logout" %}</a>
               </div>
             </div>
           </span> 
@@ -196,7 +196,7 @@
             {% else %}
             
               <li class="nav-item">
-              <a class="nav-link" href="{% url 'Accounts:login' %}">Login/Sign Up</a>
+              <a class="nav-link" href="{% url 'Accounts:login' %}">{%trans "Login/Sign Up" %}</a>
               
               </li>
               <!--<li class="nav-item">
