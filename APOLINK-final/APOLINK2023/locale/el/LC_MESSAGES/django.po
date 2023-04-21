@@ -39,7 +39,7 @@ msgstr "Διεύθυνση"
 
 #: .\Accounts\Templates\Accounts\account.html:112
 msgid "Company Name"
-msgstr "Όνομα εταιρείας"
+msgstr "Όνομα Εταιρείας"
 
 #: .\Accounts\Templates\Accounts\account.html:114
 msgid "Industry"
@@ -57,7 +57,7 @@ msgstr "Αλλαγή κωδικού πρόσβασης"
 
 #: .\Accounts\Templates\Accounts\edit_account.html:43
 msgid "cancel"
-msgstr "ακυρώστε το "
+msgstr "ακύρωση"
 
 #: .\Accounts\Templates\Accounts\edit_account.html:44
 msgid "check"
@@ -65,7 +65,7 @@ msgstr "έλεγχος "
 
 #: .\Accounts\Templates\Accounts\edit_account.html:49
 msgid "EDIT"
-msgstr "επεξεργασία"
+msgstr "Επεξεργασία"
 
 #: .\Accounts\Templates\Accounts\edit_account.html:89
 msgid "Save"
@@ -81,7 +81,7 @@ msgstr ""
 #: .\Accounts\Templates\Accounts\login.html:12
 #: .\Accounts\Templates\Accounts\login.html:14
 msgid "Login"
-msgstr "σύνδεση"
+msgstr "Σύνδεση"
 
 #: .\Accounts\Templates\Accounts\login.html:17
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_form.html:39
@@ -91,7 +91,7 @@ msgstr "Επαναφορά κωδικού πρόσβασης"
 #: .\Accounts\Templates\Accounts\login.html:18
 #: .\Accounts\Templates\Accounts\login1.html:27
 msgid "New here? Create an account."
-msgstr "Νέος εδώ; Δημιουργήστε ένα λογαριασμό."
+msgstr "Νέος χρήστης; Δημιουργήστε ένα λογαριασμό."
 
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:38
 msgid "Old password"
@@ -188,7 +188,7 @@ msgstr "Σας ευχαριστώ!"
 #: .\Accounts\forms.py:18
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
-"Απαιτείται. 30 χαρακτήρες ή λιγότεροι. Μόνο γράμματα, ψηφία και @/./+/-/_."
+"Απαιτούνται. 30 χαρακτήρες ή λιγότεροι. Μόνο γράμματα, ψηφία και @/./+/-/_."
 
 #: .\Accounts\forms.py:21
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
@@ -198,7 +198,7 @@ msgstr ""
 
 #: .\Accounts\forms.py:46 .\Accounts\forms.py:71
 msgid "First name"
-msgstr "Ονομα"
+msgstr "'Ονομα"
 
 #: .\Accounts\forms.py:47 .\Accounts\forms.py:72
 msgid "Last name"
@@ -400,7 +400,7 @@ msgstr "Σύνδεση/Εγγραφή"
 
 #: .\Core\Templates\Core\maincategories_list.html:38
 msgid "Product Categories"
-msgstr "κατηγορίες προϊόντων"
+msgstr "Κατηγορίες προϊόντων"
 
 #: .\Core\Templates\Core\maincategories_list.html:41
 msgid "Search Category"
@@ -436,19 +436,19 @@ msgstr "γονική κατηγορία"
 
 #: .\Core\models.py:35
 msgid "Second Level Category"
-msgstr "Κατηγορία δεύτερου επιπέδου"
+msgstr "Κατηγορία Δεύτερου Επιπέδου"
 
 #: .\Core\models.py:36
 msgid "Second Level Categories"
-msgstr "κατηγορίες προϊόντων"
+msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδου"
 
 #: .\Products\models.py:21
 msgid "Third Level Category"
-msgstr "Κατηγορία τρίτου επιπέδου"
+msgstr "Κατηγορία Τρίτου Επιπέδου"
 
 #: .\Products\models.py:22
 msgid "Third Level Categories"
-msgstr "Κατηγορίες τρίτου επιπέδου"
+msgstr "Κατηγορίες Τρίτου Επιπέδου"
 
 #: .\Products\models.py:35
 msgid "Selling"
