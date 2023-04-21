@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 10:54+0300\n"
+"POT-Creation-Date: 2023-04-21 11:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,14 +25,6 @@ msgstr ""
 
 #: .\APOLINK2022\settings.py:142
 msgid "Greek"
-msgstr ""
-
-#: .\APOLINK2022\urls.py:31
-msgid "accounts/"
-msgstr ""
-
-#: .\APOLINK2022\urls.py:32
-msgid "Products/"
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:17
