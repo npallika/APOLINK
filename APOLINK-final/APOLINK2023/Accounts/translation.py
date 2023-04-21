@@ -18,8 +18,6 @@ class Industry_TypeTranslationOptions(TranslationOptions):
 
 @register(PlatformUsersAll)
 class PlatformUsersAllTranslationOptions(TranslationOptions):
-    fields = ('company_name', 'industry', 'company_position', 
-              'phone_landline_country', 'phone_mobile_country',
-              'street_address', 'city', 'region' )
+    fields = () #check : industry (industry_type) , country (country name)
 
 

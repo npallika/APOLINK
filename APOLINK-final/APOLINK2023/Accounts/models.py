@@ -72,10 +72,10 @@ class PlatformUsersAll(models.Model):
     company_position = models.CharField(_("company position"),max_length=20, null=True)
     #other_addresses = models.ManyToManyField(Address, blank= True, related_name = 'other_addresses')
 
-    phone_landline_country = models.ForeignKey(Country, null=True, blank= True, on_delete=models.CASCADE, related_name = 'landline_country')
-    phone_landline_number = models.CharField(max_length=12, null=True, blank=True)
-    phone_mobile_country = models.ForeignKey(Country, null=True, blank= True, on_delete=models.CASCADE, related_name = 'mobile_country')
-    phone_mobile_number = models.CharField(max_length=12, null=True, blank=True)
+    phone_landline_country = models.ForeignKey(Country,verbose_name=_("phone landline country") ,null=True, blank= True, on_delete=models.CASCADE, related_name = 'landline_country')
+    phone_landline_number = models.CharField(_("phone landline number"),max_length=12, null=True, blank=True)
+    phone_mobile_country = models.ForeignKey(Country, verbose_name=_("phone mobile country"), null=True, blank= True, on_delete=models.CASCADE, related_name = 'mobile_country')
+    phone_mobile_number = models.CharField(_("phone mobile number"),max_length=12, null=True, blank=True)
 
     #adress 
     street_address = models.CharField(_("street address"),max_length=100, null=True)

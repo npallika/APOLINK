@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 16:18+0300\n"
+"POT-Creation-Date: 2023-04-21 09:06+0300\n"
 "PO-Revision-Date: 2023-04-20 15:35+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,19 +242,19 @@ msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 msgid "industry"
 msgstr "βιομηχανία"
 
-#: .\Accounts\forms.py:114
+#: .\Accounts\forms.py:114 .\Accounts\models.py:77
 msgid "phone mobile country"
 msgstr "τηλέφωνο κινητό χώρα"
 
-#: .\Accounts\forms.py:115
+#: .\Accounts\forms.py:115 .\Accounts\models.py:78
 msgid "phone mobile number"
 msgstr "αριθμός κινητού τηλεφώνου"
 
-#: .\Accounts\forms.py:116
+#: .\Accounts\forms.py:116 .\Accounts\models.py:75
 msgid "phone landline country"
 msgstr "τηλέφωνο σταθερό τηλέφωνο χώρα"
 
-#: .\Accounts\forms.py:117
+#: .\Accounts\forms.py:117 .\Accounts\models.py:76
 msgid "phone landline number"
 msgstr "αριθμός σταθερού τηλεφώνου"
 
@@ -428,11 +428,11 @@ msgstr "κατηγορίες προϊόντων"
 msgid "Search Category"
 msgstr "Κατηγορία αναζήτησης"
 
-#: .\Core\models.py:11 .\Core\models.py:29
+#: .\Core\models.py:11 .\Core\models.py:29 .\Products\models.py:15
 msgid "short name"
 msgstr "σύντομο όνομα"
 
-#: .\Core\models.py:12 .\Core\models.py:30
+#: .\Core\models.py:12 .\Core\models.py:30 .\Products\models.py:16
 msgid "short description"
 msgstr "σύντομη περιγραφή"
 
@@ -460,18 +460,6 @@ msgstr "Κατηγορία δεύτερου επιπέδου"
 msgid "Second Level Categories"
 msgstr "κατηγορίες προϊόντων"
 
-#: .\Products\models.py:15
-#, fuzzy
-#| msgid "short name"
-msgid "short_name"
-msgstr "σύντομο όνομα"
-
-#: .\Products\models.py:16
-#, fuzzy
-#| msgid "short description"
-msgid "short_description"
-msgstr "σύντομη περιγραφή"
-
 #: .\Products\models.py:18
 msgid "icon"
 msgstr ""
@@ -487,6 +475,167 @@ msgstr "Κατηγορία πρώτου επιπέδου"
 #| msgid "First Level Categories"
 msgid "Third Level Categories"
 msgstr "κατηγορίες προϊόντων"
+
+#: .\Products\models.py:39
+msgid "user"
+msgstr ""
+
+#: .\Products\models.py:40
+msgid "date registered"
+msgstr ""
+
+#: .\Products\models.py:41
+msgid "date updated"
+msgstr ""
+
+#: .\Products\models.py:42
+msgid "manufactered_date"
+msgstr ""
+
+#: .\Products\models.py:43
+#, fuzzy
+#| msgid "First name"
+msgid "product name"
+msgstr "Ονομα"
+
+#: .\Products\models.py:44
+#, fuzzy
+#| msgid "Product Categories"
+msgid "product category"
+msgstr "κατηγορίες προϊόντων"
+
+#: .\Products\models.py:45
+#, fuzzy
+#| msgid "short description"
+msgid "product short description"
+msgstr "σύντομη περιγραφή"
+
+#: .\Products\models.py:46
+msgid "manufactered"
+msgstr ""
+
+#: .\Products\models.py:47
+msgid "For sell, rent or both"
+msgstr ""
+
+#: .\Products\models.py:48
+msgid "model"
+msgstr ""
+
+#: .\Products\models.py:51
+#, fuzzy
+#| msgid "Products/"
+msgid "Product Displayed"
+msgstr "προϊόντα/"
+
+#: .\Products\models.py:52
+msgid "Products Displayed"
+msgstr ""
+
+#: .\Products\models.py:60
+msgid "photo"
+msgstr ""
+
+#: .\Products\models.py:61 .\Products\models.py:78 .\Products\models.py:96
+#: .\Products\models.py:113 .\Products\models.py:133
+#, fuzzy
+#| msgid "Products/"
+msgid "product"
+msgstr "προϊόντα/"
+
+#: .\Products\models.py:65
+#, fuzzy
+#| msgid "Product Categories"
+msgid "Product Photo"
+msgstr "κατηγορίες προϊόντων"
+
+#: .\Products\models.py:66
+#, fuzzy
+#| msgid "Products/"
+msgid "Products Photos"
+msgstr "προϊόντα/"
+
+#: .\Products\models.py:79
+msgid "Case Sealer Type"
+msgstr ""
+
+#: .\Products\models.py:80
+msgid "Minimum Box Size (cm)"
+msgstr ""
+
+#: .\Products\models.py:81
+msgid "Maximum Box Size (cm)"
+msgstr ""
+
+#: .\Products\models.py:82 .\Products\models.py:98
+msgid "Maximum boxes per min"
+msgstr ""
+
+#: .\Products\models.py:84
+msgid "Case Sealers Spec"
+msgstr ""
+
+#: .\Products\models.py:85
+msgid "Case Sealers Specs"
+msgstr ""
+
+#: .\Products\models.py:97
+msgid "Case Packer Type"
+msgstr ""
+
+#: .\Products\models.py:101
+msgid "Case Packer spec"
+msgstr ""
+
+#: .\Products\models.py:102
+msgid "Case Packer specs"
+msgstr ""
+
+#: .\Products\models.py:114
+msgid "Batch/Continuous"
+msgstr ""
+
+#: .\Products\models.py:115
+msgid "Motor Power in kW"
+msgstr ""
+
+#: .\Products\models.py:116 .\Products\models.py:136
+msgid "Application"
+msgstr ""
+
+#: .\Products\models.py:119
+msgid "Disperesers spec"
+msgstr ""
+
+#: .\Products\models.py:120
+msgid "Dispereser specs"
+msgstr ""
+
+#: .\Products\models.py:134
+msgid "Palletizer Type"
+msgstr ""
+
+#: .\Products\models.py:135
+msgid "Throughput (pieces/min)"
+msgstr ""
+
+#: .\Products\models.py:139
+msgid "Palletizer spec"
+msgstr ""
+
+#: .\Products\models.py:140
+msgid "Palletizer specs"
+msgstr ""
+
+#, fuzzy
+#~| msgid "short name"
+#~ msgid "short_name"
+#~ msgstr "σύντομο όνομα"
+
+#, fuzzy
+#~| msgid "short description"
+#~ msgid "short_description"
+#~ msgstr "σύντομη περιγραφή"
 
 #~ msgid "( ID :"
 #~ msgstr "( ID :"
