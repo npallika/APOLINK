@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 11:31+0300\n"
+"POT-Creation-Date: 2023-04-21 12:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -636,4 +636,20 @@ msgstr ""
 
 #: .\Products\models.py:140
 msgid "Palletizer specs"
+msgstr ""
+
+#: .\Products\views.py:68
+msgid "Case Sealers"
+msgstr ""
+
+#: .\Products\views.py:69
+msgid "Case Packers"
+msgstr ""
+
+#: .\Products\views.py:70
+msgid "Dispersers-Mixers"
+msgstr ""
+
+#: .\Products\views.py:71
+msgid "Palletizers"
 msgstr ""

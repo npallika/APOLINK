@@ -19,6 +19,9 @@ from datetime import datetime
 from django.utils import timezone
 from django.contrib import messages
 from django.apps import apps
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext
+from django.utils.encoding import force_str
 # Create your views here.
 
 
@@ -63,10 +66,10 @@ class ProductDetails(DetailView):
 
 
 models_dict = {
-    'Case Sealers':CaseSealerSpecs,
-    'Case Packers':CasePackerSpecs,
-    'Dispersers-Mixers':DispersersSpecs,
-    'Palletizers': PalletizerSpecs,
+    force_str(_('Case Sealers')):CaseSealerSpecs,
+    force_str(_('Case Packers')):CasePackerSpecs,
+    force_str(_('Dispersers-Mixers')):DispersersSpecs,
+    force_str(_('Palletizers')): PalletizerSpecs,
 }
 
 
@@ -75,7 +78,8 @@ def ProductSelected(request, pk):
     product_selected = get_object_or_404(ProductsDisplayed, id=pk)
     photos = ProductPhotos.objects.filter(product=product_selected)
     category_name = product_selected.product_category.name
-    model_specs = models_dict[category_name]
+    model_specs = models_dict.get(category_name, None)
+    #model_specs = models_dict[category_name]
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
         print(f"tech specs {vars(tech_specs)}")
