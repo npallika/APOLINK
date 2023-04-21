@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: .\Products\Templates\Products\category_products_list.html:6
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 10:21+0300\n"
+"POT-Creation-Date: 2023-04-21 10:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,11 +96,6 @@ msgstr ""
 #: .\Accounts\Templates\Accounts\login.html:18
 #: .\Accounts\Templates\Accounts\login1.html:27
 msgid "New here? Create an account."
-msgstr ""
-
-#: .\Accounts\Templates\Accounts\login1.html:14
-#, python-format
-msgid " %(form.username.label_tag)s "
 msgstr ""
 
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:38

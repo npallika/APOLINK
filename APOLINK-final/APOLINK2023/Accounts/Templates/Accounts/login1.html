@@ -11,7 +11,7 @@
 {% csrf_token %}
 <table>
 <tr>
-    <td>{%blocktranslate%} {{ form.username.label_tag }} {%endblocktranslate%}</td>
+    <td>{{ form.username.label_tag }}</td>
     <td>{{ form.username }}</td>
 </tr>
 <tr>

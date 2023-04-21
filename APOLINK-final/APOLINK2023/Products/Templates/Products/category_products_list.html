@@ -1,8 +1,9 @@
 {% extends "core/base.html" %}
 {% block title %}{{products_category.name}}{% endblock %}
 {% block body_block %}
+{%load i18n%}
     
-    <H3>Category: {{products_category.name}}</H3>
+    <H3>{% blocktranslate %}{% endblocktranslate %} Category: {{products_category.name}}</H3>
     
     {% for product, photo in product_photos.items %}
     
