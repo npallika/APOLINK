@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 12:27+0300\n"
+"POT-Creation-Date: 2023-04-21 15:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -421,6 +421,66 @@ msgstr ""
 msgid "Second Level Categories"
 msgstr ""
 
+#: .\Products\forms.py:31 .\Products\models.py:42
+msgid "manufactured date"
+msgstr ""
+
+#: .\Products\forms.py:32 .\Products\models.py:43
+msgid "product name"
+msgstr ""
+
+#: .\Products\forms.py:33 .\Products\models.py:44
+msgid "product category"
+msgstr ""
+
+#: .\Products\forms.py:34 .\Products\models.py:45
+msgid "product short description"
+msgstr ""
+
+#: .\Products\forms.py:35 .\Products\models.py:46
+msgid "manufacturer"
+msgstr ""
+
+#: .\Products\forms.py:36 .\Products\models.py:47
+msgid "For sell, rent or both"
+msgstr ""
+
+#: .\Products\forms.py:37 .\Products\models.py:48
+msgid "model"
+msgstr ""
+
+#: .\Products\forms.py:43
+msgid "Upload image"
+msgstr ""
+
+#: .\Products\forms.py:62
+msgid "Product Name"
+msgstr ""
+
+#: .\Products\forms.py:63
+msgid "Manufactured date"
+msgstr ""
+
+#: .\Products\forms.py:64
+msgid "Product Category"
+msgstr ""
+
+#: .\Products\forms.py:65
+msgid "Manufacturer"
+msgstr ""
+
+#: .\Products\forms.py:66
+msgid "Model"
+msgstr ""
+
+#: .\Products\forms.py:67
+msgid "For sell, rent, or both"
+msgstr ""
+
+#: .\Products\forms.py:68
+msgid "Product short description"
+msgstr ""
+
 #: .\Products\models.py:21
 msgid "Third Level Category"
 msgstr ""
@@ -463,34 +523,6 @@ msgstr ""
 
 #: .\Products\models.py:41
 msgid "date updated"
-msgstr ""
-
-#: .\Products\models.py:42
-msgid "manufactured date"
-msgstr ""
-
-#: .\Products\models.py:43
-msgid "product name"
-msgstr ""
-
-#: .\Products\models.py:44
-msgid "product category"
-msgstr ""
-
-#: .\Products\models.py:45
-msgid "product short description"
-msgstr ""
-
-#: .\Products\models.py:46
-msgid "manufactured"
-msgstr ""
-
-#: .\Products\models.py:47
-msgid "For sell, rent or both"
-msgstr ""
-
-#: .\Products\models.py:48
-msgid "model"
 msgstr ""
 
 #: .\Products\models.py:51
@@ -638,18 +670,18 @@ msgstr ""
 msgid "Palletizer specs"
 msgstr ""
 
-#: .\Products\views.py:68
+#: .\Products\views.py:69
 msgid "Case Sealers"
 msgstr ""
 
-#: .\Products\views.py:69
+#: .\Products\views.py:70
 msgid "Case Packers"
 msgstr ""
 
-#: .\Products\views.py:70
+#: .\Products\views.py:71
 msgid "Dispersers-Mixers"
 msgstr ""
 
-#: .\Products\views.py:71
+#: .\Products\views.py:72
 msgid "Palletizers"
 msgstr ""

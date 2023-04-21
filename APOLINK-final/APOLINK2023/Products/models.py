@@ -43,7 +43,7 @@ class ProductsDisplayed(models.Model):
     product_name = models.CharField(_('product name'), max_length=200,null=False)
     product_category = models.ForeignKey(ThirdLevelCategories, verbose_name=_('product category') ,null=True, on_delete=models.CASCADE)
     product_short_description = models.TextField(_('product short description'), null=True, blank=True)
-    manufacturer = models.CharField(_('manufactured'), max_length=200, null=True, blank=True)
+    manufacturer = models.CharField(_('manufacturer'), max_length=200, null=True, blank=True)
     for_sell_rent = models.CharField(verbose_name=_("For sell, rent or both"), max_length=40, choices=CHOICES, blank=True, null=True)
     model = models.CharField(_('model'), max_length=200, null=True, blank=True)
    

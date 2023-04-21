@@ -25,7 +25,14 @@ from django.utils.encoding import force_str
 # Create your views here.
 
 
-
+def get_models():
+    models_dict = {
+    force_str(_('Case Sealers')):CaseSealerSpecs,
+    force_str(_('Case Packers')):CasePackerSpecs,
+    force_str(_('Dispersers-Mixers')):DispersersSpecs,
+    force_str(_('Palletizers')): PalletizerSpecs,
+    }
+    return models_dict
 
 def CategoriesProductsList(request, slug):
     category = ThirdLevelCategories.objects.get(slug=slug)
@@ -65,16 +72,14 @@ class ProductDetails(DetailView):
         return context
 
 
-models_dict = {
-    force_str(_('Case Sealers')):CaseSealerSpecs,
-    force_str(_('Case Packers')):CasePackerSpecs,
-    force_str(_('Dispersers-Mixers')):DispersersSpecs,
-    force_str(_('Palletizers')): PalletizerSpecs,
-}
+    
+    
+
 
 
 
 def ProductSelected(request, pk):
+    models_dict = get_models()
     product_selected = get_object_or_404(ProductsDisplayed, id=pk)
     photos = ProductPhotos.objects.filter(product=product_selected)
     category_name = product_selected.product_category.name
@@ -138,6 +143,7 @@ def sell_rent(request):
 
 @login_required
 def ProductsSpecsCreate(request, pk):
+    models_dict = get_models()
     try:
         product = ProductsDisplayed.objects.get(id=pk)
         #print(f"The product is: {product}")
@@ -153,7 +159,7 @@ def ProductsSpecsCreate(request, pk):
     
     if request.method == 'POST':
         #print("Now, I post!")
-        ProductSpecsForm = TechSpecs(models_dict[category_name])(request.POST)
+        ProductSpecsForm = TechSpecs(models_dict.get(category_name, None))(request.POST)
         #ProductSpecsForm = models_form_dict[category_name](request.POST) 
         
         #ProductSpecsForm.product = product
@@ -167,13 +173,18 @@ def ProductsSpecsCreate(request, pk):
             return redirect ('Products:product_details', pk)
 
     else:
-        ProductSpecsForm = TechSpecs(models_dict[category_name])()
+        print(category_name)
+        print(models_dict)
+        print(models_dict.get(category_name, None))
+        ProductSpecsForm = TechSpecs(models_dict.get(category_name, None))()
         #ProductSpecsForm = models_form_dict[category_name]()#take the right form from dictionary based on thirdlevelcategory
             
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
 
 @login_required
 def ProductsSpecsUpdate(request, pk):
+    models_dict = get_models()
+
     try:
         product = ProductsDisplayed.objects.get(id=pk)
         #print(f"The product is: {product}")
@@ -184,7 +195,7 @@ def ProductsSpecsUpdate(request, pk):
     category_name = category.name
     print(f"The category name is: {category_name}")
     #specsCategory = product.casepackerspecs 
-    specsModel = models_dict[category_name] #model of the specs of that product
+    specsModel = models_dict.get(category_name, None) #model of the specs of that product
     try:
         specsCategory = specsModel.objects.get(product=product) #take one-to-one specs of the product
     except specsModel.DoesNotExist:
@@ -206,7 +217,7 @@ def ProductsSpecsUpdate(request, pk):
             return redirect ('Products:product_details', pk)
 
     else:
-        ProductSpecsForm = TechSpecs(models_dict[category_name])(instance=specsCategory)#take the right form from dictionary based on thirdlevelcategory
+        ProductSpecsForm = TechSpecs(models_dict.get(category_name,None))(instance=specsCategory)#take the right form from dictionary based on thirdlevelcategory
             
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
 

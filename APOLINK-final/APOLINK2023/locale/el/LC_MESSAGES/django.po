@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 12:27+0300\n"
-"PO-Revision-Date: 2023-04-21 12:41+0300\n"
+"POT-Creation-Date: 2023-04-21 15:15+0300\n"
+"PO-Revision-Date: 2023-04-21 15:18+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -439,6 +439,74 @@ msgstr "Κατηγορία Δεύτερου Επιπέδου"
 msgid "Second Level Categories"
 msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδου"
 
+#: .\Products\forms.py:31 .\Products\models.py:42
+msgid "manufactured date"
+msgstr "ημερομηνία κατασκευής"
+
+#: .\Products\forms.py:32 .\Products\models.py:43
+msgid "product name"
+msgstr "oνομα προϊόντος"
+
+#: .\Products\forms.py:33 .\Products\models.py:44
+msgid "product category"
+msgstr "κατηγορία προϊόντος"
+
+#: .\Products\forms.py:34 .\Products\models.py:45
+msgid "product short description"
+msgstr "Σύντομη περιγραφή του προϊόντος"
+
+#: .\Products\forms.py:35 .\Products\models.py:46
+#| msgid "manufactured"
+msgid "manufacturer"
+msgstr "κατασκευαστής"
+
+#: .\Products\forms.py:36 .\Products\models.py:47
+msgid "For sell, rent or both"
+msgstr "Για πώληση, ενοικίαση ή και τα δύο"
+
+#: .\Products\forms.py:37 .\Products\models.py:48
+msgid "model"
+msgstr "μοντέλο"
+
+#: .\Products\forms.py:43
+msgid "Upload image"
+msgstr "Ανέβασμα εικόνας"
+
+#: .\Products\forms.py:62
+#| msgid "product name"
+msgid "Product Name"
+msgstr "Όνομα προϊόντος"
+
+#: .\Products\forms.py:63
+#| msgid "manufactured date"
+msgid "Manufactured date"
+msgstr "Ημερομηνία κατασκευής"
+
+#: .\Products\forms.py:64
+#| msgid "Product Categories"
+msgid "Product Category"
+msgstr "Κατηγορία προϊόντος"
+
+#: .\Products\forms.py:65
+#| msgid "manufactured"
+msgid "Manufacturer"
+msgstr "Κατασκευαστής"
+
+#: .\Products\forms.py:66
+#| msgid "model"
+msgid "Model"
+msgstr "Μοντέλο"
+
+#: .\Products\forms.py:67
+#| msgid "For sell, rent or both"
+msgid "For sell, rent, or both"
+msgstr "Για πώληση, ενοικίαση ή και τα δύο"
+
+#: .\Products\forms.py:68
+#| msgid "product short description"
+msgid "Product short description"
+msgstr "Σύντομη περιγραφή του προϊόντος"
+
 #: .\Products\models.py:21
 msgid "Third Level Category"
 msgstr "Κατηγορία Τρίτου Επιπέδου"
@@ -482,34 +550,6 @@ msgstr "ημερομηνία εγγραφής"
 #: .\Products\models.py:41
 msgid "date updated"
 msgstr "ημερομηνία ενημέρωσης"
-
-#: .\Products\models.py:42
-msgid "manufactured date"
-msgstr "ημερομηνία κατασκευής"
-
-#: .\Products\models.py:43
-msgid "product name"
-msgstr "oνομα προϊόντος"
-
-#: .\Products\models.py:44
-msgid "product category"
-msgstr "κατηγορία προϊόντος"
-
-#: .\Products\models.py:45
-msgid "product short description"
-msgstr "Σύντομη περιγραφή του προϊόντος"
-
-#: .\Products\models.py:46
-msgid "manufactured"
-msgstr "κατασκευασμένο"
-
-#: .\Products\models.py:47
-msgid "For sell, rent or both"
-msgstr "Για πώληση, ενοικίαση ή και τα δύο"
-
-#: .\Products\models.py:48
-msgid "model"
-msgstr "μοντέλο"
 
 #: .\Products\models.py:51
 msgid "Product Displayed"
@@ -656,21 +696,24 @@ msgstr "Προδιαγραφή Palletizer"
 msgid "Palletizer specs"
 msgstr "Προδιαγραφές Palletizer"
 
-#: .\Products\views.py:68
+#: .\Products\views.py:69
 msgid "Case Sealers"
 msgstr "Σφραγιστές κιβωτίων"
 
-#: .\Products\views.py:69
+#: .\Products\views.py:70
 msgid "Case Packers"
 msgstr "Συσκευαστές χαρτοκιβωτίων"
 
-#: .\Products\views.py:70
+#: .\Products\views.py:71
 msgid "Dispersers-Mixers"
 msgstr "Διασκορπιστές-αναμικτήρες"
 
-#: .\Products\views.py:71
+#: .\Products\views.py:72
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
+
+#~ msgid "manufactured"
+#~ msgstr "κατασκευασμένο"
 
 #~ msgid "accounts/"
 #~ msgstr "λογαριασμούς/"
