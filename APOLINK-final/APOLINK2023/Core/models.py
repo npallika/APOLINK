@@ -11,7 +11,7 @@ class FirstLevelCategories(models.Model):
     short_name = models.CharField(_('short name'), max_length=40, null=True, blank=True)
     short_description = models.TextField(_('short description'),null=True, blank=True)
     slug = models.SlugField(_('slug'), allow_unicode=True, unique=True)
-    icon = models.ImageField(upload_to='Core/Static/Photos/FirstLevelCategories', null=True, blank=True)
+    icon = models.ImageField(upload_to='Core/Static/Photos/FirstLevelCategories', verbose_name=_("icon"), null=True, blank=True)
     class Meta:
         verbose_name = _("First Level Category")
         verbose_name_plural = _("First Level Categories")
@@ -25,11 +25,11 @@ class FirstLevelCategories(models.Model):
 
 class SecondLevelCategories(models.Model):
     name = models.CharField(_('name'), max_length=200, null=True)
-    parent_cat = models.ForeignKey(FirstLevelCategories , verbose_name=_('parent cat'), on_delete=models.CASCADE)
+    parent_cat = models.ForeignKey(FirstLevelCategories , verbose_name=_('parent category'), on_delete=models.CASCADE)
     short_name = models.CharField(_('short name'),max_length=40, null=True, blank=True)
     short_description = models.TextField(_('short description'),null=True, blank=True)
     slug = models.SlugField(_('slug'), allow_unicode=True, unique=True)
-    icon = models.ImageField(upload_to='Core/Static/Photos/SecondLevelCategories', null=True, blank=True)
+    icon = models.ImageField(upload_to='Core/Static/Photos/SecondLevelCategories',verbose_name=_("icon"), null=True, blank=True)
     
     class Meta:
         verbose_name = _("Second Level Category")

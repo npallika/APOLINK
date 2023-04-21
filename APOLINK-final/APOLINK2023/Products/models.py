@@ -11,7 +11,7 @@ from django.utils.translation import gettext_lazy as _
 #  ------------------ Around Products --------------------------- #
 class ThirdLevelCategories(models.Model):
     name = models.CharField(_('name'),max_length=200, null=True)
-    parent_cat = models.ForeignKey('Core.SecondLevelCategories', verbose_name=_('parent cat'), on_delete=models.CASCADE)
+    parent_cat = models.ForeignKey('Core.SecondLevelCategories', verbose_name=_('parent category'), on_delete=models.CASCADE)
     short_name = models.CharField(_('short name'), max_length=40, null=True, blank=True)
     short_description = models.TextField(_('short description'), null=True, blank=True)
     slug = models.SlugField(_('slug'), allow_unicode=True, unique=True)
@@ -32,18 +32,18 @@ class ThirdLevelCategories(models.Model):
 
 class ProductsDisplayed(models.Model):
     CHOICES = {
-        ('Selling',"For Selling"),
-        ('Renting',"For Renting"),
-        ('Selling or Renting',"For Selling or Renting")
+        (_('Selling'),_("For Selling")),
+        (_('Renting'),_("For Renting")),
+        (_('Selling or Renting'),_("For Selling or Renting"))
     }
     user = models.ForeignKey(User, verbose_name=_('user'), null=True, blank=True, on_delete=models.CASCADE)
     date_registered = models.DateField(verbose_name=_('date registered'), default=timezone.now)
     date_updated = models.DateField(verbose_name=_('date updated'), auto_now=True)
-    manufactured_date = models.DateField(verbose_name=_('manufactered_date'),null=True)
+    manufactured_date = models.DateField(verbose_name=_('manufactured date'),null=True)
     product_name = models.CharField(_('product name'), max_length=200,null=False)
     product_category = models.ForeignKey(ThirdLevelCategories, verbose_name=_('product category') ,null=True, on_delete=models.CASCADE)
     product_short_description = models.TextField(_('product short description'), null=True, blank=True)
-    manufacturer = models.CharField(_('manufactered'), max_length=200, null=True, blank=True)
+    manufacturer = models.CharField(_('manufactured'), max_length=200, null=True, blank=True)
     for_sell_rent = models.CharField(verbose_name=_("For sell, rent or both"), max_length=40, choices=CHOICES, blank=True, null=True)
     model = models.CharField(_('model'), max_length=200, null=True, blank=True)
    
@@ -63,7 +63,7 @@ class ProductPhotos(models.Model):
 
     class Meta:
         verbose_name = _('Product Photo')
-        verbose_name_plural = _('Products Photos')
+        verbose_name_plural = _('Product Photos')
     '''def __str__(self):
         return self.photo_name'''
 
@@ -71,9 +71,9 @@ class ProductPhotos(models.Model):
 
 class CaseSealerSpecs(models.Model):
     TYPES = (
-        ('BtmDr', 'Bottom Driven'),
-        ('SdDr', 'Side Driven'),
-        ('T&BtmDr', 'Top & Bottom Driven')
+        ('BtmDr', _('Bottom Driven')),
+        ('SdDr', _('Side Driven')),
+        ('T&BtmDr', _('Top & Bottom Driven'))
     )
     product = models.OneToOneField(ProductsDisplayed, verbose_name=_('product'), on_delete=models.CASCADE)
     type = models.CharField(verbose_name=_("Case Sealer Type"), max_length=25, choices=TYPES, blank=True, null=True)
@@ -89,9 +89,9 @@ class CaseSealerSpecs(models.Model):
 
 class CasePackerSpecs(models.Model):
     TYPES = (
-        ('top', 'Top Loader'),
-        ('side', 'Side Loader'),
-        ('P&PL', 'Pick and Place')
+        ('top', _('Top Loader')),
+        ('side', _('Side Loader')),
+        ('P&PL', _('Pick and Place'))
     )
     product = models.OneToOneField(ProductsDisplayed, verbose_name= _('product'),on_delete=models.CASCADE)
     type = models.CharField(verbose_name=_("Case Packer Type"), max_length=25, choices=TYPES, blank=True, null=True)
@@ -107,8 +107,8 @@ class CasePackerSpecs(models.Model):
 
 class DispersersSpecs(models.Model):
     TYPES = (
-        ('batch', 'Batch'),
-        ('continuous', 'Continuous')
+        ('batch', _('Batch')),
+        ('continuous', _('Continuous'))
     )
     product = models.OneToOneField(ProductsDisplayed, verbose_name=_('product'), on_delete=models.CASCADE)
     type = models.CharField(verbose_name=_("Batch/Continuous"), max_length=25, choices=TYPES, blank=True, null=True)
@@ -116,8 +116,8 @@ class DispersersSpecs(models.Model):
     application = models.CharField(verbose_name=_("Application"), max_length=80, blank=True, null=True)
 
     class Meta:
-        verbose_name = _('Disperesers spec')
-        verbose_name_plural = _('Dispereser specs')
+        verbose_name = _('Dispersers spec')
+        verbose_name_plural = _('Dispersers specs')
 
     def __str__(self):
         return f"{self.product.id}. {self.product.product_name} specs"
@@ -125,10 +125,10 @@ class DispersersSpecs(models.Model):
 
 class PalletizerSpecs(models.Model):
     TYPES = (
-        ('layer', 'Layer'),
-        ('gantry', 'Gantry'),
-        ('robotic', 'Robotic'),
-        ('other', 'Other')
+        ('layer', _('Layer')),
+        ('gantry', _('Gantry')),
+        ('robotic', _('Robotic')),
+        ('other', _('Other'))
     )
     product = models.OneToOneField(ProductsDisplayed, verbose_name=_('product'), on_delete=models.CASCADE)
     type = models.CharField(verbose_name=_("Palletizer Type"), max_length=25, choices=TYPES, blank=True, null=True)

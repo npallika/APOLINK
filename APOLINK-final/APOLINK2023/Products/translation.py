@@ -8,24 +8,24 @@ class ThirdLevelCategoriesTranslationOptions(TranslationOptions):
     
 @register(ProductsDisplayed)
 class ProductsDisplayedTranslationOptions(TranslationOptions):
-    fields = ('product_name', 'product_category', )
+    fields = ('product_name', 'product_short_description', 'manufacturer', 'model',) #product category = foreign key
     
 @register(ProductPhotos)
 class ProductPhotosTranslationOptions(TranslationOptions):
-    fields = ('photo','product', )
+    fields = () # don't need photo 
 
 @register(CaseSealerSpecs)
 class CaseSealerSpecsTranslationOptions(TranslationOptions):
-    fields = ()
+    fields = ('type', )
 
 @register(CasePackerSpecs)
 class CasePackerSpecsTranslationOptions(TranslationOptions):
-    fields = ()
+    fields = ('type', )
 
 @register(DispersersSpecs)
 class DispersersSpecsTranslationOptions(TranslationOptions):
-    fields = ()
+    fields = ('type', 'application', )
 
 @register(PalletizerSpecs)
 class PalletizerSpecsTranslationOptions(TranslationOptions):
-    fields = ()
+    fields = ('type', 'application',)
