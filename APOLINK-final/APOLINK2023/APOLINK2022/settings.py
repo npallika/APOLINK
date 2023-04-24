@@ -176,8 +176,10 @@ STATICFILES_DIRS =[STATIC_DIR, os.path.join(BASE_DIR,'Core') , os.path.join(BASE
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = reverse_lazy('Accounts:login')
 LOGIN_REDIRECT_URL = reverse_lazy('Core:categories_list') #for languages
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
