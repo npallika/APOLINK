@@ -56,35 +56,12 @@ class ProductsDisplayed(models.Model):
     
     def set_translation_consistency(self, *args, **kwargs):
          #i am saving in greek
-        if self.for_sell_rent:
-            #save greek value
-            super().save(*args, **kwargs)
-            activate('en')
-            self.for_sell_rent_en = self.for_sell_rent_el
-            #save the corresponding english value
-            super().save(*args, *kwargs)
-            deactivate()
-            print()
-        elif self.for_sell_rent_en:
-            #Save the English value
-            super().save(*args, **kwargs)
-            # Switch to Greek language and save the Greek value
-            activate('el')
-            self.for_sell_rent = self.for_sell_rent_en
-            super().save(*args, **kwargs)
-            deactivate()
-        else:
-            # No value to save
-            super().save(*args, **kwargs)
-        
-    def save(self, *args, **kwargs):
-        #self.set_translation_consistency(self, *args, **kwargs)
         cur_language = get_language()
         if self.for_sell_rent:
             #save greek value
             super().save(*args, **kwargs)
             activate('en')
-            self.for_sell_rent_en = _(self.for_sell_rent_el)
+            self.for_sell_rent_en = self.CHOICES[str(self.for_sell_rent)]
             #save the corresponding english value
             super().save(*args, *kwargs)
             deactivate()
@@ -93,14 +70,15 @@ class ProductsDisplayed(models.Model):
             super().save(*args, **kwargs)
             # Switch to Greek language and save the Greek value
             activate('el')
-            self.for_sell_rent_el = _(self.for_sell_rent_en)
+            self.for_sell_rent = _(self.for_sell_rent_en)
             super().save(*args, **kwargs)
             deactivate()
         else:
             # No value to save
             super().save(*args, **kwargs)
         activate(cur_language)
-        #super.save(*args, **kwargs)
+        
+        
         
 
    

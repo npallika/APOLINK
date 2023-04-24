@@ -122,10 +122,7 @@ def sell_rent(request):
             #when you are saving "for_sell_rent" field in greek , you can show it just if you are in greek
             publish=sellRentForm.save(commit=False)
             publish.user= request.user #save a new Product associated with the user logged - in (foreign key)
-            publish.save()
-            
-            
-            print("FOR SELL RENT TYPE: ", publish.for_sell_rent_en, publish.for_sell_rent_el)
+            publish.save()    
             #print ("The Id of the product is %s" %(publish.id))
             for form in formset:
                 if form.cleaned_data:
@@ -270,7 +267,6 @@ def update_product(request, product_id):
         if form.is_valid() and formset.is_valid():
             product = form.save() #save the updated product
             product.save()
-            print("FOR SELL RENT TYPE: ", product.for_sell_rent_en, product.for_sell_rent_el)
             #formset_objs = formset.save(commit=False)
             #UPDATE : i need manually to set every product per photos, because so far i updated just the photos
             #if you click on delete button , delete the photo related to that product

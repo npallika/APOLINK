@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 12:44+0300\n"
-"PO-Revision-Date: 2023-04-24 10:54+0300\n"
+"POT-Creation-Date: 2023-04-24 15:34+0300\n"
+"PO-Revision-Date: 2023-04-24 15:33+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -418,6 +418,42 @@ msgstr "Κατηγορία Δεύτερου Επιπέδου"
 msgid "Second Level Categories"
 msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδου"
 
+#: .\Products\Templates\Products\product_details.html:7
+msgid "Product Details"
+msgstr "Φωτογραφίες προϊόντος"
+
+#: .\Products\Templates\Products\product_details.html:9
+msgid "Name"
+msgstr "Όνομα"
+
+#: .\Products\Templates\Products\product_details.html:11
+msgid "Manufactured Date"
+msgstr "Ημερομηνία κατασκευής"
+
+#: .\Products\Templates\Products\product_details.html:13
+msgid "Registered Date"
+msgstr "ημερομηνία εγγραφής"
+
+#: .\Products\Templates\Products\product_details.html:16
+msgid "Last Updated"
+msgstr "ημερομηνία ενημέρωσης"
+
+#: .\Products\Templates\Products\product_details.html:19
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: .\Products\Templates\Products\product_details.html:27
+msgid "Technical Specifications"
+msgstr "Τεχνικές προδιαγραφές"
+
+#: .\Products\Templates\Products\product_details.html:35
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: .\Products\Templates\Products\product_details.html:36
+msgid "Delete"
+msgstr "Διαγραφή"
+
 #: .\Products\forms.py:30 .\Products\models.py:42
 msgid "manufactured date"
 msgstr "ημερομηνία κατασκευής"
@@ -526,140 +562,140 @@ msgstr "Εμφανιζόμενο προϊόν"
 msgid "Products Displayed"
 msgstr "Προϊόντα που εμφανίζονται"
 
-#: .\Products\models.py:109
+#: .\Products\models.py:87
 msgid "photo"
 msgstr "φωτογραφία"
 
-#: .\Products\models.py:110 .\Products\models.py:127 .\Products\models.py:145
-#: .\Products\models.py:162 .\Products\models.py:182
+#: .\Products\models.py:88 .\Products\models.py:105 .\Products\models.py:123
+#: .\Products\models.py:140 .\Products\models.py:160
 msgid "product"
 msgstr "προϊόν"
 
-#: .\Products\models.py:114
+#: .\Products\models.py:92
 msgid "Product Photo"
 msgstr "Φωτογραφία προϊόντος"
 
-#: .\Products\models.py:115
+#: .\Products\models.py:93
 msgid "Product Photos"
 msgstr "Φωτογραφίες προϊόντος"
 
-#: .\Products\models.py:123
+#: .\Products\models.py:101
 msgid "Bottom Driven"
 msgstr "Κάτω μέρος Οδηγούμενο"
 
-#: .\Products\models.py:124
+#: .\Products\models.py:102
 msgid "Side Driven"
 msgstr "Πλευρική οδήγηση"
 
-#: .\Products\models.py:125
+#: .\Products\models.py:103
 msgid "Top & Bottom Driven"
 msgstr "Κίνηση από πάνω & κάτω"
 
-#: .\Products\models.py:128
+#: .\Products\models.py:106
 msgid "Case Sealer Type"
 msgstr "Τύπος σφραγιστή θήκης"
 
-#: .\Products\models.py:129
+#: .\Products\models.py:107
 msgid "Minimum Box Size (cm)"
 msgstr "Ελάχιστο μέγεθος κουτιού (cm)"
 
-#: .\Products\models.py:130
+#: .\Products\models.py:108
 msgid "Maximum Box Size (cm)"
 msgstr "Μέγιστο μέγεθος κουτιού (cm)"
 
-#: .\Products\models.py:131 .\Products\models.py:147
+#: .\Products\models.py:109 .\Products\models.py:125
 msgid "Maximum boxes per min"
 msgstr "Μέγιστα κουτιά ανά λεπτό"
 
-#: .\Products\models.py:133
+#: .\Products\models.py:111
 msgid "Case Sealers Spec"
 msgstr "Προδιαγραφές σφραγιστικών θήκης"
 
-#: .\Products\models.py:134
+#: .\Products\models.py:112
 msgid "Case Sealers Specs"
 msgstr "Προδιαγραφές συσκευών σφράγισης κιβωτίων"
 
-#: .\Products\models.py:141
+#: .\Products\models.py:119
 msgid "Top Loader"
 msgstr "Κορυφαίος φορτωτής"
 
-#: .\Products\models.py:142
+#: .\Products\models.py:120
 msgid "Side Loader"
 msgstr "Πλευρικός φορτωτής"
 
-#: .\Products\models.py:143
+#: .\Products\models.py:121
 msgid "Pick and Place"
 msgstr "Διαλέξτε και τοποθετήστε"
 
-#: .\Products\models.py:146
+#: .\Products\models.py:124
 msgid "Case Packer Type"
 msgstr "Τύπος συσκευαστή κιβωτίων"
 
-#: .\Products\models.py:150
+#: .\Products\models.py:128
 msgid "Case Packer spec"
 msgstr "Συσκευαστής κιβωτίων προδιαγραφή "
 
-#: .\Products\models.py:151
+#: .\Products\models.py:129
 msgid "Case Packer specs"
 msgstr "Συσκευαστής κιβωτίων προδιαγραφές"
 
-#: .\Products\models.py:159
+#: .\Products\models.py:137
 msgid "Batch"
 msgstr "Παρτίδα"
 
-#: .\Products\models.py:160
+#: .\Products\models.py:138
 msgid "Continuous"
 msgstr "Συνεχής"
 
-#: .\Products\models.py:163
+#: .\Products\models.py:141
 msgid "Batch/Continuous"
 msgstr "Παρτίδα/Συνεχής"
 
-#: .\Products\models.py:164
+#: .\Products\models.py:142
 msgid "Motor Power in kW"
 msgstr "Ισχύς κινητήρα σε kW"
 
-#: .\Products\models.py:165 .\Products\models.py:185
+#: .\Products\models.py:143 .\Products\models.py:163
 msgid "Application"
 msgstr "Eφαρμογή"
 
-#: .\Products\models.py:168
+#: .\Products\models.py:146
 msgid "Dispersers spec"
 msgstr "Προδιαγραφές διασκορπιστών"
 
-#: .\Products\models.py:169
+#: .\Products\models.py:147
 msgid "Dispersers specs"
 msgstr "Προδιαγραφές διασκορπιστή"
 
-#: .\Products\models.py:177
+#: .\Products\models.py:155
 msgid "Layer"
 msgstr "Στρώμα"
 
-#: .\Products\models.py:178
+#: .\Products\models.py:156
 msgid "Gantry"
 msgstr "Γερανογέφυρα"
 
-#: .\Products\models.py:179
+#: .\Products\models.py:157
 msgid "Robotic"
 msgstr "Ρομποτική"
 
-#: .\Products\models.py:180
+#: .\Products\models.py:158
 msgid "Other"
 msgstr "Άλλα"
 
-#: .\Products\models.py:183
+#: .\Products\models.py:161
 msgid "Palletizer Type"
 msgstr "Τύπος παλετοποιητή"
 
-#: .\Products\models.py:184
+#: .\Products\models.py:162
 msgid "Throughput (pieces/min)"
 msgstr "Απόδοση (τεμάχια/λεπτό)"
 
-#: .\Products\models.py:188
+#: .\Products\models.py:166
 msgid "Palletizer spec"
 msgstr "Προδιαγραφή Palletizer"
 
-#: .\Products\models.py:189
+#: .\Products\models.py:167
 msgid "Palletizer specs"
 msgstr "Προδιαγραφές Palletizer"
 
@@ -678,6 +714,26 @@ msgstr "Διασκορπιστές-αναμικτήρες"
 #: .\Products\views.py:33
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
+
+#~| msgid "Status: %(product_selected.for_sell_rent)s"
+#~ msgid "{{product_selected.for_sell_rent}}"
+#~ msgstr "{product_selected.for_sell_rent}"
+
+#, python-format
+#~ msgid "Name: %(product_selected.product_name)s "
+#~ msgstr "Όνομα: %(product_selected.product_name)s"
+
+#, python-format
+#~ msgid "Manufactured Date: %(product_selected.manufactured_date)s"
+#~ msgstr "Ημερομηνία κατασκευής: %(product_selected.manufactured_date)s"
+
+#, python-format
+#~ msgid "Registered Date: %(product_selected.date_registered)s"
+#~ msgstr "Εγγεγραμμένη ημερομηνία: %(product_selected.date_registered)s"
+
+#, python-format
+#~ msgid "Last Updated: %(product_selected.date_updated)s"
+#~ msgstr "Τελευταία ενημέρωση: %(product_selected.date_updated)s"
 
 #~ msgid "For sell, rent, or both"
 #~ msgstr "Για πώληση, ενοικίαση ή και τα δύο"
