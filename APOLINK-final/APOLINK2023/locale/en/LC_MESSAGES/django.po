@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 15:15+0300\n"
+"POT-Creation-Date: 2023-04-24 09:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,30 +286,6 @@ msgstr ""
 msgid "Platform Users"
 msgstr ""
 
-#: .\Accounts\urls.py:13
-msgid "signup/"
-msgstr ""
-
-#: .\Accounts\urls.py:14
-msgid "activate/<uidb64>/<token>"
-msgstr ""
-
-#: .\Accounts\urls.py:15
-msgid "accountInfo/<int:user_id>/"
-msgstr ""
-
-#: .\Accounts\urls.py:16
-msgid "editAccount/<int:user_id>/"
-msgstr ""
-
-#: .\Accounts\urls.py:17
-msgid "login/"
-msgstr ""
-
-#: .\Accounts\urls.py:19
-msgid "logout/"
-msgstr ""
-
 #: .\Accounts\views.py:49
 msgid ""
 "Thank you for your email confirmation. Now you can LOGIN in your account"
@@ -421,63 +397,63 @@ msgstr ""
 msgid "Second Level Categories"
 msgstr ""
 
-#: .\Products\forms.py:31 .\Products\models.py:42
+#: .\Products\forms.py:30 .\Products\models.py:42
 msgid "manufactured date"
 msgstr ""
 
-#: .\Products\forms.py:32 .\Products\models.py:43
+#: .\Products\forms.py:31 .\Products\models.py:43
 msgid "product name"
 msgstr ""
 
-#: .\Products\forms.py:33 .\Products\models.py:44
+#: .\Products\forms.py:32 .\Products\models.py:44
 msgid "product category"
 msgstr ""
 
-#: .\Products\forms.py:34 .\Products\models.py:45
+#: .\Products\forms.py:33 .\Products\models.py:45
 msgid "product short description"
 msgstr ""
 
-#: .\Products\forms.py:35 .\Products\models.py:46
+#: .\Products\forms.py:34 .\Products\models.py:46
 msgid "manufacturer"
 msgstr ""
 
-#: .\Products\forms.py:36 .\Products\models.py:47
+#: .\Products\forms.py:35 .\Products\models.py:47
 msgid "For sell, rent or both"
 msgstr ""
 
-#: .\Products\forms.py:37 .\Products\models.py:48
+#: .\Products\forms.py:36 .\Products\models.py:48
 msgid "model"
 msgstr ""
 
-#: .\Products\forms.py:43
+#: .\Products\forms.py:42
 msgid "Upload image"
 msgstr ""
 
-#: .\Products\forms.py:62
+#: .\Products\forms.py:61
 msgid "Product Name"
 msgstr ""
 
-#: .\Products\forms.py:63
+#: .\Products\forms.py:62
 msgid "Manufactured date"
 msgstr ""
 
-#: .\Products\forms.py:64
+#: .\Products\forms.py:63
 msgid "Product Category"
 msgstr ""
 
-#: .\Products\forms.py:65
+#: .\Products\forms.py:64
 msgid "Manufacturer"
 msgstr ""
 
-#: .\Products\forms.py:66
+#: .\Products\forms.py:65
 msgid "Model"
 msgstr ""
 
-#: .\Products\forms.py:67
+#: .\Products\forms.py:66
 msgid "For sell, rent, or both"
 msgstr ""
 
-#: .\Products\forms.py:68
+#: .\Products\forms.py:67
 msgid "Product short description"
 msgstr ""
 
@@ -670,18 +646,18 @@ msgstr ""
 msgid "Palletizer specs"
 msgstr ""
 
-#: .\Products\views.py:69
+#: .\Products\views.py:30
 msgid "Case Sealers"
 msgstr ""
 
-#: .\Products\views.py:70
+#: .\Products\views.py:31
 msgid "Case Packers"
 msgstr ""
 
-#: .\Products\views.py:71
+#: .\Products\views.py:32
 msgid "Dispersers-Mixers"
 msgstr ""
 
-#: .\Products\views.py:72
+#: .\Products\views.py:33
 msgid "Palletizers"
 msgstr ""

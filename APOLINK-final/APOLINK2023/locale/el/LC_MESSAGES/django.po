@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: .\Products\Templates\Products\category_products_list.html:6
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 15:15+0300\n"
+"POT-Creation-Date: 2023-04-24 09:53+0300\n"
 "PO-Revision-Date: 2023-04-21 15:18+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,10 +112,11 @@ msgstr "Ο κωδικός πρόσβασής σας έχει ενημερωθε�
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_complete.html:9
 #, python-format
 msgid ""
-" Your password has been reset. You may go ahead and <a "
-"href=\"%(login_url)s\">sign in</a> now. "
+" Your password has been reset. You may go ahead and <a href=\"%(login_url)s"
+"\">sign in</a> now. "
 msgstr ""
-"Ο κωδικός πρόσβασής σας έχει επανέλθει. Μπορείτε να <a href=\"%(login_url)s\"> προχωρήσετε και να συνδεθείτε \n"
+"Ο κωδικός πρόσβασής σας έχει επανέλθει. Μπορείτε να <a href=\"%(login_url)s"
+"\"> προχωρήσετε και να συνδεθείτε \n"
 "τώρα."
 
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_confirm.html:12
@@ -145,7 +147,8 @@ msgid ""
 "click the link below:\n"
 msgstr ""
 "\n"
-"Για να ξεκινήσετε τη διαδικασία επαναφοράς του κωδικού πρόσβασης για το Λογαριασμό σας \n"
+"Για να ξεκινήσετε τη διαδικασία επαναφοράς του κωδικού πρόσβασης για το "
+"Λογαριασμό σας \n"
 "%(user.email)s,\n"
 "κάντε κλικ στον παρακάτω σύνδεσμο:\n"
 
@@ -298,30 +301,6 @@ msgstr "Χρήστης πλατφόρμας"
 msgid "Platform Users"
 msgstr "Χρήστες της πλατφόρμας"
 
-#: .\Accounts\urls.py:13
-msgid "signup/"
-msgstr "εγγραφείτε/"
-
-#: .\Accounts\urls.py:14
-msgid "activate/<uidb64>/<token>"
-msgstr "ενεργοποίηση/<uidb64>/<token>"
-
-#: .\Accounts\urls.py:15
-msgid "accountInfo/<int:user_id>/"
-msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
-
-#: .\Accounts\urls.py:16
-msgid "editAccount/<int:user_id>/"
-msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
-
-#: .\Accounts\urls.py:17
-msgid "login/"
-msgstr "σύνδεση/"
-
-#: .\Accounts\urls.py:19
-msgid "logout/"
-msgstr "αποσύνδεση/"
-
 #: .\Accounts\views.py:49
 msgid ""
 "Thank you for your email confirmation. Now you can LOGIN in your account"
@@ -336,13 +315,13 @@ msgstr "Ο σύνδεσμος ενεργοποίησης είναι άκυρος
 #: .\Accounts\views.py:74
 #, python-brace-format
 msgid ""
-"Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click"
-" on received activation link to confirm and complete the registration.<b> "
+"Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click "
+"on received activation link to confirm and complete the registration.<b> "
 "Note: </b>. Check your spam folder."
 msgstr ""
-"Αγαπητέ/ή <b>{username}</b>, παρακαλούμε μεταβείτε στο εισερχόμενα του email"
-" <b>{to_email}</b> και κάντε κλικ στον λειτουργικό σύνδεσμο ενεργοποίησης "
-"για να ολοκληρώσετε την εγγραφή σας.<b> Σημείωση: </b>Ελέγξτε τον φάκελο "
+"Αγαπητέ/ή <b>{username}</b>, παρακαλούμε μεταβείτε στο εισερχόμενα του email "
+"<b>{to_email}</b> και κάντε κλικ στον λειτουργικό σύνδεσμο ενεργοποίησης για "
+"να ολοκληρώσετε την εγγραφή σας.<b> Σημείωση: </b>Ελέγξτε τον φάκελο "
 "ανεπιθύμητης αλληλογραφίας σας."
 
 #: .\Accounts\views.py:80
@@ -439,71 +418,63 @@ msgstr "Κατηγορία Δεύτερου Επιπέδου"
 msgid "Second Level Categories"
 msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδου"
 
-#: .\Products\forms.py:31 .\Products\models.py:42
+#: .\Products\forms.py:30 .\Products\models.py:42
 msgid "manufactured date"
 msgstr "ημερομηνία κατασκευής"
 
-#: .\Products\forms.py:32 .\Products\models.py:43
+#: .\Products\forms.py:31 .\Products\models.py:43
 msgid "product name"
 msgstr "oνομα προϊόντος"
 
-#: .\Products\forms.py:33 .\Products\models.py:44
+#: .\Products\forms.py:32 .\Products\models.py:44
 msgid "product category"
 msgstr "κατηγορία προϊόντος"
 
-#: .\Products\forms.py:34 .\Products\models.py:45
+#: .\Products\forms.py:33 .\Products\models.py:45
 msgid "product short description"
 msgstr "Σύντομη περιγραφή του προϊόντος"
 
-#: .\Products\forms.py:35 .\Products\models.py:46
-#| msgid "manufactured"
+#: .\Products\forms.py:34 .\Products\models.py:46
 msgid "manufacturer"
 msgstr "κατασκευαστής"
 
-#: .\Products\forms.py:36 .\Products\models.py:47
+#: .\Products\forms.py:35 .\Products\models.py:47
 msgid "For sell, rent or both"
 msgstr "Για πώληση, ενοικίαση ή και τα δύο"
 
-#: .\Products\forms.py:37 .\Products\models.py:48
+#: .\Products\forms.py:36 .\Products\models.py:48
 msgid "model"
 msgstr "μοντέλο"
 
-#: .\Products\forms.py:43
+#: .\Products\forms.py:42
 msgid "Upload image"
 msgstr "Ανέβασμα εικόνας"
 
-#: .\Products\forms.py:62
-#| msgid "product name"
+#: .\Products\forms.py:61
 msgid "Product Name"
 msgstr "Όνομα προϊόντος"
 
-#: .\Products\forms.py:63
-#| msgid "manufactured date"
+#: .\Products\forms.py:62
 msgid "Manufactured date"
 msgstr "Ημερομηνία κατασκευής"
 
-#: .\Products\forms.py:64
-#| msgid "Product Categories"
+#: .\Products\forms.py:63
 msgid "Product Category"
 msgstr "Κατηγορία προϊόντος"
 
-#: .\Products\forms.py:65
-#| msgid "manufactured"
+#: .\Products\forms.py:64
 msgid "Manufacturer"
 msgstr "Κατασκευαστής"
 
-#: .\Products\forms.py:66
-#| msgid "model"
+#: .\Products\forms.py:65
 msgid "Model"
 msgstr "Μοντέλο"
 
-#: .\Products\forms.py:67
-#| msgid "For sell, rent or both"
+#: .\Products\forms.py:66
 msgid "For sell, rent, or both"
 msgstr "Για πώληση, ενοικίαση ή και τα δύο"
 
-#: .\Products\forms.py:68
-#| msgid "product short description"
+#: .\Products\forms.py:67
 msgid "Product short description"
 msgstr "Σύντομη περιγραφή του προϊόντος"
 
@@ -696,21 +667,39 @@ msgstr "Προδιαγραφή Palletizer"
 msgid "Palletizer specs"
 msgstr "Προδιαγραφές Palletizer"
 
-#: .\Products\views.py:69
+#: .\Products\views.py:30
 msgid "Case Sealers"
 msgstr "Σφραγιστές κιβωτίων"
 
-#: .\Products\views.py:70
+#: .\Products\views.py:31
 msgid "Case Packers"
 msgstr "Συσκευαστές χαρτοκιβωτίων"
 
-#: .\Products\views.py:71
+#: .\Products\views.py:32
 msgid "Dispersers-Mixers"
 msgstr "Διασκορπιστές-αναμικτήρες"
 
-#: .\Products\views.py:72
+#: .\Products\views.py:33
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
+
+#~ msgid "signup/"
+#~ msgstr "εγγραφείτε/"
+
+#~ msgid "activate/<uidb64>/<token>"
+#~ msgstr "ενεργοποίηση/<uidb64>/<token>"
+
+#~ msgid "accountInfo/<int:user_id>/"
+#~ msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
+
+#~ msgid "editAccount/<int:user_id>/"
+#~ msgstr "πληροφορίεςλογαριασμού/<int:user_id>/"
+
+#~ msgid "login/"
+#~ msgstr "σύνδεση/"
+
+#~ msgid "logout/"
+#~ msgstr "αποσύνδεση/"
 
 #~ msgid "manufactured"
 #~ msgstr "κατασκευασμένο"

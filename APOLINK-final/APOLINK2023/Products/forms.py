@@ -84,7 +84,8 @@ def TechSpecs(Model):
     class TechSpecsForm(forms.ModelForm):
         class Meta:
             model = Model
-            fields = all_fields
+            #fields = all_fields
+            exclude = ['product']
           
             
     
