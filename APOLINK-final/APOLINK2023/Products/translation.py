@@ -8,7 +8,7 @@ class ThirdLevelCategoriesTranslationOptions(TranslationOptions):
     
 @register(ProductsDisplayed)
 class ProductsDisplayedTranslationOptions(TranslationOptions):
-    fields = () #product category = foreign key
+    fields = ('for_sell_rent', ) #product category = foreign key
     
 @register(ProductPhotos)
 class ProductPhotosTranslationOptions(TranslationOptions):
