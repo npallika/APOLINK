@@ -16,7 +16,12 @@
 <h3>{%trans "Last Updated" %}: {{product_selected.date_updated}}</h3>
 {% endif %}
 
-<p>{%trans "Status"%} : {%trans product_selected.for_sell_rent%}</p>
+{%get_current_language as LANGUAGE%}
+{%if LANGUAGE == 'en'%}
+<p>{%trans "Status"%} : {{ product_selected.for_sell_rent_en}}</p>
+{%else %}
+<p>{%trans "Status"%} : {{ product_selected.for_sell_rent_el}}</p>
+{%endif%}
 
 {% for photo in Photos %}
     <img src="{{photo.photo.url}}" alt="no photo" >

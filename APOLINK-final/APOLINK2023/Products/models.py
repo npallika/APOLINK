@@ -55,28 +55,45 @@ class ProductsDisplayed(models.Model):
         return self.product_name
     
     def set_translation_consistency(self, *args, **kwargs):
-         #i am saving in greek
-        cur_language = get_language()
         if self.for_sell_rent:
-            #save greek value
+            # save the Greek value
             super().save(*args, **kwargs)
             activate('en')
-            self.for_sell_rent_en = self.CHOICES[str(self.for_sell_rent)]
-            #save the corresponding english value
-            super().save(*args, *kwargs)
+            self.for_sell_rent_en = _(self.for_sell_rent)
+            # save the corresponding English value
+            super().save(*args, **kwargs)
             deactivate()
         elif self.for_sell_rent_en:
-            #Save the English value
+            # save the English value
             super().save(*args, **kwargs)
-            # Switch to Greek language and save the Greek value
+            # switch to Greek language and save the corresponding Greek value
             activate('el')
             self.for_sell_rent = _(self.for_sell_rent_en)
             super().save(*args, **kwargs)
             deactivate()
         else:
-            # No value to save
+            # no value to save
             super().save(*args, **kwargs)
-        activate(cur_language)
+
+    def save(self, *args, **kwargs):
+         # check if the for_sell_rent field has changed
+        curr_language = get_language()
+        if self.pk is not None:
+            orig = ProductsDisplayed.objects.get(pk=self.pk)
+            if orig.for_sell_rent != self.for_sell_rent:
+                # set the value of the other language field
+                cur_language = get_language()
+                if cur_language == 'en':
+                    activate('el')
+                    self.for_sell_rent_el = _(self.for_sell_rent)
+                    deactivate()
+                else:
+                    activate('en')
+                    self.for_sell_rent_en = _(self.for_sell_rent)
+                    deactivate()
+        activate(curr_language)
+        # save the object
+        super().save(*args, **kwargs)
         
         
         
