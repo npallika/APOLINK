@@ -4,13 +4,13 @@
 {% block body_block %}
 
 <div class="container">
-    <h1>Technical Specs</h1>
+    <h1>{%trans "Technical Specs" %}</h1>
     <form method="POST" class="form">
         {% csrf_token %}
         {{ form.media.js }}
         {{ ProductsTechSpecs|crispy }}
         
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">{%trans "Submit" %}</button>
         
     </form>
 </div> 

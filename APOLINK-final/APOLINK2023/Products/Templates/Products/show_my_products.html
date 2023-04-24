@@ -1,7 +1,8 @@
 {% extends "core/base.html" %}
+{%load i18n%}
 {% block title %}My Products{% endblock %}
 {% block body_block %}
-    <h1> My Products</h1>
+    <h1>{%trans "My Products"%} </h1>
     <hr class="dotted">
     
     {% if product_photos %}
@@ -14,11 +15,11 @@
        
         <p> 
             <a href="{% url 'Products:product_details' pk=product.pk %}">  {{ product.product_name }} </a> 
-            <a href="{% url 'Products:update_product' product_id=product.id %}" class="btn btn-info">Edit</a> 
-            <a href="{% url 'Products:delete_product' product_id=product.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'Products:update_product' product_id=product.id %}" class="btn btn-info">{%trans "Edit"%}</a> 
+            <a href="{% url 'Products:delete_product' product_id=product.id %}" class="btn btn-danger">{%trans "Delete" %}</a>
         </p>
-        <p>Manufactured date: {{ product.manufactured_date }}</p>
-        <p>Registered Date: {{ product.date_registered}}</P>
+        <p>{%trans "Manufactured date"%}: {{ product.manufactured_date }}</p>
+        <p>{%trans "Registered Date"%}: {{ product.date_registered}}</P>
         <hr class="dotted">
     
     {% endfor %}
