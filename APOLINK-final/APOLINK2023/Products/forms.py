@@ -63,7 +63,7 @@ class UpdateProductForm(forms.ModelForm):
             'product_category': _('Product Category'),
             'manufacturer': _('Manufacturer'),
             'model': _('Model'),
-            'for_sell_rent': _('For sell, rent, or both'),
+            'for_sell_rent': _('For sell, rent or both'),
             'product_short_description': _('Product short description'),
             
         }

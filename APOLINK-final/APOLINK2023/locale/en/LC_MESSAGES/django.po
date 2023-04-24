@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 09:53+0300\n"
+"POT-Creation-Date: 2023-04-24 12:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -417,7 +417,7 @@ msgstr ""
 msgid "manufacturer"
 msgstr ""
 
-#: .\Products\forms.py:35 .\Products\models.py:47
+#: .\Products\forms.py:35 .\Products\forms.py:66 .\Products\models.py:47
 msgid "For sell, rent or both"
 msgstr ""
 
@@ -447,10 +447,6 @@ msgstr ""
 
 #: .\Products\forms.py:65
 msgid "Model"
-msgstr ""
-
-#: .\Products\forms.py:66
-msgid "For sell, rent, or both"
 msgstr ""
 
 #: .\Products\forms.py:67
@@ -509,140 +505,140 @@ msgstr ""
 msgid "Products Displayed"
 msgstr ""
 
-#: .\Products\models.py:60
+#: .\Products\models.py:109
 msgid "photo"
 msgstr ""
 
-#: .\Products\models.py:61 .\Products\models.py:78 .\Products\models.py:96
-#: .\Products\models.py:113 .\Products\models.py:133
+#: .\Products\models.py:110 .\Products\models.py:127 .\Products\models.py:145
+#: .\Products\models.py:162 .\Products\models.py:182
 msgid "product"
 msgstr ""
 
-#: .\Products\models.py:65
+#: .\Products\models.py:114
 msgid "Product Photo"
 msgstr ""
 
-#: .\Products\models.py:66
+#: .\Products\models.py:115
 msgid "Product Photos"
 msgstr ""
 
-#: .\Products\models.py:74
+#: .\Products\models.py:123
 msgid "Bottom Driven"
 msgstr ""
 
-#: .\Products\models.py:75
+#: .\Products\models.py:124
 msgid "Side Driven"
 msgstr ""
 
-#: .\Products\models.py:76
+#: .\Products\models.py:125
 msgid "Top & Bottom Driven"
 msgstr ""
 
-#: .\Products\models.py:79
+#: .\Products\models.py:128
 msgid "Case Sealer Type"
 msgstr ""
 
-#: .\Products\models.py:80
+#: .\Products\models.py:129
 msgid "Minimum Box Size (cm)"
 msgstr ""
 
-#: .\Products\models.py:81
+#: .\Products\models.py:130
 msgid "Maximum Box Size (cm)"
 msgstr ""
 
-#: .\Products\models.py:82 .\Products\models.py:98
+#: .\Products\models.py:131 .\Products\models.py:147
 msgid "Maximum boxes per min"
 msgstr ""
 
-#: .\Products\models.py:84
+#: .\Products\models.py:133
 msgid "Case Sealers Spec"
 msgstr ""
 
-#: .\Products\models.py:85
+#: .\Products\models.py:134
 msgid "Case Sealers Specs"
 msgstr ""
 
-#: .\Products\models.py:92
+#: .\Products\models.py:141
 msgid "Top Loader"
 msgstr ""
 
-#: .\Products\models.py:93
+#: .\Products\models.py:142
 msgid "Side Loader"
 msgstr ""
 
-#: .\Products\models.py:94
+#: .\Products\models.py:143
 msgid "Pick and Place"
 msgstr ""
 
-#: .\Products\models.py:97
+#: .\Products\models.py:146
 msgid "Case Packer Type"
 msgstr ""
 
-#: .\Products\models.py:101
+#: .\Products\models.py:150
 msgid "Case Packer spec"
 msgstr ""
 
-#: .\Products\models.py:102
+#: .\Products\models.py:151
 msgid "Case Packer specs"
 msgstr ""
 
-#: .\Products\models.py:110
+#: .\Products\models.py:159
 msgid "Batch"
 msgstr ""
 
-#: .\Products\models.py:111
+#: .\Products\models.py:160
 msgid "Continuous"
 msgstr ""
 
-#: .\Products\models.py:114
+#: .\Products\models.py:163
 msgid "Batch/Continuous"
 msgstr ""
 
-#: .\Products\models.py:115
+#: .\Products\models.py:164
 msgid "Motor Power in kW"
 msgstr ""
 
-#: .\Products\models.py:116 .\Products\models.py:136
+#: .\Products\models.py:165 .\Products\models.py:185
 msgid "Application"
 msgstr ""
 
-#: .\Products\models.py:119
+#: .\Products\models.py:168
 msgid "Dispersers spec"
 msgstr ""
 
-#: .\Products\models.py:120
+#: .\Products\models.py:169
 msgid "Dispersers specs"
 msgstr ""
 
-#: .\Products\models.py:128
+#: .\Products\models.py:177
 msgid "Layer"
 msgstr ""
 
-#: .\Products\models.py:129
+#: .\Products\models.py:178
 msgid "Gantry"
 msgstr ""
 
-#: .\Products\models.py:130
+#: .\Products\models.py:179
 msgid "Robotic"
 msgstr ""
 
-#: .\Products\models.py:131
+#: .\Products\models.py:180
 msgid "Other"
 msgstr ""
 
-#: .\Products\models.py:134
+#: .\Products\models.py:183
 msgid "Palletizer Type"
 msgstr ""
 
-#: .\Products\models.py:135
+#: .\Products\models.py:184
 msgid "Throughput (pieces/min)"
 msgstr ""
 
-#: .\Products\models.py:139
+#: .\Products\models.py:188
 msgid "Palletizer spec"
 msgstr ""
 
-#: .\Products\models.py:140
+#: .\Products\models.py:189
 msgid "Palletizer specs"
 msgstr ""
 
