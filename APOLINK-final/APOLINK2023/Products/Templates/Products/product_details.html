@@ -18,9 +18,9 @@
 
 {%get_current_language as LANGUAGE%}
 {%if LANGUAGE == 'en'%}
-<p>{%trans "Status"%} : {{ product_selected.for_sell_rent_en}}</p>
-{%else %}
-<p>{%trans "Status"%} : {{ product_selected.for_sell_rent_el}}</p>
+<p>{%trans "Status"%} : {%trans product_selected.for_sell_rent%}</p>
+{%else%}
+<p>{%trans "Status"%} : {{ product_selected.for_sell_rent}}</p>
 {%endif%}
 
 {% for photo in Photos %}

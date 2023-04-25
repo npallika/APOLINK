@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-from django.utils.translation import activate, deactivate, get_language, gettext_lazy as _
+from django.utils.translation import activate, deactivate, get_language, gettext_lazy as _, gettext
 
 # Create your models here.
 
@@ -54,46 +54,36 @@ class ProductsDisplayed(models.Model):
     def __str__(self):
         return self.product_name
     
-    def set_translation_consistency(self, *args, **kwargs):
-        if self.for_sell_rent:
-            # save the Greek value
-            super().save(*args, **kwargs)
-            activate('en')
-            self.for_sell_rent_en = _(self.for_sell_rent)
-            # save the corresponding English value
-            super().save(*args, **kwargs)
-            deactivate()
-        elif self.for_sell_rent_en:
-            # save the English value
-            super().save(*args, **kwargs)
-            # switch to Greek language and save the corresponding Greek value
+    def set_translation_consistency(self, cur_language, *args, **kwargs):
+        if cur_language == 'en':
+            updateVal = self.for_sell_rent #'en'
             activate('el')
-            self.for_sell_rent = _(self.for_sell_rent_en)
-            super().save(*args, **kwargs)
+            print("QUI1: ", gettext(self.for_sell_rent))
+            self.for_sell_rent_el = gettext(updateVal) #assign value in 'en' to 'el'
             deactivate()
+            print("QUI1: ", gettext(self.for_sell_rent))
+            self.for_sell_rent_en = gettext(updateVal) #assign value in 'en' to 'el'
         else:
-            # no value to save
-            super().save(*args, **kwargs)
-
+            updateVal = self.for_sell_rent #'el'
+            print('UPDATE : ' ,gettext(updateVal))
+            activate('en')
+            print('UPDATE : ' ,gettext(updateVal))
+            self.for_sell_rent_en = gettext(updateVal)
+            print("QUI2: ", gettext(self.for_sell_rent_en))
+            deactivate()
+            self.for_sell_rent_el = (updateVal)
+            print("QUI2: ", gettext(self.for_sell_rent))           
+           
+        
+            
     def save(self, *args, **kwargs):
          # check if the for_sell_rent field has changed
-        curr_language = get_language()
-        if self.pk is not None:
-            orig = ProductsDisplayed.objects.get(pk=self.pk)
-            if orig.for_sell_rent != self.for_sell_rent:
-                # set the value of the other language field
-                cur_language = get_language()
-                if cur_language == 'en':
-                    activate('el')
-                    self.for_sell_rent_el = _(self.for_sell_rent)
-                    deactivate()
-                else:
-                    activate('en')
-                    self.for_sell_rent_en = _(self.for_sell_rent)
-                    deactivate()
-        activate(curr_language)
+        cur_language = get_language()
+        self.set_translation_consistency(cur_language)
         # save the object
         super().save(*args, **kwargs)
+        activate(cur_language)
+        
         
         
         

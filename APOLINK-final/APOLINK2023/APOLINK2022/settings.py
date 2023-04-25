@@ -142,6 +142,12 @@ LANGUAGES = (
     ('el', _('Greek')),
 )
 
+MODELTRANSLATION_FALLBACK_LANGUAGES = {
+    'default': ('en',),
+    'el': ('en',),
+    'en': ('el',),
+}
+
 '''
 PARLER_LANGUAGES = {
     None: (
