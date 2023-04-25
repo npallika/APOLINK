@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-25 12:22+0300\n"
+"POT-Creation-Date: 2023-04-25 12:26+0300\n"
 "PO-Revision-Date: 2023-04-25 10:04+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,14 +54,6 @@ msgstr "Ενημέρωση"
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:37
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
-
-#: .\Accounts\Templates\Accounts\edit_account.html:43
-msgid "cancel"
-msgstr "ακύρωση"
-
-#: .\Accounts\Templates\Accounts\edit_account.html:44
-msgid "check"
-msgstr "έλεγχος "
 
 #: .\Accounts\Templates\Accounts\edit_account.html:49
 msgid "EDIT"
@@ -728,6 +720,12 @@ msgstr "Διασκορπιστές-αναμικτήρες"
 #: .\Products\views.py:33
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
+
+#~ msgid "cancel"
+#~ msgstr "ακύρωση"
+
+#~ msgid "check"
+#~ msgstr "έλεγχος "
 
 #~ msgid "{{product_selected.for_sell_rent}}"
 #~ msgstr "{product_selected.for_sell_rent}"
