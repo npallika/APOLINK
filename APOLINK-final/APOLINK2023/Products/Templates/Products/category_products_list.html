@@ -3,7 +3,7 @@
 {% block body_block %}
 {%load i18n%}
     
-    <H3>{% blocktranslate %}{% endblocktranslate %} Category: {{products_category.name}}</H3>
+    <H3>{%trans "Category"%}: {{products_category.name}}</H3>
     
     {% for product, photo in product_photos.items %}
     
@@ -15,7 +15,7 @@
     <p> <a href="{% url 'Products:product_details' pk=product.pk %}">  {{ product.product_name }} </a> </p>
     
     
-    <p>Manufactured date: {{ product.manufactured_date }}</p>
+    <p>{%trans "Manufactured date"%}: {{ product.manufactured_date }}</p>
     <hr class="dotted">
 
 {% endfor %}
