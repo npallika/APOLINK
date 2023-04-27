@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-25 15:20+0300\n"
-"PO-Revision-Date: 2023-04-25 15:20+0300\n"
+"POT-Creation-Date: 2023-04-27 09:21+0300\n"
+"PO-Revision-Date: 2023-04-27 09:22+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -408,7 +408,6 @@ msgid "Second Level Categories"
 msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδου"
 
 #: .\Products\Templates\Products\category_products_list.html:6
-#| msgid "Search Category"
 msgid "Category"
 msgstr "Κατηγορία"
 
@@ -448,12 +447,16 @@ msgstr "Κατάσταση"
 msgid "Technical Specifications"
 msgstr "Τεχνικές προδιαγραφές"
 
-#: .\Products\Templates\Products\product_details.html:44
+#: .\Products\Templates\Products\product_details.html:41
+msgid "Contact the seller"
+msgstr ""
+
+#: .\Products\Templates\Products\product_details.html:73
 #: .\Products\Templates\Products\show_my_products.html:18
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: .\Products\Templates\Products\product_details.html:45
+#: .\Products\Templates\Products\product_details.html:74
 #: .\Products\Templates\Products\show_my_products.html:19
 msgid "Delete"
 msgstr "Διαγραφή"
@@ -709,11 +712,11 @@ msgstr "Προδιαγραφές Palletizer"
 
 #: .\Products\views.py:30
 msgid "Case Sealers"
-msgstr "Σφραγιστές κιβωτίων"
+msgstr "Κλειστικά Κιβωτίων"
 
 #: .\Products\views.py:31
 msgid "Case Packers"
-msgstr "Συσκευαστές χαρτοκιβωτίων"
+msgstr "Εγκιβωτιστικά"
 
 #: .\Products\views.py:32
 msgid "Dispersers-Mixers"

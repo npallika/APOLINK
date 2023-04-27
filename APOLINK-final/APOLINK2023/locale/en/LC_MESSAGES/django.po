@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-25 15:20+0300\n"
+"POT-Creation-Date: 2023-04-27 09:21+0300\n"
 "PO-Revision-Date: 2023-04-25 12:17+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -429,12 +429,16 @@ msgstr ""
 msgid "Technical Specifications"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:44
+#: .\Products\Templates\Products\product_details.html:41
+msgid "Contact the seller"
+msgstr ""
+
+#: .\Products\Templates\Products\product_details.html:73
 #: .\Products\Templates\Products\show_my_products.html:18
 msgid "Edit"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:45
+#: .\Products\Templates\Products\product_details.html:74
 #: .\Products\Templates\Products\show_my_products.html:19
 msgid "Delete"
 msgstr ""
