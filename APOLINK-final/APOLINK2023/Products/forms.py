@@ -4,7 +4,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.widgets import CheckboxInput
 #from Accounts.models import PlatformUsers, Address, Country, Industry_Type
 from Accounts.models import PlatformUsersAll, Country, Industry_Type
-from .models import ProductsDisplayed, ProductPhotos, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories, PalletizerSpecs
+from .models import ProductsDisplayed, ProductPhotos, Contact, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories, PalletizerSpecs
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 #from captcha.fields import CaptchaField
@@ -74,25 +74,15 @@ class UpdateProductForm(forms.ModelForm):
 #Contact form
 class ContactForm(forms.Form):
     subject = forms.CharField(max_length=100)
-    username = forms.RegexField(
-        label=_("Username"), max_length=30, regex=r"^[\w.@+-]+$",
-        disabled=True,
-        help_text=("Required. 30 characters or fewer. Letters, digits and "
-                "@/./+/-/_ only."),
-        error_messages={
-        'invalid': ("This value may contain only letters, numbers and "
-                        "@/./+/-/_ characters.")},
-        widget=forms.TextInput(attrs={'class': 'form-control',
-                            'required': 'true',
-                            'placeholder': 'Username'
-        })
-    )
-    lastName = forms.CharField(label = 'Last Name', required=False)
     message = forms.CharField(widget=forms.Textarea)
-    email = forms.EmailField(label='Email Address',disabled=True,  widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'true', 'placeholder': 'name@email.com'}))
     #cc_myself = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-control', 'required': 'false'}))
     reason = forms.ChoiceField(label='Reason for your inquiry',required=False)
 
+    class Meta:
+        model = Contact
+        fields = []
+
+    '''
     def __init__(self, *args, **kwargs):
         print(kwargs)
         user = kwargs.pop('user')
@@ -102,6 +92,8 @@ class ContactForm(forms.Form):
             self.fields.pop('email')
             self.fields.pop('username')
             self.fields.pop('lastName')
+    '''
+
 
 
 

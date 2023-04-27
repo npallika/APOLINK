@@ -21,7 +21,15 @@ from django.contrib import messages
 from django.apps import apps
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import gettext, get_language
-from django.utils.encoding import force_str
+from django.utils.encoding import force_str, force_bytes
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.core.mail import EmailMessage, get_connection, send_mail
+from django.utils.html import format_html
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.safestring import mark_safe
+
 # Create your views here.
 
 
@@ -33,6 +41,36 @@ def get_models():
     force_str(_('Palletizers')): PalletizerSpecs,
     }
     return models_dict
+
+def countQustions(questionNumber):
+    questionNumber+=1
+    
+def sendContactEmail(request, user, to_email):
+    mail_subject = _(request.POST.get('subject'))
+    #send a message contained in a template, pass context
+    message = render_to_string(
+        'TEMPLATE.html',
+        {'user': user.username,
+         'domain': get_current_site(request).domain,
+         'uid': urlsafe_base64_encode(force_bytes(user.pk)), #necessary for hiding user.pk in URL
+         'protocol': 'https' if request.is_secure() else 'http'
+         }
+    )
+    email = EmailMessage(mail_subject, 
+                         message, 
+                         to=[to_email]) #user email
+    email.content_subtype='html'
+    if email.send(): #return 1 if the email is sent correctly
+        username = _(user.username)
+        msg = _('Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
+        msg = format_html(msg, username =user.username, to_email=to_email)  # insert the translated variables into the message and mark it as safe
+        messages.success(request, msg)  # show the translated message
+        #successMex =  mark_safe(_(f'Dear <b>{user.username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.'))
+        #messages.success(request,successMex)
+    else :
+        messages.error(request, mark_safe(_(f'Problem sending email to {to_email}', 'check if you typed it correctly')))
+    pass
+    
 
 def CategoriesProductsList(request, slug):
     category = ThirdLevelCategories.objects.get(slug=slug)
@@ -72,9 +110,6 @@ class ProductDetails(DetailView):
         return context
 
 
-    
-
-
 
 def ProductSelected(request, pk):
     models_dict = get_models()
@@ -85,15 +120,18 @@ def ProductSelected(request, pk):
     #model_specs = models_dict[category_name]
     #implementation for future : if user is logged in, fields of form are precompiled
     if request.user.is_authenticated:
-        data = {'username': request.user.username, 'email': request.user.email}
+        data = {}
     else :
         data =[]
         
     if request.method == 'POST':
-        contactForm = ContactForm(request.POST, user= request.user, initial= data)
-    
+        contactForm = ContactForm(request.POST, initial= data)
+        if contactForm.is_valid():
+            subject = contactForm.cleaned_data['subject']
+            print(subject)
+            
     else:
-        contactForm= ContactForm(user =request.user, initial=data)
+        contactForm= ContactForm(initial=data)
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
         print(f"tech specs {vars(tech_specs)}")
@@ -114,6 +152,7 @@ def ProductSelected(request, pk):
             'attributes':attributes }
     
     return render(request, 'Products/product_details.html', context)
+
 
 
 def MyProductInfo(request, pk):
@@ -142,6 +181,8 @@ def MyProductInfo(request, pk):
             'attributes':attributes }
     
     return render(request, 'Products/my_product_info.html', context)
+
+
 
 
 def search_product(request):

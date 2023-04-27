@@ -25,7 +25,7 @@
           <form method='POST'>
             {% csrf_token %}
             {{form|crispy}}
-
+            <!--check error-->
             {% for field in form %}
               <p>
               {% for error in field.errors %}
@@ -38,15 +38,8 @@
             <p>{{form.non_field_errors}}</p>
             </div>
             {% endif %}
-           
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Example select</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-          
-              </select>
-            </div>
-          
+            <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+            <button type="submit" class="btn btn-primary">{% trans "Send Informations" %}</button>          
           </form>
 
           <h5>Popover in a modal</h5>

@@ -100,6 +100,15 @@ class ProductPhotos(models.Model):
         verbose_name_plural = _('Product Photos')
     '''def __str__(self):
         return self.photo_name'''
+        
+        
+        
+#remember to count how many people are interested in the product      
+class Contact(models.Model):
+    pass        
+
+
+
 
 #  ------------------ Around Specifications --------------------------- #
 

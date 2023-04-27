@@ -10,8 +10,7 @@ from django.contrib.auth import authenticate,login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from .forms import UserCreationForm, PlatformUsersFormAll, UserUpdateForm
 #from .forms import UserCreationForm, PlatformUsersForm, AddressForm, PlatformUsersForm
 from .models import PlatformUsersAll
