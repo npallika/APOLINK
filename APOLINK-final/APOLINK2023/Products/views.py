@@ -7,7 +7,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django import forms
 from django.http import HttpResponseRedirect
 from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs, PalletizerSpecs
-from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs
+from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs, ContactForm
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -73,12 +73,50 @@ class ProductDetails(DetailView):
 
 
     
-    
-
 
 
 
 def ProductSelected(request, pk):
+    models_dict = get_models()
+    product_selected = get_object_or_404(ProductsDisplayed, id=pk)
+    photos = ProductPhotos.objects.filter(product=product_selected)
+    category_name = product_selected.product_category.name
+    model_specs = models_dict.get(category_name, None)
+    #model_specs = models_dict[category_name]
+    #implementation for future : if user is logged in, fields of form are precompiled
+    if request.user.is_authenticated:
+        data = {'username': request.user.username, 'email': request.user.email}
+    else :
+        data =[]
+        
+    if request.method == 'POST':
+        contactForm = ContactForm(request.POST, user= request.user, initial= data)
+    
+    else:
+        contactForm= ContactForm(user =request.user, initial=data)
+    try:
+        tech_specs = model_specs.objects.get(product=product_selected)
+        print(f"tech specs {vars(tech_specs)}")
+        attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}
+        print(f"The Tech specs are {attributes}")       
+        context = {
+            'product_selected':product_selected, 
+            'Photos':photos,
+            'attributes': [{
+            'verbose_name': tech_specs._meta.get_field(attr_name).verbose_name,
+            'value': tech_specs.get_type_display() if isinstance(tech_specs._meta.get_field(attr_name), models.Field) and tech_specs._meta.get_field(attr_name).choices else attr_value,
+            } for attr_name, attr_value in attributes.items()],
+            'form': contactForm
+            }
+    except:
+        attributes = None
+        context = {'product_selected':product_selected, 'Photos':photos,
+            'attributes':attributes }
+    
+    return render(request, 'Products/product_details.html', context)
+
+
+def MyProductInfo(request, pk):
     models_dict = get_models()
     product_selected = get_object_or_404(ProductsDisplayed, id=pk)
     photos = ProductPhotos.objects.filter(product=product_selected)
@@ -90,17 +128,21 @@ def ProductSelected(request, pk):
         print(f"tech specs {vars(tech_specs)}")
         attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}
         print(f"The Tech specs are {attributes}")       
-        context = {'product_selected':product_selected, 'Photos':photos,
+        context = {
+            'product_selected':product_selected, 
+            'Photos':photos,
             'attributes': [{
             'verbose_name': tech_specs._meta.get_field(attr_name).verbose_name,
             'value': tech_specs.get_type_display() if isinstance(tech_specs._meta.get_field(attr_name), models.Field) and tech_specs._meta.get_field(attr_name).choices else attr_value,
-            } for attr_name, attr_value in attributes.items()]}
+            } for attr_name, attr_value in attributes.items()],
+            }
     except:
         attributes = None
         context = {'product_selected':product_selected, 'Photos':photos,
             'attributes':attributes }
     
-    return render(request, 'Products/product_details.html', context)
+    return render(request, 'Products/my_product_info.html', context)
+
 
 def search_product(request):
     if request.method == "POST":

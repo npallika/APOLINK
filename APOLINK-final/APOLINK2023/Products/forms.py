@@ -69,6 +69,42 @@ class UpdateProductForm(forms.ModelForm):
         }
         #widgets = { 'manufactured_date' : DateInput(attrs={'type':'date', 'max': datetime.now().time()}) }
 
+
+
+#Contact form
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    username = forms.RegexField(
+        label=_("Username"), max_length=30, regex=r"^[\w.@+-]+$",
+        disabled=True,
+        help_text=("Required. 30 characters or fewer. Letters, digits and "
+                "@/./+/-/_ only."),
+        error_messages={
+        'invalid': ("This value may contain only letters, numbers and "
+                        "@/./+/-/_ characters.")},
+        widget=forms.TextInput(attrs={'class': 'form-control',
+                            'required': 'true',
+                            'placeholder': 'Username'
+        })
+    )
+    lastName = forms.CharField(label = 'Last Name', required=False)
+    message = forms.CharField(widget=forms.Textarea)
+    email = forms.EmailField(label='Email Address',disabled=True,  widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'true', 'placeholder': 'name@email.com'}))
+    #cc_myself = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-control', 'required': 'false'}))
+    reason = forms.ChoiceField(label='Reason for your inquiry',required=False)
+
+    def __init__(self, *args, **kwargs):
+        print(kwargs)
+        user = kwargs.pop('user')
+        print(kwargs)
+        super().__init__(*args, **kwargs)
+        if not user.is_authenticated:
+            self.fields.pop('email')
+            self.fields.pop('username')
+            self.fields.pop('lastName')
+
+
+
 #  ------------------ Around Categories Specifications --------------------------- #
 
 def TechSpecs(Model):

@@ -8,6 +8,7 @@ urlpatterns = [
     path('<slug>', views.CategoriesProductsList, name='category_products_list'),
     #path('<int:pk>/Display', views.ProductDetails.as_view(), name='product_details'),
     path('Display/<int:pk>/', views.ProductSelected, name='product_details'),
+    path('MyProductInfo/<int:pk>/', views.MyProductInfo, name='myProductInfo'),
     path('Create/<int:pk>/', views.ProductsSpecsCreate, name='technical_specs'),
     path('UpdateSpecs/<int:pk>/', views.ProductsSpecsUpdate, name='technical_specs_update'),
     path('RegisterProduct/', views.sell_rent, name='sellRent'),

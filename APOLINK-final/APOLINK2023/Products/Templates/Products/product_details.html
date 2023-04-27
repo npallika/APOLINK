@@ -1,48 +1,19 @@
-{% extends "core/base.html" %}
+{% extends "Products/my_product_info.html" %}
 {%load i18n%}
+{%load crispy_forms_tags%}
 {% block title %}{{product_selected.product_name}} | Display{% endblock %}
 
-{% block body_block %}
 
-<h2>{%trans "Product Details" %}</h2>
-
-<h3>{%trans "Name"%} : {{product_selected.product_name}}</h3>
-
-<h3>{%trans "Manufactured Date"%}: {{product_selected.manufactured_date}}</h2>
-
-<h3>{%trans "Registered Date"%}: {{product_selected.date_registered}}</h3>
-
-{% if product_selected.date_updated %} 
-<h3>{%trans "Last Updated" %}: {{product_selected.date_updated}}</h3>
-{% endif %}
-
-{%get_current_language as LANGUAGE%}
-{%if LANGUAGE == 'en'%}
-<p>{%trans "Status"%} : {%trans product_selected.for_sell_rent%}</p>
-{%else%}
-<p>{%trans "Status"%} : {{ product_selected.for_sell_rent}}</p>
-{%endif%}
-
-{% for photo in Photos %}
-    <img src="{{photo.photo.url}}" alt="no photo" >
-{% endfor %}
-
-<!--Check if there are attributes registered-->
-{% if attributes %}
-<h3>{%trans "Technical Specifications"%}</h3>
-{% for attribute in attributes %}
-    <p>{{ attribute.verbose_name }}: {{ attribute.value }}</p>
-{% endfor %}
-{% endif %}
 
 <!--CONTACT THE SELLER-->
+{%block contactSeller%}
 <!-- Modal -->
 <div style='display: flex; justify-content: center; align-items: center;'>
     <a href='' class="btn btn-info" data-toggle="modal" data-target="#ModalContact">{%trans "Contact the seller"%}</a>
 </div>
 
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
@@ -51,11 +22,38 @@
           </button>
         </div>
         <div class="modal-body">
-            <h5>Popover in a modal</h5>
-            <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
-            <hr>
-            <h5>Tooltips in a modal</h5>
-            <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+          <form method='POST'>
+            {% csrf_token %}
+            {{form|crispy}}
+
+            {% for field in form %}
+              <p>
+              {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+              {% endfor %}
+              </p>
+            {% endfor %}
+            {% if form.non_field_errors %}
+            <div style="color: red">
+            <p>{{form.non_field_errors}}</p>
+            </div>
+            {% endif %}
+           
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Example select</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+          
+              </select>
+            </div>
+          
+          </form>
+
+          <h5>Popover in a modal</h5>
+          <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+          <hr>
+          <h5>Tooltips in a modal</h5>
+          <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,13 +62,4 @@
       </div>
     </div>
 </div>
-
-<!--{{form}}-->
-
-
-<!--Check if the product is registered to the user logged in to let them update or delete it -->
-{% if product_selected.user == request.user %}
-<a href="{% url 'Products:update_product' product_id=product_selected.id %}" class="btn btn-info">{%trans "Edit"%}</a>
-<a href="{% url 'Products:delete_product' product_id=product_selected.id %}" class="btn btn-danger">{%trans "Delete"%}</a>
-{% endif %}
-{% endblock %}
+{%endblock%}
