@@ -28,7 +28,7 @@
 <body>
     <div class="container-fluid">
         <h1>{%trans "Request of Porduct Details" %}</h1>
-        <p>{%blocktranslate%}  Hi {{ seller.username }}, my name is {{user}} {%endblocktranslate%}</p>
+        <p>Hi {{ seller.first_name }}, my name is {{user.first_name}} {{user.last_name}}</p>
         <p>{%trans "Please i need some Information on this Product" %} : {{product.product_name}} , my Reason is {{reason}}</p>
         <text>
             {{message_email}}

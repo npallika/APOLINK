@@ -12,6 +12,7 @@
         <img src="{{photo.photo.url}}" style="height:100px" alt="{{ product.name }}">
     {% endif %}
    
+    
     <p> <a href="{% url 'Products:product_details' pk=product.pk %}">  {{ product.product_name }} </a> </p>
     
     

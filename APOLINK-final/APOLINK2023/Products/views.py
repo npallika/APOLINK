@@ -46,18 +46,19 @@ def countQustions(questionNumber):
     questionNumber+=1
     
 def sendContactEmail(request, **kwargs):
+    print("KWARGS: ", kwargs)
     subject = kwargs.get('subject')
     user = kwargs.get('user')
     to_email = kwargs.get('to_email')
     seller = kwargs.get('seller')
+    print('SELLER : ', seller.first_name)
     message_email = kwargs.get('message')
     reason = kwargs.get('reason')
-    print('REASON : ', reason)
     product = kwargs.get('product')
     #send a message contained in a template, pass context
     message = render_to_string(
         'Products/contact_email.html',
-        {'user': user.username,
+        {'user': user,
          'seller': seller,
          'reason': reason,
          'message_email': message_email,
@@ -139,6 +140,8 @@ def ProductSelected(request, pk):
             'product_selected':product_selected,
             'seller_firstName': seller.first_name,
             'seller_lastName': seller.last_name,
+            'seller': seller,
+            'user': user,
             'Photos':photos,
             'attributes': [{
             'verbose_name': tech_specs._meta.get_field(attr_name).verbose_name,
@@ -173,6 +176,7 @@ def ProductSelected(request, pk):
             context.update({'form': contactForm})
     else:
         #POP UP USER LOG - IN
+        #context.update({'form': loginForm})
         pass
     
     return render(request, 'Products/product_details.html', context)

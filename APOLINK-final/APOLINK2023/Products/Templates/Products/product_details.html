@@ -7,6 +7,7 @@
 
 <!--CONTACT THE SELLER-->
 {%block contactSeller%}
+{% if seller != user %}
 <!-- Modal -->
 <div style='display: flex; justify-content: center; align-items: center;'>
     <a href='' class="btn btn-info" data-toggle="modal" data-target="#ModalContact">{%trans "Contact the seller"%}</a>
@@ -28,7 +29,7 @@
           <form method='POST'>
             {% csrf_token %}
             {{form|crispy}}
-            
+
             <!--check error-->
             {% for field in form %}
               <p>
@@ -72,4 +73,5 @@
 
     </div>
 </div>
+{% endif %}
 {%endblock%}
