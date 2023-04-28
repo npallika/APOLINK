@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{%load i18n%}
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>{%trans "Product Informations" %}</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>{%trans "Request of Porduct Details" %}</h1>
+        <p>{%blocktranslate%}  Hi {{ seller.username }}, my name is {{user}} {%endblocktranslate%}</p>
+        <p>{%trans "Please i need some Information on this Product" %} : {{product.product_name}} , my Reason is {{reason}}</p>
+        <text>
+            {{message_email}}
+        </text>
+        <p><a href="{{ protocol }}://{{ domain }}{% url 'Accounts:login' %}" class="btn">{%trans "Go to the Web site" %}</a></p>
+        <p>{%trans "Thank you!" %}</p>
+    </div>
+</body>
+</html>

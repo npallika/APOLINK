@@ -72,15 +72,16 @@ class UpdateProductForm(forms.ModelForm):
 
 
 #Contact form
-class ContactForm(forms.Form):
-    subject = forms.CharField(max_length=100)
-    message = forms.CharField(widget=forms.Textarea)
+class ContactForm(forms.ModelForm):
     #cc_myself = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-control', 'required': 'false'}))
-    reason = forms.ChoiceField(label='Reason for your inquiry',required=False)
-
     class Meta:
         model = Contact
         fields = ['subject', 'message', 'reason']
+        labels={
+            'subject': _('Subject'),
+            'message': _('Message'),
+            'reason': _('Reason'),
+        }
 
     '''
     def __init__(self, *args, **kwargs):

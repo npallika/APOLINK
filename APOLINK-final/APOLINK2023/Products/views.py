@@ -45,24 +45,34 @@ def get_models():
 def countQustions(questionNumber):
     questionNumber+=1
     
-def sendContactEmail(request, user, to_email):
-    subject = _(request.POST.get('subject'))
+def sendContactEmail(request, **kwargs):
+    subject = kwargs.get('subject')
+    user = kwargs.get('user')
+    to_email = kwargs.get('to_email')
+    seller = kwargs.get('seller')
+    message_email = kwargs.get('message')
+    reason = kwargs.get('reason')
+    print('REASON : ', reason)
+    product = kwargs.get('product')
     #send a message contained in a template, pass context
     message = render_to_string(
-        'TEMPLATE.html',
+        'Products/contact_email.html',
         {'user': user.username,
+         'seller': seller,
+         'reason': reason,
+         'message_email': message_email,
+         'product': product,
          'domain': get_current_site(request).domain,
-         'uid': urlsafe_base64_encode(force_bytes(user.pk)), #necessary for hiding user.pk in URL
+            #'uid': urlsafe_base64_encode(force_bytes(seller.pk)), #necessary for hiding user.pk in URL
          'protocol': 'https' if request.is_secure() else 'http'
          }
     )
     email = EmailMessage(subject, 
                          message, 
-                         to=[to_email]) #user email
+                         to=[to_email]) #seller email
     email.content_subtype='html'
     if email.send(): #return 1 if the email is sent correctly
-        username = _(user.username)
-        msg = _('Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.')
+        msg = _('Dear <b>{username}</b>, you correctly contacted the seller at the email: <b>{to_email}</b>')
         msg = format_html(msg, username =user.username, to_email=to_email)  # insert the translated variables into the message and mark it as safe
         messages.success(request, msg)  # show the translated message
         #successMex =  mark_safe(_(f'Dear <b>{user.username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.'))
@@ -117,40 +127,53 @@ def ProductSelected(request, pk):
     photos = ProductPhotos.objects.filter(product=product_selected)
     category_name = product_selected.product_category.name
     model_specs = models_dict.get(category_name, None)
+    seller = product_selected.user
+    user = request.user
     #model_specs = models_dict[category_name]
-    #implementation for future : if user is logged in, fields of form are precompiled
-    #if request.user.is_authenticated():    
-    #if request.method == 'POST':
-    contactForm = ContactForm(request.POST)
-    if contactForm.is_valid():
-        contact = contactForm.save(commit=False) #save the product before commit
-        contact.product= product_selected
-        contact.save()
-        #sendContactEmail(request)
-        #subject = contactForm.cleaned_data['subject']
-            
-            
-    else:
-        if request.user.is_authenticated(): 
-            contactForm= ContactForm()
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
         print(f"tech specs {vars(tech_specs)}")
         attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}
         print(f"The Tech specs are {attributes}")       
         context = {
-            'product_selected':product_selected, 
+            'product_selected':product_selected,
+            'seller_firstName': seller.first_name,
+            'seller_lastName': seller.last_name,
             'Photos':photos,
             'attributes': [{
             'verbose_name': tech_specs._meta.get_field(attr_name).verbose_name,
             'value': tech_specs.get_type_display() if isinstance(tech_specs._meta.get_field(attr_name), models.Field) and tech_specs._meta.get_field(attr_name).choices else attr_value,
             } for attr_name, attr_value in attributes.items()],
-            'form': contactForm
             }
     except:
         attributes = None
         context = {'product_selected':product_selected, 'Photos':photos,
             'attributes':attributes }
+    #implementation for future : if user is logged in, fields of form are precompiled   
+    if request.user.is_authenticated: 
+        if request.method == 'POST':
+            contactForm = ContactForm(request.POST)
+            print(contactForm)
+            if contactForm.is_valid():
+                contact = contactForm.save(commit=False) #save the product before commit
+                contact.product= product_selected
+                contact.save()
+                sendContactEmail(request, user= user, seller =seller, to_email = seller.email, 
+                                subject= contactForm.cleaned_data.get('subject'), 
+                                message= contactForm.cleaned_data.get('message'), 
+                                reason = contactForm.cleaned_data.get('reason'), 
+                                product = product_selected)
+                context.update({'form': contactForm})
+                return render(request, 'Products/product_details.html', context)     
+            else:
+                messages.error(request, _('ERROR in form validation'))   
+            
+        else: 
+            contactForm= ContactForm()
+            context.update({'form': contactForm})
+    else:
+        #POP UP USER LOG - IN
+        pass
     
     return render(request, 'Products/product_details.html', context)
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 11:19+0300\n"
+"POT-Creation-Date: 2023-04-28 15:12+0300\n"
 "PO-Revision-Date: 2023-04-27 09:22+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,7 +264,7 @@ msgid "phone code"
 msgstr "κωδικός τηλεφώνου"
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
-#: .\Core\models.py:27 .\Products\models.py:13 .\Products\models.py:114
+#: .\Core\models.py:27 .\Products\models.py:13
 msgid "name"
 msgstr "oνομα"
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Activation link is invalid!"
 msgstr "Ο σύνδεσμος ενεργοποίησης είναι άκυρος!"
 
-#: .\Accounts\views.py:73 .\Products\views.py:65
+#: .\Accounts\views.py:73 .\Products\views.py:64
 #, python-brace-format
 msgid ""
 "Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click "
@@ -315,7 +315,7 @@ msgstr ""
 "να ολοκληρώσετε την εγγραφή σας.<b> Σημείωση: </b>Ελέγξτε τον φάκελο "
 "ανεπιθύμητης αλληλογραφίας σας."
 
-#: .\Accounts\views.py:79 .\Products\views.py:71
+#: .\Accounts\views.py:79 .\Products\views.py:70
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
 msgstr "Πρόβλημα αποστολής email σε {to_email}"
@@ -362,6 +362,7 @@ msgid "Logout"
 msgstr "Αποσύνδεση"
 
 #: .\Core\Templates\Core\base.html:201
+#: .\Products\Templates\Products\product_details.html:66
 msgid "Login/Sign Up"
 msgstr "Σύνδεση/Εγγραφή"
 
@@ -460,10 +461,11 @@ msgid "Delete"
 msgstr "Διαγραφή"
 
 #: .\Products\Templates\Products\product_details.html:12
+#: .\Products\Templates\Products\product_details.html:19
 msgid "Contact the seller"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:42
+#: .\Products\Templates\Products\product_details.html:47
 msgid "Send Informations"
 msgstr ""
 
@@ -527,6 +529,18 @@ msgstr "Μοντέλο"
 msgid "Product short description"
 msgstr "Σύντομη περιγραφή του προϊόντος"
 
+#: .\Products\forms.py:76 .\Products\models.py:115
+msgid "subject"
+msgstr ""
+
+#: .\Products\forms.py:77
+msgid "message"
+msgstr ""
+
+#: .\Products\forms.py:79 .\Products\models.py:117
+msgid "Reason for your inquiry"
+msgstr ""
+
 #: .\Products\models.py:21
 msgid "Third Level Category"
 msgstr "Κατηγορία Τρίτου Επιπέδου"
@@ -583,8 +597,8 @@ msgstr "Προϊόντα που εμφανίζονται"
 msgid "photo"
 msgstr "φωτογραφία"
 
-#: .\Products\models.py:95 .\Products\models.py:116 .\Products\models.py:138
-#: .\Products\models.py:156 .\Products\models.py:173 .\Products\models.py:193
+#: .\Products\models.py:95 .\Products\models.py:114 .\Products\models.py:136
+#: .\Products\models.py:154 .\Products\models.py:171 .\Products\models.py:191
 msgid "product"
 msgstr "προϊόν"
 
@@ -608,153 +622,135 @@ msgstr ""
 msgid "Reason3"
 msgstr ""
 
-#: .\Products\models.py:114
-#, fuzzy
-#| msgid "name"
-msgid "No name"
-msgstr "oνομα"
-
-#: .\Products\models.py:115
-msgid "email"
-msgstr ""
-
-#: .\Products\models.py:117
-msgid "subject"
-msgstr ""
-
-#: .\Products\models.py:119
-msgid "Reason for your inquiry"
-msgstr ""
-
-#: .\Products\models.py:120
+#: .\Products\models.py:118
 msgid "created at"
 msgstr ""
 
-#: .\Products\models.py:122
+#: .\Products\models.py:120
 msgid "Contact"
 msgstr ""
 
-#: .\Products\models.py:123
+#: .\Products\models.py:121
 msgid "Contacts"
 msgstr ""
 
-#: .\Products\models.py:134
+#: .\Products\models.py:132
 msgid "Bottom Driven"
 msgstr "Κάτω μέρος Οδηγούμενο"
 
-#: .\Products\models.py:135
+#: .\Products\models.py:133
 msgid "Side Driven"
 msgstr "Πλευρική οδήγηση"
 
-#: .\Products\models.py:136
+#: .\Products\models.py:134
 msgid "Top & Bottom Driven"
 msgstr "Κίνηση από πάνω & κάτω"
 
-#: .\Products\models.py:139
+#: .\Products\models.py:137
 msgid "Case Sealer Type"
 msgstr "Τύπος σφραγιστή θήκης"
 
-#: .\Products\models.py:140
+#: .\Products\models.py:138
 msgid "Minimum Box Size (cm)"
 msgstr "Ελάχιστο μέγεθος κουτιού (cm)"
 
-#: .\Products\models.py:141
+#: .\Products\models.py:139
 msgid "Maximum Box Size (cm)"
 msgstr "Μέγιστο μέγεθος κουτιού (cm)"
 
-#: .\Products\models.py:142 .\Products\models.py:158
+#: .\Products\models.py:140 .\Products\models.py:156
 msgid "Maximum boxes per min"
 msgstr "Μέγιστα κουτιά ανά λεπτό"
 
-#: .\Products\models.py:144
+#: .\Products\models.py:142
 msgid "Case Sealers Spec"
 msgstr "Προδιαγραφές σφραγιστικών θήκης"
 
-#: .\Products\models.py:145
+#: .\Products\models.py:143
 msgid "Case Sealers Specs"
 msgstr "Προδιαγραφές συσκευών σφράγισης κιβωτίων"
 
-#: .\Products\models.py:152
+#: .\Products\models.py:150
 msgid "Top Loader"
 msgstr "Κορυφαίος φορτωτής"
 
-#: .\Products\models.py:153
+#: .\Products\models.py:151
 msgid "Side Loader"
 msgstr "Πλευρικός φορτωτής"
 
-#: .\Products\models.py:154
+#: .\Products\models.py:152
 msgid "Pick and Place"
 msgstr "Διαλέξτε και τοποθετήστε"
 
-#: .\Products\models.py:157
+#: .\Products\models.py:155
 msgid "Case Packer Type"
 msgstr "Τύπος συσκευαστή κιβωτίων"
 
-#: .\Products\models.py:161
+#: .\Products\models.py:159
 msgid "Case Packer spec"
 msgstr "Συσκευαστής κιβωτίων προδιαγραφή "
 
-#: .\Products\models.py:162
+#: .\Products\models.py:160
 msgid "Case Packer specs"
 msgstr "Συσκευαστής κιβωτίων προδιαγραφές"
 
-#: .\Products\models.py:170
+#: .\Products\models.py:168
 msgid "Batch"
 msgstr "Παρτίδα"
 
-#: .\Products\models.py:171
+#: .\Products\models.py:169
 msgid "Continuous"
 msgstr "Συνεχής"
 
-#: .\Products\models.py:174
+#: .\Products\models.py:172
 msgid "Batch/Continuous"
 msgstr "Παρτίδα/Συνεχής"
 
-#: .\Products\models.py:175
+#: .\Products\models.py:173
 msgid "Motor Power in kW"
 msgstr "Ισχύς κινητήρα σε kW"
 
-#: .\Products\models.py:176 .\Products\models.py:196
+#: .\Products\models.py:174 .\Products\models.py:194
 msgid "Application"
 msgstr "Eφαρμογή"
 
-#: .\Products\models.py:179
+#: .\Products\models.py:177
 msgid "Dispersers spec"
 msgstr "Προδιαγραφές διασκορπιστών"
 
-#: .\Products\models.py:180
+#: .\Products\models.py:178
 msgid "Dispersers specs"
 msgstr "Προδιαγραφές διασκορπιστή"
 
-#: .\Products\models.py:188
+#: .\Products\models.py:186
 msgid "Layer"
 msgstr "Στρώμα"
 
-#: .\Products\models.py:189
+#: .\Products\models.py:187
 msgid "Gantry"
 msgstr "Γερανογέφυρα"
 
-#: .\Products\models.py:190
+#: .\Products\models.py:188
 msgid "Robotic"
 msgstr "Ρομποτική"
 
-#: .\Products\models.py:191
+#: .\Products\models.py:189
 msgid "Other"
 msgstr "Άλλα"
 
-#: .\Products\models.py:194
+#: .\Products\models.py:192
 msgid "Palletizer Type"
 msgstr "Τύπος παλετοποιητή"
 
-#: .\Products\models.py:195
+#: .\Products\models.py:193
 msgid "Throughput (pieces/min)"
 msgstr "Απόδοση (τεμάχια/λεπτό)"
 
-#: .\Products\models.py:199
+#: .\Products\models.py:197
 msgid "Palletizer spec"
 msgstr "Προδιαγραφή Palletizer"
 
-#: .\Products\models.py:200
+#: .\Products\models.py:198
 msgid "Palletizer specs"
 msgstr "Προδιαγραφές Palletizer"
 
@@ -774,17 +770,22 @@ msgstr "Διασκορπιστές-αναμικτήρες"
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
 
-#: .\Products\views.py:215
+#: .\Products\views.py:220
 #, fuzzy
 #| msgid "Your profile is updated successfully"
 msgid "Product uploaded succesfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
-#: .\Products\views.py:219
+#: .\Products\views.py:224
 msgid ""
 "There was an error uploading your photos. Please ensure that the uploaded "
 "files are images."
 msgstr ""
+
+#, fuzzy
+#~| msgid "name"
+#~ msgid "No name"
+#~ msgstr "oνομα"
 
 #~ msgid "cancel"
 #~ msgstr "ακύρωση"

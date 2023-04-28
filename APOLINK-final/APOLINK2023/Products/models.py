@@ -111,8 +111,6 @@ class Contact(models.Model):
         (_('Reason2'),_("Reason2")),
         (_('Reason3'),_("Reason3"))
     }
-    name = models.CharField(_('name'), max_length=200, blank = True)
-    email = models.EmailField(_('email'), max_length=200, null=True)
     product = models.ForeignKey(ProductsDisplayed, verbose_name=_('product'), null = True, on_delete=models.CASCADE)
     subject = models.CharField(_('subject'),max_length=200, blank=True)
     message = models.TextField(blank=True)
@@ -123,7 +121,7 @@ class Contact(models.Model):
         verbose_name_plural = _('Contacts')
     
     def __str__(self) :
-        return self.name
+        return self.product.user + ':' + self.user
 
 
 
