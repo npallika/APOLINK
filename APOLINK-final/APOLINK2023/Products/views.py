@@ -127,8 +127,12 @@ def ProductSelected(request, pk):
     if request.method == 'POST':
         contactForm = ContactForm(request.POST, initial= data)
         if contactForm.is_valid():
+            contact = contactForm.save(commit=False) #save the product before commit
+            contact.product= product_selected
+            contact.save()
+            #sendContactEmail(request)
             subject = contactForm.cleaned_data['subject']
-            print(subject)
+            
             
     else:
         contactForm= ContactForm(initial=data)
@@ -154,7 +158,7 @@ def ProductSelected(request, pk):
     return render(request, 'Products/product_details.html', context)
 
 
-
+@login_required
 def MyProductInfo(request, pk):
     models_dict = get_models()
     product_selected = get_object_or_404(ProductsDisplayed, id=pk)
@@ -212,11 +216,11 @@ def sell_rent(request):
                     photo = form.save(commit=False)
                     photo.product = publish
                     photo.save()
-            messages.success(request, 'Product uploaded succesfully')
+            messages.success(request, _('Product uploaded succesfully'))
             return redirect ('Products:technical_specs', pk=publish.id)
         else:
           #formset is not valid : is read the validator passed to the field
-          messages.error(request, 'There was an error uploading your photos. Please ensure that the uploaded files are images.')    
+          messages.error(request, _('There was an error uploading your photos. Please ensure that the uploaded files are images.'))    
     else:     
         sellRentForm = SellRentForm()
     return render(request, 'Products/sellRent_form.html', {'sellRentForm': sellRentForm, 'formset': formset  })
@@ -253,7 +257,7 @@ def ProductsSpecsCreate(request, pk):
             publish.product = product   
             publish.save()
             #print (publish.product)
-            return redirect ('Products:product_details', pk)
+            return redirect ('Products:myProductInfo', pk) #product_details
 
     else:
         print(category_name)
@@ -297,7 +301,7 @@ def ProductsSpecsUpdate(request, pk):
             publish.product = product   
             publish.save()
             #print (publish.product)
-            return redirect ('Products:product_details', pk)
+            return redirect ('Products:myProductInfo', pk) #Products:product_details
 
     else:
         ProductSpecsForm = TechSpecs(models_dict.get(category_name,None))(instance=specsCategory)#take the right form from dictionary based on thirdlevelcategory

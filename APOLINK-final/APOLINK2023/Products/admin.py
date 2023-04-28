@@ -11,6 +11,9 @@ class ProductsDisplayedAdmin(TranslationAdmin):
     
 class ProductPhotosAdmin(TranslationAdmin):
     model = models.ProductPhotos
+
+class ContactAdmin(TranslationAdmin):
+    model = models.Contact
     
 class CaseSealerSpecsAdmin(TranslationAdmin):
     model = models.CaseSealerSpecs
@@ -30,5 +33,6 @@ admin.site.register(models.ThirdLevelCategories, ThirdLevelCategoriesAdmin)
 admin.site.register(models.CaseSealerSpecs, CaseSealerSpecsAdmin)
 admin.site.register(models.CasePackerSpecs, CasePackerSpecsAdmin)
 admin.site.register(models.ProductsDisplayed, ProductsDisplayedAdmin)
+admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.DispersersSpecs, DispersersSpecsAdmin)
 admin.site.register(models.PalletizerSpecs, PalletizerSpecsAdmin)

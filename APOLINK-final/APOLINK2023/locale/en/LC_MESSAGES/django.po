@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 09:21+0300\n"
+"POT-Creation-Date: 2023-04-28 11:19+0300\n"
 "PO-Revision-Date: 2023-04-25 12:17+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\template_activate_account.html:7
 #: .\Accounts\Templates\Accounts\template_activate_account.html:30
-#: .\Accounts\views.py:57
+#: .\Accounts\views.py:56
 msgid "Activate your user account"
 msgstr ""
 
@@ -250,7 +250,7 @@ msgid "phone code"
 msgstr ""
 
 #: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
-#: .\Core\models.py:27 .\Products\models.py:13
+#: .\Core\models.py:27 .\Products\models.py:13 .\Products\models.py:114
 msgid "name"
 msgstr ""
 
@@ -278,16 +278,16 @@ msgstr ""
 msgid "Platform Users"
 msgstr ""
 
-#: .\Accounts\views.py:49
+#: .\Accounts\views.py:48
 msgid ""
 "Thank you for your email confirmation. Now you can LOGIN in your account"
 msgstr ""
 
-#: .\Accounts\views.py:52
+#: .\Accounts\views.py:51
 msgid "Activation link is invalid!"
 msgstr ""
 
-#: .\Accounts\views.py:74
+#: .\Accounts\views.py:73 .\Products\views.py:65
 #, python-brace-format
 msgid ""
 "Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click "
@@ -295,28 +295,28 @@ msgid ""
 "Note: </b>. Check your spam folder."
 msgstr ""
 
-#: .\Accounts\views.py:80
+#: .\Accounts\views.py:79 .\Products\views.py:71
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
 msgstr ""
 
-#: .\Accounts\views.py:88 .\Core\views.py:30
+#: .\Accounts\views.py:87 .\Core\views.py:30
 msgid "hello"
 msgstr ""
 
-#: .\Accounts\views.py:130
+#: .\Accounts\views.py:129
 msgid "You have successfully logged out."
 msgstr ""
 
-#: .\Accounts\views.py:149
+#: .\Accounts\views.py:148
 msgid "You have successfully logged in"
 msgstr ""
 
-#: .\Accounts\views.py:152
+#: .\Accounts\views.py:151
 msgid "Your account is not active."
 msgstr ""
 
-#: .\Accounts\views.py:236 .\Accounts\views.py:248 .\Accounts\views.py:254
+#: .\Accounts\views.py:235 .\Accounts\views.py:247 .\Accounts\views.py:253
 msgid "Your profile is updated successfully"
 msgstr ""
 
@@ -394,53 +394,57 @@ msgid "Category"
 msgstr ""
 
 #: .\Products\Templates\Products\category_products_list.html:18
-#: .\Products\Templates\Products\show_my_products.html:21
+#: .\Products\Templates\Products\show_my_products.html:22
 #: .\Products\forms.py:62
 msgid "Manufactured date"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:7
+#: .\Products\Templates\Products\my_product_info.html:8
 msgid "Product Details"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:9
+#: .\Products\Templates\Products\my_product_info.html:10
 msgid "Name"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:11
+#: .\Products\Templates\Products\my_product_info.html:12
 msgid "Manufactured Date"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:13
-#: .\Products\Templates\Products\show_my_products.html:22
+#: .\Products\Templates\Products\my_product_info.html:14
+#: .\Products\Templates\Products\show_my_products.html:23
 msgid "Registered Date"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:16
+#: .\Products\Templates\Products\my_product_info.html:17
 msgid "Last Updated"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:21
-#: .\Products\Templates\Products\product_details.html:23
+#: .\Products\Templates\Products\my_product_info.html:22
+#: .\Products\Templates\Products\my_product_info.html:24
 msgid "Status"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:32
+#: .\Products\Templates\Products\my_product_info.html:33
 msgid "Technical Specifications"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:41
-msgid "Contact the seller"
-msgstr ""
-
-#: .\Products\Templates\Products\product_details.html:73
-#: .\Products\Templates\Products\show_my_products.html:18
+#: .\Products\Templates\Products\my_product_info.html:47
+#: .\Products\Templates\Products\show_my_products.html:19
 msgid "Edit"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:74
-#: .\Products\Templates\Products\show_my_products.html:19
+#: .\Products\Templates\Products\my_product_info.html:48
+#: .\Products\Templates\Products\show_my_products.html:20
 msgid "Delete"
+msgstr ""
+
+#: .\Products\Templates\Products\product_details.html:12
+msgid "Contact the seller"
+msgstr ""
+
+#: .\Products\Templates\Products\product_details.html:42
+msgid "Send Informations"
 msgstr ""
 
 #: .\Products\Templates\Products\techSpecsForm.html:8
@@ -559,8 +563,8 @@ msgstr ""
 msgid "photo"
 msgstr ""
 
-#: .\Products\models.py:95 .\Products\models.py:112 .\Products\models.py:130
-#: .\Products\models.py:147 .\Products\models.py:167
+#: .\Products\models.py:95 .\Products\models.py:116 .\Products\models.py:138
+#: .\Products\models.py:156 .\Products\models.py:173 .\Products\models.py:193
 msgid "product"
 msgstr ""
 
@@ -572,140 +576,190 @@ msgstr ""
 msgid "Product Photos"
 msgstr ""
 
-#: .\Products\models.py:108
-msgid "Bottom Driven"
-msgstr ""
-
-#: .\Products\models.py:109
-msgid "Side Driven"
-msgstr ""
-
 #: .\Products\models.py:110
-msgid "Top & Bottom Driven"
+msgid "Reason1"
 msgstr ""
 
-#: .\Products\models.py:113
-msgid "Case Sealer Type"
+#: .\Products\models.py:111
+msgid "Reason2"
+msgstr ""
+
+#: .\Products\models.py:112
+msgid "Reason3"
 msgstr ""
 
 #: .\Products\models.py:114
-msgid "Minimum Box Size (cm)"
+msgid "No name"
 msgstr ""
 
 #: .\Products\models.py:115
-msgid "Maximum Box Size (cm)"
+msgid "email"
 msgstr ""
 
-#: .\Products\models.py:116 .\Products\models.py:132
-msgid "Maximum boxes per min"
-msgstr ""
-
-#: .\Products\models.py:118
-msgid "Case Sealers Spec"
+#: .\Products\models.py:117
+msgid "subject"
 msgstr ""
 
 #: .\Products\models.py:119
-msgid "Case Sealers Specs"
+msgid "Reason for your inquiry"
 msgstr ""
 
-#: .\Products\models.py:126
-msgid "Top Loader"
+#: .\Products\models.py:120
+msgid "created at"
 msgstr ""
 
-#: .\Products\models.py:127
-msgid "Side Loader"
+#: .\Products\models.py:122
+msgid "Contact"
 msgstr ""
 
-#: .\Products\models.py:128
-msgid "Pick and Place"
+#: .\Products\models.py:123
+msgid "Contacts"
 msgstr ""
 
-#: .\Products\models.py:131
-msgid "Case Packer Type"
+#: .\Products\models.py:134
+msgid "Bottom Driven"
 msgstr ""
 
 #: .\Products\models.py:135
-msgid "Case Packer spec"
+msgid "Side Driven"
 msgstr ""
 
 #: .\Products\models.py:136
-msgid "Case Packer specs"
+msgid "Top & Bottom Driven"
+msgstr ""
+
+#: .\Products\models.py:139
+msgid "Case Sealer Type"
+msgstr ""
+
+#: .\Products\models.py:140
+msgid "Minimum Box Size (cm)"
+msgstr ""
+
+#: .\Products\models.py:141
+msgid "Maximum Box Size (cm)"
+msgstr ""
+
+#: .\Products\models.py:142 .\Products\models.py:158
+msgid "Maximum boxes per min"
 msgstr ""
 
 #: .\Products\models.py:144
-msgid "Batch"
+msgid "Case Sealers Spec"
 msgstr ""
 
 #: .\Products\models.py:145
-msgid "Continuous"
+msgid "Case Sealers Specs"
 msgstr ""
 
-#: .\Products\models.py:148
-msgid "Batch/Continuous"
-msgstr ""
-
-#: .\Products\models.py:149
-msgid "Motor Power in kW"
-msgstr ""
-
-#: .\Products\models.py:150 .\Products\models.py:170
-msgid "Application"
+#: .\Products\models.py:152
+msgid "Top Loader"
 msgstr ""
 
 #: .\Products\models.py:153
-msgid "Dispersers spec"
+msgid "Side Loader"
 msgstr ""
 
 #: .\Products\models.py:154
-msgid "Dispersers specs"
+msgid "Pick and Place"
+msgstr ""
+
+#: .\Products\models.py:157
+msgid "Case Packer Type"
+msgstr ""
+
+#: .\Products\models.py:161
+msgid "Case Packer spec"
 msgstr ""
 
 #: .\Products\models.py:162
-msgid "Layer"
+msgid "Case Packer specs"
 msgstr ""
 
-#: .\Products\models.py:163
-msgid "Gantry"
+#: .\Products\models.py:170
+msgid "Batch"
 msgstr ""
 
-#: .\Products\models.py:164
-msgid "Robotic"
-msgstr ""
-
-#: .\Products\models.py:165
-msgid "Other"
-msgstr ""
-
-#: .\Products\models.py:168
-msgid "Palletizer Type"
-msgstr ""
-
-#: .\Products\models.py:169
-msgid "Throughput (pieces/min)"
-msgstr ""
-
-#: .\Products\models.py:173
-msgid "Palletizer spec"
+#: .\Products\models.py:171
+msgid "Continuous"
 msgstr ""
 
 #: .\Products\models.py:174
+msgid "Batch/Continuous"
+msgstr ""
+
+#: .\Products\models.py:175
+msgid "Motor Power in kW"
+msgstr ""
+
+#: .\Products\models.py:176 .\Products\models.py:196
+msgid "Application"
+msgstr ""
+
+#: .\Products\models.py:179
+msgid "Dispersers spec"
+msgstr ""
+
+#: .\Products\models.py:180
+msgid "Dispersers specs"
+msgstr ""
+
+#: .\Products\models.py:188
+msgid "Layer"
+msgstr ""
+
+#: .\Products\models.py:189
+msgid "Gantry"
+msgstr ""
+
+#: .\Products\models.py:190
+msgid "Robotic"
+msgstr ""
+
+#: .\Products\models.py:191
+msgid "Other"
+msgstr ""
+
+#: .\Products\models.py:194
+msgid "Palletizer Type"
+msgstr ""
+
+#: .\Products\models.py:195
+msgid "Throughput (pieces/min)"
+msgstr ""
+
+#: .\Products\models.py:199
+msgid "Palletizer spec"
+msgstr ""
+
+#: .\Products\models.py:200
 msgid "Palletizer specs"
 msgstr ""
 
-#: .\Products\views.py:30
+#: .\Products\views.py:38
 msgid "Case Sealers"
 msgstr ""
 
-#: .\Products\views.py:31
+#: .\Products\views.py:39
 msgid "Case Packers"
 msgstr ""
 
-#: .\Products\views.py:32
+#: .\Products\views.py:40
 msgid "Dispersers-Mixers"
 msgstr ""
 
-#: .\Products\views.py:33
+#: .\Products\views.py:41
 msgid "Palletizers"
+msgstr ""
+
+#: .\Products\views.py:215
+msgid "Product uploaded succesfully"
+msgstr ""
+
+#: .\Products\views.py:219
+msgid ""
+"There was an error uploading your photos. Please ensure that the uploaded "
+"files are images."
 msgstr ""
 
 #~ msgid "Για πώληση"

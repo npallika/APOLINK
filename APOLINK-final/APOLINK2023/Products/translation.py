@@ -13,6 +13,10 @@ class ProductsDisplayedTranslationOptions(TranslationOptions):
 @register(ProductPhotos)
 class ProductPhotosTranslationOptions(TranslationOptions):
     fields = () # don't need photo 
+    
+@register(Contact)
+class ContactTranslationOptions(TranslationOptions):
+    fields=()
 
 @register(CaseSealerSpecs)
 class CaseSealerSpecsTranslationOptions(TranslationOptions):

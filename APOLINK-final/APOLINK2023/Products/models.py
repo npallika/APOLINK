@@ -105,8 +105,25 @@ class ProductPhotos(models.Model):
         
 #remember to count how many people are interested in the product      
 class Contact(models.Model):
-    pass        
-
+    #you can create a foreignKey with product : Product.contact_set.all() = count how many contacts for the product
+    CHOICES = {
+        (_('Reason1'),_("Reason1")),
+        (_('Reason2'),_("Reason2")),
+        (_('Reason3'),_("Reason3"))
+    }
+    name = models.CharField(_('name'), max_length=200, blank = True)
+    email = models.EmailField(_('email'), max_length=200, null=True)
+    product = models.ForeignKey(ProductsDisplayed, verbose_name=_('product'), null = True, on_delete=models.CASCADE)
+    subject = models.CharField(_('subject'),max_length=200, blank=True)
+    message = models.TextField(blank=True)
+    reason = models.CharField(verbose_name=_("Reason for your inquiry"), max_length=40, choices=CHOICES, blank=True, null=True)
+    created_at = models.DateField(verbose_name=_('created at'), default=timezone.now)
+    class Meta:
+        verbose_name = _('Contact')
+        verbose_name_plural = _('Contacts')
+    
+    def __str__(self) :
+        return self.name
 
 
 

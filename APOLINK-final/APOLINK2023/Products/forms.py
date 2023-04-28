@@ -80,7 +80,7 @@ class ContactForm(forms.Form):
 
     class Meta:
         model = Contact
-        fields = []
+        fields = ['subject', 'message', 'reason']
 
     '''
     def __init__(self, *args, **kwargs):
