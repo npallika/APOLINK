@@ -46,7 +46,7 @@ def countQustions(questionNumber):
     questionNumber+=1
     
 def sendContactEmail(request, user, to_email):
-    mail_subject = _(request.POST.get('subject'))
+    subject = _(request.POST.get('subject'))
     #send a message contained in a template, pass context
     message = render_to_string(
         'TEMPLATE.html',
@@ -56,7 +56,7 @@ def sendContactEmail(request, user, to_email):
          'protocol': 'https' if request.is_secure() else 'http'
          }
     )
-    email = EmailMessage(mail_subject, 
+    email = EmailMessage(subject, 
                          message, 
                          to=[to_email]) #user email
     email.content_subtype='html'
@@ -119,23 +119,20 @@ def ProductSelected(request, pk):
     model_specs = models_dict.get(category_name, None)
     #model_specs = models_dict[category_name]
     #implementation for future : if user is logged in, fields of form are precompiled
-    if request.user.is_authenticated:
-        data = {}
-    else :
-        data =[]
-        
-    if request.method == 'POST':
-        contactForm = ContactForm(request.POST, initial= data)
-        if contactForm.is_valid():
-            contact = contactForm.save(commit=False) #save the product before commit
-            contact.product= product_selected
-            contact.save()
-            #sendContactEmail(request)
-            subject = contactForm.cleaned_data['subject']
+    #if request.user.is_authenticated():    
+    #if request.method == 'POST':
+    contactForm = ContactForm(request.POST)
+    if contactForm.is_valid():
+        contact = contactForm.save(commit=False) #save the product before commit
+        contact.product= product_selected
+        contact.save()
+        #sendContactEmail(request)
+        #subject = contactForm.cleaned_data['subject']
             
             
     else:
-        contactForm= ContactForm(initial=data)
+        if request.user.is_authenticated(): 
+            contactForm= ContactForm()
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
         print(f"tech specs {vars(tech_specs)}")
