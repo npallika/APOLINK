@@ -47,6 +47,7 @@
               <button type="submit" class="btn btn-primary">{% trans "Send Informations" %}</button>          
             </div>
           {%else%}
+            <p>You have to Log-in at first </p>
             {{form_login|crispy}}
             <!--check error-->
             {% for field in form %}

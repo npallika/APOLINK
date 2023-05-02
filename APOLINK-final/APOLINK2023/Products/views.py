@@ -159,44 +159,86 @@ def ProductSelected(request, pk):
             'attributes':attributes }
     #this if need to use the same FORM variable either for CONTACT FORM or for LOGIN FORM  
     #----if you are logged-in:
-    if request.method == 'POST':
-        contactForm = ContactForm(request.POST)
-        if contactForm.is_valid():
-            contact = contactForm.save(commit=False) #save the product before commit
-            contact.product= product_selected
-            contact.save()
-            sendContactEmail(request, user= user, seller =seller, to_email = seller.email, 
-                            subject= contactForm.cleaned_data.get('subject'), 
-                            message= contactForm.cleaned_data.get('message'), 
-                            reason = contactForm.cleaned_data.get('reason'), 
-                            product = product_selected)
-            #Update context with contact form 
-            return render(request, 'Products/product_details.html', context)     
-        else:
-            messages.error(request, _('ERROR in form validation'))   
-        
-    else: 
-        contactForm= ContactForm()
-    context.update({'form_contact': contactForm})
+    if user.is_authenticated:
+        if request.method == 'POST':
+            contactForm = ContactForm(request.POST)
+            if contactForm.is_valid():
+                contact = contactForm.save(commit=False) #save the product before commit
+                contact.product= product_selected
+                contact.save()
+                sendContactEmail(request, user= user, seller =seller, to_email = seller.email, 
+                                subject= contactForm.cleaned_data.get('subject'), 
+                                message= contactForm.cleaned_data.get('message'), 
+                                reason = contactForm.cleaned_data.get('reason'), 
+                                product = product_selected)
+                #Update context with contact form 
+                return redirect('Products:product_details', product_selected.pk)     
+            else:
+                messages.error(request, _('ERROR in form validation'))   
+            
+        else: 
+            contactForm= ContactForm()
+            context.update({'form_contact': contactForm})
     #----if you are not logged in:
     #POP UP USER LOG - IN
-    if request.method == 'POST':
-        loginForm = AuthenticationForm(request, data=request.POST)
-        if loginForm.is_valid():
-            username = loginForm.cleaned_data.get('username')
-            password = loginForm.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user and user.is_active:
-                login(request, user)
-                messages.success(request, _('You have successfully logged in')) 
+    else:
+        if request.method == 'POST':
+            loginForm = AuthenticationForm(request, data=request.POST)
+            if loginForm.is_valid():
+                username = loginForm.cleaned_data.get('username')
+                password = loginForm.cleaned_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user and user.is_active:
+                    login(request, user)
+                    messages.success(request, _('You have successfully logged in')) 
+                    return redirect('Products:product_details', product_selected.pk)
+                else:
+                    messages.warning(request, _('Your account is not active.'))
             else:
-                messages.warning(request, _('Your account is not active.'))
-        else:
-            messages.error(request, "ERROR: Invalid username or password")      
-    else :
-        loginForm = AuthenticationForm()
-    context.update({'form_login': loginForm}) 
+                messages.error(request, "ERROR: Invalid username or password")      
+        else :
+            loginForm = AuthenticationForm()
+            context.update({'form_login': loginForm}) 
     return render(request, 'Products/product_details.html', context)
+    #CODE MORE EFFICIENT, BUT MORE COMPLICATED
+    '''
+    if request.method == 'POST':
+        if not user.is_authenticated:
+            loginForm = AuthenticationForm(request, data=request.POST)
+            if loginForm.is_valid():
+                username = loginForm.cleaned_data.get('username')
+                password = loginForm.cleaned_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user and user.is_active:
+                    login(request, user)
+                    messages.success(request, _('You have successfully logged in'))
+                    
+                    contactForm = ContactForm()
+                    context.update({'form_contact': contactForm})
+                    return redirect('Products:product_details', product_selected.pk)
+                else:
+                    messages.warning(request, 'Your account is not active.')
+        else:
+            contactForm= ContactForm(request.POST)
+            if contactForm.is_valid():
+                contact = contactForm.save(commit=False) #save the product before commit
+                contact.product= product_selected
+                contact.save()
+                sendContactEmail(request, user= user, seller =seller, to_email = seller.email, 
+                                subject= contactForm.cleaned_data.get('subject'), 
+                                message= contactForm.cleaned_data.get('message'), 
+                                reason = contactForm.cleaned_data.get('reason'), 
+                                product = product_selected)
+                 
+    else:
+        if not user.is_authenticated:
+            loginForm = AuthenticationForm()    
+            context.update({'form_login': loginForm})
+        else:
+            contactForm = ContactForm()
+            context.update({'form_contact': contactForm})
+    return render(request, 'Products/product_details.html', context)
+    '''
 
 
 @login_required
