@@ -228,8 +228,7 @@ def ProductSelected(request, pk):
                                 subject= contactForm.cleaned_data.get('subject'), 
                                 message= contactForm.cleaned_data.get('message'), 
                                 reason = contactForm.cleaned_data.get('reason'), 
-                                product = product_selected)
-                 
+                                product = product_selected)         
     else:
         if not user.is_authenticated:
             loginForm = AuthenticationForm()    
