@@ -7,29 +7,28 @@
 
 <!--CONTACT THE SELLER-->
 {%block contactSeller%}
+<!--if the seller is the user , he can't see the button of contact for his products-->
 {% if seller != user %}
 <!-- Modal -->
-<div style='display: flex; justify-content: center; align-items: center;'>
-    <a href='' class="btn btn-info" data-toggle="modal" data-target="#ModalContact">{%trans "Contact the seller"%}</a>
+<div style='display: flex; justify-content: center; align-items: center; margin-bottom: 30px;'>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalContact">{%trans "Contact the seller"%}</a>
 </div>
 
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">{%trans "Contact the seller"%}: {{seller_firstName}} {{seller_lastName}}</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">{%trans "Contact the seller"%}: {{seller.first_name}} {{seller.last_name}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
-        {%if user.is_authenticated%}
+        <!--MAYBE WE DON'T NEED THIS IF-->
         <div class="modal-body">
           
           <form method='POST'>
             {% csrf_token %}
             {{form|crispy}}
-
             <!--check error-->
             {% for field in form %}
               <p>
@@ -61,12 +60,10 @@
           <button type="button" class="btn btn-primary">Save changes</button>
         </div>
 
-        {%else%}
-        <!--implement a pop up login-->
+        <!--{%else%}
         <div class= 'modal-body'>
         <a class="nav-item nav-link" href="{% url 'Accounts:login' %}">{%trans "Login/Sign Up" %}</a>
-        </div>
-        {%endif%}
+        </div>-->
 
         
       </div>

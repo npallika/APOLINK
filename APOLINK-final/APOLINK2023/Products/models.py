@@ -121,7 +121,7 @@ class Contact(models.Model):
         verbose_name_plural = _('Contacts')
     
     def __str__(self) :
-        return self.product.user + ':' + self.user
+        return "Seller: " + self.product.user.username+ "; " + "Subject: " + self.subject + "; " + "Product: " + self.product.product_name
 
 
 

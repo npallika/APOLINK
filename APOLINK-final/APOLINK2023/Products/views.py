@@ -3,11 +3,13 @@ from django.forms.formsets import formset_factory
 from django.forms import modelformset_factory, inlineformset_factory
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate,login, logout, get_user_model
 from django.contrib.admin.widgets import AdminDateWidget
 from django import forms
 from django.http import HttpResponseRedirect
 from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs, PalletizerSpecs
-from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs, ContactForm
+from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs, ContactForm #LoginForm
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -46,12 +48,10 @@ def countQustions(questionNumber):
     questionNumber+=1
     
 def sendContactEmail(request, **kwargs):
-    print("KWARGS: ", kwargs)
     subject = kwargs.get('subject')
     user = kwargs.get('user')
     to_email = kwargs.get('to_email')
     seller = kwargs.get('seller')
-    print('SELLER : ', seller.first_name)
     message_email = kwargs.get('message')
     reason = kwargs.get('reason')
     product = kwargs.get('product')
@@ -130,18 +130,20 @@ def ProductSelected(request, pk):
     model_specs = models_dict.get(category_name, None)
     seller = product_selected.user
     user = request.user
+    productContacts = product_selected.contact_set.all()
+    n_contacts = productContacts.count()
+    print('N_CONTACTS: ' + str(n_contacts))
     #model_specs = models_dict[category_name]
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
-        print(f"tech specs {vars(tech_specs)}")
+        #print(f"tech specs {vars(tech_specs)}")
         attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}
-        print(f"The Tech specs are {attributes}")       
+        #print(f"The Tech specs are {attributes}")       
         context = {
             'product_selected':product_selected,
-            'seller_firstName': seller.first_name,
-            'seller_lastName': seller.last_name,
             'seller': seller,
             'user': user,
+            'n_contacts':n_contacts,
             'Photos':photos,
             'attributes': [{
             'verbose_name': tech_specs._meta.get_field(attr_name).verbose_name,
@@ -150,13 +152,15 @@ def ProductSelected(request, pk):
             }
     except:
         attributes = None
-        context = {'product_selected':product_selected, 'Photos':photos,
+        context = {
+            'product_selected':product_selected, 
+            'Photos':photos,
             'attributes':attributes }
-    #implementation for future : if user is logged in, fields of form are precompiled   
+    #this if need to use the same FORM variable either for CONTACT FORM or for LOGIN FORM  
+    #----if you are logged-in:
     if request.user.is_authenticated: 
         if request.method == 'POST':
             contactForm = ContactForm(request.POST)
-            print(contactForm)
             if contactForm.is_valid():
                 contact = contactForm.save(commit=False) #save the product before commit
                 contact.product= product_selected
@@ -166,19 +170,31 @@ def ProductSelected(request, pk):
                                 message= contactForm.cleaned_data.get('message'), 
                                 reason = contactForm.cleaned_data.get('reason'), 
                                 product = product_selected)
-                context.update({'form': contactForm})
+                #Update context with contact form 
                 return render(request, 'Products/product_details.html', context)     
             else:
                 messages.error(request, _('ERROR in form validation'))   
             
         else: 
             contactForm= ContactForm()
-            context.update({'form': contactForm})
+        context.update({'form': contactForm})
+    #----if you are not logged in:
+    #POP UP USER LOG - IN
     else:
-        #POP UP USER LOG - IN
-        #context.update({'form': loginForm})
-        pass
-    
+        if request.method == 'POST':
+            loginForm = AuthenticationForm(request.POST)
+            username = loginForm.cleaned_data.get('username')
+            password = loginForm.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user and user.is_active:
+                login(request, user)
+                messages.success(request, _('You have successfully logged in'))
+                return render(request, 'Products/product_details.html', context)  
+            else:
+                messages.warning(request, _('Your account is not active.'))
+        else :
+            loginForm = AuthenticationForm()
+        context.update({'form': loginForm}) 
     return render(request, 'Products/product_details.html', context)
 
 
@@ -260,7 +276,7 @@ def ProductsSpecsCreate(request, pk):
         #print(f"The product is: {product}")
     except ProductsDisplayed.DoesNotExist:
         # Handle the case where the product does not exist
-        return redirect('products_category')
+        return redirect('Products:products_category')
 
     #product = get_object_or_404(ProductsDisplayed, pk=pk)
     
