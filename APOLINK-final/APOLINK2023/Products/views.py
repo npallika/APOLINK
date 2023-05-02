@@ -1,3 +1,4 @@
+from Accounts.forms import CustomAuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms.formsets import formset_factory
 from django.forms import modelformset_factory, inlineformset_factory
@@ -9,7 +10,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django import forms
 from django.http import HttpResponseRedirect
 from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs, PalletizerSpecs
-from .forms import UserCreationForm, SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs, ContactForm #LoginForm
+from .forms import SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs, ContactForm #LoginForm
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -158,43 +159,43 @@ def ProductSelected(request, pk):
             'attributes':attributes }
     #this if need to use the same FORM variable either for CONTACT FORM or for LOGIN FORM  
     #----if you are logged-in:
-    if request.user.is_authenticated: 
-        if request.method == 'POST':
-            contactForm = ContactForm(request.POST)
-            if contactForm.is_valid():
-                contact = contactForm.save(commit=False) #save the product before commit
-                contact.product= product_selected
-                contact.save()
-                sendContactEmail(request, user= user, seller =seller, to_email = seller.email, 
-                                subject= contactForm.cleaned_data.get('subject'), 
-                                message= contactForm.cleaned_data.get('message'), 
-                                reason = contactForm.cleaned_data.get('reason'), 
-                                product = product_selected)
-                #Update context with contact form 
-                return render(request, 'Products/product_details.html', context)     
-            else:
-                messages.error(request, _('ERROR in form validation'))   
-            
-        else: 
-            contactForm= ContactForm()
-        context.update({'form': contactForm})
+    if request.method == 'POST':
+        contactForm = ContactForm(request.POST)
+        if contactForm.is_valid():
+            contact = contactForm.save(commit=False) #save the product before commit
+            contact.product= product_selected
+            contact.save()
+            sendContactEmail(request, user= user, seller =seller, to_email = seller.email, 
+                            subject= contactForm.cleaned_data.get('subject'), 
+                            message= contactForm.cleaned_data.get('message'), 
+                            reason = contactForm.cleaned_data.get('reason'), 
+                            product = product_selected)
+            #Update context with contact form 
+            return render(request, 'Products/product_details.html', context)     
+        else:
+            messages.error(request, _('ERROR in form validation'))   
+        
+    else: 
+        contactForm= ContactForm()
+    context.update({'form_contact': contactForm})
     #----if you are not logged in:
     #POP UP USER LOG - IN
-    else:
-        if request.method == 'POST':
-            loginForm = AuthenticationForm(request.POST)
+    if request.method == 'POST':
+        loginForm = AuthenticationForm(request, data=request.POST)
+        if loginForm.is_valid():
             username = loginForm.cleaned_data.get('username')
             password = loginForm.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user and user.is_active:
                 login(request, user)
-                messages.success(request, _('You have successfully logged in'))
-                return render(request, 'Products/product_details.html', context)  
+                messages.success(request, _('You have successfully logged in')) 
             else:
                 messages.warning(request, _('Your account is not active.'))
-        else :
-            loginForm = AuthenticationForm()
-        context.update({'form': loginForm}) 
+        else:
+            messages.error(request, "ERROR: Invalid username or password")      
+    else :
+        loginForm = AuthenticationForm()
+    context.update({'form_login': loginForm}) 
     return render(request, 'Products/product_details.html', context)
 
 

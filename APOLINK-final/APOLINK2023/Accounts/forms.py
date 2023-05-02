@@ -6,11 +6,13 @@ from .models import PlatformUsersAll, Country, Industry_Type
 
 from django import forms 
 from datetime import datetime
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate,login
 #from captcha.fields import CaptchaField
 from django.contrib.auth.models import User
 #import datetime
 from django.utils.translation import gettext_lazy as _
+from django.contrib import messages
 
 class UserCreationForm(UserCreationForm):
     username = forms.RegexField(
@@ -71,6 +73,14 @@ class UserUpdateForm(forms.ModelForm):
             'first_name': _('First name'),
             'last_name': _('Last name'),}
         
+class CustomAuthenticationForm(AuthenticationForm):
+    def confirm_login_allowed(self, user):
+        if user.is_active:
+            login(self.request, user)
+            messages.success(self.request, _('You have successfully logged in')) 
+        else:
+         messages.warning(self.request, _('Your account is not active.'))
+            
 
 
 '''

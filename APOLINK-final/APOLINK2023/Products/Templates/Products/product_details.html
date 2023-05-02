@@ -23,12 +23,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <!--MAYBE WE DON'T NEED THIS IF-->
         <div class="modal-body">
           
           <form method='POST'>
             {% csrf_token %}
-            {{form|crispy}}
+          {%if user.is_authenticated %}
+            {{form_contact|crispy}}
             <!--check error-->
             {% for field in form %}
               <p>
@@ -37,15 +37,35 @@
               {% endfor %}
               </p>
             {% endfor %}
-            {% if form.non_field_errors %}
+            {% if form_contact.non_field_errors %}
             <div style="color: red">
-            <p>{{form.non_field_errors}}</p>
+            <p>{{form_contact.non_field_errors}}</p>
             </div>
             {% endif %}
             <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
             <div class ='modal-footer'>
               <button type="submit" class="btn btn-primary">{% trans "Send Informations" %}</button>          
             </div>
+          {%else%}
+            {{form_login|crispy}}
+            <!--check error-->
+            {% for field in form %}
+            <p>
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            </p>
+            {% endfor %}
+            {% if form_login.non_field_errors %}
+            <div style="color: red">
+            <p>{{form_login.non_field_errors}}</p>
+            </div>
+            {% endif %}
+            <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+            <div class ='modal-footer'>
+              <button type="submit" class="btn btn-primary">{% trans "Send Informations" %}</button>          
+            </div>
+          {%endif%}
           </form>
 
           <h5>Popover in a modal</h5>
