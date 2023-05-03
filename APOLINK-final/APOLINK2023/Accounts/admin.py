@@ -3,6 +3,8 @@ from . import models
 from modeltranslation.admin import TranslationAdmin
 
 #TRANSLATION WITH DJANGO MODEL TRANSLATION
+#if you want to add the possibility of showing different language fields in admin: add ModelName + Admin (TraslationAdmin)
+#be careful about User model : you have to unregister it before 
 class CountryAdmin(TranslationAdmin):
     model = models.Country
 
@@ -11,12 +13,14 @@ class PlatformUsersAllAdmin(TranslationAdmin):
     
 class Industry_TypeAdmin(TranslationAdmin):
     model = models.Industry_Type
-  
+
+#just User 
 '''
 class UserAdmin(TranslationAdmin):
     model = User
 '''
 
+#User inline with platformUsersAll; replace unregister and register with the matching ones below
 '''
 class PlatformUsersAllInline(TranslationTabularInline):
     model = PlatformUsersAll

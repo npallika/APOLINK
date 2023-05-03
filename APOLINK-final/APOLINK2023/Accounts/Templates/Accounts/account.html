@@ -4,7 +4,7 @@
 {% load static %}
 {% load i18n%}
 <div>
-    <t>EDIT PROFILE</t>
+    <h2>EDIT PROFILE</h2>
 </div>
 
 
@@ -78,7 +78,7 @@
 		  <div class="card-body">
                 <div class="d-flex flex-column justify-content-center p-4">
                     <div class="image-container mx-auto mb-4">
-						<!--user photo : you have to put the photo field in the model and in the form when you REGISTER a new user-->
+						<!--user photo : you have to put the photo field in the model and in the form when you REGISTER a new user; for now a STATIC PHOTO-->
                         <img class="d-block border border-dark rounded-circle img-fluid mx-auto profile-image" alt="user photo" id="id_profile_image" src="{%static "Accounts/profile.jpg" %}">
                     </div>
                     <p class="mt-4 mb-1 field-heading">Email</p>
@@ -94,6 +94,8 @@
                     {% endif %}
                     <p class="mt-4 mb-1 field-heading">{%trans "Username" %}</p>
                     <h5>{{username}}</h5>
+
+					<!--useful part to show a password hidden (*****)-->
 					<!--
 					<div style="form-inline">
 						<div class="form-group input-group">
