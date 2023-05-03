@@ -62,7 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware', #for languages
+    'django.middleware.locale.LocaleMiddleware', #for languages: this has to be between session middleware and common middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,6 +133,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
+# https://docs.djangoproject.com/en/4.2/topics/i18n/translation/
+#add the path to the .po files to make the translation
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 LANGUAGE_CODE = 'en-us' #default language
@@ -141,13 +143,14 @@ LANGUAGES = (
     ('en', _('English')),
     ('el', _('Greek')),
 )
-
+#is not used , you have to read the documentation: are necessary to select the default languages
 MODELTRANSLATION_FALLBACK_LANGUAGES = {
     'default': ('en',),
     'el': ('en',),
     'en': ('el',),
 }
 
+#if, instead of django modeltranslation library, you want to use PARLER (1 table for every translation)
 '''
 PARLER_LANGUAGES = {
     None: (
@@ -160,7 +163,6 @@ PARLER_LANGUAGES = {
     }
 }
 '''
-
 
 TIME_ZONE = 'Europe/Athens'
 
@@ -175,15 +177,16 @@ BASE_URL = "http://127.0.0.1:8000"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#is necessary to help django finding static files in every directory
 STATICFILES_DIRS =[STATIC_DIR, os.path.join(BASE_DIR,'Core') , os.path.join(BASE_DIR, 'Accounts'), os.path.join(BASE_DIR, 'Products')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+#login url when you use @login_required decorator
 LOGIN_URL = reverse_lazy('Accounts:login')
+#page to go after completion log-in with LoginView; in any languages, after login you are redirected to next_page=URL
 LOGIN_REDIRECT_URL = reverse_lazy('Core:categories_list') #for languages
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -193,16 +196,17 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP - email configuaration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #for development
-EMAIL_HOST = 'smtp.gmail.com' # server email provider: default : localhost; host to use for sending email
-EMAIL_PORT = 587 #smtp port
-EMAIL_FROM = 'ale2.brex99@gmail.com'
+#for development: you can change it following the documentation at https://docs.djangoproject.com/en/4.2/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #SMTP = default email server
+EMAIL_HOST = 'smtp.gmail.com' # server email provider; default : localhost; host to use for sending email
+EMAIL_PORT = 587 #smtp port, don't touch this
+EMAIL_FROM = 'ale2.brex99@gmail.com' # your server email (APOLINK_email)
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = 'ale2.brex99@gmail.com' #email we send from (APOLINK_email)
-EMAIL_HOST_PASSWORD= 'qrldvykrmikkieyx' #password of the superuser
+EMAIL_HOST_USER = 'ale2.brex99@gmail.com' #your server email (APOLINK_email)
+EMAIL_HOST_PASSWORD= 'qrldvykrmikkieyx' #password of the superuser: set it by google (if use gmail as host) passwords , put django application in
 PASSWORD_RESET_TIMEOUT = 14400
 
-#data upload
+#data upload : for images, documents etc. you can specify max sieze to upload on you server
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 #10 * 1024 * 1024 (10 MB)
 

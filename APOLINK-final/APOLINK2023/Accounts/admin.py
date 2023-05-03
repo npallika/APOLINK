@@ -1,9 +1,8 @@
 from django.contrib import admin
 from . import models
 from modeltranslation.admin import TranslationAdmin
-from django.contrib.auth.models import User
 
-#TRANSLATION WITH MODEL TRANSLATION
+#TRANSLATION WITH DJANGO MODEL TRANSLATION
 class CountryAdmin(TranslationAdmin):
     model = models.Country
 

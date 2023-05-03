@@ -14,17 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
-from django.contrib.auth import views
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
 
+#put in urls patterns which path hasn't to have the prefix (en/el), and delte it from i18n_patterns() function
 urlpatterns = [
+    #path to redirect to the previous page after changing the language
     path("i18n/", include("django.conf.urls.i18n")),
     ]
 
+#add at this function just the main paths you want to add the prefix to
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('Core.urls')),
@@ -32,11 +34,10 @@ urlpatterns += i18n_patterns(
     path('Products/', include ('Products.urls')),
     path('captcha/', include('captcha.urls')),
     path('chaining/', include('smart_selects.urls')),
+    #prefix_default_language = False : put as argument in i18n_patterns to remove prefix ('en' for example) for default language you setted in SETTINGS
 )
-# prefix_default_language = False : put in i18n_patterns to remove prefix for default language
-
 #you can delete from urlpatterns and add directly to urlpatterns += i18n_patterns( path1 , path2, )
-#urlpatterns += i18n_patterns( path ..., )
+
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
