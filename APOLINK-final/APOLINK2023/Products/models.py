@@ -53,7 +53,7 @@ class ProductsDisplayed(models.Model):
            
     def __str__(self):
         return self.product_name
-    
+    '''
     def set_translation_consistency(self, cur_language, *args, **kwargs):
         if cur_language == 'en':
             updateVal = self.for_sell_rent #'en'
@@ -83,7 +83,7 @@ class ProductsDisplayed(models.Model):
         # save the object
         super().save(*args, **kwargs)
         activate(cur_language)
-        
+    '''
         
         
         
