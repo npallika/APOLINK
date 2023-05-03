@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-from django.utils.translation import activate, deactivate, get_language, gettext_lazy as _, gettext
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -72,9 +72,7 @@ class ProductsDisplayed(models.Model):
             print("QUI2: ", gettext(self.for_sell_rent_en))
             deactivate()
             self.for_sell_rent_el = (updateVal)
-            print("QUI2: ", gettext(self.for_sell_rent))           
-           
-        
+            print("QUI2: ", gettext(self.for_sell_rent))             
             
     def save(self, *args, **kwargs):
          # check if the for_sell_rent field has changed
@@ -84,10 +82,7 @@ class ProductsDisplayed(models.Model):
         super().save(*args, **kwargs)
         activate(cur_language)
     '''
-        
-        
-        
-
+   
    
 class ProductPhotos(models.Model):
     #photo_name = models.CharField(max_length=200, null=False)
@@ -102,8 +97,7 @@ class ProductPhotos(models.Model):
         return self.photo_name'''
         
         
-        
-#remember to count how many people are interested in the product      
+ 
 class Contact(models.Model):
     #you can create a foreignKey with product : Product.contact_set.all() = count how many contacts for the product
     CHOICES = {
@@ -126,7 +120,6 @@ class Contact(models.Model):
 
 
 #  ------------------ Around Specifications --------------------------- #
-
 class CaseSealerSpecs(models.Model):
     TYPES = (
         ('BtmDr', _('Bottom Driven')),
@@ -144,6 +137,7 @@ class CaseSealerSpecs(models.Model):
 
     def __str__(self):
         return f"{self.product.id}. {self.product.product_name} specs"
+
 
 class CasePackerSpecs(models.Model):
     TYPES = (

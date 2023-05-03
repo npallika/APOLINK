@@ -1,33 +1,19 @@
-from Accounts.forms import CustomAuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
-from django.forms.formsets import formset_factory
-from django.forms import modelformset_factory, inlineformset_factory
-from django.core.exceptions import ValidationError
-from django.contrib.auth.models import User
+from django.forms import modelformset_factory
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate,login, logout, get_user_model
-from django.contrib.admin.widgets import AdminDateWidget
-from django import forms
-from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate,login
 from .models import ProductsDisplayed, ProductPhotos, ThirdLevelCategories,DispersersSpecs,CaseSealerSpecs, CasePackerSpecs, PalletizerSpecs
 from .forms import SellRentForm, UpdateProductForm, ProductPhotosForm, PhotoFormSet,ProductPhotosFormSet, TechSpecs, ContactForm #LoginForm
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from Core.models import FirstLevelCategories, SecondLevelCategories
-from django.views.generic import (TemplateView,ListView,
-                                  DetailView,CreateView,
-                                  UpdateView,DeleteView)
-from datetime import datetime
-from django.utils import timezone
+from django.views.generic import (DetailView)
 from django.contrib import messages
 from django.apps import apps
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import gettext, get_language
-from django.utils.encoding import force_str, force_bytes
+from django.utils.encoding import force_str
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.core.mail import EmailMessage, get_connection, send_mail
+from django.core.mail import EmailMessage
 from django.utils.html import format_html
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
@@ -35,7 +21,7 @@ from django.utils.safestring import mark_safe
 
 # Create your views here.
 
-
+#function to retrive the right Specs Model in order to achive the right Form
 def get_models():
     models_dict = {
     force_str(_('Case Sealers')):CaseSealerSpecs,
@@ -45,9 +31,8 @@ def get_models():
     }
     return models_dict
 
-def countQustions(questionNumber):
-    questionNumber+=1
-    
+
+#function to send contact email to the seller from the session user
 def sendContactEmail(request, **kwargs):
     subject = kwargs.get('subject')
     user = kwargs.get('user')
@@ -65,7 +50,7 @@ def sendContactEmail(request, **kwargs):
          'message_email': message_email,
          'product': product,
          'domain': get_current_site(request).domain,
-            #'uid': urlsafe_base64_encode(force_bytes(seller.pk)), #necessary for hiding user.pk in URL
+        #'uid': urlsafe_base64_encode(force_bytes(seller.pk)), #necessary for hiding user.pk in URL
          'protocol': 'https' if request.is_secure() else 'http'
          }
     )
@@ -77,8 +62,6 @@ def sendContactEmail(request, **kwargs):
         msg = _('Dear <b>{username}</b>, you correctly contacted the seller at the email: <b>{to_email}</b>')
         msg = format_html(msg, username =user.username, to_email=to_email)  # insert the translated variables into the message and mark it as safe
         messages.success(request, msg)  # show the translated message
-        #successMex =  mark_safe(_(f'Dear <b>{user.username}</b>, please go to email <b>{to_email}</b> inbox and click on received activation link to confirm and complete the registration.<b> Note: </b>. Check your spam folder.'))
-        #messages.success(request,successMex)
     else :
         messages.error(request, mark_safe(_(f'Problem sending email to {to_email}', 'check if you typed it correctly')))
     pass
@@ -111,6 +94,7 @@ class CategoriesProductsListView(DetailView):
 
 '''
 
+
 class ProductDetails(DetailView):
     context_object_name = 'product_detail'
     model = ProductsDisplayed
@@ -120,7 +104,6 @@ class ProductDetails(DetailView):
         context = super().get_context_data(**kwargs)
         context['Photos'] = ProductPhotos.objects.all()
         return context
-
 
 
 def ProductSelected(request, pk):
@@ -133,13 +116,9 @@ def ProductSelected(request, pk):
     user = request.user
     productContacts = product_selected.contact_set.all()
     n_contacts = productContacts.count()
-    print('N_CONTACTS: ' + str(n_contacts))
-    #model_specs = models_dict[category_name]
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
-        #print(f"tech specs {vars(tech_specs)}")
-        attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}
-        #print(f"The Tech specs are {attributes}")       
+        attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}     
         context = {
             'product_selected':product_selected,
             'seller': seller,
@@ -157,7 +136,6 @@ def ProductSelected(request, pk):
             'product_selected':product_selected, 
             'Photos':photos,
             'attributes':attributes }
-    #this if need to use the same FORM variable either for CONTACT FORM or for LOGIN FORM  
     #----if you are logged-in:
     if user.is_authenticated:
         if request.method == 'POST':
@@ -179,8 +157,7 @@ def ProductSelected(request, pk):
         else: 
             contactForm= ContactForm()
             context.update({'form_contact': contactForm})
-    #----if you are not logged in:
-    #POP UP USER LOG - IN
+    #----if you are not logged in: pop-up login
     else:
         if request.method == 'POST':
             loginForm = AuthenticationForm(request, data=request.POST)
@@ -247,12 +224,10 @@ def MyProductInfo(request, pk):
     photos = ProductPhotos.objects.filter(product=product_selected)
     category_name = product_selected.product_category.name
     model_specs = models_dict.get(category_name, None)
-    #model_specs = models_dict[category_name]
     try:
         tech_specs = model_specs.objects.get(product=product_selected)
         print(f"tech specs {vars(tech_specs)}")
-        attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}
-        print(f"The Tech specs are {attributes}")       
+        attributes = {k:v for k,v in vars(tech_specs).items() if k not in ['product','_state','id','product_id']}      
         context = {
             'product_selected':product_selected, 
             'Photos':photos,
@@ -265,10 +240,7 @@ def MyProductInfo(request, pk):
         attributes = None
         context = {'product_selected':product_selected, 'Photos':photos,
             'attributes':attributes }
-    
     return render(request, 'Products/my_product_info.html', context)
-
-
 
 
 def search_product(request):
@@ -315,40 +287,42 @@ def ProductsSpecsCreate(request, pk):
     models_dict = get_models()
     try:
         product = ProductsDisplayed.objects.get(id=pk)
-        #print(f"The product is: {product}")
     except ProductsDisplayed.DoesNotExist:
         # Handle the case where the product does not exist
         return redirect('Products:products_category')
-
-    #product = get_object_or_404(ProductsDisplayed, pk=pk)
-    
+    category_name = product.product_category.name
+    model_specs = models_dict.get(category_name, None)
     category = product.product_category #third level cat object
     category_name = category.name
-    #ProductSpecsForm = models_form_dict[category_name]()
+    #if you find a specs related to the product yet -> redirect to update
+    try:
+        specsCategory = model_specs.objects.get(product=product)
+    except:
+        pass
+    else:
+        if request.method == 'POST':
+            ProductSpecsForm = TechSpecs(models_dict.get(category_name, None))(request.POST, instance=specsCategory)
+            if ProductSpecsForm.is_valid():
+                publish=ProductSpecsForm.save(commit=False)
+                publish.product = product   
+                publish.save()
+            return redirect ('Products:myProductInfo', pk)
+        else:
+           ProductSpecsForm = TechSpecs(models_dict.get(category_name,None))(instance=specsCategory) 
+           return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
     
     if request.method == 'POST':
-        #print("Now, I post!")
         ProductSpecsForm = TechSpecs(models_dict.get(category_name, None))(request.POST)
-        #ProductSpecsForm = models_form_dict[category_name](request.POST) 
-        
-        #ProductSpecsForm.product = product
-        #print(f"Contents of the form: {ProductSpecsForm}")
         if ProductSpecsForm.is_valid():
             publish=ProductSpecsForm.save(commit=False)
-            #print (f"The publish is {publish}")
             publish.product = product   
             publish.save()
-            #print (publish.product)
-            return redirect ('Products:myProductInfo', pk) #product_details
+            return redirect ('Products:myProductInfo', pk) #product_details of my products
 
     else:
-        print(category_name)
-        print(models_dict)
-        print(models_dict.get(category_name, None))
-        ProductSpecsForm = TechSpecs(models_dict.get(category_name, None))()
-        #ProductSpecsForm = models_form_dict[category_name]()#take the right form from dictionary based on thirdlevelcategory
-            
+        ProductSpecsForm = TechSpecs(models_dict.get(category_name, None))() #take the right form from dictionary based on thirdlevelcategory
     return render(request, 'Products/techSpecsForm.html', {'ProductsTechSpecs': ProductSpecsForm})
+
 
 @login_required
 def ProductsSpecsUpdate(request, pk):
