@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-03 13:42+0300\n"
-"PO-Revision-Date: 2023-04-27 09:22+0300\n"
+"POT-Creation-Date: 2023-05-03 17:40+0300\n"
+"PO-Revision-Date: 2023-05-03 17:39+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.9.8\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
 
 #: .\APOLINK2022\settings.py:143
 msgid "English"
@@ -71,17 +71,19 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\login.html:12
 #: .\Accounts\Templates\Accounts\login.html:14
-#: .\Products\Templates\Products\product_details.html:69
+#: .\Products\Templates\Products\product_details.html:70
 msgid "Login"
 msgstr "Σύνδεση"
 
 #: .\Accounts\Templates\Accounts\login.html:17
 #: .\Accounts\Templates\Accounts\password_reset\password_reset_form.html:39
+#: .\Products\Templates\Products\product_details.html:79
 msgid "Reset password"
 msgstr "Επαναφορά κωδικού πρόσβασης"
 
 #: .\Accounts\Templates\Accounts\login.html:18
 #: .\Accounts\Templates\Accounts\login1.html:27
+#: .\Products\Templates\Products\product_details.html:78
 msgid "New here? Create an account."
 msgstr "Νέος χρήστης; Δημιουργήστε ένα λογαριασμό."
 
@@ -174,7 +176,7 @@ msgid "Activate"
 msgstr "Ενεργοποίηση"
 
 #: .\Accounts\Templates\Accounts\template_activate_account.html:35
-#: .\Products\Templates\Products\contact_email.html:37
+#: .\Products\Templates\Products\contact_email.html:38
 msgid "Thank you!"
 msgstr "Σας ευχαριστώ!"
 
@@ -209,11 +211,11 @@ msgstr "Κωδικός πρόσβασης"
 msgid "Password confirmation"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
-#: .\Accounts\forms.py:79 .\Accounts\views.py:133 .\Products\views.py:193
+#: .\Accounts\forms.py:79 .\Accounts\views.py:133 .\Products\views.py:170
 msgid "You have successfully logged in"
 msgstr "Έχετε συνδεθεί επιτυχώς"
 
-#: .\Accounts\forms.py:81 .\Accounts\views.py:136 .\Products\views.py:196
+#: .\Accounts\forms.py:81 .\Accounts\views.py:136 .\Products\views.py:173
 msgid "Your account is not active."
 msgstr "Ο λογαριασμός σας δεν είναι ενεργός."
 
@@ -325,7 +327,7 @@ msgstr ""
 "να ολοκληρώσετε την εγγραφή σας.<b> Σημείωση: </b>Ελέγξτε τον φάκελο "
 "ανεπιθύμητης αλληλογραφίας σας."
 
-#: .\Accounts\views.py:73 .\Products\views.py:83
+#: .\Accounts\views.py:73 .\Products\views.py:66
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
 msgstr "Πρόβλημα αποστολής email σε {to_email}"
@@ -419,29 +421,29 @@ msgstr "Κατηγορία"
 
 #: .\Products\Templates\Products\category_products_list.html:19
 #: .\Products\Templates\Products\show_my_products.html:22
-#: .\Products\forms.py:62
+#: .\Products\forms.py:54
 msgid "Manufactured date"
 msgstr "Ημερομηνία κατασκευής"
 
-#: .\Products\Templates\Products\contact_email.html:7
+#: .\Products\Templates\Products\contact_email.html:8
 #, fuzzy
 #| msgid "Product Photos"
 msgid "Product Informations"
 msgstr "Φωτογραφίες προϊόντος"
 
-#: .\Products\Templates\Products\contact_email.html:30
+#: .\Products\Templates\Products\contact_email.html:31
 #, fuzzy
 #| msgid "Product Details"
 msgid "Request of Porduct Details"
 msgstr "Φωτογραφίες προϊόντος"
 
-#: .\Products\Templates\Products\contact_email.html:32
+#: .\Products\Templates\Products\contact_email.html:33
 msgid "Please i need some Information on this Product"
-msgstr ""
+msgstr "Παρακαλώ χρειάζομαι κάποιες πληροφορίες σχετικά με αυτό το προϊόν"
 
-#: .\Products\Templates\Products\contact_email.html:36
+#: .\Products\Templates\Products\contact_email.html:37
 msgid "Go to the Web site"
-msgstr ""
+msgstr "Μεταβείτε στον ιστότοπο"
 
 #: .\Products\Templates\Products\my_product_info.html:8
 msgid "Product Details"
@@ -464,37 +466,37 @@ msgstr "ημερομηνία εγγραφής"
 msgid "Last Updated"
 msgstr "ημερομηνία ενημέρωσης"
 
-#: .\Products\Templates\Products\my_product_info.html:22
-#: .\Products\Templates\Products\my_product_info.html:24
+#: .\Products\Templates\Products\my_product_info.html:23
+#: .\Products\Templates\Products\my_product_info.html:25
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: .\Products\Templates\Products\my_product_info.html:33
+#: .\Products\Templates\Products\my_product_info.html:35
 msgid "Technical Specifications"
 msgstr "Τεχνικές προδιαγραφές"
 
-#: .\Products\Templates\Products\my_product_info.html:48
+#: .\Products\Templates\Products\my_product_info.html:50
 #: .\Products\Templates\Products\show_my_products.html:19
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: .\Products\Templates\Products\my_product_info.html:49
+#: .\Products\Templates\Products\my_product_info.html:51
 #: .\Products\Templates\Products\show_my_products.html:20
 msgid "Delete"
 msgstr "Διαγραφή"
 
 #: .\Products\Templates\Products\product_details.html:11
 msgid "Number of Product contacts"
-msgstr ""
+msgstr "Αριθμός επαφών προϊόντος"
 
 #: .\Products\Templates\Products\product_details.html:16
 #: .\Products\Templates\Products\product_details.html:23
 msgid "Contact the seller"
-msgstr ""
+msgstr "Επικοινωνήστε με τον πωλητή"
 
 #: .\Products\Templates\Products\product_details.html:49
 msgid "Send Informations"
-msgstr ""
+msgstr "Αποστολή πληροφοριών"
 
 #: .\Products\Templates\Products\techSpecsForm.html:8
 msgid "Technical Specs"
@@ -504,69 +506,69 @@ msgstr "Τεχνικές προδιαγραφές"
 msgid "Submit"
 msgstr "Υποβολή"
 
-#: .\Products\forms.py:30 .\Products\models.py:42
+#: .\Products\forms.py:22 .\Products\models.py:42
 msgid "manufactured date"
 msgstr "ημερομηνία κατασκευής"
 
-#: .\Products\forms.py:31 .\Products\models.py:43
+#: .\Products\forms.py:23 .\Products\models.py:43
 msgid "product name"
 msgstr "oνομα προϊόντος"
 
-#: .\Products\forms.py:32 .\Products\models.py:44
+#: .\Products\forms.py:24 .\Products\models.py:44
 msgid "product category"
 msgstr "κατηγορία προϊόντος"
 
-#: .\Products\forms.py:33 .\Products\models.py:45
+#: .\Products\forms.py:25 .\Products\models.py:45
 msgid "product short description"
 msgstr "Σύντομη περιγραφή του προϊόντος"
 
-#: .\Products\forms.py:34 .\Products\models.py:46
+#: .\Products\forms.py:26 .\Products\models.py:46
 msgid "manufacturer"
 msgstr "κατασκευαστής"
 
-#: .\Products\forms.py:35 .\Products\forms.py:66 .\Products\models.py:47
+#: .\Products\forms.py:27 .\Products\forms.py:58 .\Products\models.py:47
 msgid "For sell, rent or both"
 msgstr "Για πώληση, ενοικίαση ή και τα δύο"
 
-#: .\Products\forms.py:36 .\Products\models.py:48
+#: .\Products\forms.py:28 .\Products\models.py:48
 msgid "model"
 msgstr "μοντέλο"
 
-#: .\Products\forms.py:42
+#: .\Products\forms.py:34
 msgid "Upload image"
 msgstr "Ανέβασμα εικόνας"
 
-#: .\Products\forms.py:61
+#: .\Products\forms.py:53
 msgid "Product Name"
 msgstr "Όνομα προϊόντος"
 
-#: .\Products\forms.py:63
+#: .\Products\forms.py:55
 msgid "Product Category"
 msgstr "Κατηγορία προϊόντος"
 
-#: .\Products\forms.py:64
+#: .\Products\forms.py:56
 msgid "Manufacturer"
 msgstr "Κατασκευαστής"
 
-#: .\Products\forms.py:65
+#: .\Products\forms.py:57
 msgid "Model"
 msgstr "Μοντέλο"
 
-#: .\Products\forms.py:67
+#: .\Products\forms.py:59
 msgid "Product short description"
 msgstr "Σύντομη περιγραφή του προϊόντος"
 
-#: .\Products\forms.py:81
+#: .\Products\forms.py:71
 msgid "Subject"
-msgstr ""
+msgstr "Θέμα"
 
-#: .\Products\forms.py:82
+#: .\Products\forms.py:72
 msgid "Message"
-msgstr ""
+msgstr "Μήνυμα"
 
-#: .\Products\forms.py:83
+#: .\Products\forms.py:73
 msgid "Reason"
-msgstr ""
+msgstr "Λόγος"
 
 #: .\Products\models.py:21
 msgid "Third Level Category"
@@ -620,216 +622,219 @@ msgstr "Εμφανιζόμενο προϊόν"
 msgid "Products Displayed"
 msgstr "Προϊόντα που εμφανίζονται"
 
-#: .\Products\models.py:94
+#: .\Products\models.py:89
 msgid "photo"
 msgstr "φωτογραφία"
 
-#: .\Products\models.py:95 .\Products\models.py:114 .\Products\models.py:136
-#: .\Products\models.py:154 .\Products\models.py:171 .\Products\models.py:191
+#: .\Products\models.py:90 .\Products\models.py:108 .\Products\models.py:129
+#: .\Products\models.py:148 .\Products\models.py:165 .\Products\models.py:185
 msgid "product"
 msgstr "προϊόν"
 
-#: .\Products\models.py:99
+#: .\Products\models.py:94
 msgid "Product Photo"
 msgstr "Φωτογραφία προϊόντος"
 
-#: .\Products\models.py:100
+#: .\Products\models.py:95
 msgid "Product Photos"
 msgstr "Φωτογραφίες προϊόντος"
 
-#: .\Products\models.py:110
+#: .\Products\models.py:104
 msgid "Reason1"
 msgstr ""
 
-#: .\Products\models.py:111
+#: .\Products\models.py:105
 msgid "Reason2"
 msgstr ""
 
-#: .\Products\models.py:112
+#: .\Products\models.py:106
 msgid "Reason3"
 msgstr ""
 
-#: .\Products\models.py:115
+#: .\Products\models.py:109
 msgid "subject"
-msgstr ""
+msgstr "θέμα"
 
-#: .\Products\models.py:117
+#: .\Products\models.py:111
 msgid "Reason for your inquiry"
-msgstr ""
+msgstr "Λόγος για την έρευνά σας"
 
-#: .\Products\models.py:118
+#: .\Products\models.py:112
 msgid "created at"
-msgstr ""
+msgstr "δημιουργήθηκε στο"
 
-#: .\Products\models.py:120
+#: .\Products\models.py:114
 msgid "Contact"
-msgstr ""
+msgstr "Επικοινωνία"
 
-#: .\Products\models.py:121
+#: .\Products\models.py:115
 msgid "Contacts"
-msgstr ""
+msgstr "Επαφές"
 
-#: .\Products\models.py:132
+#: .\Products\models.py:125
 msgid "Bottom Driven"
 msgstr "Κάτω μέρος Οδηγούμενο"
 
-#: .\Products\models.py:133
+#: .\Products\models.py:126
 msgid "Side Driven"
 msgstr "Πλευρική οδήγηση"
 
-#: .\Products\models.py:134
+#: .\Products\models.py:127
 msgid "Top & Bottom Driven"
 msgstr "Κίνηση από πάνω & κάτω"
 
-#: .\Products\models.py:137
+#: .\Products\models.py:130
 msgid "Case Sealer Type"
 msgstr "Τύπος σφραγιστή θήκης"
 
-#: .\Products\models.py:138
+#: .\Products\models.py:131
 msgid "Minimum Box Size (cm)"
 msgstr "Ελάχιστο μέγεθος κουτιού (cm)"
 
-#: .\Products\models.py:139
+#: .\Products\models.py:132
 msgid "Maximum Box Size (cm)"
 msgstr "Μέγιστο μέγεθος κουτιού (cm)"
 
-#: .\Products\models.py:140 .\Products\models.py:156
+#: .\Products\models.py:133 .\Products\models.py:150
 msgid "Maximum boxes per min"
 msgstr "Μέγιστα κουτιά ανά λεπτό"
 
-#: .\Products\models.py:142
+#: .\Products\models.py:135
 msgid "Case Sealers Spec"
 msgstr "Προδιαγραφές σφραγιστικών θήκης"
 
-#: .\Products\models.py:143
+#: .\Products\models.py:136
 msgid "Case Sealers Specs"
 msgstr "Προδιαγραφές συσκευών σφράγισης κιβωτίων"
 
-#: .\Products\models.py:150
+#: .\Products\models.py:144
 msgid "Top Loader"
 msgstr "Κορυφαίος φορτωτής"
 
-#: .\Products\models.py:151
+#: .\Products\models.py:145
 msgid "Side Loader"
 msgstr "Πλευρικός φορτωτής"
 
-#: .\Products\models.py:152
+#: .\Products\models.py:146
 msgid "Pick and Place"
 msgstr "Διαλέξτε και τοποθετήστε"
 
-#: .\Products\models.py:155
+#: .\Products\models.py:149
 msgid "Case Packer Type"
 msgstr "Τύπος συσκευαστή κιβωτίων"
 
-#: .\Products\models.py:159
+#: .\Products\models.py:153
 msgid "Case Packer spec"
 msgstr "Συσκευαστής κιβωτίων προδιαγραφή "
 
-#: .\Products\models.py:160
+#: .\Products\models.py:154
 msgid "Case Packer specs"
 msgstr "Συσκευαστής κιβωτίων προδιαγραφές"
 
-#: .\Products\models.py:168
+#: .\Products\models.py:162
 msgid "Batch"
 msgstr "Παρτίδα"
 
-#: .\Products\models.py:169
+#: .\Products\models.py:163
 msgid "Continuous"
 msgstr "Συνεχής"
 
-#: .\Products\models.py:172
+#: .\Products\models.py:166
 msgid "Batch/Continuous"
 msgstr "Παρτίδα/Συνεχής"
 
-#: .\Products\models.py:173
+#: .\Products\models.py:167
 msgid "Motor Power in kW"
 msgstr "Ισχύς κινητήρα σε kW"
 
-#: .\Products\models.py:174 .\Products\models.py:194
+#: .\Products\models.py:168 .\Products\models.py:188
 msgid "Application"
 msgstr "Eφαρμογή"
 
-#: .\Products\models.py:177
+#: .\Products\models.py:171
 msgid "Dispersers spec"
 msgstr "Προδιαγραφές διασκορπιστών"
 
-#: .\Products\models.py:178
+#: .\Products\models.py:172
 msgid "Dispersers specs"
 msgstr "Προδιαγραφές διασκορπιστή"
 
-#: .\Products\models.py:186
+#: .\Products\models.py:180
 msgid "Layer"
 msgstr "Στρώμα"
 
-#: .\Products\models.py:187
+#: .\Products\models.py:181
 msgid "Gantry"
 msgstr "Γερανογέφυρα"
 
-#: .\Products\models.py:188
+#: .\Products\models.py:182
 msgid "Robotic"
 msgstr "Ρομποτική"
 
-#: .\Products\models.py:189
+#: .\Products\models.py:183
 msgid "Other"
 msgstr "Άλλα"
 
-#: .\Products\models.py:192
+#: .\Products\models.py:186
 msgid "Palletizer Type"
 msgstr "Τύπος παλετοποιητή"
 
-#: .\Products\models.py:193
+#: .\Products\models.py:187
 msgid "Throughput (pieces/min)"
 msgstr "Απόδοση (τεμάχια/λεπτό)"
 
-#: .\Products\models.py:197
+#: .\Products\models.py:191
 msgid "Palletizer spec"
 msgstr "Προδιαγραφή Palletizer"
 
-#: .\Products\models.py:198
+#: .\Products\models.py:192
 msgid "Palletizer specs"
 msgstr "Προδιαγραφές Palletizer"
 
-#: .\Products\views.py:41
+#: .\Products\views.py:27
 msgid "Case Sealers"
 msgstr "Κλειστικά Κιβωτίων"
 
-#: .\Products\views.py:42
+#: .\Products\views.py:28
 msgid "Case Packers"
 msgstr "Εγκιβωτιστικά"
 
-#: .\Products\views.py:43
+#: .\Products\views.py:29
 msgid "Dispersers-Mixers"
 msgstr "Διασκορπιστές-αναμικτήρες"
 
-#: .\Products\views.py:44
+#: .\Products\views.py:30
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
 
-#: .\Products\views.py:77
+#: .\Products\views.py:62
 #, python-brace-format
 msgid ""
 "Dear <b>{username}</b>, you correctly contacted the seller at the email: "
 "<b>{to_email}</b>"
 msgstr ""
+"Αγαπητέ <b>{username}</b>, σωστά επικοινωνήσατε με τον πωλητή στο email: "
+"<b>{to_email}</b>"
 
-#: .\Products\views.py:177
+#: .\Products\views.py:155
 msgid "ERROR in form validation"
-msgstr ""
+msgstr "ΣΦΑΛΜΑ στην επικύρωση φόρμας"
 
-#: .\Products\views.py:301
+#: .\Products\views.py:273
 #, fuzzy
 #| msgid "Your profile is updated successfully"
 msgid "Product uploaded succesfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
-#: .\Products\views.py:305
+#: .\Products\views.py:277
 msgid ""
 "There was an error uploading your photos. Please ensure that the uploaded "
 "files are images."
 msgstr ""
+"Υπήρξε σφάλμα στο ανέβασμα των φωτογραφιών σας. Παρακαλούμε βεβαιωθείτε ότι "
+"τα αρχεία που μεταφορτώσατε είναι εικόνες."
 
 #, fuzzy
-#~| msgid "name"
 #~ msgid "No name"
 #~ msgstr "oνομα"
 
