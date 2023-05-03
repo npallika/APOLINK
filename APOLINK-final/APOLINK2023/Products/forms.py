@@ -93,9 +93,11 @@ class ContactForm(forms.ModelForm):
 def TechSpecs(Model):
     all_fields = []
     #you have to use this for if you have some problems with sufixes of translated fields
+    '''
     for field in Model._meta.get_fields():
         if field.name != 'product' and field.name != 'id' and ('_en' not in field.name) and ('_el' not in field.name):
             all_fields.append(field.name)
+    '''
     class TechSpecsForm(forms.ModelForm):
         class Meta:
             model = Model

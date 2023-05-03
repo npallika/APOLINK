@@ -70,13 +70,12 @@
               <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>          
             </div>
 
-
+            <h5>Signup</h5>
+            <p><a href="{% url 'Accounts:signup'%}" class="tooltip-test" title="Tooltip">{% trans "New here? Create an account." %}</a></p>
+            <p><a href="{% url 'Accounts:password_reset' %}" class="tooltip-test" title="Tooltip">{%trans "Reset password" %}</a></p>
           {%endif%}
           </form>
           
-          <h5>Signup</h5>
-          <p><a href="{% url 'Accounts:signup'%}" class="tooltip-test" title="Tooltip">{% trans "New here? Create an account." %}</a></p>
-          <p><a href="{% url 'Accounts:password_reset' %}" class="tooltip-test" title="Tooltip">{%trans "Reset password" %}</a></p>
 
           <h5>Popover</h5>
           <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
