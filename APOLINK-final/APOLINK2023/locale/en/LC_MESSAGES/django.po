@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 15:12+0300\n"
+"POT-Creation-Date: 2023-05-03 13:42+0300\n"
 "PO-Revision-Date: 2023-04-25 12:17+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,37 +19,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\APOLINK2022\settings.py:141
+#: .\APOLINK2022\settings.py:143
 msgid "English"
 msgstr ""
 
-#: .\APOLINK2022\settings.py:142
+#: .\APOLINK2022\settings.py:144
 msgid "Greek"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:17
-#: .\Accounts\forms.py:45 .\Accounts\forms.py:55 .\Accounts\forms.py:70
+#: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:13
+#: .\Accounts\forms.py:42 .\Accounts\forms.py:54 .\Accounts\forms.py:69
 msgid "Username"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\account.html:110
+#: .\Accounts\Templates\Accounts\account.html:112
 msgid "Address"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\account.html:112
+#: .\Accounts\Templates\Accounts\account.html:114
 msgid "Company Name"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\account.html:114
+#: .\Accounts\Templates\Accounts\account.html:116
 msgid "Industry"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\account.html:120
+#: .\Accounts\Templates\Accounts\account.html:122
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:48
 msgid "Update"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\account.html:123
+#: .\Accounts\Templates\Accounts\account.html:125
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:37
 msgid "Change password"
 msgstr ""
@@ -69,6 +69,7 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\login.html:12
 #: .\Accounts\Templates\Accounts\login.html:14
+#: .\Products\Templates\Products\product_details.html:69
 msgid "Login"
 msgstr ""
 
@@ -142,152 +143,161 @@ msgstr ""
 msgid "Sign Up"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:7
-#: .\Accounts\Templates\Accounts\template_activate_account.html:30
-#: .\Accounts\views.py:56
+#: .\Accounts\Templates\Accounts\template_activate_account.html:8
+#: .\Accounts\Templates\Accounts\template_activate_account.html:31
+#: .\Accounts\views.py:51
 msgid "Activate your user account"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:31
+#: .\Accounts\Templates\Accounts\template_activate_account.html:32
 #, python-format
 msgid "  Hi %(user.username)s,  "
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:32
+#: .\Accounts\Templates\Accounts\template_activate_account.html:33
 msgid "Please click on the link below to confirm your registration:"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:33
+#: .\Accounts\Templates\Accounts\template_activate_account.html:34
 msgid "Activate"
 msgstr ""
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:34
+#: .\Accounts\Templates\Accounts\template_activate_account.html:35
+#: .\Products\Templates\Products\contact_email.html:37
 msgid "Thank you!"
 msgstr ""
 
-#: .\Accounts\forms.py:18
+#: .\Accounts\forms.py:14
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 
-#: .\Accounts\forms.py:21
+#: .\Accounts\forms.py:17
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: .\Accounts\forms.py:46 .\Accounts\forms.py:71
+#: .\Accounts\forms.py:43 .\Accounts\forms.py:70
 msgid "First name"
 msgstr ""
 
-#: .\Accounts\forms.py:47 .\Accounts\forms.py:72
+#: .\Accounts\forms.py:44 .\Accounts\forms.py:71
 msgid "Last name"
 msgstr ""
 
-#: .\Accounts\forms.py:48
+#: .\Accounts\forms.py:45
 msgid "Email address"
 msgstr ""
 
-#: .\Accounts\forms.py:49
+#: .\Accounts\forms.py:46
 msgid "Password"
 msgstr ""
 
-#: .\Accounts\forms.py:50
+#: .\Accounts\forms.py:47
 msgid "Password confirmation"
 msgstr ""
 
-#: .\Accounts\forms.py:113 .\Accounts\models.py:71
+#: .\Accounts\forms.py:79 .\Accounts\views.py:133 .\Products\views.py:193
+msgid "You have successfully logged in"
+msgstr ""
+
+#: .\Accounts\forms.py:81 .\Accounts\views.py:136 .\Products\views.py:196
+msgid "Your account is not active."
+msgstr ""
+
+#: .\Accounts\forms.py:100 .\Accounts\models.py:39
 msgid "industry"
 msgstr ""
 
-#: .\Accounts\forms.py:114 .\Accounts\models.py:77
+#: .\Accounts\forms.py:101 .\Accounts\models.py:45
 msgid "phone mobile country"
 msgstr ""
 
-#: .\Accounts\forms.py:115 .\Accounts\models.py:78
+#: .\Accounts\forms.py:102 .\Accounts\models.py:46
 msgid "phone mobile number"
 msgstr ""
 
-#: .\Accounts\forms.py:116 .\Accounts\models.py:75
+#: .\Accounts\forms.py:103 .\Accounts\models.py:43
 msgid "phone landline country"
 msgstr ""
 
-#: .\Accounts\forms.py:117 .\Accounts\models.py:76
+#: .\Accounts\forms.py:104 .\Accounts\models.py:44
 msgid "phone landline number"
 msgstr ""
 
-#: .\Accounts\forms.py:118 .\Accounts\models.py:70
+#: .\Accounts\forms.py:105 .\Accounts\models.py:38
 msgid "company name"
 msgstr ""
 
-#: .\Accounts\forms.py:119 .\Accounts\models.py:72
+#: .\Accounts\forms.py:106 .\Accounts\models.py:40
 msgid "company position"
 msgstr ""
 
-#: .\Accounts\forms.py:120 .\Accounts\models.py:81
+#: .\Accounts\forms.py:107 .\Accounts\models.py:49
 msgid "street address"
 msgstr ""
 
-#: .\Accounts\forms.py:121 .\Accounts\models.py:82
+#: .\Accounts\forms.py:108 .\Accounts\models.py:50
 msgid "city"
 msgstr ""
 
-#: .\Accounts\forms.py:122 .\Accounts\models.py:83
+#: .\Accounts\forms.py:109 .\Accounts\models.py:51
 msgid "region"
 msgstr ""
 
-#: .\Accounts\forms.py:123 .\Accounts\models.py:84
+#: .\Accounts\forms.py:110 .\Accounts\models.py:52
 msgid "zipcode"
 msgstr ""
 
-#: .\Accounts\forms.py:124 .\Accounts\models.py:85
+#: .\Accounts\forms.py:111 .\Accounts\models.py:53
 msgid "country"
 msgstr ""
 
-#: .\Accounts\models.py:10
+#: .\Accounts\models.py:8
 msgid "code"
 msgstr ""
 
-#: .\Accounts\models.py:11
+#: .\Accounts\models.py:9
 msgid "phone code"
 msgstr ""
 
-#: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
-#: .\Core\models.py:27 .\Products\models.py:13
+#: .\Accounts\models.py:10 .\Accounts\models.py:25 .\Core\models.py:8
+#: .\Core\models.py:26 .\Products\models.py:13
 msgid "name"
 msgstr ""
 
-#: .\Accounts\models.py:15
+#: .\Accounts\models.py:13
 msgid "Country"
 msgstr ""
 
-#: .\Accounts\models.py:16
+#: .\Accounts\models.py:14
 msgid "Countries"
 msgstr ""
 
-#: .\Accounts\models.py:39
+#: .\Accounts\models.py:27
 msgid "Industry Type"
 msgstr ""
 
-#: .\Accounts\models.py:40
+#: .\Accounts\models.py:28
 msgid "Industry Types"
 msgstr ""
 
-#: .\Accounts\models.py:88
+#: .\Accounts\models.py:56
 msgid "Platform User"
 msgstr ""
 
-#: .\Accounts\models.py:89
+#: .\Accounts\models.py:57
 msgid "Platform Users"
 msgstr ""
 
-#: .\Accounts\views.py:48
+#: .\Accounts\views.py:42
 msgid ""
 "Thank you for your email confirmation. Now you can LOGIN in your account"
 msgstr ""
 
-#: .\Accounts\views.py:51
+#: .\Accounts\views.py:45
 msgid "Activation link is invalid!"
 msgstr ""
 
-#: .\Accounts\views.py:73 .\Products\views.py:64
+#: .\Accounts\views.py:67
 #, python-brace-format
 msgid ""
 "Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click "
@@ -295,28 +305,20 @@ msgid ""
 "Note: </b>. Check your spam folder."
 msgstr ""
 
-#: .\Accounts\views.py:79 .\Products\views.py:70
+#: .\Accounts\views.py:73 .\Products\views.py:83
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
 msgstr ""
 
-#: .\Accounts\views.py:87 .\Core\views.py:30
+#: .\Accounts\views.py:81
 msgid "hello"
 msgstr ""
 
-#: .\Accounts\views.py:129
+#: .\Accounts\views.py:115
 msgid "You have successfully logged out."
 msgstr ""
 
-#: .\Accounts\views.py:148
-msgid "You have successfully logged in"
-msgstr ""
-
-#: .\Accounts\views.py:151
-msgid "Your account is not active."
-msgstr ""
-
-#: .\Accounts\views.py:235 .\Accounts\views.py:247 .\Accounts\views.py:253
+#: .\Accounts\views.py:219 .\Accounts\views.py:231 .\Accounts\views.py:236
 msgid "Your profile is updated successfully"
 msgstr ""
 
@@ -328,21 +330,20 @@ msgstr ""
 msgid "Sell/Rent"
 msgstr ""
 
-#: .\Core\Templates\Core\base.html:163
+#: .\Core\Templates\Core\base.html:168
 msgid "Search Product"
 msgstr ""
 
-#: .\Core\Templates\Core\base.html:185
+#: .\Core\Templates\Core\base.html:190
 #: .\Products\Templates\Products\show_my_products.html:5
 msgid "My Products"
 msgstr ""
 
-#: .\Core\Templates\Core\base.html:186
+#: .\Core\Templates\Core\base.html:191
 msgid "Logout"
 msgstr ""
 
-#: .\Core\Templates\Core\base.html:201
-#: .\Products\Templates\Products\product_details.html:66
+#: .\Core\Templates\Core\base.html:206
 msgid "Login/Sign Up"
 msgstr ""
 
@@ -351,42 +352,42 @@ msgid "Product Categories"
 msgstr ""
 
 #: .\Core\Templates\Core\maincategories_list.html:41
-msgid "Search Category"
+msgid "Search-Category"
 msgstr ""
 
-#: .\Core\models.py:11 .\Core\models.py:29 .\Products\models.py:15
+#: .\Core\models.py:9 .\Core\models.py:28 .\Products\models.py:15
 msgid "short name"
 msgstr ""
 
-#: .\Core\models.py:12 .\Core\models.py:30 .\Products\models.py:16
+#: .\Core\models.py:10 .\Core\models.py:29 .\Products\models.py:16
 msgid "short description"
 msgstr ""
 
-#: .\Core\models.py:13 .\Core\models.py:31 .\Products\models.py:17
+#: .\Core\models.py:11 .\Core\models.py:30 .\Products\models.py:17
 msgid "slug"
 msgstr ""
 
-#: .\Core\models.py:14 .\Core\models.py:32 .\Products\models.py:18
+#: .\Core\models.py:12 .\Core\models.py:31 .\Products\models.py:18
 msgid "icon"
 msgstr ""
 
-#: .\Core\models.py:16
+#: .\Core\models.py:14
 msgid "First Level Category"
 msgstr ""
 
-#: .\Core\models.py:17
+#: .\Core\models.py:15
 msgid "First Level Categories"
 msgstr ""
 
-#: .\Core\models.py:28 .\Products\models.py:14
+#: .\Core\models.py:27 .\Products\models.py:14
 msgid "parent category"
 msgstr ""
 
-#: .\Core\models.py:35
+#: .\Core\models.py:34
 msgid "Second Level Category"
 msgstr ""
 
-#: .\Core\models.py:36
+#: .\Core\models.py:35
 msgid "Second Level Categories"
 msgstr ""
 
@@ -394,10 +395,26 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: .\Products\Templates\Products\category_products_list.html:18
+#: .\Products\Templates\Products\category_products_list.html:19
 #: .\Products\Templates\Products\show_my_products.html:22
 #: .\Products\forms.py:62
 msgid "Manufactured date"
+msgstr ""
+
+#: .\Products\Templates\Products\contact_email.html:7
+msgid "Product Informations"
+msgstr ""
+
+#: .\Products\Templates\Products\contact_email.html:30
+msgid "Request of Porduct Details"
+msgstr ""
+
+#: .\Products\Templates\Products\contact_email.html:32
+msgid "Please i need some Information on this Product"
+msgstr ""
+
+#: .\Products\Templates\Products\contact_email.html:36
+msgid "Go to the Web site"
 msgstr ""
 
 #: .\Products\Templates\Products\my_product_info.html:8
@@ -430,22 +447,26 @@ msgstr ""
 msgid "Technical Specifications"
 msgstr ""
 
-#: .\Products\Templates\Products\my_product_info.html:47
+#: .\Products\Templates\Products\my_product_info.html:48
 #: .\Products\Templates\Products\show_my_products.html:19
 msgid "Edit"
 msgstr ""
 
-#: .\Products\Templates\Products\my_product_info.html:48
+#: .\Products\Templates\Products\my_product_info.html:49
 #: .\Products\Templates\Products\show_my_products.html:20
 msgid "Delete"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:12
-#: .\Products\Templates\Products\product_details.html:19
+#: .\Products\Templates\Products\product_details.html:11
+msgid "Number of Product contacts"
+msgstr ""
+
+#: .\Products\Templates\Products\product_details.html:16
+#: .\Products\Templates\Products\product_details.html:23
 msgid "Contact the seller"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:47
+#: .\Products\Templates\Products\product_details.html:49
 msgid "Send Informations"
 msgstr ""
 
@@ -509,16 +530,16 @@ msgstr ""
 msgid "Product short description"
 msgstr ""
 
-#: .\Products\forms.py:76 .\Products\models.py:115
-msgid "subject"
+#: .\Products\forms.py:81
+msgid "Subject"
 msgstr ""
 
-#: .\Products\forms.py:77
-msgid "message"
+#: .\Products\forms.py:82
+msgid "Message"
 msgstr ""
 
-#: .\Products\forms.py:79 .\Products\models.py:117
-msgid "Reason for your inquiry"
+#: .\Products\forms.py:83
+msgid "Reason"
 msgstr ""
 
 #: .\Products\models.py:21
@@ -600,6 +621,14 @@ msgstr ""
 
 #: .\Products\models.py:112
 msgid "Reason3"
+msgstr ""
+
+#: .\Products\models.py:115
+msgid "subject"
+msgstr ""
+
+#: .\Products\models.py:117
+msgid "Reason for your inquiry"
 msgstr ""
 
 #: .\Products\models.py:118
@@ -734,27 +763,38 @@ msgstr ""
 msgid "Palletizer specs"
 msgstr ""
 
-#: .\Products\views.py:38
+#: .\Products\views.py:41
 msgid "Case Sealers"
 msgstr ""
 
-#: .\Products\views.py:39
+#: .\Products\views.py:42
 msgid "Case Packers"
 msgstr ""
 
-#: .\Products\views.py:40
+#: .\Products\views.py:43
 msgid "Dispersers-Mixers"
 msgstr ""
 
-#: .\Products\views.py:41
+#: .\Products\views.py:44
 msgid "Palletizers"
 msgstr ""
 
-#: .\Products\views.py:220
+#: .\Products\views.py:77
+#, python-brace-format
+msgid ""
+"Dear <b>{username}</b>, you correctly contacted the seller at the email: "
+"<b>{to_email}</b>"
+msgstr ""
+
+#: .\Products\views.py:177
+msgid "ERROR in form validation"
+msgstr ""
+
+#: .\Products\views.py:301
 msgid "Product uploaded succesfully"
 msgstr ""
 
-#: .\Products\views.py:224
+#: .\Products\views.py:305
 msgid ""
 "There was an error uploading your photos. Please ensure that the uploaded "
 "files are images."

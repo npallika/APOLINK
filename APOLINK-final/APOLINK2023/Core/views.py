@@ -1,12 +1,9 @@
-import random
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.shortcuts import render
 from .models import FirstLevelCategories, SecondLevelCategories
 from Products.models import ThirdLevelCategories
 from django.views.generic import (ListView,DetailView)
 from django.utils.translation import gettext as _
-from django.utils.translation import get_language, activate, gettext
+from django.utils.translation import get_language, activate
 
 # Create your views here.
 
@@ -17,21 +14,9 @@ class CategoriesListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        trans = translate(language='el')
         context['SecondLevelCategories'] = SecondLevelCategories.objects.all()
         context['searchable'] = ThirdLevelCategories.objects.all()
-        context['trans'] = trans
         return context
-
-def translate(language):
-    cur_language = get_language()
-    try:
-        activate(language)
-        text = _('hello')
-    finally:
-        activate(cur_language)
-    #return text already translated
-    return text
 
 class SubcategoriesListView(DetailView):
     

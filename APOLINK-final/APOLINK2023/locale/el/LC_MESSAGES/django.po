@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 15:12+0300\n"
+"POT-Creation-Date: 2023-05-03 13:42+0300\n"
 "PO-Revision-Date: 2023-04-27 09:22+0300\n"
 "Last-Translator: Alessandro Bresciani <ale.brex99@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,37 +19,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\APOLINK2022\settings.py:141
+#: .\APOLINK2022\settings.py:143
 msgid "English"
 msgstr "Αγγλικά"
 
-#: .\APOLINK2022\settings.py:142
+#: .\APOLINK2022\settings.py:144
 msgid "Greek"
 msgstr "Ελληνικά"
 
-#: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:17
-#: .\Accounts\forms.py:45 .\Accounts\forms.py:55 .\Accounts\forms.py:70
+#: .\Accounts\Templates\Accounts\account.html:95 .\Accounts\forms.py:13
+#: .\Accounts\forms.py:42 .\Accounts\forms.py:54 .\Accounts\forms.py:69
 msgid "Username"
 msgstr "Όνομα"
 
-#: .\Accounts\Templates\Accounts\account.html:110
+#: .\Accounts\Templates\Accounts\account.html:112
 msgid "Address"
 msgstr "Διεύθυνση"
 
-#: .\Accounts\Templates\Accounts\account.html:112
+#: .\Accounts\Templates\Accounts\account.html:114
 msgid "Company Name"
 msgstr "Όνομα Εταιρείας"
 
-#: .\Accounts\Templates\Accounts\account.html:114
+#: .\Accounts\Templates\Accounts\account.html:116
 msgid "Industry"
 msgstr "Βιομηχανία"
 
-#: .\Accounts\Templates\Accounts\account.html:120
+#: .\Accounts\Templates\Accounts\account.html:122
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:48
 msgid "Update"
 msgstr "Ενημέρωση"
 
-#: .\Accounts\Templates\Accounts\account.html:123
+#: .\Accounts\Templates\Accounts\account.html:125
 #: .\Accounts\Templates\Accounts\password_reset\password_change.html:37
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
@@ -71,6 +71,7 @@ msgstr ""
 
 #: .\Accounts\Templates\Accounts\login.html:12
 #: .\Accounts\Templates\Accounts\login.html:14
+#: .\Products\Templates\Products\product_details.html:69
 msgid "Login"
 msgstr "Σύνδεση"
 
@@ -152,158 +153,167 @@ msgstr "Αποστολή email επαναφοράς"
 msgid "Sign Up"
 msgstr "Εγγραφείτε"
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:7
-#: .\Accounts\Templates\Accounts\template_activate_account.html:30
-#: .\Accounts\views.py:56
+#: .\Accounts\Templates\Accounts\template_activate_account.html:8
+#: .\Accounts\Templates\Accounts\template_activate_account.html:31
+#: .\Accounts\views.py:51
 msgid "Activate your user account"
 msgstr "Ενεργοποιήστε το λογαριασμό χρήστη σας"
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:31
+#: .\Accounts\Templates\Accounts\template_activate_account.html:32
 #, python-format
 msgid "  Hi %(user.username)s,  "
 msgstr "Γεια σας %(user.username)s,"
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:32
+#: .\Accounts\Templates\Accounts\template_activate_account.html:33
 msgid "Please click on the link below to confirm your registration:"
 msgstr ""
 "Κάντε κλικ στον παρακάτω σύνδεσμο για να επιβεβαιώσετε την εγγραφή σας:"
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:33
+#: .\Accounts\Templates\Accounts\template_activate_account.html:34
 msgid "Activate"
 msgstr "Ενεργοποίηση"
 
-#: .\Accounts\Templates\Accounts\template_activate_account.html:34
+#: .\Accounts\Templates\Accounts\template_activate_account.html:35
+#: .\Products\Templates\Products\contact_email.html:37
 msgid "Thank you!"
 msgstr "Σας ευχαριστώ!"
 
-#: .\Accounts\forms.py:18
+#: .\Accounts\forms.py:14
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 "Απαιτούνται. 30 χαρακτήρες ή λιγότεροι. Μόνο γράμματα, ψηφία και @/./+/-/_."
 
-#: .\Accounts\forms.py:21
+#: .\Accounts\forms.py:17
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 "Αυτή η τιμή μπορεί να περιέχει μόνο γράμματα, αριθμούς και @/./+/-/_ "
 "χαρακτήρες."
 
-#: .\Accounts\forms.py:46 .\Accounts\forms.py:71
+#: .\Accounts\forms.py:43 .\Accounts\forms.py:70
 msgid "First name"
 msgstr "'Ονομα"
 
-#: .\Accounts\forms.py:47 .\Accounts\forms.py:72
+#: .\Accounts\forms.py:44 .\Accounts\forms.py:71
 msgid "Last name"
 msgstr "Επίθετο"
 
-#: .\Accounts\forms.py:48
+#: .\Accounts\forms.py:45
 msgid "Email address"
 msgstr "διεύθυνση"
 
-#: .\Accounts\forms.py:49
+#: .\Accounts\forms.py:46
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: .\Accounts\forms.py:50
+#: .\Accounts\forms.py:47
 msgid "Password confirmation"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
-#: .\Accounts\forms.py:113 .\Accounts\models.py:71
+#: .\Accounts\forms.py:79 .\Accounts\views.py:133 .\Products\views.py:193
+msgid "You have successfully logged in"
+msgstr "Έχετε συνδεθεί επιτυχώς"
+
+#: .\Accounts\forms.py:81 .\Accounts\views.py:136 .\Products\views.py:196
+msgid "Your account is not active."
+msgstr "Ο λογαριασμός σας δεν είναι ενεργός."
+
+#: .\Accounts\forms.py:100 .\Accounts\models.py:39
 msgid "industry"
 msgstr "βιομηχανία"
 
-#: .\Accounts\forms.py:114 .\Accounts\models.py:77
+#: .\Accounts\forms.py:101 .\Accounts\models.py:45
 msgid "phone mobile country"
 msgstr "τηλέφωνο κινητό χώρα"
 
-#: .\Accounts\forms.py:115 .\Accounts\models.py:78
+#: .\Accounts\forms.py:102 .\Accounts\models.py:46
 msgid "phone mobile number"
 msgstr "αριθμός κινητού τηλεφώνου"
 
-#: .\Accounts\forms.py:116 .\Accounts\models.py:75
+#: .\Accounts\forms.py:103 .\Accounts\models.py:43
 msgid "phone landline country"
 msgstr "τηλέφωνο σταθερό τηλέφωνο χώρα"
 
-#: .\Accounts\forms.py:117 .\Accounts\models.py:76
+#: .\Accounts\forms.py:104 .\Accounts\models.py:44
 msgid "phone landline number"
 msgstr "αριθμός σταθερού τηλεφώνου"
 
-#: .\Accounts\forms.py:118 .\Accounts\models.py:70
+#: .\Accounts\forms.py:105 .\Accounts\models.py:38
 msgid "company name"
 msgstr "ονομα εταιρείας"
 
-#: .\Accounts\forms.py:119 .\Accounts\models.py:72
+#: .\Accounts\forms.py:106 .\Accounts\models.py:40
 msgid "company position"
 msgstr "εταιρεία θέση"
 
-#: .\Accounts\forms.py:120 .\Accounts\models.py:81
+#: .\Accounts\forms.py:107 .\Accounts\models.py:49
 msgid "street address"
 msgstr "διεύθυνση οδού"
 
-#: .\Accounts\forms.py:121 .\Accounts\models.py:82
+#: .\Accounts\forms.py:108 .\Accounts\models.py:50
 msgid "city"
 msgstr "πόλη"
 
-#: .\Accounts\forms.py:122 .\Accounts\models.py:83
+#: .\Accounts\forms.py:109 .\Accounts\models.py:51
 msgid "region"
 msgstr "περιοχή"
 
-#: .\Accounts\forms.py:123 .\Accounts\models.py:84
+#: .\Accounts\forms.py:110 .\Accounts\models.py:52
 msgid "zipcode"
 msgstr "ταχυδρομικός κώδικας"
 
-#: .\Accounts\forms.py:124 .\Accounts\models.py:85
+#: .\Accounts\forms.py:111 .\Accounts\models.py:53
 msgid "country"
 msgstr "χώρα"
 
-#: .\Accounts\models.py:10
+#: .\Accounts\models.py:8
 msgid "code"
 msgstr "κώδικας"
 
-#: .\Accounts\models.py:11
+#: .\Accounts\models.py:9
 msgid "phone code"
 msgstr "κωδικός τηλεφώνου"
 
-#: .\Accounts\models.py:12 .\Accounts\models.py:37 .\Core\models.py:10
-#: .\Core\models.py:27 .\Products\models.py:13
+#: .\Accounts\models.py:10 .\Accounts\models.py:25 .\Core\models.py:8
+#: .\Core\models.py:26 .\Products\models.py:13
 msgid "name"
 msgstr "oνομα"
 
-#: .\Accounts\models.py:15
+#: .\Accounts\models.py:13
 msgid "Country"
 msgstr "Χώρα"
 
-#: .\Accounts\models.py:16
+#: .\Accounts\models.py:14
 msgid "Countries"
 msgstr "Χώρες"
 
-#: .\Accounts\models.py:39
+#: .\Accounts\models.py:27
 msgid "Industry Type"
 msgstr "Τύπος βιομηχανίας"
 
-#: .\Accounts\models.py:40
+#: .\Accounts\models.py:28
 msgid "Industry Types"
 msgstr "Τύποι βιομηχανίας"
 
-#: .\Accounts\models.py:88
+#: .\Accounts\models.py:56
 msgid "Platform User"
 msgstr "Χρήστης πλατφόρμας"
 
-#: .\Accounts\models.py:89
+#: .\Accounts\models.py:57
 msgid "Platform Users"
 msgstr "Χρήστες της πλατφόρμας"
 
-#: .\Accounts\views.py:48
+#: .\Accounts\views.py:42
 msgid ""
 "Thank you for your email confirmation. Now you can LOGIN in your account"
 msgstr ""
 "Σας ευχαριστούμε για την επιβεβαίωση του email σας. Τώρα μπορείτε να "
 "συνδεθείτε στο λογαριασμό σας"
 
-#: .\Accounts\views.py:51
+#: .\Accounts\views.py:45
 msgid "Activation link is invalid!"
 msgstr "Ο σύνδεσμος ενεργοποίησης είναι άκυρος!"
 
-#: .\Accounts\views.py:73 .\Products\views.py:64
+#: .\Accounts\views.py:67
 #, python-brace-format
 msgid ""
 "Dear <b>{username}</b>, please go to email <b>{to_email}</b> inbox and click "
@@ -315,28 +325,20 @@ msgstr ""
 "να ολοκληρώσετε την εγγραφή σας.<b> Σημείωση: </b>Ελέγξτε τον φάκελο "
 "ανεπιθύμητης αλληλογραφίας σας."
 
-#: .\Accounts\views.py:79 .\Products\views.py:70
+#: .\Accounts\views.py:73 .\Products\views.py:83
 #, python-brace-format
 msgid "Problem sending email to {to_email}"
 msgstr "Πρόβλημα αποστολής email σε {to_email}"
 
-#: .\Accounts\views.py:87 .\Core\views.py:30
+#: .\Accounts\views.py:81
 msgid "hello"
 msgstr "ΓΕΙΑ"
 
-#: .\Accounts\views.py:129
+#: .\Accounts\views.py:115
 msgid "You have successfully logged out."
 msgstr "Έχετε αποσυνδεθεί επιτυχώς."
 
-#: .\Accounts\views.py:148
-msgid "You have successfully logged in"
-msgstr "Έχετε συνδεθεί επιτυχώς"
-
-#: .\Accounts\views.py:151
-msgid "Your account is not active."
-msgstr "Ο λογαριασμός σας δεν είναι ενεργός."
-
-#: .\Accounts\views.py:235 .\Accounts\views.py:247 .\Accounts\views.py:253
+#: .\Accounts\views.py:219 .\Accounts\views.py:231 .\Accounts\views.py:236
 msgid "Your profile is updated successfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
@@ -348,21 +350,20 @@ msgstr "Διαχειριστής"
 msgid "Sell/Rent"
 msgstr "Πώληση/Ενοικίαση"
 
-#: .\Core\Templates\Core\base.html:163
+#: .\Core\Templates\Core\base.html:168
 msgid "Search Product"
 msgstr "Τα προϊόντα μου"
 
-#: .\Core\Templates\Core\base.html:185
+#: .\Core\Templates\Core\base.html:190
 #: .\Products\Templates\Products\show_my_products.html:5
 msgid "My Products"
 msgstr "Τα προϊόντα μου"
 
-#: .\Core\Templates\Core\base.html:186
+#: .\Core\Templates\Core\base.html:191
 msgid "Logout"
 msgstr "Αποσύνδεση"
 
-#: .\Core\Templates\Core\base.html:201
-#: .\Products\Templates\Products\product_details.html:66
+#: .\Core\Templates\Core\base.html:206
 msgid "Login/Sign Up"
 msgstr "Σύνδεση/Εγγραφή"
 
@@ -371,42 +372,44 @@ msgid "Product Categories"
 msgstr "Κατηγορίες προϊόντων"
 
 #: .\Core\Templates\Core\maincategories_list.html:41
-msgid "Search Category"
+#, fuzzy
+#| msgid "Search Category"
+msgid "Search-Category"
 msgstr "Κατηγορία αναζήτησης"
 
-#: .\Core\models.py:11 .\Core\models.py:29 .\Products\models.py:15
+#: .\Core\models.py:9 .\Core\models.py:28 .\Products\models.py:15
 msgid "short name"
 msgstr "σύντομο όνομα"
 
-#: .\Core\models.py:12 .\Core\models.py:30 .\Products\models.py:16
+#: .\Core\models.py:10 .\Core\models.py:29 .\Products\models.py:16
 msgid "short description"
 msgstr "σύντομη περιγραφή"
 
-#: .\Core\models.py:13 .\Core\models.py:31 .\Products\models.py:17
+#: .\Core\models.py:11 .\Core\models.py:30 .\Products\models.py:17
 msgid "slug"
 msgstr "γυμνοσάλιαγκας"
 
-#: .\Core\models.py:14 .\Core\models.py:32 .\Products\models.py:18
+#: .\Core\models.py:12 .\Core\models.py:31 .\Products\models.py:18
 msgid "icon"
 msgstr "εικονίδιο"
 
-#: .\Core\models.py:16
+#: .\Core\models.py:14
 msgid "First Level Category"
 msgstr "Κατηγορία πρώτου επιπέδου"
 
-#: .\Core\models.py:17
+#: .\Core\models.py:15
 msgid "First Level Categories"
 msgstr "Κατηγορίες πρώτου επιπέδου"
 
-#: .\Core\models.py:28 .\Products\models.py:14
+#: .\Core\models.py:27 .\Products\models.py:14
 msgid "parent category"
 msgstr "γονική κατηγορία"
 
-#: .\Core\models.py:35
+#: .\Core\models.py:34
 msgid "Second Level Category"
 msgstr "Κατηγορία Δεύτερου Επιπέδου"
 
-#: .\Core\models.py:36
+#: .\Core\models.py:35
 msgid "Second Level Categories"
 msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδου"
 
@@ -414,11 +417,31 @@ msgstr "Κατηγορίες Προϊόντων Δεύτερου Επιπέδο�
 msgid "Category"
 msgstr "Κατηγορία"
 
-#: .\Products\Templates\Products\category_products_list.html:18
+#: .\Products\Templates\Products\category_products_list.html:19
 #: .\Products\Templates\Products\show_my_products.html:22
 #: .\Products\forms.py:62
 msgid "Manufactured date"
 msgstr "Ημερομηνία κατασκευής"
+
+#: .\Products\Templates\Products\contact_email.html:7
+#, fuzzy
+#| msgid "Product Photos"
+msgid "Product Informations"
+msgstr "Φωτογραφίες προϊόντος"
+
+#: .\Products\Templates\Products\contact_email.html:30
+#, fuzzy
+#| msgid "Product Details"
+msgid "Request of Porduct Details"
+msgstr "Φωτογραφίες προϊόντος"
+
+#: .\Products\Templates\Products\contact_email.html:32
+msgid "Please i need some Information on this Product"
+msgstr ""
+
+#: .\Products\Templates\Products\contact_email.html:36
+msgid "Go to the Web site"
+msgstr ""
 
 #: .\Products\Templates\Products\my_product_info.html:8
 msgid "Product Details"
@@ -450,22 +473,26 @@ msgstr "Κατάσταση"
 msgid "Technical Specifications"
 msgstr "Τεχνικές προδιαγραφές"
 
-#: .\Products\Templates\Products\my_product_info.html:47
+#: .\Products\Templates\Products\my_product_info.html:48
 #: .\Products\Templates\Products\show_my_products.html:19
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: .\Products\Templates\Products\my_product_info.html:48
+#: .\Products\Templates\Products\my_product_info.html:49
 #: .\Products\Templates\Products\show_my_products.html:20
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: .\Products\Templates\Products\product_details.html:12
-#: .\Products\Templates\Products\product_details.html:19
+#: .\Products\Templates\Products\product_details.html:11
+msgid "Number of Product contacts"
+msgstr ""
+
+#: .\Products\Templates\Products\product_details.html:16
+#: .\Products\Templates\Products\product_details.html:23
 msgid "Contact the seller"
 msgstr ""
 
-#: .\Products\Templates\Products\product_details.html:47
+#: .\Products\Templates\Products\product_details.html:49
 msgid "Send Informations"
 msgstr ""
 
@@ -529,16 +556,16 @@ msgstr "Μοντέλο"
 msgid "Product short description"
 msgstr "Σύντομη περιγραφή του προϊόντος"
 
-#: .\Products\forms.py:76 .\Products\models.py:115
-msgid "subject"
+#: .\Products\forms.py:81
+msgid "Subject"
 msgstr ""
 
-#: .\Products\forms.py:77
-msgid "message"
+#: .\Products\forms.py:82
+msgid "Message"
 msgstr ""
 
-#: .\Products\forms.py:79 .\Products\models.py:117
-msgid "Reason for your inquiry"
+#: .\Products\forms.py:83
+msgid "Reason"
 msgstr ""
 
 #: .\Products\models.py:21
@@ -620,6 +647,14 @@ msgstr ""
 
 #: .\Products\models.py:112
 msgid "Reason3"
+msgstr ""
+
+#: .\Products\models.py:115
+msgid "subject"
+msgstr ""
+
+#: .\Products\models.py:117
+msgid "Reason for your inquiry"
 msgstr ""
 
 #: .\Products\models.py:118
@@ -754,29 +789,40 @@ msgstr "Προδιαγραφή Palletizer"
 msgid "Palletizer specs"
 msgstr "Προδιαγραφές Palletizer"
 
-#: .\Products\views.py:38
+#: .\Products\views.py:41
 msgid "Case Sealers"
 msgstr "Κλειστικά Κιβωτίων"
 
-#: .\Products\views.py:39
+#: .\Products\views.py:42
 msgid "Case Packers"
 msgstr "Εγκιβωτιστικά"
 
-#: .\Products\views.py:40
+#: .\Products\views.py:43
 msgid "Dispersers-Mixers"
 msgstr "Διασκορπιστές-αναμικτήρες"
 
-#: .\Products\views.py:41
+#: .\Products\views.py:44
 msgid "Palletizers"
 msgstr "Παλετοποιητές"
 
-#: .\Products\views.py:220
+#: .\Products\views.py:77
+#, python-brace-format
+msgid ""
+"Dear <b>{username}</b>, you correctly contacted the seller at the email: "
+"<b>{to_email}</b>"
+msgstr ""
+
+#: .\Products\views.py:177
+msgid "ERROR in form validation"
+msgstr ""
+
+#: .\Products\views.py:301
 #, fuzzy
 #| msgid "Your profile is updated successfully"
 msgid "Product uploaded succesfully"
 msgstr "Το προφίλ σας ενημερώθηκε με επιτυχία"
 
-#: .\Products\views.py:224
+#: .\Products\views.py:305
 msgid ""
 "There was an error uploading your photos. Please ensure that the uploaded "
 "files are images."

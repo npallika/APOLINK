@@ -1,19 +1,11 @@
 from django import forms
-from django.forms import widgets, formset_factory , modelformset_factory, BaseFormSet
-from django.contrib.admin.widgets import AdminDateWidget
+from django.forms import widgets, formset_factory , modelformset_factory
 from django.forms.widgets import CheckboxInput
-#from Accounts.models import PlatformUsers, Address, Country, Industry_Type
-from Accounts.models import PlatformUsersAll, Country, Industry_Type
-from .models import ProductsDisplayed, ProductPhotos, Contact, CaseSealerSpecs, CasePackerSpecs, DispersersSpecs, ThirdLevelCategories, PalletizerSpecs
+from .models import ProductsDisplayed, ProductPhotos, Contact
 from datetime import datetime
-from django.contrib.auth.forms import UserCreationForm
 #from captcha.fields import CaptchaField
-from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator, validate_image_file_extension
 from django.utils.translation import gettext_lazy as _
-from modeltranslation.utils import get_translation_fields
-
-
 
 
 class DateInput(forms.DateInput):
@@ -37,8 +29,8 @@ class SellRentForm(forms.ModelForm):
             }
 
 
-
 class ProductPhotosForm(forms.ModelForm):
+    #photo field is validated with a django built-in validator, passing a django function to check for valid extensions
     photo=forms.ImageField(label=_('Upload image') , validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif']), validate_image_file_extension], error_messages={'invalid_image': 'Only .jpg, .jpeg, and .png files are allowed.'}) #changed from FileField
     class Meta:
         model = ProductPhotos
@@ -49,9 +41,9 @@ class ProductPhotosForm(forms.ModelForm):
 class ProductPhotosFormSet(forms.BaseModelFormSet):            
     def get_deletion_widget(self):
         return CheckboxInput(attrs={'class': 'deletion', 'type': 'checkbox', 'name': 'deletion', 'size': '1'})
-    
 
 PhotoFormSet = formset_factory(ProductPhotosForm, extra=3, max_num=3)
+
 
 class UpdateProductForm(forms.ModelForm):
     class Meta:
@@ -70,8 +62,6 @@ class UpdateProductForm(forms.ModelForm):
         #widgets = { 'manufactured_date' : DateInput(attrs={'type':'date', 'max': datetime.now().time()}) }
 
 
-
-#Contact form
 class ContactForm(forms.ModelForm):
     #cc_myself = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-control', 'required': 'false'}))
     class Meta:
@@ -82,7 +72,7 @@ class ContactForm(forms.ModelForm):
             'message': _('Message'),
             'reason': _('Reason'),
         }
-
+    #possible implementation to move the complexity from views to forms.py: is applyable wherever you need to put a condition on diplayed fields
     '''
     def __init__(self, *args, **kwargs):
         print(kwargs)
@@ -101,25 +91,20 @@ class ContactForm(forms.ModelForm):
 #  ------------------ Around Categories Specifications --------------------------- #
 
 def TechSpecs(Model):
-    #all_fields = ['type', 'min_box_size_cm', 'max_box_size_cm', 'boxes_per_min',]
     all_fields = []
-    #YOU DELETED THE FIELDS : MAYBE IS USELESS THIS PART :
+    #you have to use this for if you have some problems with sufixes of translated fields
     for field in Model._meta.get_fields():
         if field.name != 'product' and field.name != 'id' and ('_en' not in field.name) and ('_el' not in field.name):
             all_fields.append(field.name)
-            
-   
-    print(all_fields)
     class TechSpecsForm(forms.ModelForm):
         class Meta:
             model = Model
             #fields = all_fields
             exclude = ['product']
-          
-            
-    
     return TechSpecsForm
 
+
+#OLD IMPLEMENTATION: separated forms for every product specs
 '''class CaseSealersTechSpecsForm(forms.ModelForm):
     class Meta:
         model = CaseSealerSpecs

@@ -110,13 +110,17 @@
                 <a class="nav-item nav-link" href="{% url 'Products:sellRent' %}">{%trans "Sell/Rent" %} </a>
               </li>
               
+
               <!--LANGUAGE CHOICE-->
+                <!--current language shown-->
               <li class="nav-item dropdown">
                 {%get_current_language as LANGUAGE_CODE%}
                 {%get_language_info for LANGUAGE_CODE as languageInfo%}
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <p>current language: {{languageInfo.name_local}}</p> 
                 </a>
+
+                <!--first way to implement language choice: dropdown manu-->
                 <!--
                 <ul class="dropdown-menu">
                   {% get_current_language as LANGUAGE_CODE %}
@@ -132,22 +136,23 @@
                 </ul>
                 -->
 
-                 <!--WITH DJANGO LANGUAGE FORM -->
+                 <!--second way to implement language choice: django language form
+                 with this form, when you choose the language you are redirected to the current page-->
                  <li>
-                 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                  <input name="next" type="hidden" value="{{ redirect_to }}">
-                  <select class="nav-link dropdown-toggle" name="language">
-                      {% get_current_language as LANGUAGE_CODE %}
-                      {% get_available_languages as LANGUAGES %}
-                      {% get_language_info_list for LANGUAGES as languages %}
-                      {% for language in languages %}
-                          <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                              {{ language.name_local }} ({{ language.code }})
-                          </option>
-                      {% endfor %}
-                  </select>
-                  <input type="submit" value="change">
-                </form>
+                  <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="nav-link dropdown-toggle" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                {{ language.name_local }} ({{ language.code }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="change">
+                  </form>
                 </li>
               </li>
 
@@ -213,6 +218,7 @@
             
         </nav>
 
+        <!--display messages from message library: callising message() function these ones are shown here-->
         <div class="container" style="margin-top:90px;">
           <div class="row">
             <div class="col-lg-12 col-md-12-p-0 col-sm-12">

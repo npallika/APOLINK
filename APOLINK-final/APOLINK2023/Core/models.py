@@ -1,7 +1,5 @@
 from django.db import models
-from django.utils import timezone
 from django.utils.text import slugify
-from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
@@ -22,6 +20,7 @@ class FirstLevelCategories(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)    
+
 
 class SecondLevelCategories(models.Model):
     name = models.CharField(_('name'), max_length=200, null=True)
