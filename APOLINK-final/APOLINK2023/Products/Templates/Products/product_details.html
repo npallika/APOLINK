@@ -49,7 +49,7 @@
               <button type="submit" class="btn btn-primary">{% trans "Send Informations" %}</button>          
             </div>
           {%else%}
-            <p>You have to Log-in at first </p>
+            <h5>You have to Log-in at first </h5>
             {{form_login|crispy}}
             <!--check error-->
             {% for field in form %}
@@ -66,23 +66,23 @@
             {% endif %}
             <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
             <div class ='modal-footer'>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>          
             </div>
+
+
           {%endif%}
           </form>
+          
+          <h5>Signup</h5>
+          <p><a href="{% url 'Accounts:signup'%}" class="tooltip-test" title="Tooltip">{% trans "New here? Create an account." %}</a></p>
+          <p><a href="{% url 'Accounts:password_reset' %}" class="tooltip-test" title="Tooltip">{%trans "Reset password" %}</a></p>
 
-          <h5>Popover in a modal</h5>
+          <h5>Popover</h5>
           <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
           <hr>
-          <h5>Tooltips in a modal</h5>
-          <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+          
         </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-
         
       </div>
 

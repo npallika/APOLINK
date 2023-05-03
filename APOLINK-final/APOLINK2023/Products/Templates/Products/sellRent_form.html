@@ -17,8 +17,7 @@
         {{ sellRentForm | crispy }}  
         {{ ProductPhotosForm.media }}
         {{ formset.management_form }}
-        
-      
+
         {% for form in formset %}
         <table>
           <tr>
@@ -38,21 +37,15 @@
          
         </table>
         {% endfor %}
-      
       <!--<input type="hidden" value="false" name="additems" id="additems">
-      <button class="btn btn-primary" id="additemsbutton">Add more photos</button>
-              
-        
-        {{ formset.as_p }} -->
-        <!--{{ProductPhotosForm.as_p}} -->
-        <!-- {{form.as_p}} --> 
+      <button class="btn btn-primary" id="additemsbutton">Add more photos</button>--> 
         {% csrf_token %}
           <button type="submit" class="btn btn-primary">Register</button>
         
       </form>
     </div> 
 
-    <!--PREVIEW OF IMAGES UPLOADED-->
+    <!--PREVIEW OF IMAGES UPLOADED : future implementation-->
   <div class="child-template">
     <div class='card'>
       <div class='top'>
